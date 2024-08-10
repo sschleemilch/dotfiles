@@ -6,6 +6,7 @@ alias -- 'lt'='eza --tree'
 alias -- 'tree'='eza --tree'
 
 alias -- 'v'='nvim'
+alias -- 'gg'='lazygit'
 
 alias -- 'ws'='cd ~/workspace'
 
