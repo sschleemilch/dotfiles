@@ -89,6 +89,7 @@ return {
       fzf_opts = {
         ["--padding"] = "1,2,2,2",
       },
+      fzf_colors = true
     },
     keys = {
       { "<leader><leader>", "<cmd>FzfLua files<cr>",                desc = "Files" },
