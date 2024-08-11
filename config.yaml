@@ -31,9 +31,6 @@ dotfiles:
   d_k9s:
     src: config/k9s
     dst: ~/.config/k9s
-  d_lazygit:
-    src: config/lazygit
-    dst: ~/.config/lazygit
   d_nvim:
     src: config/nvim
     dst: ~/.config/nvim
@@ -82,7 +79,6 @@ profiles:
       - d_tmux_tpm
       - d_git
       - d_k9s
-      - d_lazygit
       - d_nvim
       - d_bat
       - d_btop
