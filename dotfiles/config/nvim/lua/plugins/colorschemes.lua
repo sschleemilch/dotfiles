@@ -2,10 +2,24 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = false,
+    enabled = true,
     priority = 1000,
     config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight-moon]])
+      -- vim.cmd([[colorscheme tokyonight-moon]])
+      -- vim.cmd([[colorscheme tokyonight-night]])
+      -- vim.cmd([[colorscheme tokyonight-storm]])
+      -- vim.cmd([[colorscheme tokyonight-day]])
+    end,
+  },
+  {
+    "slugbyte/lackluster.nvim",
+    lazy = false,
+    priority = 1000,
+    enabled = true,
+    init = function()
+      -- vim.cmd.colorscheme("lackluster")
+      -- vim.cmd.colorscheme("lackluster-hack")
+      -- vim.cmd.colorscheme("lackluster-mint")
     end,
   },
   {
@@ -14,7 +28,6 @@ return {
     enabled = true,
     priority = 1000,
     config = function()
-      -- load the colorscheme here
       -- vim.cmd([[colorscheme gruvbox]])
     end,
   },
@@ -23,18 +36,24 @@ return {
     lazy = false,
     enabled = true,
     priority = 1000,
-    name = "rose-pine"
+    name = "rose-pine",
+    config = function ()
+      -- vim.cmd([[colorscheme rose-pine-dawn]])
+      -- vim.cmd([[colorscheme rose-pine-main]])
+      vim.cmd([[colorscheme rose-pine-moon]])
+    end
   },
-  -- catppuccin
   {
     config = function()
-      -- load the colorscheme here
-      -- vim.cmd([[colorscheme catppuccin]])
+      -- vim.cmd([[colorscheme catppuccin-latte]])
+      -- vim.cmd([[colorscheme catppuccin-frappe]])
+      -- vim.cmd([[colorscheme catppuccin-mocha]])
+      -- vim.cmd([[colorscheme catppuccin-macchiato]])
     end,
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
-    enabled = false,
+    enabled = true,
     priority = 1000,
     opts = {
       flavour = "macchiato",
