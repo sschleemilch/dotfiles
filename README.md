@@ -15,7 +15,6 @@
 [![Alacritty](https://img.shields.io/badge/Alacritty-cad3f5?style=for-the-badge&logo=alacritty&logoColor=black)](https://github.com/alacritty/alacritty)
 
 My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
-Colorschemes are [Tokyonight-Moon](https://github.com/folke/tokyonight.nvim/)
 
 ## Usage
 
@@ -37,10 +36,6 @@ Colorschemes are [Tokyonight-Moon](https://github.com/folke/tokyonight.nvim/)
 - [fd](https://github.com/sharkdp/fd)
 - [node.js](https://nodejs.org)
 
-### `d_git`
-
-- [delta](https://github.com/dandavison/delta)
-
 
 ### `d_zsh`
 
@@ -52,32 +47,3 @@ Colorschemes are [Tokyonight-Moon](https://github.com/folke/tokyonight.nvim/)
 
 - [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip)
 
-### `wsl`
-
-- Enabled color schema "Tokyonight-Moon" in the hosting terminal emulator. E.g. for Windows Terminal:
-
-```json
-{
-    "background": "#222436",
-    "black": "#1b1d2b",
-    "blue": "#82aaff",
-    "brightBlack": "#444a73",
-    "brightBlue": "#82aaff",
-    "brightCyan": "#86e1fc",
-    "brightGreen": "#c3e88d",
-    "brightPurple": "#fca7ea",
-    "brightRed": "#ff757f",
-    "brightWhite": "#c8d3f5",
-    "brightYellow": "#ffc777",
-    "cursorColor": "#c8d3f5",
-    "cyan": "#86e1fc",
-    "foreground": "#c8d3f5",
-    "green": "#c3e88d",
-    "name": "Tokyo Night Moon",
-    "purple": "#c099ff",
-    "red": "#ff757f",
-    "selectionBackground": "#2d3f76",
-    "white": "#828bb8",
-    "yellow": "#ffc777"
-}
-```
