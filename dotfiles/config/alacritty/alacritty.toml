@@ -1,116 +1,116 @@
 live_config_reload = true
 
 # TOKYONIGHT MOON
-[colors.primary]
-background = '#222436'
-foreground = '#c8d3f5'
-
-[colors.cursor]
-cursor = '#c8d3f5'
-text = '#222436'
-
-# Normal colors
-[colors.normal]
-black = '#1b1d2b'
-red = '#ff757f'
-green = '#c3e88d'
-yellow = '#ffc777'
-blue = '#82aaff'
-magenta = '#c099ff'
-cyan = '#86e1fc'
-white = '#828bb8'
-
-# Bright colors
-[colors.bright]
-black = '#444a73'
-red = '#ff757f'
-green = '#c3e88d'
-yellow = '#ffc777'
-blue = '#82aaff'
-magenta = '#c099ff'
-cyan = '#86e1fc'
-white = '#c8d3f5'
-
-# Indexed Colors
-[[colors.indexed_colors]]
-index = 16
-color = '#ff966c'
-
-[[colors.indexed_colors]]
-index = 17
-color = '#c53b53'
-
-# ROSE-PINE MOON
 # [colors.primary]
-# foreground = "#e0def4"
-# background = "#232136"
-# dim_foreground = "#908caa"
-# bright_foreground = "#e0def4"
+# background = '#222436'
+# foreground = '#c8d3f5'
 #
 # [colors.cursor]
-# text = "#e0def4"
-# cursor = "#56526e"
+# cursor = '#c8d3f5'
+# text = '#222436'
 #
-# [colors.vi_mode_cursor]
-# text = "#e0def4"
-# cursor = "#56526e"
-#
-# [colors.search.matches]
-# foreground = "#908caa"
-# background = "#393552"
-#
-# [colors.search.focused_match]
-# foreground = "#232136"
-# background = "#ea9a97"
-#
-# [colors.hints.start]
-# foreground = "#908caa"
-# background = "#2a273f"
-#
-# [colors.hints.end]
-# foreground = "#6e6a86"
-# background = "#2a273f"
-#
-# [colors.line_indicator]
-# foreground = "None"
-# background = "None"
-#
-# [colors.footer_bar]
-# foreground = "#e0def4"
-# background = "#2a273f"
-#
-# [colors.selection]
-# text = "#e0def4"
-# background = "#44415a"
-#
+# # Normal colors
 # [colors.normal]
-# black = "#393552"
-# red = "#eb6f92"
-# green = "#3e8fb0"
-# yellow = "#f6c177"
-# blue = "#9ccfd8"
-# magenta = "#c4a7e7"
-# cyan = "#ea9a97"
-# white = "#e0def4"
+# black = '#1b1d2b'
+# red = '#ff757f'
+# green = '#c3e88d'
+# yellow = '#ffc777'
+# blue = '#82aaff'
+# magenta = '#c099ff'
+# cyan = '#86e1fc'
+# white = '#828bb8'
 #
+# # Bright colors
 # [colors.bright]
-# black = "#6e6a86"
-# red = "#eb6f92"
-# green = "#3e8fb0"
-# yellow = "#f6c177"
-# blue = "#9ccfd8"
-# magenta = "#c4a7e7"
-# cyan = "#ea9a97"
-# white = "#e0def4"
+# black = '#444a73'
+# red = '#ff757f'
+# green = '#c3e88d'
+# yellow = '#ffc777'
+# blue = '#82aaff'
+# magenta = '#c099ff'
+# cyan = '#86e1fc'
+# white = '#c8d3f5'
 #
-# [colors.dim]
-# black = "#6e6a86"
-# red = "#eb6f92"
-# green = "#3e8fb0"
-# yellow = "#f6c177"
-# blue = "#9ccfd8"
-# magenta = "#c4a7e7"
-# cyan = "#ea9a97"
+# # Indexed Colors
+# [[colors.indexed_colors]]
+# index = 16
+# color = '#ff966c'
+#
+# [[colors.indexed_colors]]
+# index = 17
+# color = '#c53b53'
+
+# ROSE-PINE MOON
+[colors.primary]
+foreground = "#e0def4"
+background = "#232136"
+dim_foreground = "#908caa"
+bright_foreground = "#e0def4"
+
+[colors.cursor]
+text = "#e0def4"
+cursor = "#56526e"
+
+[colors.vi_mode_cursor]
+text = "#e0def4"
+cursor = "#56526e"
+
+[colors.search.matches]
+foreground = "#908caa"
+background = "#393552"
+
+[colors.search.focused_match]
+foreground = "#232136"
+background = "#ea9a97"
+
+[colors.hints.start]
+foreground = "#908caa"
+background = "#2a273f"
+
+[colors.hints.end]
+foreground = "#6e6a86"
+background = "#2a273f"
+
+[colors.line_indicator]
+foreground = "None"
+background = "None"
+
+[colors.footer_bar]
+foreground = "#e0def4"
+background = "#2a273f"
+
+[colors.selection]
+text = "#e0def4"
+background = "#44415a"
+
+[colors.normal]
+black = "#393552"
+red = "#eb6f92"
+green = "#3e8fb0"
+yellow = "#f6c177"
+blue = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan = "#ea9a97"
+white = "#e0def4"
+
+[colors.bright]
+black = "#6e6a86"
+red = "#eb6f92"
+green = "#3e8fb0"
+yellow = "#f6c177"
+blue = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan = "#ea9a97"
+white = "#e0def4"
+
+[colors.dim]
+black = "#6e6a86"
+red = "#eb6f92"
+green = "#3e8fb0"
+yellow = "#f6c177"
+blue = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan = "#ea9a97"
 
 
 # ROSE-PINE
