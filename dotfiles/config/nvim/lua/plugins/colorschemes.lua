@@ -18,6 +18,13 @@ return {
       -- vim.cmd([[colorscheme gruvbox]])
     end,
   },
+  {
+    "rose-pine/neovim",
+    lazy = false,
+    enabled = true,
+    priority = 1000,
+    name = "rose-pine"
+  },
   -- catppuccin
   {
     config = function()

@@ -194,4 +194,17 @@ return {
       require("noice").setup(opts)
     end,
   },
+  {
+    "j-hui/fidget.nvim",
+    opts = {
+      notification = {
+        override_vim_notify = true,
+        window = {
+          normal_hl = "Comment",
+          align = "bottom"
+        }
+      },
+    },
+    enabled = false,
+  }
 }
