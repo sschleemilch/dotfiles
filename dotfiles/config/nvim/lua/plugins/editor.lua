@@ -1,24 +1,45 @@
 return {
   {
-    "echasnovski/mini.files",
-    version = false,
-    config = true,
+    "stevearc/oil.nvim",
+    cmd = "Oil",
+    opts = {
+      skip_confirm_for_simple_edits = true,
+      keymaps = {
+        ["g?"] = "actions.show_help",
+        ["<CR>"] = "actions.select",
+        ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+        ["<C-h>"] = false,
+        ["<C-t>"] = false,
+        ["<C-p>"] = false,
+        ["<C-c>"] = false,
+        ["q"] = "actions.close",
+        ["<C-l>"] = false,
+        ["gr"] = "actions.refresh",
+        ["-"] = "actions.parent",
+        ["_"] = "actions.open_cwd",
+        ["`"] = "actions.cd",
+        ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
+        ["gs"] = "actions.change_sort",
+        ["gx"] = false,
+        ["g."] = "actions.toggle_hidden",
+        ["g\\"] = "actions.toggle_trash",
+      },
+      view_options = {
+        show_hidden = true
+      },
+      float = {
+        max_width = 140,
+        max_height = 50,
+        border = "none"
+      }
+    },
     keys = {
       {
-        "<leader>em",
-        function()
-          require("mini.files").open(vim.api.nvim_buf_get_name(0), true)
-        end,
-        desc = "Open mini.files (Directory of Current File)",
-      },
-      {
-        "<leader>eM",
-        function()
-          require("mini.files").open(vim.uv.cwd(), true)
-        end,
-        desc = "Open mini.files (cwd)",
-      },
-    }
+        "<leader>e",
+        "<cmd>Oil --float<cr>"
+      }
+    },
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
   },
   -- search/replace in multiple files
   {

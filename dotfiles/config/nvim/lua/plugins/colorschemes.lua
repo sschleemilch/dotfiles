@@ -37,7 +37,14 @@ return {
     enabled = true,
     priority = 1000,
     name = "rose-pine",
-    config = function()
+    opts = {
+      dim_inactive_windows = false,
+      highlight_groups = {
+        CursorLine = { bg = "surface" }
+      }
+    },
+    config = function(_, opts)
+      require("rose-pine").setup(opts)
       -- vim.cmd([[colorscheme rose-pine-dawn]])
       -- vim.cmd([[colorscheme rose-pine-main]])
       vim.cmd([[colorscheme rose-pine-moon]])
