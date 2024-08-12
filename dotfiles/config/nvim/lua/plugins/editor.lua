@@ -37,6 +37,10 @@ return {
       {
         "<leader>e",
         "<cmd>Oil --float<cr>"
+      },
+      {
+        "-",
+        "<cmd>Oil --float<cr>"
       }
     },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -97,8 +101,8 @@ return {
     cmd = "FzfLua",
     opts = {
       winopts = {
-        height = 0.5,
-        width = 0.85,
+        height = 0.7,
+        width = 0.7,
         border = "none",
         preview = {
           hidden = "hidden",
@@ -118,6 +122,7 @@ return {
       { "<leader>,",        "<cmd>FzfLua buffers<cr>",              desc = "Buffers" },
       { "<leader>fb",       "<cmd>FzfLua buffers<cr>",              desc = "Buffers" },
       { "<leader>/",        "<cmd>FzfLua live_grep<cr>",            desc = "Grep" },
+      { "<leader>fg",       "<cmd>FzfLua live_grep<cr>",            desc = "Grep" },
       { "<leader>fr",       "<cmd>FzfLua oldfiles<cr>",             desc = "Files recent" },
       { "<leader>fh",       "<cmd>FzfLua helptags<cr>",             desc = "Help" },
       { "<leader>fq",       "<cmd>FzfLua quickfix<cr>",             desc = "Quickfix" },
