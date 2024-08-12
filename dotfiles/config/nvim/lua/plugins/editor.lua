@@ -38,10 +38,6 @@ return {
         "<leader>e",
         "<cmd>Oil --float<cr>"
       },
-      {
-        "-",
-        "<cmd>Oil --float<cr>"
-      }
     },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
   },
