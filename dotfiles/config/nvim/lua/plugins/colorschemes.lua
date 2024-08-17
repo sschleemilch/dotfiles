@@ -40,7 +40,23 @@ return {
     opts = {
       dim_inactive_windows = false,
       highlight_groups = {
-        CursorLine = { bg = "surface" }
+        CursorLine = { bg = "surface" },
+        Schlatusline = { bg = "base", fg = "text" },
+        SchlatuslineModeNormal = { fg =  "surface", bg = "rose", bold = true },
+        SchlatuslineModeNormalFG = { bg =  "base", fg = "rose", bold = true },
+        SchlatuslineModeInsert = { fg =  "surface", bg = "foam", bold = true },
+        SchlatuslineModeInsertFG = { bg =  "base", fg = "foam", bold = true },
+        SchlatuslineModePending = { fg =  "surface", bg = "gold", bold = true },
+        SchlatuslineModePendingFG = { bg =  "base", fg = "gold", bold = true },
+        SchlatuslineModeVisual = { fg =  "surface", bg = "iris", bold = true },
+        SchlatuslineModeVisualFG = { bg =  "base", fg = "iris", bold = true },
+        SchlatuslineModeCommand = { fg =  "surface", bg = "love", bold = true },
+        SchlatuslineModeCommandFG = { bg =  "base", fg = "love", bold = true },
+        SchlatuslineGitAdd = { fg =  "foam", bg = "base", bold = false },
+        SchlatuslineGitRm = { fg =  "rose", bg = "base", bold = false },
+        SchlatuslineGitChange = { fg =  "gold", bg = "base", bold = false },
+        SchlatuslineLsp = { fg =  "muted", bg = "base", bold = false },
+        SchlatuslineFilename = { fg =  "text", bg = "base", bold = true },
       }
     },
     config = function(_, opts)

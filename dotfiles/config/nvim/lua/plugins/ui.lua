@@ -12,87 +12,6 @@ return {
     end,
   },
   {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function()
-      local lualine_require = require("lualine_require")
-      lualine_require.require = require
-
-      vim.o.laststatus = vim.g.lualine_laststatus
-      local icons = require("icons")
-
-      local opts = {
-        options = {
-          section_separators = { left = "", right = "" },
-          component_separators = "",
-          theme = "auto",
-          globalstatus = vim.o.laststatus == 3,
-        },
-        sections = {
-          lualine_a = { "mode" },
-          lualine_b = { "branch" },
-          lualine_c = {
-            {
-              "filename",
-              path = 1
-            },
-            {
-              "diagnostics",
-              symbols = {
-                error = icons.diagnostics.Error,
-                warn = icons.diagnostics.Warn,
-                hint = icons.diagnostics.Hint,
-                info = icons.diagnostics.Info,
-              },
-            },
-          },
-          lualine_x = {
-            -- stylua: ignore
-            {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-            },
-            -- stylua: ignore
-            {
-              require("lazy.status").updates,
-              cond = require("lazy.status").has_updates,
-            },
-            {
-              "diff",
-              symbols = {
-                added = icons.git.added,
-                modified = icons.git.modified,
-                removed = icons.git.removed,
-              },
-              source = function()
-                local gitsigns = vim.b.gitsigns_status_dict
-                if gitsigns then
-                  return {
-                    added = gitsigns.added,
-                    modified = gitsigns.changed,
-                    removed = gitsigns.removed,
-                  }
-                end
-              end,
-            },
-            "filetype",
-          },
-        },
-      }
-      return opts
-    end,
-    init = function()
-      vim.g.lualine_laststatus = vim.o.laststatus
-      if vim.fn.argc(-1) > 0 then
-        -- set an empty statusline till lualine loads
-        vim.o.statusline = " "
-      else
-        -- hide the statusline on the starter page
-        vim.o.laststatus = 0
-      end
-    end,
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     enabled = true,
@@ -139,7 +58,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    enabled = true,
+    enabled = false,
     opts = {
       lsp = {
         override = {
@@ -214,6 +133,6 @@ return {
         }
       },
     },
-    enabled = false,
+    enabled = true,
   }
 }

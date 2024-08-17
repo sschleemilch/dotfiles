@@ -36,7 +36,7 @@ return {
     keys = {
       {
         "<leader>e",
-        "<cmd>Oil --float<cr>"
+        "<cmd>Oil<cr>"
       },
     },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -103,6 +103,7 @@ return {
         preview = {
           hidden = "hidden",
         },
+        fullscreen = true,
       },
       oldfiles = {
         cwd_only = true,
