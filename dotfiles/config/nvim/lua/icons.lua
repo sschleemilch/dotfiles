@@ -18,6 +18,7 @@ return {
     WARN  = " ",
     HINT  = " ",
     INFO  = " ",
+    --- 󰔶
   },
   separators = {
     triangle_lower_left = "",

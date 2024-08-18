@@ -14,13 +14,45 @@ vim.o.showmode = false
 
 local hl_base = "Schlatusline"
 
+---@type table<string, boolean>
+M.hls = {}
+---@param hl string
+---@param base string?
+---@param reverse boolean?
+---@param bold boolean?
+function M.get_or_create_hl(hl, base, reverse, bold)
+  if reverse then
+    hl = hl .. "Reverse"
+  end
+  if bold then
+    hl = hl .. "Bold"
+  end
+
+  if not M.hls[hl] then
+    local hl_ref = vim.api.nvim_get_hl(0, { name = base })
+    local fg = hl_ref.fg or "fg"
+    local bg = hl_ref.bg or "bg"
+    if reverse then
+      local tmp = fg
+      fg = bg
+      bg = tmp
+    end
+    vim.api.nvim_set_hl(0, hl, { bg = bg, fg = fg, bold = hl_ref.bold or bold})
+    M.hls[hl] = true
+  end
+
+  return hl
+end
+
+
 --- Function to get the highlight of a given mode
 --- @param mode string
 --- @param as_fg boolean?
 --- @return string
-function M.get_mode_hl(mode, as_fg)
+function M.get_mode_hl(mode)
   -- Build the hl group name
   local postfix = "Other"
+  local base = "Normal"
   if mode == "NORMAL" then
     postfix = "Normal"
   elseif mode:find "PENDING" then
@@ -33,10 +65,7 @@ function M.get_mode_hl(mode, as_fg)
     postfix = "Command"
   end
   local hl = hl_base .. "Mode" .. postfix
-  if as_fg == true then
-    hl = hl .. "FG"
-  end
-  return hl
+  return M.get_or_create_hl(hl, base, true, true)
 end
 
 --- Helper function to highlight a given content
@@ -52,11 +81,11 @@ function M.highlight_content(content, hl, sep_left, sep_right)
   end
   local rendered = ""
   if sep_left ~= nil then
-    rendered = rendered .. string.format("%%#%s#%s", hl .. "FG", sep_left)
+    rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl, hl, true), sep_left)
   end
   rendered = rendered .. string.format("%%#%s#%s", hl, content)
   if sep_right ~= nil then
-    rendered = rendered .. string.format("%%#%s#%s", hl .. "FG", sep_right)
+    rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl, hl, true), sep_right)
   end
   rendered = rendered .. "%#" .. hl_base .. "#"
   return rendered
@@ -132,23 +161,22 @@ function M.git_component()
 
   local render = string.format("%s %s", icons.git.branch, status.head)
   if status.added and status.added > 0 then
-    render = render .. M.highlight_content(string.format(" %s%s", icons.git.added, status.added), hl_base .. "GitAdd")
+    render = render .. M.highlight_content(string.format(" %s%s", icons.git.added, status.added), "DiagnosticInfo")
   end
   if status.removed and status.removed > 0 then
-    render = render .. M.highlight_content(string.format(" %s%s", icons.git.removed, status.removed), hl_base .. "GitRm")
+    render = render .. M.highlight_content(string.format(" %s%s", icons.git.removed, status.removed), "DiagnosticError")
   end
   if status.changed and status.changed > 0 then
     render = render ..
-        M.highlight_content(string.format(" %s%s", icons.git.modified, status.changed), hl_base .. "GitChange")
+        M.highlight_content(string.format(" %s%s", icons.git.modified, status.changed), "DiagnosticWarn")
   end
   return M.highlight_content(render)
 end
 
 --- File path component
 --- Highlights the filename in the mode color
---- @param mode string
 --- @return string
-function M.file_component(mode)
+function M.file_component()
   local path = vim.fs.normalize(vim.fn.expand("%:.:h"))
   if #path == 0 then
     return ""
@@ -156,7 +184,7 @@ function M.file_component(mode)
   path = path .. "/"
   local filename = vim.fn.expand("%:t")
   local content = M.highlight_content(path, hl_base)
-  content = content .. M.highlight_content(filename, M.get_mode_hl(mode, true))
+  content = content .. M.highlight_content(filename, M.get_or_create_hl("Filename", hl_base, false, true))
   content = content .. " " .. M.highlight_content("%m%r", hl_base)
   return content
 end
@@ -213,7 +241,7 @@ function M.filetype_component()
   end
   local icon, icon_hl = MiniIcons.get("filetype", filetype)
 
-  return string.format("%%#%s#%s %%#%s#%s", icon_hl, icon, hl_base, filetype)
+  return string.format("%%#%s#%s %%#%s#%s", icon_hl, icon, M.get_or_create_hl(hl_base, hl_base), filetype)
 end
 
 --- File position component
@@ -252,10 +280,10 @@ local lsp_progress = {
 }
 
 --- Autocommand to fill the progress_status
-vim.api.nvim_create_autocmd('LspProgress', {
+vim.api.nvim_create_autocmd("LspProgress", {
   group = augroup,
-  desc = 'Update LSP progress in statusline',
-  pattern = { 'begin', 'end' },
+  desc = "Update LSP progress in statusline",
+  pattern = { "begin", "report", "end" },
   callback = function(args)
     -- This should in theory never happen, but I've seen weird errors.
     if not args.data then
@@ -270,7 +298,7 @@ vim.api.nvim_create_autocmd('LspProgress', {
       title = args.data.params.value.title,
     }
 
-    if lsp_progress.kind == 'end' then
+    if lsp_progress.kind == "end" then
       lsp_progress.title = nil
       -- Wait a bit before clearing the status.
       vim.defer_fn(function()
@@ -297,7 +325,7 @@ function M.attached_lsps_component()
   end)
   local names = it:totable()
   local content = string.format("{%s}", table.concat(names, ","))
-  return M.highlight_content(content, hl_base .. "Lsp")
+  return M.highlight_content(content, M.get_or_create_hl(hl_base .. "Lsp", "Comment"))
 end
 
 --- Lsp progress component
@@ -310,7 +338,7 @@ function M.lsp_component()
   end
 
   local content = string.format("{%s}", icons.misc.spinner)
-  return M.highlight_content(content, hl_base .. "Lsp")
+  return M.highlight_content(content, M.get_or_create_hl(hl_base .. "Lsp", "Comment"))
 end
 
 --- Renders the statusline.
@@ -330,7 +358,7 @@ function M.render()
     concat_components {
       M.mode_component(mode),
       " ",
-      M.file_component(mode),
+      M.file_component(),
       " ",
       M.git_component(),
     },
@@ -361,10 +389,16 @@ vim.api.nvim_create_autocmd("User", {
   end
 })
 
-vim.api.nvim_create_autocmd('DiagnosticChanged', {
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
   group = augroup,
   callback = function(args)
     require("statusline").refresh()
+  end,
+})
+vim.api.nvim_create_autocmd("Colorscheme", {
+  group = augroup,
+  callback = function(args)
+    require("statusline").hls = {}
   end,
 })
 
