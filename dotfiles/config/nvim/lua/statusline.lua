@@ -1,18 +1,32 @@
-local icons = require("icons")
-
-local augroup = vim.api.nvim_create_augroup("sschlatusline", { clear = true })
-
-local M = {}
-
-
 -- Don"t show the command that produced the quickfix list.
 vim.g.qf_disable_statusline = 1
 
 -- Show the mode in my custom component instead.
 vim.o.showmode = false
 
+local icons = require("icons")
 
-local hl_base = "Schlatusline"
+local augroup = vim.api.nvim_create_augroup("sschlatusline", { clear = true })
+
+local M = {}
+
+local config = {
+  bold =  false,
+  verbose_mode = false,
+  hl_basename = "Schlatusline",
+  zen = true,
+  sep = {
+    mode = {
+      left = nil,
+      right = icons.separators.triangle_lower_left
+    },
+    progress = {
+      left = icons.separators.triangle_lower_right,
+      right = nil
+    }
+  }
+}
+
 
 ---@type table<string, boolean>
 M.hls = {}
@@ -37,33 +51,34 @@ function M.get_or_create_hl(hl, base, reverse, bold)
   return hl
 end
 
+---@param mode string
+---@return boolean
+local function is_normal_mode(mode)
+  return mode == "NORMAL"
+end
 
 --- Function to get the highlight of a given mode
 --- @param mode string
---- @param add string?
 --- @return string
-function M.get_mode_hl(mode, add)
-  -- Build the hl group name
-  local postfix = "Other"
+function M.get_mode_hl(mode)
+  local postfix = ""
   local base = "Comment"
   if mode == "NORMAL" then
     postfix = "Normal"
     base = "Normal"
-  elseif mode:find "PENDING" then
-    postfix = "Pending"
-  elseif mode:find "VISUAL" then
-    postfix = "Visual"
-  elseif mode:find "INSERT" or mode:find "SELECT" then
-    postfix = "Insert"
-  elseif mode:find "COMMAND" or mode:find "TERMINAL" or mode:find "EX" then
-    postfix = "Command"
+  -- elseif mode:find "PENDING" then
+  --   postfix = "Pending"
+  -- elseif mode:find "VISUAL" then
+  --   postfix = "Visual"
+  -- elseif mode:find "INSERT" or mode:find "SELECT" then
+  --   postfix = "Insert"
+  -- elseif mode:find "COMMAND" or mode:find "TERMINAL" or mode:find "EX" then
+  --   postfix = "Command"
   end
-  local hl = hl_base .. "Mode" .. postfix
-  if add then
-    hl = hl .. add
-  end
-  return M.get_or_create_hl(hl, base, true, true)
+  local hl = config.hl_basename .. "Mode" .. postfix
+  return M.get_or_create_hl(hl, base, true, config.bold)
 end
+
 
 --- Helper function to highlight a given content
 --- Resets the highlight afterwards
@@ -74,7 +89,8 @@ end
 --- @return string
 function M.highlight_content(content, hl, sep_left, sep_right)
   if hl == nil then
-    hl = hl_base
+    hl = config.hl_basename
+
   end
   local rendered = ""
   if sep_left ~= nil then
@@ -84,7 +100,7 @@ function M.highlight_content(content, hl, sep_left, sep_right)
   if sep_right ~= nil then
     rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl .. "Sep", hl, true), sep_right)
   end
-  rendered = rendered .. "%#" .. hl_base .. "#"
+  rendered = rendered .. "%#" .. M.get_or_create_hl(config.hl_basename, "Normal") .. "#"
   return rendered
 end
 
@@ -139,15 +155,20 @@ end
 --- @param mode string
 --- @return string
 function M.mode_component(mode)
-  local content = " " .. mode .. " "
-  return M.highlight_content(content, M.get_mode_hl(mode), nil, icons.separators.triangle_lower_left)
+  local render = mode
+  if config.verbose_mode == false then
+    render = string.sub(mode, 1, 1)
+  end
+  local content = " " .. render .. " "
+  return M.highlight_content(content, M.get_mode_hl(mode), config.sep.mode.left, config.sep.mode.right)
 end
 
 --- Git component showing branch
 --- as well as changed, added and removed lines
 --- Using gitsigns for it
+--- @param mode string
 --- @return string
-function M.git_component()
+function M.git_component(mode)
   local status = vim.b.gitsigns_status_dict
   if not status then
     return ""
@@ -157,21 +178,40 @@ function M.git_component()
   end
 
   local render = string.format("%s %s", icons.git.branch, status.head)
+
+
   if status.added and status.added > 0 then
-    render = render .. M.highlight_content(string.format(" %s%s", icons.git.added, status.added), "DiagnosticInfo")
+    local added_hl = "DiagnosticInfo"
+    if config.zen and not is_normal_mode(mode) then
+      added_hl = "Comment"
+    end
+    render = render .. M.highlight_content(string.format(" %s%s", icons.git.added, status.added), added_hl)
   end
   if status.removed and status.removed > 0 then
-    render = render .. M.highlight_content(string.format(" %s%s", icons.git.removed, status.removed), "DiagnosticError")
+    local removed_hl = "DiagnosticError"
+    if config.zen and not is_normal_mode(mode) then
+      removed_hl = "Comment"
+    end
+    render = render .. M.highlight_content(string.format(" %s%s", icons.git.removed, status.removed), removed_hl)
   end
   if status.changed and status.changed > 0 then
+    local changed_hl = "DiagnosticWarn"
+    if config.zen and not is_normal_mode(mode) then
+      changed_hl = "Comment"
+    end
     render = render ..
-        M.highlight_content(string.format(" %s%s", icons.git.modified, status.changed), "DiagnosticWarn")
+        M.highlight_content(string.format(" %s%s", icons.git.modified, status.changed), changed_hl)
   end
-  return M.highlight_content(render)
+  local render_hl = "Normal"
+  if config.zen and not is_normal_mode(mode) then
+    render_hl = "Comment"
+  end
+  return M.highlight_content(render, render_hl)
 end
 
 --- File path component
 --- Highlights the filename in the mode color
+--- @param mode string
 --- @return string
 function M.file_component(mode)
   local path = vim.fs.normalize(vim.fn.expand("%:.:h"))
@@ -181,16 +221,26 @@ function M.file_component(mode)
   path = path .. "/"
   local filename = vim.fn.expand("%:t")
   local content = M.highlight_content(path, "Comment")
-  local mode_hl = M.get_mode_hl(mode)
-  content = content .. M.highlight_content(filename, M.get_or_create_hl(mode_hl .. "Filename", mode_hl, true))
-  content = content .. " " .. M.highlight_content("%m%r", hl_base)
+  local file_hl_base =  "Normal"
+  local file_hl_name = config.hl_basename .. "Filename"
+  if config.zen and not is_normal_mode(mode) then
+    file_hl_base = "Comment"
+    file_hl_name = file_hl_name .. "Inactive"
+  end
+  content = content .. M.highlight_content(filename, M.get_or_create_hl(file_hl_name, file_hl_base, false, config.bold))
+  local mod_hl = "Normal"
+  if config.zen and not is_normal_mode(mode) then
+    mod_hl = "Comment"
+  end
+  content = content .. " " .. M.highlight_content("%m%r", mod_hl)
   return content
 end
 
 local last_diagnostic_component = ""
 --- Diagnostics component
+--- @param mode string
 --- @return string
-function M.diagnostics_component()
+function M.diagnostics_component(mode)
   -- Lazy uses diagnostic icons, but those aren"t errors per se.
   if vim.bo.filetype == "lazy" then
     return ""
@@ -198,7 +248,11 @@ function M.diagnostics_component()
 
   -- Use the last computed value if in insert mode.
   if vim.startswith(vim.api.nvim_get_mode().mode, "i") then
-    return last_diagnostic_component
+    local result = last_diagnostic_component
+    if config.zen then
+      result = string.gsub(result, "#Diagnostic.[a-zA-Z]+#", "#Comment#")
+    end
+    return result
   end
 
   local counts = vim.iter(vim.diagnostic.get(0)):fold({
@@ -219,6 +273,9 @@ function M.diagnostics_component()
         end
 
         local hl = "Diagnostic" .. severity:sub(1, 1) .. severity:sub(2):lower()
+        if config.zen and not is_normal_mode(mode) then
+          hl = "Comment"
+        end
         return string.format("%%#%s#%s%d", hl, icons.diagnostics[severity], count)
       end)
       :totable()
@@ -229,8 +286,9 @@ end
 
 --- Filetype component
 --- Uses mini.icons for icons
+--- @param mode string
 --- @return string
-function M.filetype_component()
+function M.filetype_component(mode)
   local MiniIcons = require("mini.icons")
 
   local filetype = vim.bo.filetype
@@ -238,15 +296,13 @@ function M.filetype_component()
     filetype = "[No Name]"
   end
   local icon, icon_hl = MiniIcons.get("filetype", filetype)
+  local filetype_hl = "Normal"
+  if config.zen and not is_normal_mode(mode) then
+    icon_hl = "Comment"
+    filetype_hl = "Comment"
+  end
 
-  return string.format("%%#%s#%s %%#%s#%s", icon_hl, icon, M.get_or_create_hl(hl_base, hl_base), filetype)
-end
-
---- File position component
----@return string
-function M.position_component(mode)
-  local content = "%4l:%-3c"
-  return M.highlight_content(content, M.get_mode_hl(mode), icons.separators.triangle_lower_right)
+  return string.format("%%#%s#%s %%#%s#%s", icon_hl, icon, filetype_hl, filetype)
 end
 
 --- File progress component
@@ -263,55 +319,13 @@ function M.progress_component(mode)
     content = string.format("%2d%%%%", math.floor(cur / total * 100))
   end
   content = string.format(" %s / %s ",content, total)
-  return M.highlight_content(content, M.get_mode_hl(mode), icons.separators.triangle_lower_right)
+  return M.highlight_content(content, M.get_mode_hl(mode), config.sep.progress.left,  config.sep.progress.right)
 end
 
-
-
----@type table<string, string?>
-local lsp_progress = {
-  client = nil,
-  kind = nil,
-  title = nil,
-  percentage = nil,
-  message = nil,
-}
-
---- Autocommand to fill the progress_status
-vim.api.nvim_create_autocmd("LspProgress", {
-  group = augroup,
-  desc = "Update LSP progress in statusline",
-  pattern = { "begin", "report", "end" },
-  callback = function(args)
-    -- This should in theory never happen, but I've seen weird errors.
-    if not args.data then
-      return
-    end
-
-    lsp_progress = {
-      client = vim.lsp.get_client_by_id(args.data.client_id).name,
-      kind = args.data.params.value.kind,
-      message = args.data.params.value.message,
-      percentage = args.data.params.value.percentage,
-      title = args.data.params.value.title,
-    }
-
-    if lsp_progress.kind == "end" then
-      lsp_progress.title = nil
-      -- Wait a bit before clearing the status.
-      vim.defer_fn(function()
-        vim.cmd.redrawstatus()
-      end, 3000)
-    else
-      vim.cmd.redrawstatus()
-    end
-  end,
-})
-
---- Attached lsp component
---- Is included in lsp_progress_component
+--- Lsp component
+--- Shows attached lsp clients
 --- @return string
-function M.attached_lsps_component()
+function M.lsp_component()
   local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
   if #attached_clients == 0 then
     return ""
@@ -323,20 +337,7 @@ function M.attached_lsps_component()
   end)
   local names = it:totable()
   local content = string.format("{%s}", table.concat(names, ","))
-  return M.highlight_content(content, M.get_or_create_hl(hl_base .. "Lsp", "Comment"))
-end
-
---- Lsp progress component
---- Either shows attached lsps or a spinning icon
---- while the lsp is initializing
---- @return string
-function M.lsp_component()
-  if not lsp_progress.client or not lsp_progress.title then
-    return M.attached_lsps_component()
-  end
-
-  local content = string.format("{%s}", icons.misc.spinner)
-  return M.highlight_content(content, M.get_or_create_hl(hl_base .. "Lsp", "Comment"))
+  return M.highlight_content(content, M.get_or_create_hl(config.hl_basename .. "Lsp", "Comment"))
 end
 
 --- Renders the statusline.
@@ -346,7 +347,7 @@ function M.render()
   ---@return string
   local function concat_components(components)
     return vim.iter(components):skip(1):fold(components[1], function(acc, component)
-      return #component > 0 and string.format("%s%%#%s#%s", acc, hl_base, component) or acc
+      return #component > 0 and string.format("%s%%#%s#%s", acc, config.hl_basename, component) or acc
     end)
   end
 
@@ -357,14 +358,14 @@ function M.render()
       M.mode_component(mode),
       " ",
       M.file_component(mode),
-      " ",
-      M.git_component(),
+      "  ",
+      M.git_component(mode),
     },
     "%=",
     concat_components {
-      M.diagnostics_component(),
+      M.diagnostics_component(mode),
       "  ",
-      M.filetype_component(),
+      M.filetype_component(mode),
       " ",
       M.lsp_component(),
       "  ",
@@ -372,6 +373,7 @@ function M.render()
     },
   }
 end
+
 
 --- Refreshes the line
 --- To be called e.g. from autocommands
