@@ -58,7 +58,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    enabled = true,
+    enabled = false,
     opts = {
       lsp = {
         override = {
@@ -134,5 +134,13 @@ return {
       },
     },
     enabled = false,
-  }
+  },
+  {
+    "echasnovski/mini.notify",
+    version = false,
+    config = true,
+    init = function()
+      vim.notify = require('mini.notify').make_notify()
+    end
+  },
 }
