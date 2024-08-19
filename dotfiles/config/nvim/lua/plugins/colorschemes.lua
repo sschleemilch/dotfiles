@@ -12,6 +12,24 @@ return {
     end,
   },
   {
+    "rebelot/kanagawa.nvim",
+    lazy = false,
+    enabled = true,
+    priority = 1000,
+    config = function()
+      -- vim.cmd([[colorscheme kanagawa]])
+    end,
+  },
+  {
+    "sainnhe/everforest",
+    lazy = false,
+    enabled = true,
+    priority = 1000,
+    config = function()
+      -- vim.cmd([[colorscheme everforest]])
+    end,
+  },
+  {
     "slugbyte/lackluster.nvim",
     lazy = false,
     priority = 1000,
