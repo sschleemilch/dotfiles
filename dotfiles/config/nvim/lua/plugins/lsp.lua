@@ -7,7 +7,7 @@ return {
       local icons = require("icons")
       for type, icon in pairs(icons.diagnostics) do
         local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+        vim.fn.sign_define(hl, { text = icon, texthl = hl })
       end
 
       local lspconfig = require("lspconfig")
