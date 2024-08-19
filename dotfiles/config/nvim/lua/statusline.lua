@@ -11,7 +11,7 @@ local augroup = vim.api.nvim_create_augroup("sschlatusline", { clear = true })
 local M = {}
 
 local config = {
-  bold =  false,
+  bold = false,
   verbose_mode = false,
   hl_basename = "Schlatusline",
   zen = true,
@@ -183,28 +183,28 @@ function M.git_component(mode)
   if status.added and status.added > 0 then
     local added_hl = "DiagnosticInfo"
     if config.zen and not is_normal_mode(mode) then
-      added_hl = "Comment"
+      added_hl = M.get_or_create_hl(config.hl_basename .. "GitAddInactive", "Comment")
     end
     render = render .. M.highlight_content(string.format(" %s%s", icons.git.added, status.added), added_hl)
   end
   if status.removed and status.removed > 0 then
     local removed_hl = "DiagnosticError"
     if config.zen and not is_normal_mode(mode) then
-      removed_hl = "Comment"
+      removed_hl = M.get_or_create_hl(config.hl_basename .. "GitRmInactive", "Comment")
     end
     render = render .. M.highlight_content(string.format(" %s%s", icons.git.removed, status.removed), removed_hl)
   end
   if status.changed and status.changed > 0 then
     local changed_hl = "DiagnosticWarn"
     if config.zen and not is_normal_mode(mode) then
-      changed_hl = "Comment"
+      changed_hl = M.get_or_create_hl(config.hl_basename .. "GitModInactive", "Comment")
     end
     render = render ..
         M.highlight_content(string.format(" %s%s", icons.git.modified, status.changed), changed_hl)
   end
   local render_hl = "Normal"
   if config.zen and not is_normal_mode(mode) then
-    render_hl = "Comment"
+    render_hl = M.get_or_create_hl(config.hl_basename .. "GitInactive", "Comment")
   end
   return M.highlight_content(render, render_hl)
 end
@@ -230,7 +230,7 @@ function M.file_component(mode)
   content = content .. M.highlight_content(filename, M.get_or_create_hl(file_hl_name, file_hl_base, false, config.bold))
   local mod_hl = "Normal"
   if config.zen and not is_normal_mode(mode) then
-    mod_hl = "Comment"
+    mod_hl = M.get_or_create_hl(config.hl_basename .. "FileModInactive", "Comment")
   end
   content = content .. " " .. M.highlight_content("%m%r", mod_hl)
   return content
@@ -246,11 +246,13 @@ function M.diagnostics_component(mode)
     return ""
   end
 
+  local hl_inactive = M.get_or_create_hl(config.hl_basename .. "DiagInactive", "Comment")
+
   -- Use the last computed value if in insert mode.
   if vim.startswith(vim.api.nvim_get_mode().mode, "i") then
     local result = last_diagnostic_component
     if config.zen then
-      result = string.gsub(result, "#Diagnostic.[a-zA-Z]+#", "#Comment#")
+      result = string.gsub(result, "#Diagnostic.[a-zA-Z]+#", string.format("#%s#", config.hl_basename .. "DiagInactive"))
     end
     return result
   end
@@ -274,7 +276,7 @@ function M.diagnostics_component(mode)
 
         local hl = "Diagnostic" .. severity:sub(1, 1) .. severity:sub(2):lower()
         if config.zen and not is_normal_mode(mode) then
-          hl = "Comment"
+          hl = hl_inactive
         end
         return string.format("%%#%s#%s%d", hl, icons.diagnostics[severity], count)
       end)
@@ -298,8 +300,8 @@ function M.filetype_component(mode)
   local icon, icon_hl = MiniIcons.get("filetype", filetype)
   local filetype_hl = "Normal"
   if config.zen and not is_normal_mode(mode) then
-    icon_hl = "Comment"
-    filetype_hl = "Comment"
+    icon_hl = M.get_or_create_hl(config.hl_basename .. "FiletypeIconInactive", "Comment")
+    filetype_hl = M.get_or_create_hl(config.hl_basename .. "FiletypeInactive", "Comment")
   end
 
   return string.format("%%#%s#%s %%#%s#%s", icon_hl, icon, filetype_hl, filetype)
