@@ -58,7 +58,7 @@ return {
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    enabled = false,
+    enabled = true,
     opts = {
       lsp = {
         override = {
@@ -133,6 +133,6 @@ return {
         }
       },
     },
-    enabled = true,
+    enabled = false,
   }
 }

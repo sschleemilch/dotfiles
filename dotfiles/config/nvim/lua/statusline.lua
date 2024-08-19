@@ -45,10 +45,10 @@ end
 function M.get_mode_hl(mode, add)
   -- Build the hl group name
   local postfix = "Other"
-  local base = "Normal"
+  local base = "Comment"
   if mode == "NORMAL" then
     postfix = "Normal"
-    base = "Comment"
+    base = "Normal"
   elseif mode:find "PENDING" then
     postfix = "Pending"
   elseif mode:find "VISUAL" then
@@ -180,7 +180,7 @@ function M.file_component(mode)
   end
   path = path .. "/"
   local filename = vim.fn.expand("%:t")
-  local content = M.highlight_content(path, hl_base)
+  local content = M.highlight_content(path, "Comment")
   local mode_hl = M.get_mode_hl(mode)
   content = content .. M.highlight_content(filename, M.get_or_create_hl(mode_hl .. "Filename", mode_hl, true))
   content = content .. " " .. M.highlight_content("%m%r", hl_base)
