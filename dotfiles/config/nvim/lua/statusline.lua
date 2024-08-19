@@ -21,13 +21,6 @@ M.hls = {}
 ---@param reverse boolean?
 ---@param bold boolean?
 function M.get_or_create_hl(hl, base, reverse, bold)
-  if reverse then
-    hl = hl .. "Reverse"
-  end
-  if bold then
-    hl = hl .. "Bold"
-  end
-
   if not M.hls[hl] then
     local hl_ref = vim.api.nvim_get_hl(0, { name = base })
     local fg = hl_ref.fg or "fg"
@@ -47,14 +40,15 @@ end
 
 --- Function to get the highlight of a given mode
 --- @param mode string
---- @param as_fg boolean?
+--- @param add string?
 --- @return string
-function M.get_mode_hl(mode)
+function M.get_mode_hl(mode, add)
   -- Build the hl group name
   local postfix = "Other"
   local base = "Normal"
   if mode == "NORMAL" then
     postfix = "Normal"
+    base = "Comment"
   elseif mode:find "PENDING" then
     postfix = "Pending"
   elseif mode:find "VISUAL" then
@@ -65,6 +59,9 @@ function M.get_mode_hl(mode)
     postfix = "Command"
   end
   local hl = hl_base .. "Mode" .. postfix
+  if add then
+    hl = hl .. add
+  end
   return M.get_or_create_hl(hl, base, true, true)
 end
 
@@ -81,11 +78,11 @@ function M.highlight_content(content, hl, sep_left, sep_right)
   end
   local rendered = ""
   if sep_left ~= nil then
-    rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl, hl, true), sep_left)
+    rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl .. "Sep", hl, true), sep_left)
   end
   rendered = rendered .. string.format("%%#%s#%s", hl, content)
   if sep_right ~= nil then
-    rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl, hl, true), sep_right)
+    rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl .. "Sep", hl, true), sep_right)
   end
   rendered = rendered .. "%#" .. hl_base .. "#"
   return rendered
@@ -176,7 +173,7 @@ end
 --- File path component
 --- Highlights the filename in the mode color
 --- @return string
-function M.file_component()
+function M.file_component(mode)
   local path = vim.fs.normalize(vim.fn.expand("%:.:h"))
   if #path == 0 then
     return ""
@@ -184,7 +181,8 @@ function M.file_component()
   path = path .. "/"
   local filename = vim.fn.expand("%:t")
   local content = M.highlight_content(path, hl_base)
-  content = content .. M.highlight_content(filename, M.get_or_create_hl("Filename", hl_base, false, true))
+  local mode_hl = M.get_mode_hl(mode)
+  content = content .. M.highlight_content(filename, M.get_or_create_hl(mode_hl .. "Filename", mode_hl, true))
   content = content .. " " .. M.highlight_content("%m%r", hl_base)
   return content
 end
@@ -358,7 +356,7 @@ function M.render()
     concat_components {
       M.mode_component(mode),
       " ",
-      M.file_component(),
+      M.file_component(mode),
       " ",
       M.git_component(),
     },
@@ -384,20 +382,20 @@ end
 vim.api.nvim_create_autocmd("User", {
   group = augroup,
   pattern = "GitSignsUpdate",
-  callback = function(args)
+  callback = function()
     require("statusline").refresh()
   end
 })
 
 vim.api.nvim_create_autocmd("DiagnosticChanged", {
   group = augroup,
-  callback = function(args)
+  callback = function()
     require("statusline").refresh()
   end,
 })
 vim.api.nvim_create_autocmd("Colorscheme", {
   group = augroup,
-  callback = function(args)
+  callback = function()
     require("statusline").hls = {}
   end,
 })
