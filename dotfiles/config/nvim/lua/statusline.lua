@@ -11,9 +11,31 @@ local augroup = vim.api.nvim_create_augroup("zenline", { clear = true })
 local M = {}
 
 local config = {
-  bold = false,
+  bold = true,
   verbose_mode = false,
   hl = {
+    modes = {
+      normal = {
+        name = "ZenlineNormal",
+        base = "Normal",
+      },
+      -- insert = {
+      --   name = "ZenlineInsert",
+      --   base = "String"
+      -- },
+      -- pending = {
+      --   name = "ZenlinePending",
+      --   base = "Boolean"
+      -- },
+      -- visual = {
+      --   name = "ZenlineVisual",
+      --   base = "Keyword"
+      -- },
+      -- command = {
+      --   name = "ZenlineCommand",
+      --   base = "Function"
+      -- },
+    },
     normal = {
       name = "ZenlineNormal",
       base = "Normal"
@@ -72,15 +94,15 @@ end
 function M.get_mode_hl(mode)
   local hl = config.hl.passive
   if mode == "NORMAL" then
-    hl = config.hl.normal
-    -- elseif mode:find "PENDING" then
-    --   postfix = "Pending"
-    -- elseif mode:find "VISUAL" then
-    --   postfix = "Visual"
-    -- elseif mode:find "INSERT" or mode:find "SELECT" then
-    --   postfix = "Insert"
-    -- elseif mode:find "COMMAND" or mode:find "TERMINAL" or mode:find "EX" then
-    --   postfix = "Command"
+    hl = config.hl.modes.normal
+  elseif mode:find "PENDING" then
+    hl = config.hl.modes.pending or hl
+  elseif mode:find "VISUAL" then
+    hl = config.hl.modes.visual or hl
+  elseif mode:find "INSERT" or mode:find "SELECT" then
+    hl = config.hl.modes.insert or hl
+  elseif mode:find "COMMAND" or mode:find "TERMINAL" or mode:find "EX" then
+    hl = config.hl.modes.command or hl
   end
   return M.get_or_create_hl(hl.name .. "Mode", hl.base, true, config.bold)
 end
