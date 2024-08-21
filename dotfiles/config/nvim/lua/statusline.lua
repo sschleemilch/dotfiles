@@ -63,13 +63,15 @@ local config = {
 M.hls = {}
 ---@param hl string
 ---@param base string?
+---@param bg_from string?
 ---@param reverse boolean?
 ---@param bold boolean?
-function M.get_or_create_hl(hl, base, reverse, bold)
+function M.get_or_create_hl(hl, base, reverse, bold, bg_from)
   if not M.hls[hl] then
     local hl_ref = vim.api.nvim_get_hl(0, { name = base })
+    local hl_bg_ref = vim.api.nvim_get_hl(0, { name = bg_from })
     local fg = hl_ref.fg or "fg"
-    local bg = hl_ref.bg or "bg"
+    local bg = hl_bg_ref.fg or hl_ref.bg or "bg"
     if reverse then
       local tmp = fg
       fg = bg
