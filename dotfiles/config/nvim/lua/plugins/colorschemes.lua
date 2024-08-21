@@ -4,7 +4,8 @@ return {
     lazy = false,
     enabled = true,
     priority = 1000,
-    config = function()
+    config = true,
+    init = function()
       -- vim.cmd([[colorscheme tokyonight-moon]])
       -- vim.cmd([[colorscheme tokyonight-night]])
       -- vim.cmd([[colorscheme tokyonight-storm]])
@@ -16,17 +17,19 @@ return {
     lazy = false,
     enabled = true,
     priority = 1000,
-    config = function()
+    config = {
+      colors = {
+        theme = {
+          all = {
+            ui = {
+              bg_gutter = "none"
+            }
+          }
+        }
+      }
+    },
+    init = function()
       -- vim.cmd([[colorscheme kanagawa]])
-    end,
-  },
-  {
-    "sainnhe/everforest",
-    lazy = false,
-    enabled = true,
-    priority = 1000,
-    config = function()
-      -- vim.cmd([[colorscheme everforest]])
     end,
   },
   {
@@ -41,15 +44,6 @@ return {
     end,
   },
   {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    enabled = true,
-    priority = 1000,
-    config = function()
-      -- vim.cmd([[colorscheme gruvbox]])
-    end,
-  },
-  {
     "rose-pine/neovim",
     lazy = false,
     enabled = true,
@@ -61,15 +55,12 @@ return {
         CursorLine = { bg = "surface" },
       }
     },
-    config = function(_, opts)
-      require("rose-pine").setup(opts)
-      -- vim.cmd([[colorscheme rose-pine-dawn]])
-      -- vim.cmd([[colorscheme rose-pine-main]])
+    init = function ()
       vim.cmd([[colorscheme rose-pine-moon]])
     end
   },
   {
-    config = function()
+    init = function()
       -- vim.cmd([[colorscheme catppuccin-latte]])
       -- vim.cmd([[colorscheme catppuccin-frappe]])
       -- vim.cmd([[colorscheme catppuccin-mocha]])
