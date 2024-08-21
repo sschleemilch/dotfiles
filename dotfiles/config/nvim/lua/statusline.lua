@@ -12,50 +12,43 @@ local M = {}
 
 local config = {
   bold = true,
-  verbose_mode = false,
+  verbose_mode = true,
+  sep = {
+    left = icons.separators.circle_left,
+    right = icons.separators.circle_right
+  },
   hl = {
     modes = {
       normal = {
-        name = "ZenlineNormal",
-        base = "Normal",
+        name = "Normal",
+        base = "Type",
       },
-      -- insert = {
-      --   name = "ZenlineInsert",
-      --   base = "String"
-      -- },
-      -- pending = {
-      --   name = "ZenlinePending",
-      --   base = "Boolean"
-      -- },
-      -- visual = {
-      --   name = "ZenlineVisual",
-      --   base = "Keyword"
-      -- },
-      -- command = {
-      --   name = "ZenlineCommand",
-      --   base = "Function"
-      -- },
+      insert = {
+        name = "Insert",
+        base = "Function"
+      },
+      pending = {
+        name = "Pending",
+        base = "Boolean"
+      },
+      visual = {
+        name = "Visual",
+        base = "Keyword"
+      },
+      command = {
+        name = "Command",
+        base = "String"
+      },
     },
-    normal = {
-      name = "ZenlineNormal",
+    primary = {
+      name = "Normal",
       base = "Normal"
     },
-    passive = {
-      name = "ZenlinePassive",
+    secondary = {
+      name = "Secondary",
       base = "Comment"
     }
   },
-  zen = true,
-  sep = {
-    mode = {
-      left = nil,
-      right = icons.separators.triangle_lower_left
-    },
-    progress = {
-      left = icons.separators.triangle_lower_right,
-      right = nil
-    }
-  }
 }
 
 
@@ -67,6 +60,7 @@ M.hls = {}
 ---@param reverse boolean?
 ---@param bold boolean?
 function M.get_or_create_hl(hl, base, reverse, bold, bg_from)
+  hl = "Zenline" .. hl
   if not M.hls[hl] then
     local hl_ref = vim.api.nvim_get_hl(0, { name = base })
     local hl_bg_ref = vim.api.nvim_get_hl(0, { name = bg_from })
@@ -84,17 +78,11 @@ function M.get_or_create_hl(hl, base, reverse, bold, bg_from)
   return hl
 end
 
----@param mode string
----@return boolean
-local function is_normal_mode(mode)
-  return mode == "NORMAL"
-end
-
 --- Function to get the highlight of a given mode
 --- @param mode string
 --- @return string
 function M.get_mode_hl(mode)
-  local hl = config.hl.passive
+  local hl = config.hl.secondary
   if mode == "NORMAL" then
     hl = config.hl.modes.normal
   elseif mode:find "PENDING" then
@@ -117,6 +105,9 @@ end
 --- @param sep_right string?
 --- @return string
 function M.highlight_content(content, hl, sep_left, sep_right)
+  if content == nil then
+    return ""
+  end
   local rendered = ""
   if sep_left ~= nil then
     rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl .. "Sep", hl, true), sep_left)
@@ -125,7 +116,7 @@ function M.highlight_content(content, hl, sep_left, sep_right)
   if sep_right ~= nil then
     rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl .. "Sep", hl, true), sep_right)
   end
-  rendered = rendered .. "%#" .. M.get_or_create_hl(config.hl.normal.name, config.hl.normal.base) .. "#"
+  rendered = rendered .. "%#" .. M.get_or_create_hl(config.hl.primary.name, config.hl.primary.base) .. "#"
   return rendered
 end
 
@@ -185,7 +176,7 @@ function M.mode_component(mode)
     render = string.sub(mode, 1, 1)
   end
   local content = " " .. render .. " "
-  return M.highlight_content(content, M.get_mode_hl(mode), config.sep.mode.left, config.sep.mode.right)
+  return M.highlight_content(content, M.get_mode_hl(mode), config.sep.left, config.sep.right)
 end
 
 --- Git component showing branch
@@ -202,62 +193,58 @@ function M.git_component(mode)
     return ""
   end
 
-  local render = string.format("%s %s", icons.git.branch, status.head)
+  local added = status.added and status.added > 0
+  local removed = status.removed and status.removed > 0
+  local changed = status.changed and status.changed > 0
+  local modifications = added or removed or changed
 
 
-  if status.added and status.added > 0 then
-    local added_hl = "DiagnosticInfo"
-    if config.zen and not is_normal_mode(mode) then
-      added_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
+  local branch = string.format("%s %s", icons.git.branch, status.head)
+  local branch_hl = M.get_or_create_hl("Branch", config.hl.primary.base, true, true)
+  branch = M.highlight_content(branch, branch_hl, config.sep.left)
+  local branch_hl_right_sep = M.get_or_create_hl("BranchSepRight", config.hl.primary.base)
+  if modifications then
+    branch_hl_right_sep = M.get_or_create_hl("BranchSepRightMod", config.hl.primary.base, false, false,
+      config.hl.secondary
+      .base)
+  end
+  branch = branch .. M.highlight_content(config.sep.right, branch_hl_right_sep)
+
+  local mods = ""
+  if modifications then
+    local mods_hl = M.get_or_create_hl("GitMods", config.hl.secondary.base, true, nil)
+    if added then
+      mods = mods .. string.format(" %s%s", icons.git.added, status.added)
     end
-    render = render .. M.highlight_content(string.format(" %s%s", icons.git.added, status.added), added_hl)
-  end
-  if status.removed and status.removed > 0 then
-    local removed_hl = "DiagnosticError"
-    if config.zen and not is_normal_mode(mode) then
-      removed_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
+    if changed then
+      mods = mods .. string.format(" %s%s", icons.git.modified, status.changed)
     end
-    render = render .. M.highlight_content(string.format(" %s%s", icons.git.removed, status.removed), removed_hl)
-  end
-  if status.changed and status.changed > 0 then
-    local changed_hl = "DiagnosticWarn"
-    if config.zen and not is_normal_mode(mode) then
-      changed_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
+    if removed then
+      mods = mods .. string.format(" %s%s", icons.git.removed, status.removed)
     end
-    render = render ..
-        M.highlight_content(string.format(" %s%s", icons.git.modified, status.changed), changed_hl)
+    mods = M.highlight_content(mods, mods_hl, nil, config.sep.right)
   end
-  local render_hl = M.get_or_create_hl(config.hl.normal.name, config.hl.normal.base)
-  if config.zen and not is_normal_mode(mode) then
-    render_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
-  end
-  return M.highlight_content(render, render_hl)
+  return branch .. mods
 end
 
 --- File path component
 --- Highlights the filename in the mode color
---- @param mode string
 --- @return string
-function M.file_component(mode)
+function M.file_component()
+  local file_hl = M.get_or_create_hl("Filename", config.hl.primary.base, true, config.bold)
+  local file = M.highlight_content(" " .. vim.fn.expand("%:t") .. " %m%r", file_hl, config.sep.left)
+  local file_hl_right_sep = M.get_or_create_hl("FilenameSepRight", config.hl.primary.base, false, false,
+    config.hl.secondary.base)
+  file = file .. M.highlight_content(config.sep.right, file_hl_right_sep)
+
   local path = vim.fs.normalize(vim.fn.expand("%:.:h"))
   if #path == 0 then
     return ""
   end
-  path = path .. "/"
-  local filename = vim.fn.expand("%:t")
-  local content = M.highlight_content(path, M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base))
-  local file_hl = config.hl.normal
-  if config.zen and not is_normal_mode(mode) then
-    file_hl = config.hl.passive
-  end
-  content = content ..
-      M.highlight_content(filename, M.get_or_create_hl(file_hl.name .. "Filename", file_hl.base, false, config.bold))
-  local mod_hl = M.get_or_create_hl(config.hl.normal.name, config.hl.normal.base)
-  if config.zen and not is_normal_mode(mode) then
-    mod_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
-  end
-  content = content .. " " .. M.highlight_content("%m%r", mod_hl)
-  return content
+  local path_hl = M.get_or_create_hl("Filepath", config.hl.secondary.base, true, nil)
+  path = M.highlight_content(" " .. path, path_hl, nil, config.sep.right)
+
+  return file .. path
 end
 
 local last_diagnostic_component = ""
@@ -270,15 +257,9 @@ function M.diagnostics_component(mode)
     return ""
   end
 
-  local hl_inactive = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
-
   -- Use the last computed value if in insert mode.
   if vim.startswith(vim.api.nvim_get_mode().mode, "i") then
-    local result = last_diagnostic_component
-    if config.zen then
-      result = string.gsub(result, "#Diagnostic.[a-zA-Z]+#", string.format("#%s#", config.hl.passive.name))
-    end
-    return result
+    return last_diagnostic_component
   end
 
   local counts = vim.iter(vim.diagnostic.get(0)):fold({
@@ -298,37 +279,54 @@ function M.diagnostics_component(mode)
           return nil
         end
 
-        local hl = "Diagnostic" .. severity:sub(1, 1) .. severity:sub(2):lower()
-        if config.zen and not is_normal_mode(mode) then
-          hl = hl_inactive
-        end
-        return string.format("%%#%s#%s%d", hl, icons.diagnostics[severity], count)
+        return string.format("%s%d", icons.diagnostics[severity], count)
       end)
       :totable()
 
   last_diagnostic_component = table.concat(parts, " ")
+  if last_diagnostic_component == "" then
+    return ""
+  end
+  last_diagnostic_component = M.highlight_content(" " .. last_diagnostic_component .. " ",
+    M.get_or_create_hl("Diagnostics", config.hl.primary.base, true), config.sep.left, config.sep.right)
   return last_diagnostic_component
 end
 
---- Filetype component
---- Uses mini.icons for icons
---- @param mode string
---- @return string
-function M.filetype_component(mode)
-  local MiniIcons = require("mini.icons")
-
+--- Filetype and attached LSPs component
+function M.filetype_lsp_component()
+  local filetype_hl = M.get_or_create_hl("Filetype", config.hl.primary.base, true)
   local filetype = vim.bo.filetype
   if filetype == "" then
     filetype = "[No Name]"
   end
-  local icon, icon_hl = MiniIcons.get("filetype", filetype)
-  local filetype_hl = "Normal"
-  if config.zen and not is_normal_mode(mode) then
-    icon_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
-    filetype_hl = M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base)
-  end
+  local MiniIcons = require("mini.icons")
+  local icon = MiniIcons.get("filetype", filetype)
+  filetype = M.highlight_content(" " .. icon .. " " .. filetype .. " ", filetype_hl, nil, config.sep.right)
 
-  return string.format("%%#%s#%s %%#%s#%s", icon_hl, icon, filetype_hl, filetype)
+  local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
+  local it = vim.iter(attached_clients)
+  it:map(function(client)
+    local name = client.name:gsub("language.server", "ls")
+    return name
+  end)
+  local names = it:totable()
+  local lsp_clients = string.format("%s", table.concat(names, ","))
+
+  local filetype_hl_sep_left = M.get_or_create_hl("FiletypeSepLeft", config.hl.primary.base)
+  if #attached_clients > 0 then
+    filetype_hl_sep_left = M.get_or_create_hl("FiletypeSepLeftLsps", config.hl.primary.base, false, false,
+      config.hl.secondary
+      .base)
+  end
+  filetype = M.highlight_content(config.sep.left, filetype_hl_sep_left) .. filetype
+  local lsp_clients_hl = M.get_or_create_hl("LspClients", config.hl.secondary.base, true, nil)
+  lsp_clients = M.highlight_content(" " .. lsp_clients .. " ", lsp_clients_hl, config.sep.left)
+
+  local result = filetype
+  if #attached_clients > 0 then
+    result = lsp_clients .. result
+  end
+  return result
 end
 
 --- File progress component
@@ -345,25 +343,7 @@ function M.progress_component(mode)
     content = string.format("%2d%%%%", math.floor(cur / total * 100))
   end
   content = string.format(" %s / %s ", content, total)
-  return M.highlight_content(content, M.get_mode_hl(mode), config.sep.progress.left, config.sep.progress.right)
-end
-
---- Lsp component
---- Shows attached lsp clients
---- @return string
-function M.lsp_component()
-  local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
-  if #attached_clients == 0 then
-    return ""
-  end
-  local it = vim.iter(attached_clients)
-  it:map(function(client)
-    local name = client.name:gsub("language.server", "ls")
-    return name
-  end)
-  local names = it:totable()
-  local content = string.format("{%s}", table.concat(names, ","))
-  return M.highlight_content(content, M.get_or_create_hl(config.hl.passive.name, config.hl.passive.base))
+  return M.highlight_content(content, M.get_mode_hl(mode), config.sep.left, config.sep.right)
 end
 
 --- Renders the statusline.
@@ -374,16 +354,14 @@ function M.render()
   local stl = table.concat {
     M.mode_component(mode),
     " ",
-    M.file_component(mode),
-    "  ",
+    M.file_component(),
+    " ",
     M.git_component(mode),
     "%=",
     M.diagnostics_component(mode),
-    "  ",
-    M.filetype_component(mode),
     " ",
-    M.lsp_component(),
-    "  ",
+    M.filetype_lsp_component(),
+    " ",
     M.progress_component(mode),
   }
   return stl
