@@ -12,7 +12,7 @@ local M = {}
 
 local config = {
   bold = false,
-  verbose_mode = true,
+  verbose_mode = false,
   sep = {
     left = icons.separators.circle_left,
     right = icons.separators.circle_right
@@ -235,13 +235,13 @@ function M.git_component()
   local mods = ""
   if modifications then
     if added then
-      mods = mods .. string.format(" %s%s", icons.git.added, status.added)
+      mods = mods .. string.format(" +%s", status.added)
     end
     if changed then
-      mods = mods .. string.format(" %s%s", icons.git.modified, status.changed)
+      mods = mods .. string.format(" ~%s", status.changed)
     end
     if removed then
-      mods = mods .. string.format(" %s%s", icons.git.removed, status.removed)
+      mods = mods .. string.format(" -%s", status.removed)
     end
     mods = M.highlight_content(mods, M.hls.secondary.text, nil, config.sep.right)
   end

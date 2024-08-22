@@ -39,9 +39,6 @@ return {
   },
   git = {
     branch = '',
-    added    = " ",
-    modified = " ",
-    removed  = " ",
   },
   kinds = {
     Array         = " ",
