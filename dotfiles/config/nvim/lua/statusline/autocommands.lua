@@ -17,6 +17,6 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 vim.api.nvim_create_autocmd("Colorscheme", {
   group = augroup,
   callback = function()
-    require("statusline").hl_cache = {}
+    require("statusline.highlights").hl_cache = {}
   end,
 })
