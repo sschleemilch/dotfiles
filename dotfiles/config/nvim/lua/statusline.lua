@@ -11,7 +11,7 @@ local augroup = vim.api.nvim_create_augroup("zenline", { clear = true })
 local M = {}
 
 local config = {
-  bold = true,
+  bold = false,
   verbose_mode = true,
   sep = {
     left = icons.separators.circle_left,
@@ -40,8 +40,9 @@ local config = {
         base = "String"
       },
     },
+    base = "Normal",
     primary = {
-      name = "Normal",
+      name = "Primary",
       base = "Normal"
     },
     secondary = {
@@ -51,17 +52,43 @@ local config = {
   },
 }
 
+M.hls = {
+  base = nil,
+  primary = {
+    text = nil,
+    sep = nil,
+    sep_transition = nil
+  },
+  secondary = {
+    text = nil,
+    sep = nil
+  }
+}
+
+function M.create_hls()
+    M.hls.base = M.get_or_create_hl("", config.hl.base)
+
+    M.hls.primary.text = M.get_or_create_hl(config.hl.primary.name, config.hl.primary.base, true, config.bold)
+    M.hls.primary.sep = M.get_or_create_hl(config.hl.primary.name .. "Sep", config.hl.primary.base)
+    M.hls.primary.sep_transition = M.get_or_create_hl(config.hl.primary.name .. "SepTransition", config.hl.primary.base, false, false, config.hl.secondary.base)
+
+    M.hls.secondary.text = M.get_or_create_hl(config.hl.secondary.name, config.hl.secondary.base, true, false)
+end
 
 ---@type table<string, boolean>
-M.hls = {}
+M.hl_cache = {}
 ---@param hl string
 ---@param base string?
 ---@param bg_from string?
 ---@param reverse boolean?
 ---@param bold boolean?
 function M.get_or_create_hl(hl, base, reverse, bold, bg_from)
-  hl = "Zenline" .. hl
-  if not M.hls[hl] then
+  local basename = "Zenline"
+  if hl:sub(1, #basename) ~= basename then
+    hl = basename .. hl
+  end
+
+  if not M.hl_cache[hl] then
     local hl_ref = vim.api.nvim_get_hl(0, { name = base })
     local hl_bg_ref = vim.api.nvim_get_hl(0, { name = bg_from })
     local fg = hl_ref.fg or "fg"
@@ -72,9 +99,8 @@ function M.get_or_create_hl(hl, base, reverse, bold, bg_from)
       bg = tmp
     end
     vim.api.nvim_set_hl(0, hl, { bg = bg, fg = fg, bold = hl_ref.bold or bold })
-    M.hls[hl] = true
+    M.hl_cache[hl] = true
   end
-
   return hl
 end
 
@@ -116,7 +142,7 @@ function M.highlight_content(content, hl, sep_left, sep_right)
   if sep_right ~= nil then
     rendered = rendered .. string.format("%%#%s#%s", M.get_or_create_hl(hl .. "Sep", hl, true), sep_right)
   end
-  rendered = rendered .. "%#" .. M.get_or_create_hl(config.hl.primary.name, config.hl.primary.base) .. "#"
+  rendered = rendered .. "%#" .. M.hls.base .. "#"
   return rendered
 end
 
@@ -182,9 +208,8 @@ end
 --- Git component showing branch
 --- as well as changed, added and removed lines
 --- Using gitsigns for it
---- @param mode string
 --- @return string
-function M.git_component(mode)
+function M.git_component()
   local status = vim.b.gitsigns_status_dict
   if not status then
     return ""
@@ -200,19 +225,15 @@ function M.git_component(mode)
 
 
   local branch = string.format("%s %s", icons.git.branch, status.head)
-  local branch_hl = M.get_or_create_hl("Branch", config.hl.primary.base, true, true)
-  branch = M.highlight_content(branch, branch_hl, config.sep.left)
-  local branch_hl_right_sep = M.get_or_create_hl("BranchSepRight", config.hl.primary.base)
+  branch = M.highlight_content(branch, M.hls.primary.text, config.sep.left)
+  local branch_hl_right_sep = M.hls.primary.sep
   if modifications then
-    branch_hl_right_sep = M.get_or_create_hl("BranchSepRightMod", config.hl.primary.base, false, false,
-      config.hl.secondary
-      .base)
+    branch_hl_right_sep = M.hls.primary.sep_transition
   end
   branch = branch .. M.highlight_content(config.sep.right, branch_hl_right_sep)
 
   local mods = ""
   if modifications then
-    local mods_hl = M.get_or_create_hl("GitMods", config.hl.secondary.base, true, nil)
     if added then
       mods = mods .. string.format(" %s%s", icons.git.added, status.added)
     end
@@ -222,7 +243,7 @@ function M.git_component(mode)
     if removed then
       mods = mods .. string.format(" %s%s", icons.git.removed, status.removed)
     end
-    mods = M.highlight_content(mods, mods_hl, nil, config.sep.right)
+    mods = M.highlight_content(mods, M.hls.secondary.text, nil, config.sep.right)
   end
   return branch .. mods
 end
@@ -231,27 +252,22 @@ end
 --- Highlights the filename in the mode color
 --- @return string
 function M.file_component()
-  local file_hl = M.get_or_create_hl("Filename", config.hl.primary.base, true, config.bold)
-  local file = M.highlight_content(" " .. vim.fn.expand("%:t") .. " %m%r", file_hl, config.sep.left)
-  local file_hl_right_sep = M.get_or_create_hl("FilenameSepRight", config.hl.primary.base, false, false,
-    config.hl.secondary.base)
-  file = file .. M.highlight_content(config.sep.right, file_hl_right_sep)
+  local file = M.highlight_content(" " .. vim.fn.expand("%:t") .. " %m%r", M.hls.primary.text, config.sep.left)
+  file = file .. M.highlight_content(config.sep.right, M.hls.primary.sep_transition)
 
   local path = vim.fs.normalize(vim.fn.expand("%:.:h"))
   if #path == 0 then
     return ""
   end
-  local path_hl = M.get_or_create_hl("Filepath", config.hl.secondary.base, true, nil)
-  path = M.highlight_content(" " .. path, path_hl, nil, config.sep.right)
+  path = M.highlight_content(" " .. path, M.hls.secondary.text, nil, config.sep.right)
 
   return file .. path
 end
 
 local last_diagnostic_component = ""
 --- Diagnostics component
---- @param mode string
 --- @return string
-function M.diagnostics_component(mode)
+function M.diagnostics_component()
   -- Lazy uses diagnostic icons, but those aren"t errors per se.
   if vim.bo.filetype == "lazy" then
     return ""
@@ -288,20 +304,19 @@ function M.diagnostics_component(mode)
     return ""
   end
   last_diagnostic_component = M.highlight_content(" " .. last_diagnostic_component .. " ",
-    M.get_or_create_hl("Diagnostics", config.hl.primary.base, true), config.sep.left, config.sep.right)
+    M.hls.primary.text, config.sep.left, config.sep.right)
   return last_diagnostic_component
 end
 
 --- Filetype and attached LSPs component
 function M.filetype_lsp_component()
-  local filetype_hl = M.get_or_create_hl("Filetype", config.hl.primary.base, true)
   local filetype = vim.bo.filetype
   if filetype == "" then
     filetype = "[No Name]"
   end
   local MiniIcons = require("mini.icons")
   local icon = MiniIcons.get("filetype", filetype)
-  filetype = M.highlight_content(" " .. icon .. " " .. filetype .. " ", filetype_hl, nil, config.sep.right)
+  filetype = M.highlight_content(" " .. icon .. " " .. filetype .. " ", M.hls.primary.text, nil, config.sep.right)
 
   local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
   local it = vim.iter(attached_clients)
@@ -312,15 +327,12 @@ function M.filetype_lsp_component()
   local names = it:totable()
   local lsp_clients = string.format("%s", table.concat(names, ","))
 
-  local filetype_hl_sep_left = M.get_or_create_hl("FiletypeSepLeft", config.hl.primary.base)
+  local filetype_hl_sep_left = M.hls.primary.sep
   if #attached_clients > 0 then
-    filetype_hl_sep_left = M.get_or_create_hl("FiletypeSepLeftLsps", config.hl.primary.base, false, false,
-      config.hl.secondary
-      .base)
+    filetype_hl_sep_left = M.hls.primary.sep_transition
   end
   filetype = M.highlight_content(config.sep.left, filetype_hl_sep_left) .. filetype
-  local lsp_clients_hl = M.get_or_create_hl("LspClients", config.hl.secondary.base, true, nil)
-  lsp_clients = M.highlight_content(" " .. lsp_clients .. " ", lsp_clients_hl, config.sep.left)
+  lsp_clients = M.highlight_content(" " .. lsp_clients .. " ", M.hls.secondary.text, config.sep.left)
 
   local result = filetype
   if #attached_clients > 0 then
@@ -349,16 +361,16 @@ end
 --- Renders the statusline.
 ---@return string
 function M.render()
+  M.create_hls()
   local mode = M.get_mode()
-
   local stl = table.concat {
     M.mode_component(mode),
     " ",
     M.file_component(),
     " ",
-    M.git_component(mode),
+    M.git_component(),
     "%=",
-    M.diagnostics_component(mode),
+    M.diagnostics_component(),
     " ",
     M.filetype_lsp_component(),
     " ",
@@ -390,7 +402,7 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
 vim.api.nvim_create_autocmd("Colorscheme", {
   group = augroup,
   callback = function()
-    require("statusline").hls = {}
+    require("statusline").hl_cache = {}
   end,
 })
 
