@@ -27,6 +27,7 @@ opt.foldmethod = 'expr'
 opt.foldtext = ''
 opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
+opt.cmdheight = 1 -- 0 for noice and the statusline being instantly on bottom
 
 opt.ignorecase = true
 opt.inccommand = "nosplit"

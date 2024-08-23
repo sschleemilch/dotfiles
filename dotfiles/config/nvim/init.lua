@@ -20,7 +20,6 @@ local plugins = "plugins"
 require("settings")
 require("keymaps")
 require("autocommands")
-require("statusline").setup()
 
 require("lazy").setup(plugins, {
   change_detection = { notify = false },
