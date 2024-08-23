@@ -16,7 +16,7 @@ return {
     },
     opts = {
       formatters_by_ft = {
-        lua = { "stylua "},
+        lua = { "stylua" },
         sh = { "shfmt" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -40,7 +40,7 @@ return {
         async = false,
         quiet = false,
         lsp_format = "fallback"
-      }
+      },
     },
   },
 }
