@@ -1,11 +1,9 @@
-local icons = require("icons")
-
 local M = {
-  bold = true,
+  bold = false,
   verbose_mode = false,
   sep = {
-    left = icons.separators.circle_left,
-    right = icons.separators.circle_right
+    left = "",
+    right = ""
   },
   hl = {
     modes = {
@@ -19,6 +17,19 @@ local M = {
     primary = "Normal",
     secondary = "Comment",
   },
+  icons = {
+    diagnostics = {
+      ERROR = " ",
+      WARN  = " ",
+      HINT  = " ",
+      INFO  = " ",
+    },
+    git = {
+      branch = '',
+    },
+    folder = " ",
+    lines = " ",
+  }
 }
 
 return M

@@ -1,6 +1,5 @@
 local config = require("statusline.config")
 local highlights = require("statusline.highlights")
-local icons = require("icons")
 local M = {}
 
 --- Function to translate a mode into a string to show
@@ -105,8 +104,7 @@ function M.git()
   local changed = status.changed and status.changed > 0
   local modifications = added or removed or changed
 
-
-  local branch = string.format(" %s %s ", icons.git.branch, status.head)
+  local branch = string.format(" %s %s ", config.icons.git.branch, status.head)
   branch = highlights.highlight_content(branch, highlights.hls.primary.text, config.sep.left)
   local branch_hl_right_sep = highlights.hls.primary.sep
   if modifications then
@@ -142,7 +140,7 @@ function M.path()
   if #path == 0 then
     return ""
   end
-  path = highlights.highlight_content(" " .. path .. " ", highlights.hls.secondary.text, nil, config.sep.right)
+  path = highlights.highlight_content(" " .. config.icons.folder .. path .. " ", highlights.hls.secondary.text, nil, config.sep.right)
 
   return file .. path
 end
@@ -178,7 +176,7 @@ function M.diagnostics()
           return nil
         end
 
-        return string.format("%s%d", icons.diagnostics[severity], count)
+        return string.format("%s%d", config.icons.diagnostics[severity], count)
       end)
       :totable()
 
@@ -238,7 +236,7 @@ function M.progress(mode)
   else
     content = string.format("%2d%%%%", math.floor(cur / total * 100))
   end
-  content = string.format(" %s / %s ", content, total)
+  content = string.format(" %s %s / %s ", config.icons.lines, content, total)
   return highlights.highlight_content(content, M.get_mode_hl(mode), config.sep.left, config.sep.right)
 end
 
