@@ -10,8 +10,17 @@ return {
         vim.fn.sign_define(hl, { text = icon, texthl = hl })
       end
 
+      local navic = require('nvim-navic')
+      local on_attach = function(client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
+      end
+
       local lspconfig = require('lspconfig')
-      lspconfig.pyright.setup {}
+      lspconfig.pyright.setup {
+        on_attach = on_attach
+      }
       lspconfig.ruff.setup {}
       lspconfig.lua_ls.setup {
         settings = {
@@ -22,11 +31,21 @@ return {
             },
           },
         },
+        on_attach = on_attach,
       }
       lspconfig.dockerls.setup {}
-      lspconfig.gopls.setup {}
-      lspconfig.tsserver.setup {}
-      lspconfig.jsonls.setup {}
+      lspconfig.gopls.setup {
+        on_attach = on_attach
+      }
+      lspconfig.tsserver.setup {
+        on_attach = on_attach
+      }
+      lspconfig.jsonls.setup {
+        on_attach = on_attach
+      }
+      lspconfig.yamlls.setup {
+        on_attach = on_attach
+      }
     end,
     keys = {
       { '<leader>cl', '<cmd>LspInfo<cr>', desc = 'Lsp Info' },
