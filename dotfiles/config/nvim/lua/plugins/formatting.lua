@@ -1,34 +1,35 @@
 return {
   {
-    "stevearc/conform.nvim",
-    dependencies = { "mason.nvim" },
+    'stevearc/conform.nvim',
+    dependencies = { 'mason.nvim' },
     lazy = true,
-    cmd = "ConformInfo",
+    cmd = 'ConformInfo',
     keys = {
       {
-        "<leader>cF",
+        '<leader>cF',
         function()
-          require("conform").format()
+          require('conform').format()
         end,
-        mode = { "n", "v" },
-        desc = "Format",
+        mode = { 'n', 'v' },
+        desc = 'Format',
       },
     },
     opts = {
       formatters_by_ft = {
-        sh = { "shfmt" },
-        javascript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescript = { "prettier" },
-        typescriptreact = { "prettier" },
-        css = { "prettier" },
-        scss = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        jsonc = { "prettier" },
-        yaml = { "prettier" },
-        markdown = { "prettier" },
-        graphql = { "prettier" },
+        lua = { 'stylua' },
+        sh = { 'shfmt' },
+        javascript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescript = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        css = { 'prettier' },
+        scss = { 'prettier' },
+        html = { 'prettier' },
+        json = { 'prettier' },
+        jsonc = { 'prettier' },
+        yaml = { 'prettier' },
+        markdown = { 'prettier' },
+        graphql = { 'prettier' },
       },
       format_on_save = {
         timeout_ms = 500,
@@ -38,8 +39,8 @@ return {
         timeout_ms = 3000,
         async = false,
         quiet = false,
-        lsp_format = "fallback"
-      }
+        lsp_format = 'fallback',
+      },
     },
   },
 }

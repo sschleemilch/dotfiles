@@ -1,38 +1,38 @@
 return {
   -- library used by other plugins
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { 'nvim-lua/plenary.nvim', lazy = true },
   -- library for ui elements
-  { "MunifTanjim/nui.nvim",  lazy = true },
+  { 'MunifTanjim/nui.nvim', lazy = true },
   {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    build = ":MasonUpdate",
-    opts_extend = { "ensure_installed" },
+    'williamboman/mason.nvim',
+    cmd = 'Mason',
+    keys = { { '<leader>cm', '<cmd>Mason<cr>', desc = 'Mason' } },
+    build = ':MasonUpdate',
+    opts_extend = { 'ensure_installed' },
     opts = {
       ensure_installed = {
-        "shfmt",
-        "pyright",
-        "ruff",
-        "lua-language-server",
-        "dockerfile-language-server",
-        "gopls",
-        "typescript-language-server",
-        "json-lsp",
-        "prettier"
+        'stylua',
+        'shfmt',
+        'pyright',
+        'ruff',
+        'lua-language-server',
+        'dockerfile-language-server',
+        'gopls',
+        'typescript-language-server',
+        'json-lsp',
+        'prettier',
       },
     },
-    ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(_, opts)
-      require("mason").setup(opts)
-      local mr = require("mason-registry")
-      mr:on("package:install:success", function()
+      require('mason').setup(opts)
+      local mr = require('mason-registry')
+      mr:on('package:install:success', function()
         vim.defer_fn(function()
           -- trigger FileType event to possibly load this newly installed LSP server
-          require("lazy.core.handler.event").trigger({
-            event = "FileType",
+          require('lazy.core.handler.event').trigger {
+            event = 'FileType',
             buf = vim.api.nvim_get_current_buf(),
-          })
+          }
         end, 100)
       end)
 
