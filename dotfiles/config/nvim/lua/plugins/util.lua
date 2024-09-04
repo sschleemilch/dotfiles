@@ -21,6 +21,7 @@ return {
         'typescript-language-server',
         'json-lsp',
         'prettier',
+        'yaml-language-server'
       },
     },
     config = function(_, opts)
