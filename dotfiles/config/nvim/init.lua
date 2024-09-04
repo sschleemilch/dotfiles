@@ -20,6 +20,7 @@ local plugins = 'plugins'
 require('settings')
 require('keymaps')
 require('autocommands')
+require('filetypes')
 
 require('lazy').setup(plugins, {
   change_detection = { notify = false },
