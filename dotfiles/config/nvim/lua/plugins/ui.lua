@@ -60,6 +60,7 @@ return {
     'sschleemilch/slimline.nvim',
     dev = false,
     opts = {
+      mode_follow_style = false,
       components = {
         left = {
           "mode",
@@ -100,7 +101,7 @@ return {
   {
     'SmiteshP/nvim-navic',
     opts = {
-      -- depth_limit = 5
+      depth_limit = 5,
       highlight = true
     }
   },

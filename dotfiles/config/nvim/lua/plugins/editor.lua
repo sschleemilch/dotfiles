@@ -202,4 +202,15 @@ return {
       },
     },
   },
+  {
+    'mbbill/undotree',
+    cmd = 'UndotreeToggle',
+    keys = {
+      {
+        '<F5>',
+        '<cmd>UndotreeToggle<cr>',
+        desc = 'Undotree',
+      },
+    },
+  },
 }
