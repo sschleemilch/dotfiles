@@ -208,7 +208,7 @@ return {
     keys = {
       {
         '<F5>',
-        '<cmd>UndotreeToggle<cr>',
+        '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>',
         desc = 'Undotree',
       },
     },
