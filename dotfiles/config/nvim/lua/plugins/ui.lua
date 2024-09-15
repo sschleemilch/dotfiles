@@ -58,8 +58,10 @@ return {
   },
   {
     'sschleemilch/slimline.nvim',
+    -- 'slimline',
     dev = false,
     opts = {
+      style = 'fg',
       mode_follow_style = false,
       -- spaces = {
       --   components = '',

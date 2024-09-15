@@ -53,6 +53,7 @@ return {
       local cmp = require('cmp')
       local defaults = require('cmp.config.default')()
       local auto_select = true
+      local MiniIcons = require('mini.icons')
       return {
         completion = {
           completeopt = 'menu,menuone,noinsert' .. (auto_select and '' or ',noselect'),
@@ -81,10 +82,9 @@ return {
         }),
         formatting = {
           format = function(entry, item)
-            local icons = require('icons').kinds
-            if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
-            end
+            local icon, hl = MiniIcons.get('lsp', item.kind)
+            item.kind = icon .. ' ' .. item.kind
+            item.kind_hl_group = hl
 
             local widths = {
               abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 40,
