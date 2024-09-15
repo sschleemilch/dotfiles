@@ -43,8 +43,8 @@ opt.listchars = {
   precedes = '«',
 }
 opt.mouse = 'a' -- Enable mouse
-opt.number = true -- line numbers
-opt.relativenumber = true -- relative line numbers
+opt.number = false -- line numbers
+opt.relativenumber = false -- relative line numbers
 opt.pumheight = 10 -- Max popup entries
 opt.scrolloff = 4 -- lines of context on borders
 opt.sidescrolloff = 8 -- columns context

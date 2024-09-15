@@ -61,48 +61,26 @@ return {
     dev = false,
     opts = {
       mode_follow_style = false,
-      components = {
-        left = {
-          "mode",
-          "path",
-          function ()
-            return require('nvim-navic').get_location() .. '%#Slimline#'
-          end
-          -- function ()
-          --   local navic = require('nvim-navic')
-          --   local icons  = require('icons')
-          --   local h = require('slimline.highlights')
-          --   if not navic.is_available() then
-          --     return ''
-          --   end
-          --   local data = navic.get_data()
-          --
-          --   local parts = {}
-          --
-          --   if data ~= nil then
-          --
-          --     for _, entry in ipairs(data) do
-          --       table.insert(parts, h.hl_content(icons.kinds[entry.type], "Normal") .. '%#Slimline#' .. entry.name)
-          --     end
-          --   end
-          --
-          --   return "%#Slimline# " .. table.concat(parts, icons.kinds.Collapsed)
-          -- end
-        },
-        right = {
-          "diagnostics",
-          "git",
-          "filetype_lsp",
-          "progress"
-        }
-      }
+      -- spaces = {
+      --   components = '',
+      --   left = '',
+      --   right = '',
+      -- },
+      -- sep = {
+      --   hide = {
+      --     first = true,
+      --     last = true,
+      --   },
+      --   left = '',
+      --   right = '',
+      -- },
     },
   },
   {
     'SmiteshP/nvim-navic',
     opts = {
-      depth_limit = 5,
-      highlight = true
-    }
+      depth_limit = 6,
+      highlight = true,
+    },
   },
 }
