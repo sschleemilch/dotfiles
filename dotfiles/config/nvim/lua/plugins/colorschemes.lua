@@ -81,6 +81,7 @@ return {
         harpoon = true,
         notify = true,
         neotree = true,
+        navic = true,
         treesitter_context = true,
         which_key = true,
         lsp_trouble = true,
