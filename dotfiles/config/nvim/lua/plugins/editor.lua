@@ -127,9 +127,11 @@ return {
       { '<leader>fh', '<cmd>FzfLua helptags<cr>', desc = 'Help' },
       { '<leader>fq', '<cmd>FzfLua quickfix<cr>', desc = 'Quickfix' },
       { '<leader>fs', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Symbols' },
+      { '<leader>fd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Diagnostics' },
       { '<leader>fz', '<cmd>FzfLua<cr>', desc = 'Fzf' },
     },
   },
+
   {
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
