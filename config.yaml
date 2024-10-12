@@ -8,7 +8,7 @@ config:
   link_on_import: nolink
   longkey: false
   instignore:
-    - "*/.git"
+  - '*/.git'
 variables:
   git_email: sebastian.schleemilch@posteo.net
 actions:
@@ -38,7 +38,7 @@ dotfiles:
     src: config/bat
     dst: ~/.config/bat
     actions:
-      - batcache
+    - batcache
   d_btop:
     src: config/btop
     dst: ~/.config/btop
@@ -46,10 +46,10 @@ dotfiles:
     src: config/zsh
     dst: ~/.config/zsh
     actions:
-      - link_zshenv
+    - link_zshenv
     upignore:
-      - "*/.zcompdump"
-      - "*/.zhistory"
+    - '*/.zcompdump'
+    - '*/.zhistory'
   d_hypr:
     src: config/hypr
     dst: ~/.config/hypr
@@ -71,37 +71,41 @@ dotfiles:
   d_wallpaper:
     src: config/wallpaper
     dst: ~/wallpaper
-
+  d_kitty:
+    src: config/kitty
+    dst: ~/.config/kitty
 profiles:
   cli:
     dotfiles:
-      - d_tmux
-      - d_tmux_tpm
-      - d_git
-      - d_k9s
-      - d_nvim
-      - d_bat
-      - d_btop
-      - d_zsh
+    - d_tmux
+    - d_tmux_tpm
+    - d_git
+    - d_k9s
+    - d_nvim
+    - d_bat
+    - d_btop
+    - d_zsh
+    - d_kitty
   desora:
     dotfiles:
-      - d_alacritty
-      - d_wallpaper
-      - f_face
+    - d_alacritty
+    - d_wallpaper
+    - f_face
+    - d_kitty
     include:
-      - cli
+    - cli
   lapora:
     dotfiles:
-      - d_alacritty
-      - d_wallpaper
-      - f_face
+    - d_alacritty
+    - d_wallpaper
+    - f_face
     include:
-      - cli
+    - cli
   work:
     dotfiles:
-      - d_alacritty
+    - d_alacritty
     include:
-      - cli
+    - cli
     variables:
       git_email: sebastian.schleemilch@bmw.de
       proxy: 127.0.0.1:3128
