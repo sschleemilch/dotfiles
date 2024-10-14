@@ -53,7 +53,7 @@ return {
       { 'gK', vim.lsp.buf.signature_help, desc = 'Signature Help' },
       { '<c-k>', vim.lsp.buf.signature_help, mode = 'i', desc = 'Signature Help' },
       { '<leader>ca', vim.lsp.buf.code_action, desc = 'Code Action', mode = { 'n', 'v' } },
-      { '<leader>cc', vim.lsp.codelens.run, desc = 'Run Codelens', mode = { 'n', 'v' } },
+      -- { '<leader>cc', vim.lsp.codelens.run, desc = 'Run Codelens', mode = { 'n', 'v' } },
       { '<leader>cr', vim.lsp.buf.rename, desc = 'Rename' },
       {
         '<leader>cC',

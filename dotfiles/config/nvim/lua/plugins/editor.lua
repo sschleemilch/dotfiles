@@ -1,49 +1,17 @@
 return {
   {
-    'stevearc/oil.nvim',
-    cmd = 'Oil',
-    opts = {
-      skip_confirm_for_simple_edits = true,
-      keymaps = {
-        ['g?'] = 'actions.show_help',
-        ['<CR>'] = 'actions.select',
-        ['<C-s>'] = {
-          'actions.select',
-          opts = { vertical = true },
-          desc = 'Open the entry in a vertical split',
-        },
-        ['<C-h>'] = false,
-        ['<C-t>'] = false,
-        ['<C-p>'] = false,
-        ['<C-c>'] = false,
-        ['q'] = 'actions.close',
-        ['<C-l>'] = false,
-        ['gr'] = 'actions.refresh',
-        ['-'] = 'actions.parent',
-        ['_'] = 'actions.open_cwd',
-        ['`'] = 'actions.cd',
-        ['~'] = { 'actions.cd', opts = { scope = 'tab' }, desc = ':tcd to the current oil directory' },
-        ['gs'] = 'actions.change_sort',
-        ['gx'] = false,
-        ['g.'] = 'actions.toggle_hidden',
-        ['g\\'] = 'actions.toggle_trash',
-      },
-      view_options = {
-        show_hidden = true,
-      },
-      float = {
-        max_width = 140,
-        max_height = 50,
-        border = 'none',
-      },
-    },
+    'echasnovski/mini.files',
+    version = false,
+    config = true,
     keys = {
       {
         '<leader>e',
-        '<cmd>Oil<cr>',
+        function()
+          require('mini.files').open()
+        end,
+        desc = 'Explorer',
       },
     },
-    dependencies = { { 'echasnovski/mini.icons', opts = {} } },
   },
   -- search/replace in multiple files
   {
@@ -106,7 +74,7 @@ return {
         preview = {
           hidden = 'hidden',
         },
-        fullscreen = true,
+        fullscreen = false,
       },
       oldfiles = {
         cwd_only = true,
@@ -116,6 +84,9 @@ return {
       },
       fzf_colors = true,
     },
+    init = function ()
+      require('fzf-lua').register_ui_select()
+    end,
     keys = {
       { '<leader><leader>', '<cmd>FzfLua files<cr>', desc = 'Files' },
       { '<leader>ff', '<cmd>FzfLua files<cr>', desc = 'Buffers' },
@@ -213,6 +184,13 @@ return {
         '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>',
         desc = 'Undotree',
       },
+    },
+  },
+  {
+    'github/copilot.vim',
+    cmd = 'Copilot',
+    keys = {
+      { '<leader>cc', '<cmd>Copilot panel<cr>', desc = 'Copilot' },
     },
   },
 }
