@@ -7,7 +7,9 @@ return {
       {
         '<leader>e',
         function()
-          require('mini.files').open()
+          local minifiles = require('mini.files')
+          minifiles.open(vim.api.nvim_buf_get_name(0))
+          minifiles.reveal_cwd()
         end,
         desc = 'Explorer',
       },
@@ -84,7 +86,7 @@ return {
       },
       fzf_colors = true,
     },
-    init = function ()
+    init = function()
       require('fzf-lua').register_ui_select()
     end,
     keys = {
