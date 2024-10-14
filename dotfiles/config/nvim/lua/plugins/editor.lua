@@ -70,8 +70,9 @@ return {
     cmd = 'FzfLua',
     opts = {
       winopts = {
+        backdrop = 100,
         height = 0.7,
-        width = 0.7,
+        width = 0.6,
         border = 'none',
         preview = {
           hidden = 'hidden',

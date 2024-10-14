@@ -50,7 +50,7 @@ return {
     priority = 1000,
     name = 'rose-pine',
     opts = {
-      dim_inactive_windows = false,
+      dim_inactive_windows = true,
       highlight_groups = {
         CursorLine = { bg = 'surface' },
       },
