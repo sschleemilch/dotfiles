@@ -40,6 +40,9 @@ return {
       lspconfig.yamlls.setup {
         on_attach = on_attach
       }
+      lspconfig.astro.setup {
+        on_attach = on_attach
+      }
     end,
     keys = {
       { '<leader>cl', '<cmd>LspInfo<cr>', desc = 'Lsp Info' },

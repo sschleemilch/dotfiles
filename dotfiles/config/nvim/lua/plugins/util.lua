@@ -19,6 +19,7 @@ return {
         'dockerfile-language-server',
         'gopls',
         'typescript-language-server',
+        'astro-language-server',
         'json-lsp',
         'prettier',
         'yaml-language-server'
