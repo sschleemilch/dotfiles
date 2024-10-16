@@ -7,9 +7,6 @@
 [submodule "dotfiles/config/zsh/plugins/zsh-completions"]
 	path = dotfiles/config/zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule "dotfiles/config/tpm"]
-	path = dotfiles/config/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule "dotfiles/config/zsh/plugins/powerlevel10k"]
 	path = dotfiles/config/zsh/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git

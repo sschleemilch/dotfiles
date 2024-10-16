@@ -64,7 +64,6 @@ return {
       },
     },
   },
-  { 'christoomey/vim-tmux-navigator' },
   {
     'ibhagwan/fzf-lua',
     cmd = 'FzfLua',
@@ -196,4 +195,5 @@ return {
       { '<leader>cc', '<cmd>Copilot panel<cr>', desc = 'Copilot' },
     },
   },
+  { 'brenoprata10/nvim-highlight-colors', config = true }
 }

@@ -18,6 +18,7 @@ return {
     enabled = true,
     priority = 1000,
     config = {
+      dimInactive = true,
       colors = {
         theme = {
           all = {
