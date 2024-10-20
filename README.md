@@ -9,10 +9,7 @@
 </p>
 
 [![Linux](https://img.shields.io/badge/Linux-cad3f5?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/sschleemilch/dotfiles/blob/main)
-[![Hyprland](https://img.shields.io/badge/Hyprland-cad3f5?style=for-the-badge&logo=wayland&logoColor=black)](https://hyprland.org/)
 [![Neovim](https://img.shields.io/badge/Neovim-cad3f5?style=for-the-badge&logo=vim&logoColor=black)](https://neovim.io/)
-[![tmux](https://img.shields.io/badge/tmux-cad3f5?style=for-the-badge&logo=vim&logoColor=black)](https://github.com/tmux/tmux/wiki)
-[![Alacritty](https://img.shields.io/badge/Alacritty-cad3f5?style=for-the-badge&logo=alacritty&logoColor=black)](https://github.com/alacritty/alacritty)
 
 My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
 
@@ -26,9 +23,6 @@ My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
 1. Run `dotdrop` commands from within that repo or create an alias with `alias dotdrop='dotdrop --cfg=<repo>/config.yaml'`.
 1. `dotdrop install -p <PROFILE>` (check `dotdrop profiles` for available ones)
 
-## Dependencies
-
-- A Nerd Font e.g. [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip)
 
 ### `d_nvim`
 
@@ -37,13 +31,13 @@ My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
 - [node.js](https://nodejs.org)
 
 
-### `d_zsh`
+### `d_zsh`/`d_kitty`
 
 - [direnv](https://direnv.net/)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [fzf](https://github.com/junegunn/fzf)
 
-### `d_alacritty`
+### `d_kitty`
 
-- [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip)
+- [FiraCode Font](https://github.com/tonsky/FiraCode)
 
