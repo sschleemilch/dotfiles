@@ -16,9 +16,6 @@ actions:
     batcache: bat cache --build
     link_zshenv: ln -s -f ~/.config/zsh/.zshenv ~/.zshenv
 dotfiles:
-  d_alacritty:
-    src: config/alacritty
-    dst: ~/.config/alacritty
   d_git:
     src: config/git
     dst: ~/.config/git
@@ -44,6 +41,9 @@ dotfiles:
     upignore:
     - '*/.zcompdump'
     - '*/.zhistory'
+  d_fish:
+    src: config/fish
+    dst: ~/.config/fish
   d_hypr:
     src: config/hypr
     dst: ~/.config/hypr
@@ -78,9 +78,9 @@ profiles:
     - d_btop
     - d_zsh
     - d_kitty
-  desora:
+    - d_fish
+  barchtop:
     dotfiles:
-    - d_alacritty
     - d_wallpaper
     - f_face
     - d_kitty
@@ -88,14 +88,11 @@ profiles:
     - cli
   lapora:
     dotfiles:
-    - d_alacritty
     - d_wallpaper
     - f_face
     include:
     - cli
   work:
-    dotfiles:
-    - d_alacritty
     include:
     - cli
     variables:
