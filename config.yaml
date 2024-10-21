@@ -82,13 +82,11 @@ profiles:
     - d_zsh
     - d_kitty
     - d_fish
-    - f_starship
+    - f_starship.toml
   barchtop:
     dotfiles:
     - d_wallpaper
     - f_face
-    - d_kitty
-    - f_starship.toml
     include:
     - cli
   lapora:
