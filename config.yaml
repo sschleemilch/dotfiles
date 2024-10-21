@@ -68,6 +68,9 @@ dotfiles:
   d_kitty:
     src: config/kitty
     dst: ~/.config/kitty
+  f_starship.toml:
+    src: config/starship.toml
+    dst: ~/.config/starship.toml
 profiles:
   cli:
     dotfiles:
@@ -79,11 +82,13 @@ profiles:
     - d_zsh
     - d_kitty
     - d_fish
+    - f_starship
   barchtop:
     dotfiles:
     - d_wallpaper
     - f_face
     - d_kitty
+    - f_starship.toml
     include:
     - cli
   lapora:

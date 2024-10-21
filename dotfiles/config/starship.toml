@@ -1,0 +1,87 @@
+format = """
+[](fg:foam bg:base)\
+$directory\
+[](fg:foam bg:rose)\
+$git_branch\
+$git_state\
+$git_status\
+[](fg:rose bg:iris)\
+$direnv\
+[](fg:iris bg:gold)\
+$nodejs\
+$golang\
+$rust\
+$python\
+[](fg:gold bg:subtle)\
+$jobs\
+[](fg:subtle bg:love)\
+$status\
+[](fg:love bg:base)\
+$line_break\
+$character\
+"""
+palette = "rose_pine"
+
+[directory]
+format = "[  $path ](bold bg:foam fg:base)"
+
+[direnv]
+disabled = false
+format = "[ ▼ ](bold bg:iris fg:base)"
+
+[git_branch]
+format = "[  $branch](bold bg:rose fg:base)"
+
+[git_state]
+style = "bold rose"
+
+[git_status]
+conflicted = "󱐋"
+deleted = " "
+format = "[$ahead_behind $all_status ](bold bg:rose fg:base)"
+modified = " "
+renamed = " "
+staged = "󱊽"
+stashed = " "
+up_to_date = " 󰓦"
+
+[jobs]
+format = "[ $symbol$number ](bold bg:subtle fg:base)"
+number_threshold = 1
+symbol = " "
+
+
+# Languages
+[python]
+format = "[ $symbol$pyenv_prefix($version )(($virtualenv)) ](bold bg:gold fg:base)"
+symbol = " "
+
+[rust]
+format = "[ $symbol($version) ](bold bg:gold fg:base)"
+symbol = " "
+
+[golang]
+format = "[ $symbol($version)](bold bg:gold fg:base)"
+symbol = " "
+
+[nodejs]
+format = "[ $symbol($version) ](bold bg:gold fg:base)"
+symbol = "󰎙 "
+
+[palettes.rose_pine]
+base= "#232136"
+surface= "#2a273f"
+overlay= "#393552"
+muted= "#6e6a86"
+subtle= "#908caa"
+text= "#e0def4"
+love= "#eb6f92"
+gold= "#f6c177"
+rose= "#ea9a97"
+pine= "#3e8fb0"
+foam= "#9ccfd8"
+iris= "#c4a7e7"
+
+[status]
+disabled = false
+format = "[  $status](bold bg:love fg:base)"
