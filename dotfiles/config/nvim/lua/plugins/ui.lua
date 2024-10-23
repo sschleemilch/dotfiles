@@ -2,7 +2,7 @@ return {
   {
     'echasnovski/mini.icons',
     enabled = true,
-    lazy = true,
+    lazy = false,
     opts = {},
     init = function()
       package.preload['nvim-web-devicons'] = function()
