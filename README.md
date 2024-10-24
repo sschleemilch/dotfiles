@@ -31,8 +31,9 @@ My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
 - [node.js](https://nodejs.org)
 
 
-### `d_zsh`/`d_kitty`
+### `d_fish`
 
+- [starship](https://starship.rs/)
 - [direnv](https://direnv.net/)
 - [zoxide](https://github.com/ajeetdsouza/zoxide)
 - [fzf](https://github.com/junegunn/fzf)

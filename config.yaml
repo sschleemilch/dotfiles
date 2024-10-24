@@ -14,7 +14,6 @@ variables:
 actions:
   post:
     batcache: bat cache --build
-    link_zshenv: ln -s -f ~/.config/zsh/.zshenv ~/.zshenv
 dotfiles:
   d_git:
     src: config/git
@@ -33,14 +32,6 @@ dotfiles:
   d_btop:
     src: config/btop
     dst: ~/.config/btop
-  d_zsh:
-    src: config/zsh
-    dst: ~/.config/zsh
-    actions:
-    - link_zshenv
-    upignore:
-    - '*/.zcompdump'
-    - '*/.zhistory'
   d_fish:
     src: config/fish
     dst: ~/.config/fish
@@ -79,7 +70,6 @@ profiles:
     - d_nvim
     - d_bat
     - d_btop
-    - d_zsh
     - d_kitty
     - d_fish
     - f_starship.toml
