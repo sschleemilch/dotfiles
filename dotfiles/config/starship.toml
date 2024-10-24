@@ -33,7 +33,8 @@ format = "[ ▼ ](bg:iris fg:overlay)"
 format = "[  $branch ](bg:rose fg:overlay)"
 
 [git_state]
-style = "rose"
+style = "bg:rose fg:overlay"
+format = '[\($state( $progress_current/$progress_total)\) ]($style)'
 
 [git_status]
 conflicted = "󱐋"
@@ -41,12 +42,11 @@ deleted = " "
 behind = ""
 ahead = ""
 diverged = ""
-format = "[ $ahead_behind $all_status ](bg:rose fg:overlay)"
+format = "[$ahead_behind$all_status ](bg:rose fg:overlay)"
 modified = " "
 renamed = " "
 staged = "󱊽"
 stashed = " "
-up_to_date = "󰓦"
 untracked = "󱙀"
 
 [jobs]
