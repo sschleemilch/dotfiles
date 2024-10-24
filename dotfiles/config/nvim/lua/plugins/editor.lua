@@ -66,6 +66,9 @@ return {
   },
   {
     'ibhagwan/fzf-lua',
+    dependencies = {
+      'mini.icons',
+    },
     cmd = 'FzfLua',
     opts = {
       winopts = {
@@ -159,25 +162,6 @@ return {
     },
   },
   {
-    'folke/which-key.nvim',
-    enabled = false,
-    event = 'VeryLazy',
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-    keys = {
-      {
-        '<leader>?',
-        function()
-          require('which-key').show { global = false }
-        end,
-        desc = 'Buffer Local Keymaps (which-key)',
-      },
-    },
-  },
-  {
     'mbbill/undotree',
     cmd = 'UndotreeToggle',
     keys = {
@@ -188,12 +172,5 @@ return {
       },
     },
   },
-  {
-    'github/copilot.vim',
-    cmd = 'Copilot',
-    keys = {
-      { '<leader>cc', '<cmd>Copilot panel<cr>', desc = 'Copilot' },
-    },
-  },
-  { 'brenoprata10/nvim-highlight-colors', config = true }
+  { 'brenoprata10/nvim-highlight-colors', config = true },
 }
