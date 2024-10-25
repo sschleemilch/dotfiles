@@ -32,9 +32,13 @@ dotfiles:
   d_btop:
     src: config/btop
     dst: ~/.config/btop
+    upignore:
+    - btop.log
   d_fish:
     src: config/fish
     dst: ~/.config/fish
+    upignore:
+    - fish_variables
   d_hypr:
     src: config/hypr
     dst: ~/.config/hypr
