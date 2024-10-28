@@ -43,6 +43,9 @@ return {
       lspconfig.astro.setup {
         on_attach = on_attach
       }
+      lspconfig.ltex.setup {
+        on_attach = on_attach
+      }
     end,
     keys = {
       { '<leader>cl', '<cmd>LspInfo<cr>', desc = 'Lsp Info' },

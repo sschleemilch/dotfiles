@@ -22,7 +22,8 @@ return {
         'astro-language-server',
         'json-lsp',
         'prettier',
-        'yaml-language-server'
+        'yaml-language-server',
+        'ltex-ls'
       },
     },
     config = function(_, opts)
