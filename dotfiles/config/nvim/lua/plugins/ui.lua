@@ -43,6 +43,9 @@ return {
           border = 'none',
         },
       },
+      lsp_progress = {
+        enable = false,
+      }
     },
     init = function()
       vim.notify = require('mini.notify').make_notify()
@@ -62,21 +65,21 @@ return {
     -- 'slimline',
     dev = false,
     opts = {
-      style = 'fg',
+      style = 'bg',
       mode_follow_style = false,
-      -- spaces = {
-      --   components = '',
-      --   left = '',
-      --   right = '',
-      -- },
-      -- sep = {
-      --   hide = {
-      --     first = true,
-      --     last = true,
-      --   },
-      --   left = '',
-      --   right = '',
-      -- },
+      spaces = {
+        components = '',
+        left = '',
+        right = '',
+      },
+      sep = {
+        hide = {
+          first = true,
+          last = true,
+        },
+        left = '',
+        right = '',
+      },
     },
   },
   {
