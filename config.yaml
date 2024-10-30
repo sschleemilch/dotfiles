@@ -77,13 +77,13 @@ profiles:
     - d_kitty
     - d_fish
     - f_starship.toml
-  barchtop:
+  desos:
     dotfiles:
     - d_wallpaper
     - f_face
     include:
     - cli
-  lapora:
+  ladon:
     dotfiles:
     - d_wallpaper
     - f_face
