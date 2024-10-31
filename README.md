@@ -4,8 +4,8 @@
 </h3>
 
 <p align="center">
- <a href="https://github.com/khaneliman/dotfiles/commits"><img src="https://img.shields.io/github/last-commit/sschleemilch/dot?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
- <a href="https://github.com/khaneliman/dotfiles/contributors"><img src="https://img.shields.io/github/contributors/sschleemilch/dot?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+ <a href="https://github.com/sschleemilch/dotfiles/commits"><img src="https://img.shields.io/github/last-commit/sschleemilch/dot?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+ <a href="https://github.com/sschleemilch/dotfiles/contributors"><img src="https://img.shields.io/github/contributors/sschleemilch/dotfiles?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 [![Linux](https://img.shields.io/badge/Linux-cad3f5?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/sschleemilch/dotfiles/blob/main)
