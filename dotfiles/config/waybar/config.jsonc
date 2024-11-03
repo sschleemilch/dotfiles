@@ -5,7 +5,7 @@
     "margin-left": 0,
     "margin-bottom": 0,
     "margin-right": 0,
-{%@@ if profile == "barchtop" @@%}
+{%@@ if profile == "desos" @@%}
     "output": "DP-1",
 {%@@ endif @@%}
     "spacing": 0,
@@ -16,7 +16,7 @@
         "temperature#cpu",
         "memory",
         "disk",
-    {%@@ if profile == "baptop" @@%}
+    {%@@ if profile == "ladon" @@%}
         "custom/fan",
     {%@@ endif @@%}
         "systemd-failed-units",

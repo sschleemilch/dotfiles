@@ -67,9 +67,9 @@ label:focus {
 }
 
 /* BORDERED MODULES ON THE RIGHT */
-{%@@ if profile == "barchtop" @@%}
+{%@@ if profile == "desos" @@%}
 #disk,
-{%@@ elif profile == "baptop" @@%}
+{%@@ elif profile == "ladon" @@%}
 #custom-fan,
 {%@@ endif @@%}
 #custom-updates,
