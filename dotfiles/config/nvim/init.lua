@@ -22,7 +22,6 @@ require('keymaps')
 require('autocommands')
 require('filetypes')
 require('winbar')
-require('statuscolumn')
 
 require('lazy').setup(plugins, {
   change_detection = { notify = false },

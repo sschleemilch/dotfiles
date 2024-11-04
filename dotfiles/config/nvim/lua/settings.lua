@@ -22,7 +22,7 @@ opt.fillchars = {
   stl = ' ',
 }
 opt.foldlevel = 99
-opt.foldcolumn = '1'
+opt.foldcolumn = '0'
 opt.foldlevelstart = 99
 opt.foldmethod = 'expr'
 opt.foldtext = ''
