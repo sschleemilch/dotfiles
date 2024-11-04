@@ -22,11 +22,11 @@ opt.fillchars = {
   stl = ' ',
 }
 opt.foldlevel = 99
-opt.foldcolumn = '0'
+opt.foldcolumn = '1'
 opt.foldlevelstart = 99
 opt.foldmethod = 'expr'
 opt.foldtext = ''
-opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 opt.cmdheight = 1 -- 0 for noice and the statusline being instantly on bottom
 
