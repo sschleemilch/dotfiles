@@ -21,7 +21,7 @@ return {
           Lua = {
             diagnostics = {
               -- Get the language server to recognize the `vim` global
-              globals = { 'vim' },
+              globals = { 'vim', 'Snacks' },
             },
           },
         },
@@ -61,12 +61,6 @@ return {
       { '<leader>ca', vim.lsp.buf.code_action, desc = 'Code Action', mode = { 'n', 'v' } },
       -- { '<leader>cc', vim.lsp.codelens.run, desc = 'Run Codelens', mode = { 'n', 'v' } },
       { '<leader>cr', vim.lsp.buf.rename, desc = 'Rename' },
-      {
-        '<leader>cC',
-        vim.lsp.codelens.refresh,
-        desc = 'Refresh & Display Codelens',
-        mode = { 'n' },
-      },
     },
   },
 }

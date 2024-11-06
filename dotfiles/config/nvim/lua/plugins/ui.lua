@@ -34,33 +34,6 @@ return {
     main = 'ibl',
   },
   {
-    'echasnovski/mini.notify',
-    enabled = true,
-    version = false,
-    config = {
-      window = {
-        config = {
-          border = 'none',
-        },
-      },
-      lsp_progress = {
-        enable = false,
-      }
-    },
-    init = function()
-      vim.notify = require('mini.notify').make_notify()
-    end,
-    keys = {
-      {
-        '<leader>nh',
-        function()
-          require('mini.notify').show_history()
-        end,
-        desc = 'Notification history',
-      },
-    },
-  },
-  {
     'sschleemilch/slimline.nvim',
     -- 'slimline',
     dev = false,
