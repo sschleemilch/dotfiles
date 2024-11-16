@@ -38,12 +38,16 @@ return {
     -- 'slimline',
     dev = false,
     opts = {
-      style = 'bg',
-      mode_follow_style = false,
+      style = 'fg',
+      mode_follow_style = true,
+      verbose_mode = false,
       spaces = {
         components = '',
         left = '',
         right = '',
+      },
+      hl = {
+        primary = 'Comment',
       },
       sep = {
         hide = {

@@ -8,7 +8,7 @@ config:
   link_on_import: nolink
   longkey: false
   instignore:
-  - '*/.git'
+    - "*/.git"
 variables:
   git_email: sebastian.schleemilch@posteo.net
 actions:
@@ -28,17 +28,17 @@ dotfiles:
     src: config/bat
     dst: ~/.config/bat
     actions:
-    - batcache
+      - batcache
   d_btop:
     src: config/btop
     dst: ~/.config/btop
     upignore:
-    - btop.log
+      - btop.log
   d_fish:
     src: config/fish
     dst: ~/.config/fish
     upignore:
-    - fish_variables
+      - fish_variables
   d_hypr:
     src: config/hypr
     dst: ~/.config/hypr
@@ -66,32 +66,39 @@ dotfiles:
   f_starship.toml:
     src: config/starship.toml
     dst: ~/.config/starship.toml
+  d_zed:
+    src: config/zed
+    dst: ~/.config/zed
 profiles:
   cli:
     dotfiles:
-    - d_git
-    - d_k9s
-    - d_nvim
-    - d_bat
-    - d_btop
-    - d_kitty
-    - d_fish
-    - f_starship.toml
+      - d_git
+      - d_k9s
+      - d_nvim
+      - d_bat
+      - d_btop
+      - d_kitty
+      - d_fish
+      - f_starship.toml
   desos:
     dotfiles:
-    - d_wallpaper
-    - f_face
+      - d_wallpaper
+      - f_face
+      - d_zed
     include:
-    - cli
+      - cli
   ladon:
     dotfiles:
-    - d_wallpaper
-    - f_face
+      - d_wallpaper
+      - f_face
+      - d_zed
     include:
-    - cli
+      - cli
   work:
+    dotfiles:
+      - d_zed
     include:
-    - cli
+      - cli
     variables:
       git_email: sebastian.schleemilch@bmw.de
       proxy: 127.0.0.1:3128
