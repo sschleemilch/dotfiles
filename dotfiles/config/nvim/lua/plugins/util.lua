@@ -54,9 +54,11 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      words = {
-        enabled = false,
-      },
+      bigfile = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
     },
     keys = {
       {
@@ -65,6 +67,13 @@ return {
           Snacks.bufdelete()
         end,
         desc = 'Delete Buffer',
+      },
+      {
+        '<leader>nh',
+        function()
+          Snacks.notifier.show_history()
+        end,
+        desc = 'Notification history',
       },
       {
         '<leader>gg',
