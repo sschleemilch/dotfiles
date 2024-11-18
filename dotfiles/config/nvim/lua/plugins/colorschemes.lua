@@ -2,7 +2,7 @@ return {
   {
     'folke/tokyonight.nvim',
     lazy = false,
-    enabled = true,
+    enabled = false,
     priority = 1000,
     config = true,
     init = function()
@@ -15,7 +15,7 @@ return {
   {
     'rebelot/kanagawa.nvim',
     lazy = false,
-    enabled = true,
+    enabled = false,
     priority = 1000,
     config = {
       dimInactive = true,
@@ -37,7 +37,7 @@ return {
     'slugbyte/lackluster.nvim',
     lazy = false,
     priority = 1000,
-    enabled = true,
+    enabled = false,
     init = function()
       -- vim.cmd.colorscheme("lackluster")
       -- vim.cmd.colorscheme("lackluster-hack")
@@ -70,7 +70,7 @@ return {
     'catppuccin/nvim',
     lazy = false,
     name = 'catppuccin',
-    enabled = true,
+    enabled = false,
     priority = 1000,
     opts = {
       flavour = 'macchiato',
