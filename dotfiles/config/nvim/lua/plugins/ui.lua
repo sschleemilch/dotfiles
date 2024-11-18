@@ -13,7 +13,7 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    lazy = false,
     enabled = true,
     opts = {
       indent = {
@@ -36,6 +36,7 @@ return {
   {
     'sschleemilch/slimline.nvim',
     -- 'slimline',
+    lazy = false,
     dev = false,
     opts = {
       style = 'fg',
@@ -61,6 +62,7 @@ return {
   },
   {
     'SmiteshP/nvim-navic',
+    lazy = false,
     opts = {
       depth_limit = 6,
       highlight = true,

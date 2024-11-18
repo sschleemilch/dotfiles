@@ -1,7 +1,7 @@
 return {
   {
     'echasnovski/mini.pairs',
-    event = 'VeryLazy',
+    lazy = false,
     opts = {
       modes = { insert = true, command = true, terminal = false },
       -- skip autopair when next character is one of these
@@ -17,7 +17,7 @@ return {
   },
   {
     'folke/ts-comments.nvim',
-    event = 'VeryLazy',
+    lazy = false,
     opts = {},
   },
   -- Fast and feature-rich surround actions. For text that includes
@@ -26,7 +26,7 @@ return {
   -- and more.
   {
     'echasnovski/mini.surround',
-    event = 'VeryLazy',
+    lazy = false,
     opts = {
       mappings = {
         add = 'gsa', -- Add surrounding in Normal and Visual modes

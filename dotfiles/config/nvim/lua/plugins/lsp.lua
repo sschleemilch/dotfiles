@@ -1,7 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    lazy = false,
     dependencies = { 'mason.nvim' },
     config = function()
       local navic = require('nvim-navic')
@@ -13,7 +13,7 @@ return {
 
       local lspconfig = require('lspconfig')
       lspconfig.pyright.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
       lspconfig.ruff.setup {}
       lspconfig.lua_ls.setup {
@@ -29,22 +29,22 @@ return {
       }
       lspconfig.dockerls.setup {}
       lspconfig.gopls.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
       lspconfig.ts_ls.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
       lspconfig.jsonls.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
       lspconfig.yamlls.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
       lspconfig.astro.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
       lspconfig.ltex.setup {
-        on_attach = on_attach
+        on_attach = on_attach,
       }
     end,
     keys = {

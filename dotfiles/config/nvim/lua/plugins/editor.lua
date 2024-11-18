@@ -2,6 +2,7 @@ return {
   {
     'echasnovski/mini.files',
     version = false,
+    lazy = false,
     config = true,
     keys = {
       {
@@ -34,6 +35,7 @@ return {
   },
   {
     'ibhagwan/fzf-lua',
+    lazy = false,
     dependencies = {
       'mini.icons',
     },
@@ -78,7 +80,7 @@ return {
 
   {
     'lewis6991/gitsigns.nvim',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    lazy = false,
     opts = {
       signs = {
         add = { text = '▎' },
@@ -99,7 +101,7 @@ return {
   },
   {
     'folke/todo-comments.nvim',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    lazy = false,
     opts = {},
     keys = {
       { '<leader>ft', '<cmd>TodoQuickFix<cr>', desc = 'Todos' },
@@ -107,9 +109,8 @@ return {
   },
   {
     'folke/flash.nvim',
-    event = 'VeryLazy',
-    vscode = true,
     opts = {},
+    lazy = false,
     keys = {
       {
         's',
@@ -130,15 +131,8 @@ return {
     },
   },
   {
-    'mbbill/undotree',
-    cmd = 'UndotreeToggle',
-    keys = {
-      {
-        '<F5>',
-        '<cmd>UndotreeToggle<cr><cmd>UndotreeFocus<cr>',
-        desc = 'Undotree',
-      },
-    },
+    'brenoprata10/nvim-highlight-colors',
+    config = true,
+    lazy = false,
   },
-  { 'brenoprata10/nvim-highlight-colors', config = true },
 }
