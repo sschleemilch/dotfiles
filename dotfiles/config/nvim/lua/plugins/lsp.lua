@@ -10,12 +10,16 @@ return {
           navic.attach(client, bufnr)
         end
       end
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       local lspconfig = require('lspconfig')
       lspconfig.pyright.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
-      lspconfig.ruff.setup {}
+      lspconfig.ruff.setup {
+        capabilities = capabilities,
+      }
       lspconfig.lua_ls.setup {
         settings = {
           Lua = {
@@ -26,25 +30,34 @@ return {
           },
         },
         on_attach = on_attach,
+        capabilities = capabilities,
       }
-      lspconfig.dockerls.setup {}
+      lspconfig.dockerls.setup {
+        capabilities = capabilities,
+      }
       lspconfig.gopls.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
       lspconfig.ts_ls.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
       lspconfig.jsonls.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
       lspconfig.yamlls.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
       lspconfig.astro.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
       lspconfig.ltex.setup {
         on_attach = on_attach,
+        capabilities = capabilities,
       }
     end,
     keys = {

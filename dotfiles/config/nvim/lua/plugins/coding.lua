@@ -42,8 +42,7 @@ return {
   {
     'saghen/blink.cmp',
     lazy = false,
-    version = 'v0.5.1',
-
+    version = 'v0.6.2',
     opts = {
       keymap = { preset = 'default' },
       nerd_font_variant = 'normal',

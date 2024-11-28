@@ -12,9 +12,15 @@ return {
     end,
   },
   {
+    'echasnovski/mini.indentscope',
+    enabled = false,
+    lazy = false,
+    config = true,
+  },
+  {
     'lukas-reineke/indent-blankline.nvim',
     lazy = false,
-    enabled = true,
+    enabled = false,
     opts = {
       indent = {
         char = '╎',
