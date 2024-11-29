@@ -46,7 +46,9 @@ return {
     opts = {
       keymap = { preset = 'default' },
       nerd_font_variant = 'normal',
-
+      highlight = {
+        use_nvim_cmp_as_default = false,
+      },
       -- experimental auto-brackets support
       accept = { auto_brackets = { enabled = true } },
 

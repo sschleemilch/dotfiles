@@ -10,10 +10,10 @@ return {
     lines = ' ',
   },
   diagnostics = {
-    ERROR = ' ',
-    WARN = ' ',
-    HINT = ' ',
-    INFO = ' ',
+    Error = '●',
+    Warn = '●',
+    Hint = '●',
+    Info = '●',
   },
   separators = {
     triangle_lower_left = '',

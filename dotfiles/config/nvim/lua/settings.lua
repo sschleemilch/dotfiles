@@ -26,7 +26,7 @@ opt.foldcolumn = '0'
 opt.foldlevelstart = 99
 opt.foldmethod = 'expr'
 opt.foldtext = ''
-opt.foldexpr = 'nvim_treesitter#foldexpr()'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
 opt.cmdheight = 1 -- 0 for noice and the statusline being instantly on bottom
 
@@ -37,7 +37,7 @@ opt.laststatus = 3
 opt.linebreak = true -- line breaks at convenient points
 opt.list = true -- Show some invisible characters such as tabs
 opt.listchars = {
-  tab = '  ↦',
+  tab = '  ',
   trail = '·',
   extends = '»',
   precedes = '«',

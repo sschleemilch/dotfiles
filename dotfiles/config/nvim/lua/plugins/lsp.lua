@@ -4,6 +4,11 @@ return {
     lazy = false,
     dependencies = { 'mason.nvim' },
     config = function()
+      local icons = require('icons')
+      for type, icon in pairs(icons.diagnostics) do
+        local hl = 'DiagnosticSign' .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl })
+      end
       local navic = require('nvim-navic')
       local on_attach = function(client, bufnr)
         if client.server_capabilities.documentSymbolProvider then
