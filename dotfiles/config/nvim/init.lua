@@ -29,6 +29,10 @@ require('lazy').setup(plugins, {
   rocks = {
     enabled = false,
   },
+  ui = {
+    border = 'single',
+    backdrop = 100,
+  },
   performance = {
     rtp = {
       -- Stuff I don't use.

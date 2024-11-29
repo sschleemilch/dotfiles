@@ -45,7 +45,7 @@ return {
         backdrop = 100,
         height = 0.7,
         width = 0.6,
-        border = 'none',
+        border = 'single',
         preview = {
           hidden = 'hidden',
         },
@@ -55,7 +55,7 @@ return {
         cwd_only = true,
       },
       fzf_opts = {
-        ['--padding'] = '1,2,2,2',
+        ['--padding'] = '1,1,2,2',
       },
       fzf_colors = true,
     },

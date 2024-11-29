@@ -51,9 +51,11 @@ return {
     priority = 1000,
     name = 'rose-pine',
     opts = {
-      dim_inactive_windows = true,
+      dim_inactive_windows = false,
       highlight_groups = {
         CursorLine = { bg = 'surface' },
+        FloatBorder = { bg = 'base' },
+        NormalFloat = { bg = 'base' },
       },
     },
     init = function()

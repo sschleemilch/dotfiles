@@ -10,6 +10,11 @@ return {
     build = ':MasonUpdate',
     opts_extend = { 'ensure_installed' },
     opts = {
+      ui = {
+        border = 'single',
+        width = 0.8,
+        height = 0.8,
+      },
       ensure_installed = {
         'stylua',
         'shfmt',
