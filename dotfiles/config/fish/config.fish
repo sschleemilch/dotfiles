@@ -30,6 +30,8 @@ set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git"'
 set -x EDITOR nvim
 set -x VISUAL nvim
 
+set -U fish_greeting
+
 if status is-interactive
   fish_vi_key_bindings
   function starship_transient_prompt_func
