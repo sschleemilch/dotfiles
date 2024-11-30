@@ -9,18 +9,28 @@ return {
         local hl = 'DiagnosticSign' .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl })
       end
-      local navic = require('nvim-navic')
-      local on_attach = function(client, bufnr)
-        if client.server_capabilities.documentSymbolProvider then
-          navic.attach(client, bufnr)
-        end
-      end
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-
       local lspconfig = require('lspconfig')
+
+      local border = {
+        { '╭', 'FloatBorder' },
+        { '─', 'FloatBorder' },
+        { '╮', 'FloatBorder' },
+        { '│', 'FloatBorder' },
+        { '╯', 'FloatBorder' },
+        { '─', 'FloatBorder' },
+        { '╰', 'FloatBorder' },
+        { '│', 'FloatBorder' },
+      }
+
+      -- LSP settings (for overriding per client)
+      local handlers = {
+        ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+      }
+
       lspconfig.pyright.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
+        handlers = handlers,
       }
       lspconfig.ruff.setup {
         capabilities = capabilities,
@@ -34,34 +44,27 @@ return {
             },
           },
         },
-        on_attach = on_attach,
         capabilities = capabilities,
       }
       lspconfig.dockerls.setup {
         capabilities = capabilities,
       }
       lspconfig.gopls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
       }
       lspconfig.ts_ls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
       }
       lspconfig.jsonls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
       }
       lspconfig.yamlls.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
       }
       lspconfig.astro.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
       }
       lspconfig.ltex.setup {
-        on_attach = on_attach,
         capabilities = capabilities,
       }
     end,

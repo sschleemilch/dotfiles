@@ -66,12 +66,4 @@ return {
       },
     },
   },
-  {
-    'SmiteshP/nvim-navic',
-    lazy = false,
-    opts = {
-      depth_limit = 6,
-      highlight = true,
-    },
-  },
 }

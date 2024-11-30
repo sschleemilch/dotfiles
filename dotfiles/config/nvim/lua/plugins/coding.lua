@@ -43,17 +43,34 @@ return {
     'saghen/blink.cmp',
     lazy = false,
     version = 'v0.6.2',
-    opts = {
-      keymap = { preset = 'default' },
+    config = {
+      keymap = 'default',
       nerd_font_variant = 'normal',
-      highlight = {
-        use_nvim_cmp_as_default = false,
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
       },
-      -- experimental auto-brackets support
-      accept = { auto_brackets = { enabled = true } },
-
-      -- experimental signature help support
-      trigger = { signature_help = { enabled = true } },
+      trigger = {
+        signature_help = {
+          enabled = true,
+        },
+      },
+      windows = {
+        autocomplete = {
+          border = 'rounded',
+          draw = {
+            columns = { { 'kind' }, { 'label', 'label_description', gap = 1 } },
+          },
+        },
+        signature_help = {
+          border = 'rounded',
+          max_height = 1,
+        },
+        documentation = {
+          border = 'rounded',
+        },
+      },
     },
   },
 }

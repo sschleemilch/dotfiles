@@ -53,9 +53,22 @@ return {
     opts = {
       dim_inactive_windows = false,
       highlight_groups = {
+        -- General
         CursorLine = { bg = 'surface' },
         FloatBorder = { bg = 'base' },
+        FloatTitle = { bg = 'base' },
+        FloatFooter = { bg = 'base' },
         NormalFloat = { bg = 'base' },
+        Pmenu = { bg = 'base', fg = 'muted' },
+        -- Plugin specific
+        BlinkCmpKindFunction = { fg = 'rose' },
+        BlinkCmpKindMethod = { fg = 'rose' },
+        BlinkCmpKindVariable = { fg = 'iris' },
+        BlinkCmpKindKeyword = { fg = 'pine' },
+        BlinkCmpKindText = { fg = 'text' },
+        BlinkCmpKindConstant = { fg = 'gold' },
+        BlinkCmpSignatureHelpBorder = { fg = 'muted' },
+        MiniFilesTitleFocused = { bg = 'base' },
       },
     },
     init = function()

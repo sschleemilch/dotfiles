@@ -45,7 +45,7 @@ return {
         backdrop = 100,
         height = 0.7,
         width = 0.6,
-        border = 'single',
+        border = 'rounded',
         preview = {
           hidden = 'hidden',
         },

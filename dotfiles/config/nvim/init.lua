@@ -21,7 +21,6 @@ require('settings')
 require('keymaps')
 require('autocommands')
 require('filetypes')
-require('winbar')
 require('lsp_progress')
 
 require('lazy').setup(plugins, {
@@ -30,7 +29,7 @@ require('lazy').setup(plugins, {
     enabled = false,
   },
   ui = {
-    border = 'single',
+    border = 'rounded',
     backdrop = 100,
   },
   performance = {
