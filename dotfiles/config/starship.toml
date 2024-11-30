@@ -36,11 +36,11 @@ style = "bg:rose fg:overlay"
 format = '[\($state( $progress_current/$progress_total)\) ]($style)'
 
 [git_status]
-conflicted = "󱐋"
+conflicted = "󰉁"
 deleted = " "
-behind = ""
-ahead = ""
-diverged = ""
+behind = "󰁅"
+ahead = "󰁝"
+diverged = " "
 format = "[$ahead_behind$all_status ](bg:rose fg:overlay)"
 modified = " "
 renamed = " "
