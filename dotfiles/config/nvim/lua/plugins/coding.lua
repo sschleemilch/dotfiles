@@ -60,7 +60,7 @@ return {
         autocomplete = {
           border = 'rounded',
           draw = {
-            columns = { { 'kind' }, { 'label', 'label_description', gap = 1 } },
+            columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
           },
         },
         signature_help = {
