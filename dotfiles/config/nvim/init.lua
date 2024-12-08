@@ -22,6 +22,7 @@ require('keymaps')
 require('autocommands')
 require('filetypes')
 require('lsp_progress')
+require('winbar')
 
 require('lazy').setup(plugins, {
   change_detection = { notify = false },

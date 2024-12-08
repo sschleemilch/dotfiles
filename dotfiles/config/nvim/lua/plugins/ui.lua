@@ -41,28 +41,32 @@ return {
   },
   {
     'sschleemilch/slimline.nvim',
-    -- 'slimline',
+    -- 'slimline.nvim',
     lazy = false,
     dev = false,
     opts = {
       style = 'fg',
+      bold = true,
       mode_follow_style = true,
-      verbose_mode = false,
+      verbose_mode = true,
       spaces = {
         components = '',
         left = '',
         right = '',
       },
-      hl = {
-        primary = 'Comment',
+      components = {
+        left = {
+          'mode',
+          'git',
+        },
       },
       sep = {
         hide = {
           first = true,
           last = true,
         },
-        left = '',
-        right = '',
+        left = '',
+        right = '',
       },
     },
   },
