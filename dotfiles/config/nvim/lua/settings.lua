@@ -50,7 +50,7 @@ opt.scrolloff = 4 -- lines of context on borders
 opt.sidescrolloff = 8 -- columns context
 opt.shiftround = true -- round indent
 opt.shiftwidth = 2 -- size of an indent
-opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.shortmess:append { I = true, c = true, C = true }
 opt.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically

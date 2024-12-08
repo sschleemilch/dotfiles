@@ -1,21 +1,22 @@
 format = """
+[](fg:foam bg:base)\
 $directory\
-[](fg:foam bg:rose)\
+[](fg:foam bg:rose)\
 $git_branch\
 $git_state\
 $git_status\
-[](fg:rose bg:iris)\
+[](fg:rose bg:iris)\
 $direnv\
-[](fg:iris bg:gold)\
+[](fg:iris bg:gold)\
 $nodejs\
 $golang\
 $rust\
 $python\
-[](fg:gold bg:subtle)\
+[](fg:gold bg:subtle)\
 $jobs\
-[](fg:subtle bg:love)\
+[](fg:subtle bg:love)\
 $status\
-[](fg:love bg:base)\
+[](fg:love bg:base)\
 $line_break\
 $character\
 """

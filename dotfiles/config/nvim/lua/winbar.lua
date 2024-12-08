@@ -17,7 +17,7 @@ function M.update()
   if path ~= '' then
     path = string.gsub(path, '/', ' > ') .. ' > '
   end
-  vim.wo.winbar = '%#SlimlineSecondary# ' .. path .. '%#SlimlinePrimary#' .. file .. '%#Slimline#'
+  vim.wo.winbar = '%#Comment# ' .. path .. '%#Normal#' .. file
 end
 
 return M
