@@ -67,6 +67,9 @@ return {
       lspconfig.ltex.setup {
         capabilities = capabilities,
       }
+      lspconfig.buf_ls.setup {
+        capabilities = capabilities,
+      }
     end,
     keys = {
       { '<leader>cl', '<cmd>LspInfo<cr>', desc = 'Lsp Info' },

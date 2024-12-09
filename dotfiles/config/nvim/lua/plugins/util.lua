@@ -31,6 +31,7 @@ return {
         'ltex-ls',
         'goimports',
         'gofumpt',
+        'buf',
       },
     },
     config = function(_, opts)

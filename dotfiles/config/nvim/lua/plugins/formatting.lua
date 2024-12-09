@@ -31,6 +31,7 @@ return {
         markdown = { 'prettier' },
         graphql = { 'prettier' },
         go = { 'goimports', 'gofumpt' },
+        proto = { 'buf' },
       },
       format_on_save = {
         timeout_ms = 500,
