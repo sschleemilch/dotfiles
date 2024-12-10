@@ -12,34 +12,6 @@ return {
     end,
   },
   {
-    'echasnovski/mini.indentscope',
-    enabled = false,
-    lazy = false,
-    config = true,
-  },
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    lazy = false,
-    enabled = false,
-    opts = {
-      indent = {
-        char = '╎',
-        tab_char = '╎',
-        -- tab_char = '│',
-      },
-      scope = { show_start = false, show_end = false },
-      exclude = {
-        filetypes = {
-          'fzf',
-          'help',
-          'lazy',
-          'mason',
-        },
-      },
-    },
-    main = 'ibl',
-  },
-  {
     'sschleemilch/slimline.nvim',
     -- 'slimline.nvim',
     lazy = false,

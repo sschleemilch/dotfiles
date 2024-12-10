@@ -29,6 +29,8 @@ return {
         'prettier',
         'yaml-language-server',
         'ltex-ls',
+        'goimports',
+        'gofumpt',
       },
     },
     config = function(_, opts)

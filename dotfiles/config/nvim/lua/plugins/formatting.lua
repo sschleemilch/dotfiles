@@ -30,6 +30,7 @@ return {
         yaml = { 'prettier' },
         markdown = { 'prettier' },
         graphql = { 'prettier' },
+        go = { 'goimports', 'gofumpt' },
       },
       format_on_save = {
         timeout_ms = 500,
