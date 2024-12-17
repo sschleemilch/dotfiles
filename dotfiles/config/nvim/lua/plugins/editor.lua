@@ -57,6 +57,9 @@ return {
       fzf_opts = {
         ['--padding'] = '1,1,2,2',
       },
+      defaults = {
+        formatter = 'path.dirname_first',
+      },
       fzf_colors = true,
     },
     init = function()
@@ -73,8 +76,8 @@ return {
       { '<leader>fh', '<cmd>FzfLua helptags<cr>', desc = 'Help' },
       { '<leader>fq', '<cmd>FzfLua quickfix<cr>', desc = 'Quickfix' },
       { '<leader>fs', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Symbols' },
-      { '<leader>fdd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Diagnostics Document' },
-      { '<leader>fdw', '<cmd>FzfLua diagnostics_workspace<cr>', desc = 'Diagnostics Workspace' },
+      { '<leader>fd', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Diagnostics Document' },
+      { '<leader>fD', '<cmd>FzfLua diagnostics_workspace<cr>', desc = 'Diagnostics Workspace' },
       { '<leader>fz', '<cmd>FzfLua<cr>', desc = 'Fzf' },
     },
   },
@@ -105,7 +108,13 @@ return {
     lazy = false,
     opts = {},
     keys = {
-      { '<leader>ft', '<cmd>TodoQuickFix<cr>', desc = 'Todos' },
+      {
+        '<leader>ft',
+        function()
+          require('todo-comments.fzf').todo()
+        end,
+        desc = 'Todo',
+      },
     },
   },
   {
