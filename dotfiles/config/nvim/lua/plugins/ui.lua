@@ -17,10 +17,11 @@ return {
     lazy = false,
     dev = false,
     opts = {
-      style = 'bg',
+      style = 'fg',
       bold = true,
-      mode_follow_style = true,
+      mode_follow_style = false,
       verbose_mode = true,
+      workspace_diagnostics = true,
       spaces = {
         --   components = '',
         -- left = '',

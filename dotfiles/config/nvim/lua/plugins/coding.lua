@@ -42,34 +42,34 @@ return {
   {
     'saghen/blink.cmp',
     lazy = false,
-    version = 'v0.6.2',
+    version = 'v0.*',
     config = {
-      keymap = 'default',
-      nerd_font_variant = 'normal',
-      accept = {
-        auto_brackets = {
-          enabled = true,
-        },
+      keymap = {
+        preset = 'default',
       },
-      trigger = {
-        signature_help = {
-          enabled = true,
-        },
-      },
-      windows = {
-        autocomplete = {
+      completion = {
+        menu = {
           border = 'rounded',
           draw = {
             columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
           },
         },
-        signature_help = {
-          border = 'rounded',
-          max_height = 1,
-        },
         documentation = {
+          window = {
+            border = 'rounded',
+          },
+        },
+      },
+
+      signature = {
+        enabled = true,
+        window = {
+          max_height = 1,
           border = 'rounded',
         },
+      },
+      appearance = {
+        nerd_font_variant = 'normal',
       },
     },
   },

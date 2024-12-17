@@ -66,7 +66,7 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = true },
-      words = { enabled = true },
+      words = { enabled = false },
       dashboard = {
         enabled = true,
         preset = {
