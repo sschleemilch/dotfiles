@@ -18,7 +18,7 @@ return {
       ensure_installed = {
         'stylua',
         'shfmt',
-        'pyright',
+        'basedpyright',
         'ruff',
         'lua-language-server',
         'dockerfile-language-server',

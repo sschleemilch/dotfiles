@@ -28,7 +28,7 @@ return {
         ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
       }
 
-      lspconfig.pyright.setup {
+      lspconfig.basedpyright.setup {
         capabilities = capabilities,
         handlers = handlers,
       }
