@@ -49,6 +49,9 @@ return {
       },
       completion = {
         menu = {
+          auto_show = function(ctx)
+            return ctx.mode ~= 'cmdline'
+          end,
           border = 'rounded',
           draw = {
             columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
