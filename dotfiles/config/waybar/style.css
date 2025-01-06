@@ -1,31 +1,29 @@
-@import "macchiato.css";
+@import "rose-pine-moon.css";
 
 * {
-    font-family: "FiraCode Nerd Font";
-    font-size: 16px;
+  font-family: "FiraCode Nerd Font";
+  font-size: 16px;
 }
 
 window#waybar {
-    background-color: @base;
-    transition-property: background-color;
-    transition-duration: 0.5s;
+  background-color: @base;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 tooltip {
-  background: @base;
-  border: 1px solid @surface1;
+  background: @surface;
+  border: 1px solid @gold;
 }
 
 tooltip label {
-  color: white;
+  color: @text;
 }
 
 label:focus {
-  background-color: #000000;
+  background-color: @base;
 }
 
 /* ALL MODULES */
@@ -47,156 +45,102 @@ label:focus {
 #custom-fan,
 #custom-weather,
 #custom-separator {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    color: @surface2;
-    background: @surface0;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-}
-
-/* BORDERED MODULES ON THE LEFT */
-#cpu,
-#systemd-failed-units,
-#custom-updates,
-#custom-weather,
-#wireplumber {
-    padding-left: 1em;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-}
-
-/* BORDERED MODULES ON THE RIGHT */
-{%@@ if profile == "desos" @@%}
-#disk,
-{%@@ elif profile == "ladon" @@%}
-#custom-fan,
-{%@@ endif @@%}
-#custom-updates,
-#custom-weather,
-#systemd-failed-units,
-#custom-poweroff {
-    padding-right: 1rem;
-    border-top-right-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-}
-
-#workspaces {
-    padding: 0;
+  color: @subtle;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 #custom-archlogo {
-  font-size: 1.75em;
-  padding-right: 0.75em;
+  font-size: 1.5em;
   padding-left: 0.5em;
-  color: @blue;
+  padding-right: 1em;
+  color: @subtle;
 }
 
 /* LEFT */
-#cpu {
-    color: @subtext0;
+#custom-reboot {
+  color: @rose;
 }
-#temperature {
-    color: @peach;
+#custom-logout {
+  color: @foam;
 }
-#temperature.critical {
-    color: @surface0;
-    background: @red;
+#custom-lock {
+  color: @iris;
 }
-#memory {
-    color: @pink;
-}
-#disk {
-    color: @sapphire;
-}
-#custom-updates {
-    color: @yellow;
-    margin-left: 1em;
-}
-#custom-updates.ok {
-    color: @green;
+#custom-poweroff {
+  color: @rose;
 }
 #custom-fan.on {
-    color: @peach;
+  color: @gold;
 }
 #custom-fan.off {
-    color: @subtext0;
-}
-#custom-weather {
-    color: @blue;
-    margin-left: 1em;
+  color: @muted;
 }
 #systemd-failed-units.degraded {
-    color: @red;
+  color: @love;
 }
-#systemd-failed-units {
-    margin-left: 1em;
-}
-
 
 /* MIDDLE */
 #workspaces button {
-    color: @overlay0;
-    box-shadow: inset 0 -3px transparent;
-    transition: all 0.25s cubic-bezier(.55,-0.68,.48,1.68);
+  color: @highlightHigh;
 }
 #workspaces button.focused {
-    background-color: transparent;
+  background-color: transparent;
 }
 #workspace button.hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 #workspaces button.active {
-    color: @blue;
+  color: @gold;
+}
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  background: transparent;
+  border: transparent;
 }
 
 /* RIGHT */
+#custom-updates {
+  color: @gold;
+}
+#custom-updates.ok {
+  color: @subtle;
+}
+#custom-weather {
+  color: @subtle;
+}
 #backlight {
-    color: @rosewater;
+  color: @gold;
 }
 #wireplumber {
-    color: @mauve;
+  color: @subtle;
 }
 #battery {
-    color: @text;
+  color: @subtle;
 }
 #clock {
-    color: @subtext0;
-    padding-right: 20px;
-    padding-left: 15px;
+  color: @subtle;
+  padding-right: 20px;
+  padding-left: 15px;
 }
 #network {
-    color: @teal;
+  color: @subtle;
 }
 #bluetooth {
-    color: @blue;
-}
-#custom-reboot {
-    color: @peach;
-}
-#custom-logout {
-    color: @yellow;
-}
-#custom-lock {
-    color: @mauve;
-}
-#custom-poweroff {
-    color: @maroon;
-    padding-right: 1.5rem;
+  color: @subtle;
 }
 #battery.warning:not(.charging) {
-    color: @surface0;
-    background-color: @yellow;
+  color: @rose;
 }
 #battery.critical:not(.charging) {
-    color: @surface0;
-    background-color: @red;
+  color: @love;
 }
 #battery.discharging {
-    color: @yellow;
+  color: @gold;
 }
 #battery.charging,
 #battery.full,
 #battery.plugged {
-    color: @green;
+  color: @foam;
 }

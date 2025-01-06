@@ -1,287 +1,280 @@
 {
-    "height": 50,
-    "exclusive": true,
-    "margin-top": 0,
-    "margin-left": 0,
-    "margin-bottom": 0,
-    "margin-right": 0,
-{%@@ if profile == "desos" @@%}
-    "output": "DP-1",
-{%@@ endif @@%}
-    "spacing": 0,
-    "layer": "top",
-    "modules-left": [
-        "custom/archlogo",
-        "cpu",
-        "temperature#cpu",
-        "memory",
-        "disk",
-    {%@@ if profile == "ladon" @@%}
-        "custom/fan",
-    {%@@ endif @@%}
-        "systemd-failed-units",
-        "custom/updates",
-        "custom/weather"
-    ],
-    "modules-center": [
-        "hyprland/workspaces"
-    ],
-    "modules-right": [
-        "wireplumber",
-        "backlight",
-        "bluetooth",
-        "battery",
-        "network",
-        "custom/separator#line",
-        "group/power",
-        "clock"
-    ],
-    "tray": {
-        "icon-size": 25,
-        "spacing": 8
+  "height": 40,
+  "exclusive": true,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-bottom": 0,
+  "margin-right": 0,
+  "output": "DP-1",
+  "spacing": 4,
+  "layer": "top",
+  "modules-left": [
+    "group/power",
+    "cpu",
+    "memory",
+    "disk",
+    "systemd-failed-units"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "custom/updates",
+    "custom/weather",
+    "wireplumber",
+    "backlight",
+    "bluetooth",
+    "battery",
+    "network",
+    "clock"
+  ],
+  "battery": {
+    "interval": 30,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
     },
-    "battery": {
-        "interval": 30,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "󰂎",
-            "󰁺",
-            "󰁻",
-            "󰁼",
-            "󰁽",
-            "󰁾",
-            "󰁿",
-            "󰂀",
-            "󰂁",
-            "󰂂",
-            "󰁹"
-        ]
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%H:%M, %a %d}",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "active": "",
+      "urgent": "",
+      "default": ""
     },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%H:%M, %a %d}",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "on-click": "activate",
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": "",
-        }
-    },
-    "backlight": {
-        "device": "amdgpu_bl1",
-        "format": "{icon}{percent}%",
-        "format-icons": [" ", " ", " ", "󰃝 ", "󰃞 ", "󰃟 ", "󰃠 "],
-        "on-scroll-up": "brightnessctl set 1%+",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "tooltip": false
-    },
-    "custom/updates": {
-        "format": "{}",
-        "exec": "~/.config/waybar/scripts/updates",
-        "interval": 3600,
-        "signal": 8,
-        "return-type": "json",
-        "on-click": "~/.config/waybar/scripts/updates update; pkill -SIGRTMIN+8 waybar"
-    },
-    "custom/fan": {
-        "format": "{}",
-        "exec": "~/.config/waybar/scripts/fan",
-        "interval": 5,
-        "return-type": "json"
-    },
-    "custom/weather": {
-        "format": "{}",
-        "interval": 1800,
-        "return-type": "json",
-        "exec": "~/.config/waybar/scripts/weather/weather"
-    },
-    "cpu": {
-        "interval": 2,
-        "format": " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
-        "format-icons": [
-            "<span color='#a6da95'>▁</span>", // green
-            "<span color='#8aadf4'>▂</span>", // blue
-            "<span color='#cad3f5'>▃</span>", // white
-            "<span color='#cad3f5'>▄</span>", // white
-            "<span color='#eed49f'>▅</span>", // yellow
-            "<span color='#eed49f'>▆</span>", // yellow
-            "<span color='#f5a97f'>▇</span>", // orange
-            "<span color='ed8796'>█</span>" // red
-        ]
-    },
-    "disk": {
-        "interval": 60,
-        "format": "󰋊 {percentage_used}%",
-        "path": "/",
-        "tooltip": true,
-        "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
-        "on-click": "alacritty --title btop -e btop"
-    },
-    "memory": {
-        "interval": 10,
-        "format": "󰾆 {used:0.1f}G",
-        "tooltip": true,
-        "tooltip-format": "Memory - {used:0.1f}GB used",
-        "on-click": "alacritty --title btop -e btop"
-    },
-    "wireplumber": {
-        "format": "{icon} {volume}%",
-        "format-muted": "",
-        "on-click": "helvum",
-        "format-icons": ["", "", "󰕾", ""],
-    },
-    "hyprland/window" : {
-        "format": "󰈈 {}",
-    },
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 14,
-        "icon-theme": "Papirus",
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "ignore-list": [
-            "Alacritty"
-        ],
-        "rewrite": {
-            "Firefox Web Browser": "Firefox"
-        }
-    },
-    "temperature#cpu": {
-        "interval": 10,
-        "tooltip": false,
-        "critical-threshold": 80,
-        "format": " {temperatureC}°C",
-        "hwmon-path": "/sys/class/hwmon/hwmon{{@@ hwmon @@}}/temp1_input"
-    },
-
-    "group/network": {
-        "orientation": "horizontal",
-        "modules": [
-            "network",
-            "network#speed"
-        ],
-        "drawer": {}
-    },
-    "network": {
-        "interface": "{{@@ wifi @@}}",
-        "format": "{ifname}",
-        "format-wifi": "{icon}",
-        "format-ethernet": "󰌘",
-        "format-disconnected": "󰌙",
-        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-        "tooltip-format-wifi": "{icon} {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Disconnected",
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
-        "max-length": 50,
-        "on-click": "alacritty --title nmtui -e nmtui"
-    },
-    "network#speed": {
-        "interval": 2,
-        "format": "{ifname}",
-        "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-        "format-ethernet": " {bandwidthDownBytes}",
-        "format-disconnected": "󰌙", 
-        "tooltip-format": "{ipaddr}",
-        "format-linked": "󰈁 {ifname} (No IP)",
-        "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "󰌙 Disconnected",
-        "max-length": 50,
-        "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"]
-    },
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "󰂳",
-        "format-connected": "󰂱 {num_connections}",
-        "tooltip-format": " {device_alias}",
-        "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
-        "tooltip": true,
-        "on-click": "blueman-manager",
-    },
-
-    // SEPARATORS
-    "custom/separator#dot-line": {
-        "format": "",
-        "interval": "once",
-        "tooltip": false
-    },
-    "custom/separator#line": {
-        "format": "|",
-        "interval": "once",
-        "tooltip": false
-    },
-    "custom/separator#dot": {
-        "format": "",
-        "interval": "once",
-        "tooltip": false
-    },
-
-    // POWER MENU ENTRIES AND GROUP
-    "group/power": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/poweroff",
-            "custom/lock",
-            "custom/logout",
-            "custom/reboot",
-        ],
-        "drawer": {
-            "transition-left-to-right": false
-        }
-    },
-    "custom/lock": {
-        "format": "󰌾{}",
-        "exec": "echo ; echo 󰷛  Screen lock",
-        "interval" : 86400, // once every day
-        "tooltip": true,
-        "on-click": "swaylock",
-    },
-    "custom/poweroff": {
-        "format": "{}",
-        "exec": "echo ; echo  Shutdown",
-        "interval" : 86400, // once every day
-        "tooltip": true,
-        "on-click": "systemctl poweroff",
-    },
-    "custom/logout": {
-        "format": "󰗼{}",
-        "exec": "echo ; echo 󰗼 Logout",
-        "interval" : 86400, // once every day
-        "tooltip": true,
-        "on-click": "hyprctl dispatch exit 0",
-    },
-    "custom/reboot": {
-        "format": "",
-        "exec": "echo ; echo  Reboot",
-        "interval" : 86400, // once every day
-        "tooltip": true,
-        "on-click": "systemctl reboot",
-    },
-    "custom/archlogo": {
-        "format": "",
-        "interval": "once",
-        "tooltip": false
-    },
-    "systemd-failed-units": {
-        "hide-on-ok": true,
-        "format": "✗ {nr_failed}",
-        "format-ok": "✓",
-        "system": true,
-        "user": true
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
     }
+  },
+  "backlight": {
+    "device": "amdgpu_bl1",
+    "format": "{icon}{percent}%",
+    "format-icons": [
+      " ",
+      " ",
+      " ",
+      "󰃝 ",
+      "󰃞 ",
+      "󰃟 ",
+      "󰃠 "
+    ],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "tooltip": false
+  },
+  "custom/updates": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/updates",
+    "interval": 3600,
+    "signal": 8,
+    "return-type": "json"
+  },
+  "custom/fan": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/fan",
+    "interval": 5,
+    "return-type": "json"
+  },
+  "custom/weather": {
+    "format": "{}",
+    "interval": 1800,
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/weather/weather"
+  },
+  "cpu": {
+    "interval": 2,
+    "format": " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+    "format-icons": [
+      "<span color='#6e6a86'>▁</span>", // green
+      "<span color='#6e6a86'>▂</span>", // blue
+      "<span color='#e0def4'>▃</span>", // white
+      "<span color='#e0def4'>▄</span>", // white
+      "<span color='#f6c177'>▅</span>", // yellow
+      "<span color='#f6c177'>▆</span>", // yellow
+      "<span color='#ea9a97'>▇</span>", // orange
+      "<span color='#eb6f92'>█</span>" // red
+    ]
+  },
+  "memory": {
+    "interval": 10,
+    "format": "  {used:0.1f}G",
+    "tooltip": true,
+    "tooltip-format": "Memory - {used:0.1f}GB used",
+    "on-click": "kitty --title btop btop"
+  },
+  "disk": {
+    "interval": 60,
+    "format": "󰋊 {percentage_used}%",
+    "path": "/"
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "on-click": "helvum",
+    "format-icons": [
+      "",
+      "",
+      "󰕾",
+      ""
+    ]
+  },
+  "hyprland/window": {
+    "format": "󰈈 {}"
+  },
+  "group/network": {
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "network#speed"
+    ],
+    "drawer": {}
+  },
+  "network": {
+    "interface": "wlp0s20f3",
+    "format": "{ifname}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰌘",
+    "format-disconnected": "󰌙",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{icon} {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "max-length": 50,
+    "on-click": "kitty --title nmtui nmtui"
+  },
+  "network#speed": {
+    "interval": 2,
+    "format": "{ifname}",
+    "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "format-ethernet": " {bandwidthDownBytes}",
+    "format-disconnected": "󰌙",
+    "tooltip-format": "{ipaddr}",
+    "format-linked": "󰈁 {ifname} (No IP)",
+    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "󰌙 Disconnected",
+    "max-length": 50,
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ]
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂳",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": " {device_alias}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+    "tooltip": true,
+    "on-click": "blueman-manager"
+  },
+  // SEPARATORS
+  "custom/separator#dot-line": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/separator#line": {
+    "format": "|",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/separator#dot": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+  // POWER MENU ENTRIES AND GROUP
+  "group/power": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/archlogo",
+      "custom/poweroff",
+      "custom/lock",
+      "custom/logout",
+      "custom/reboot"
+    ],
+    "drawer": {
+      "transition-left-to-right": true
+    }
+  },
+  "custom/lock": {
+    "format": "󰌾{}",
+    "exec": "echo ; echo 󰷛  Screen lock",
+    "interval": 86400, // once every day
+    "tooltip": true,
+    "on-click": "swaylock"
+  },
+  "custom/poweroff": {
+    "format": "{}",
+    "exec": "echo ; echo  Shutdown",
+    "interval": 86400, // once every day
+    "tooltip": true,
+    "on-click": "systemctl poweroff"
+  },
+  "custom/logout": {
+    "format": "󰗼{}",
+    "exec": "echo ; echo 󰗼 Logout",
+    "interval": 86400, // once every day
+    "tooltip": true,
+    "on-click": "hyprctl dispatch exit 0"
+  },
+  "custom/reboot": {
+    "format": "",
+    "exec": "echo ; echo  Reboot",
+    "interval": 86400, // once every day
+    "tooltip": true,
+    "on-click": "systemctl reboot"
+  },
+  "custom/archlogo": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+  "systemd-failed-units": {
+    "hide-on-ok": true,
+    "format": "✗ {nr_failed}",
+    "format-ok": "✓",
+    "system": true,
+    "user": true
+  }
 }

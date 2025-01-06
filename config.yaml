@@ -66,10 +66,16 @@ dotfiles:
   f_starship.toml:
     src: config/starship.toml
     dst: ~/.config/starship.toml
-  d_zed:
-    src: config/zed
-    dst: ~/.config/zed
+  d_fuzzel:
+    src: config/fuzzel
+    dst: ~/.config/fuzzel
 profiles:
+  hyprland:
+    dotfiles:
+      - d_hypr
+      - d_swaylock
+      - d_fuzzel
+      - d_waybar
   cli:
     dotfiles:
       - d_git
@@ -84,19 +90,16 @@ profiles:
     dotfiles:
       - d_wallpaper
       - f_face
-      - d_zed
     include:
       - cli
+      - hyprland
   ladon:
     dotfiles:
       - d_wallpaper
       - f_face
-      - d_zed
     include:
       - cli
   work:
-    dotfiles:
-      - d_zed
     include:
       - cli
     variables:
