@@ -62,6 +62,34 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            },
+          },
+        },
+        layout = {
+          preview = false,
+          layout = {
+            backdrop = false,
+            box = 'horizontal',
+            width = 0.6,
+            min_width = 120,
+            height = 0.7,
+            {
+              box = 'vertical',
+              border = 'rounded',
+              title = '{source} {live}',
+              title_pos = 'center',
+              { win = 'input', height = 1, border = 'bottom' },
+              { win = 'list', border = 'none' },
+            },
+            { win = 'preview', border = 'rounded', width = 0.5 },
+          },
+        },
+      },
       bigfile = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -131,6 +159,126 @@ return {
             },
           }
         end,
+      },
+      {
+        '<leader><leader>',
+        function()
+          Snacks.picker.files()
+        end,
+        desc = 'Find Files',
+      },
+      {
+        '<leader>ff',
+        function()
+          Snacks.picker.files()
+        end,
+        desc = 'Find Files',
+      },
+      {
+        '<leader>,',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Buffers',
+      },
+      {
+        '<leader>fb',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Buffers',
+      },
+      {
+        '<leader>fx',
+        function()
+          Snacks.picker()
+        end,
+        desc = 'Picker',
+      },
+      {
+        '<leader>/',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = 'Grep',
+      },
+      {
+        '<leader>fg',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = 'Grep',
+      },
+      {
+        '<leader>fr',
+        function()
+          Snacks.picker.recent()
+        end,
+        desc = 'Recent',
+      },
+      {
+        '<leader>fh',
+        function()
+          Snacks.picker.help()
+        end,
+        desc = 'Help Pages',
+      },
+      {
+        '<leader>fq',
+        function()
+          Snacks.picker.qflist()
+        end,
+        desc = 'Quickfix List',
+      },
+      {
+        '<leader>fs',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = 'LSP Symbols',
+      },
+      {
+        '<leader>fd',
+        function()
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = 'Diagnostics Buffer',
+      },
+      {
+        '<leader>fD',
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = 'Diagnostics Workspace',
+      },
+      {
+        'gd',
+        function()
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = 'Goto Definition',
+      },
+      {
+        'gr',
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = 'References',
+      },
+      {
+        'gI',
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = 'Goto Implementation',
+      },
+      {
+        'gy',
+        function()
+          Snacks.picker.lsp_type_definitions()
+        end,
+        desc = 'Goto T[y]pe Definition',
       },
     },
   },
