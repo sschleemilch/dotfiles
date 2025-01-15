@@ -62,11 +62,19 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+      input = {},
       picker = {
         win = {
           input = {
             keys = {
               ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+            },
+          },
+        },
+        sources = {
+          recent = {
+            filter = {
+              cwd = true,
             },
           },
         },

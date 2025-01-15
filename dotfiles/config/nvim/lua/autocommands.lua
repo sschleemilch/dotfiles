@@ -83,7 +83,6 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter', 'BufFilePost', 'BufWritePost', 'Tex
   end,
 })
 
-
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup('close_with_q'),
