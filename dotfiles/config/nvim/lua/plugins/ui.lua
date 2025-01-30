@@ -22,18 +22,6 @@ return {
       mode_follow_style = false,
       verbose_mode = true,
       workspace_diagnostics = true,
-      spaces = {
-        --   components = '',
-        -- left = '',
-        -- right = '',
-      },
-      components = {
-        left = {
-          'mode',
-          'git',
-          'recording',
-        },
-      },
       sep = {
         hide = {
           first = false,

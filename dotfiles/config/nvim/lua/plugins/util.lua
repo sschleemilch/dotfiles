@@ -77,6 +77,9 @@ return {
               cwd = true,
             },
           },
+          buffers = {
+            current = false,
+          },
         },
         layout = {
           preview = false,
