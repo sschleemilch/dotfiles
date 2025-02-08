@@ -1,0 +1,18 @@
+return {
+  {
+    'MagicDuck/grug-far.nvim',
+    opts = {
+      headerMaxWidth = 80,
+    },
+    cmd = 'GrugFar',
+    config = true,
+    mode = { 'n', 'v' },
+    keys = {
+      {
+        '<leader>sr',
+        '<cmd>GrugFar<cr>',
+        desc = 'Replace in files (Grug-far)',
+      },
+    },
+  },
+}

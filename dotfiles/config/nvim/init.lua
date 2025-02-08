@@ -15,15 +15,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = 'plugins'
-
 require('settings')
 require('keymaps')
 require('autocommands')
 require('filetypes')
 require('lsp_progress')
 
-require('lazy').setup(plugins, {
+require('lazy').setup('plugins', {
   change_detection = { notify = false },
   rocks = {
     enabled = false,
