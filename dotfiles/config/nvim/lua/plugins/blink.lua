@@ -3,7 +3,7 @@ return {
     'saghen/blink.cmp',
     lazy = false,
     version = 'v0.*',
-    config = {
+    opts = {
       keymap = {
         preset = 'default',
       },
