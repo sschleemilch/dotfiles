@@ -17,7 +17,7 @@ return {
     lazy = false,
     enabled = false,
     priority = 1000,
-    config = {
+    opts = {
       dimInactive = true,
       colors = {
         theme = {
@@ -69,6 +69,7 @@ return {
         BlinkCmpKindConstant = { fg = 'gold' },
         BlinkCmpSignatureHelpBorder = { fg = 'muted' },
         MiniFilesTitleFocused = { bg = 'base' },
+        SnacksIndentChunk = { fg = 'foam' },
       },
     },
     init = function()

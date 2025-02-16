@@ -5,6 +5,16 @@ return {
     lazy = false,
     opts = {
       input = {},
+      indent = {
+        enabled = true,
+        chunk = {
+          enabled = true,
+          char = {
+            corner_top = '╭',
+            corner_bottom = '╰',
+          },
+        },
+      },
       picker = {
         win = {
           input = {
