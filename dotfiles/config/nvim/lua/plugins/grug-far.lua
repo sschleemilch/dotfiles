@@ -5,7 +5,6 @@ return {
       headerMaxWidth = 80,
     },
     cmd = 'GrugFar',
-    config = true,
     mode = { 'n', 'v' },
     keys = {
       {

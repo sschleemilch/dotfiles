@@ -9,11 +9,17 @@ return {
     connected = ' 󰌘 ',
     lines = ' ',
   },
+  -- diagnostics = {
+  --   Error = '',
+  --   Warn = '',
+  --   Hint = '',
+  --   Info = '',
+  -- },
   diagnostics = {
-    Error = '',
-    Warn = '',
-    Hint = '',
-    Info = '',
+    Error = ' ',
+    Warn = ' ',
+    Hint = ' ',
+    Info = ' ',
   },
   separators = {
     triangle_lower_left = '',

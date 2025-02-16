@@ -9,8 +9,5 @@ return {
         },
       }
     end,
-    config = function(_, opts)
-      require('mini.hipatterns').setup(opts)
-    end,
   },
 }

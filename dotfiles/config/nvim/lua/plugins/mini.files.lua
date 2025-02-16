@@ -3,7 +3,7 @@ return {
     'echasnovski/mini.files',
     version = false,
     lazy = false,
-    config = true,
+    opts = {},
     keys = {
       {
         '<leader>e',
