@@ -4,13 +4,13 @@ return {
     lazy = false,
     dependencies = { 'mason.nvim' },
     config = function()
+      local lspconfig = require('lspconfig')
       local icons = require('icons')
       for type, icon in pairs(icons.diagnostics) do
         local hl = 'DiagnosticSign' .. type
         vim.fn.sign_define(hl, { text = icon, texthl = hl })
       end
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
 
       local border = {
         { '╭', 'FloatBorder' },
@@ -36,14 +36,6 @@ return {
         capabilities = capabilities,
       }
       lspconfig.lua_ls.setup {
-        settings = {
-          Lua = {
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = { 'vim', 'Snacks', 'MiniIcons' },
-            },
-          },
-        },
         capabilities = capabilities,
       }
       lspconfig.dockerls.setup {

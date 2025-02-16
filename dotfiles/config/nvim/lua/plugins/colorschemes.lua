@@ -26,6 +26,8 @@ return {
         MiniFilesTitleFocused = { bg = 'base' },
         SnacksIndentChunk = { fg = 'subtle' },
         SnacksIndentScope = { fg = 'subtle' },
+        TroubleNormal = { bg = 'base' },
+        TroubleNormalNC = { bg = 'base' },
       },
     },
 

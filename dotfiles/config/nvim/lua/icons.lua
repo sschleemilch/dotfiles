@@ -1,26 +1,4 @@
 return {
-  misc = {
-    dots = '󰇘',
-    ellipsis = '…',
-    search = '',
-    vertical_bar = '│',
-    spinner = '󱥸 ',
-    dot = '·',
-    connected = ' 󰌘 ',
-    lines = ' ',
-  },
-  -- diagnostics = {
-  --   Error = '',
-  --   Warn = '',
-  --   Hint = '',
-  --   Info = '',
-  -- },
-  diagnostics = {
-    Error = ' ',
-    Warn = ' ',
-    Hint = ' ',
-    Info = ' ',
-  },
   separators = {
     triangle_lower_left = '',
     triangle_lower_right = '',
@@ -36,10 +14,10 @@ return {
     right = '',
     down = '',
   },
-  git = {
-    branch = '',
-    added = ' ',
-    modified = ' ',
-    removed = ' ',
+  diagnostics = {
+    Error = ' ',
+    Warn = ' ',
+    Hint = ' ',
+    Info = ' ',
   },
 }
