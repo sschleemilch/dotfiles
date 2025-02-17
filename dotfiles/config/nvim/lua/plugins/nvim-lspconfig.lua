@@ -15,9 +15,9 @@ return {
           underline = true,
           update_in_insert = false,
           virtual_text = {
-            spacing = 4,
+            spacing = 2,
             source = 'if_many',
-            prefix = '<-',
+            prefix = '<',
           },
           severity_sort = true,
           signs = {
