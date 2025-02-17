@@ -28,6 +28,7 @@ return {
         'goimports',
         'gofumpt',
         'buf',
+        'marksman',
       },
     },
     config = function(_, opts)

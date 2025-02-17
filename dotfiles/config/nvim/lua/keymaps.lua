@@ -70,4 +70,7 @@ map('n', ']q', vim.cmd.cnext, { desc = 'Next Quickfix' })
 -- quit
 map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
 
+-- LSP
 map('n', 'gl', '<cmd>:lua vim.diagnostic.open_float(0)<cr>', { desc = 'Show Diagnostics' })
+map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action' })
+map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename' })
