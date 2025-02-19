@@ -244,5 +244,16 @@ return {
         desc = 'Goto T[y]pe Definition',
       },
     },
+    init = function()
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'VeryLazy',
+        callback = function()
+          -- Create some toggle mappings
+          Snacks.toggle.diagnostics():map('<leader>td')
+          Snacks.toggle.indent():map('<leader>ti')
+          Snacks.toggle.words():map('<leader>tw')
+        end,
+      })
+    end,
   },
 }
