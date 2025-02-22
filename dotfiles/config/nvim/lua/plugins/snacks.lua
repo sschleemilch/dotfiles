@@ -34,11 +34,10 @@ return {
           },
         },
         layout = {
-          preview = false,
           layout = {
             backdrop = false,
             box = 'horizontal',
-            width = 0.6,
+            width = 0.7,
             min_width = 120,
             height = 0.7,
             {
