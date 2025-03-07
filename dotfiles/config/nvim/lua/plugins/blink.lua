@@ -25,7 +25,6 @@ return {
       signature = {
         enabled = true,
         window = {
-          max_height = 1,
           border = 'rounded',
         },
       },

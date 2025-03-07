@@ -39,7 +39,7 @@ return {
         },
         servers = {
           lua_ls = {},
-          basedpyright = {},
+          pyright = {},
           ruff = {},
           dockerls = {},
           gopls = {},
