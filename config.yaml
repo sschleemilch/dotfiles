@@ -42,18 +42,12 @@ dotfiles:
   d_hypr:
     src: config/hypr
     dst: ~/.config/hypr
-  d_swaylock:
-    src: config/swaylock
-    dst: ~/.config/swaylock
   d_tofi:
     src: config/tofi
     dst: ~/.config/tofi
   d_waybar:
     src: config/waybar
     dst: ~/.config/waybar
-  d_swaync:
-    src: config/swaync
-    dst: ~/.config/swaync
   f_face:
     src: config/face.png
     dst: ~/.face.png
@@ -69,12 +63,15 @@ dotfiles:
   d_jj:
     src: config/jj
     dst: ~/.config/jj
+  d_dunst:
+    src: config/dunst
+    dst: ~/.config/dunst
 profiles:
   hyprland:
     dotfiles:
       - d_hypr
-      - d_swaylock
       - d_waybar
+      - d_dunst
   cli:
     dotfiles:
       - d_git
@@ -90,6 +87,7 @@ profiles:
     dotfiles:
       - d_wallpaper
       - f_face
+      - d_dunst
     include:
       - cli
       - hyprland
