@@ -20,8 +20,7 @@
     "group/battery-modules",
     "group/wireplumber-modules",
     "group/network-modules",
-    "clock",
-    "custom/power"
+    "clock"
   ],
   "group/cpu-modules": {
     "orientation": "inherit",
@@ -152,12 +151,6 @@
     "return-type": "json",
     "tooltip": false
   },
-  "custom/fan": {
-    "format": "{}",
-    "exec": "~/.config/waybar/scripts/fan.sh",
-    "interval": 5,
-    "return-type": "json"
-  },
   "cpu#icon": {
     "interval": "once",
     "format": ""
@@ -241,11 +234,6 @@
     "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
     "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
     "tooltip-format-disconnected": "Disconnected"
-  },
-  "custom/power": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
   "custom/archlogo": {
     "format": "",

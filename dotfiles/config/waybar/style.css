@@ -34,18 +34,12 @@ label:focus {
 #memory-modules,
 #disk-modules,
 #wireplumber-modules,
-#temperature,
 #updates-modules,
-#systemd-failed-units,
 #backlight,
 #workspaces,
 #battery-modules,
 #network-modules,
-#clock,
-#custom-lock,
-#custom-logout,
-#custom-reboot,
-#custom-fan {
+#clock {
   color: @text;
   border-radius: 8px;
   background: @overlay;
@@ -70,16 +64,6 @@ label:focus {
 .content {
   margin-right: 1rem;
   margin-left: 1rem;
-}
-
-#custom-power {
-  color: @base;
-  background: @rose;
-  border-radius: 8px;
-  padding: 0.5rem;
-  min-width: 1.5rem;
-  font-size: 12pt;
-  margin: 0.5rem;
 }
 
 #custom-updates-icon {
