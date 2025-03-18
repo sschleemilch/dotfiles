@@ -145,10 +145,10 @@
   },
   "custom/updates-content": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/updates.sh",
+    "exec": "yay -Qu | wc -l",
+    "exec-if": "exit 0",
     "interval": 3600,
     "signal": 8,
-    "return-type": "json",
     "tooltip": false
   },
   "cpu#icon": {
