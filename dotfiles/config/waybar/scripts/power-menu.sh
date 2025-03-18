@@ -8,7 +8,7 @@ selected_option=$(echo -e "$actions" | rofi -dmenu -i -config "${config}" || pki
 
 case "$selected_option" in
 *Lock)
-  swaylock
+  hyprlock
   ;;
 *Shutdown)
   systemctl poweroff
