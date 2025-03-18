@@ -42,9 +42,6 @@ dotfiles:
   d_hypr:
     src: config/hypr
     dst: ~/.config/hypr
-  d_tofi:
-    src: config/tofi
-    dst: ~/.config/tofi
   d_waybar:
     src: config/waybar
     dst: ~/.config/waybar
@@ -87,7 +84,6 @@ profiles:
     dotfiles:
       - d_wallpaper
       - f_face
-      - d_dunst
     include:
       - cli
       - hyprland
