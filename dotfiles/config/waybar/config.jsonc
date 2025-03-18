@@ -1,44 +1,87 @@
 {
-  "height": 40,
-  "exclusive": true,
-  "margin-top": 0,
-  "margin-left": 0,
-  "margin-bottom": 0,
-  "margin-right": 0,
-  "output": "DP-1",
-  "spacing": 4,
   "layer": "top",
+  "position": "top",
+  "mode": "dock",
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "output": "DP-1",
   "modules-left": [
-    "group/power",
-    "cpu",
-    "memory",
-    "disk",
-    "systemd-failed-units"
+    "custom/archlogo",
+    "group/cpu-modules",
+    "group/memory-modules",
+    "group/disk-modules",
+    "group/updates-modules"
   ],
   "modules-center": [
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "custom/updates",
-    "custom/weather",
-    "wireplumber",
     "backlight",
-    "bluetooth",
-    "battery",
-    "network",
-    "clock"
+    "group/battery-modules",
+    "group/wireplumber-modules",
+    "group/network-modules",
+    "clock",
+    "custom/power"
   ],
-  "battery": {
+  "group/cpu-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu#icon",
+      "cpu#content"
+    ]
+  },
+  "group/memory-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "memory#icon",
+      "memory#content"
+    ]
+  },
+  "group/disk-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "disk#icon",
+      "disk#content"
+    ]
+  },
+  "group/wireplumber-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "wireplumber#icon",
+      "wireplumber#content"
+    ]
+  },
+  "group/battery-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "battery#icon",
+      "battery#content"
+    ]
+  },
+  "group/updates-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/updates-icon",
+      "custom/updates-content"
+    ]
+  },
+  "group/network-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "network#icon",
+      "network#content"
+    ]
+  },
+  "battery#icon": {
     "interval": 30,
     "states": {
       "good": 95,
       "warning": 30,
       "critical": 20
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
+    "format": "{icon}",
+    "format-charging": "",
+    "format-plugged": "",
     "format-icons": [
       "󰂎",
       "󰁺",
@@ -53,19 +96,25 @@
       "󰁹"
     ]
   },
+  "battery#content": {
+    "interval": 30,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{capacity}%",
+    "format-charging": "{capacity}%",
+    "format-plugged": "{capacity}%",
+    "format-alt": "{time} {icon}"
+  },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%H:%M, %a %d}",
+    "format": "{:%H:%M, %B %d}",
     "format-alt": "{:%Y-%m-%d}"
   },
   "hyprland/workspaces": {
-    "format": "{icon}",
-    "on-click": "activate",
-    "format-icons": {
-      "active": "",
-      "urgent": "",
-      "default": ""
-    },
+    "format": "{id}",
     "persistent-workspaces": {
       "1": [],
       "2": [],
@@ -90,28 +139,32 @@
     "on-scroll-down": "brightnessctl set 1%-",
     "tooltip": false
   },
-  "custom/updates": {
+  "custom/updates-icon": {
+    "format": "󰄠",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/updates-content": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/updates",
+    "exec": "~/.config/waybar/scripts/updates.sh",
     "interval": 3600,
     "signal": 8,
-    "return-type": "json"
+    "return-type": "json",
+    "tooltip": false
   },
   "custom/fan": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/fan",
+    "exec": "~/.config/waybar/scripts/fan.sh",
     "interval": 5,
     "return-type": "json"
   },
-  "custom/weather": {
-    "format": "{}",
-    "interval": 1800,
-    "return-type": "json",
-    "exec": "~/.config/waybar/scripts/weather/weather"
+  "cpu#icon": {
+    "interval": "once",
+    "format": ""
   },
-  "cpu": {
+  "cpu#content": {
     "interval": 2,
-    "format": " {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+    "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
     "format-icons": [
       "<span color='#6e6a86'>▁</span>", // green
       "<span color='#6e6a86'>▂</span>", // blue
@@ -123,20 +176,29 @@
       "<span color='#eb6f92'>█</span>" // red
     ]
   },
-  "memory": {
+  "memory#icon": {
+    "interval": "once",
+    "format": ""
+  },
+  "memory#content": {
     "interval": 10,
-    "format": "  {used:0.1f}G",
+    "format": "{used:0.1f}G",
     "tooltip": true,
     "tooltip-format": "Memory - {used:0.1f}GB used",
     "on-click": "kitty --title btop btop"
   },
-  "disk": {
-    "interval": 60,
-    "format": "󰋊 {percentage_used}%",
+  "disk#icon": {
+    "interval": "once",
+    "format": "󰋊",
     "path": "/"
   },
-  "wireplumber": {
-    "format": "{icon} {volume}%",
+  "disk#content": {
+    "interval": 60,
+    "format": "{percentage_used}%",
+    "path": "/"
+  },
+  "wireplumber#icon": {
+    "format": "{icon}",
     "format-muted": "",
     "on-click": "helvum",
     "format-icons": [
@@ -144,29 +206,22 @@
       "",
       "󰕾",
       ""
-    ]
+    ],
+    "tooltip-format": "Volume: {volume}%"
+  },
+  "wireplumber#content": {
+    "format": "{volume}%",
+    "tooltip-format": "Volume: {volume}%"
   },
   "hyprland/window": {
     "format": "󰈈 {}"
   },
-  "group/network": {
-    "orientation": "horizontal",
-    "modules": [
-      "network",
-      "network#speed"
-    ],
-    "drawer": {}
-  },
-  "network": {
+  "network#icon": {
     "interface": "wlp0s20f3",
     "format": "{ifname}",
     "format-wifi": "{icon}",
-    "format-ethernet": "󰌘",
+    "format-ethernet": "󰈀",
     "format-disconnected": "󰌙",
-    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-    "tooltip-format-wifi": "{icon} {essid} ({signalStrength}%)",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "Disconnected",
     "format-icons": [
       "󰤯",
       "󰤟",
@@ -174,107 +229,27 @@
       "󰤥",
       "󰤨"
     ],
-    "max-length": 50,
-    "on-click": "kitty --title nmtui nmtui"
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected"
   },
-  "network#speed": {
-    "interval": 2,
-    "format": "{ifname}",
-    "format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-    "format-ethernet": " {bandwidthDownBytes}",
-    "format-disconnected": "󰌙",
-    "tooltip-format": "{ipaddr}",
-    "format-linked": "󰈁 {ifname} (No IP)",
-    "tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
-    "tooltip-format-ethernet": "{ifname} ",
-    "tooltip-format-disconnected": "󰌙 Disconnected",
-    "max-length": 50,
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ]
+  "network#content": {
+    "interface": "wlp0s20f3",
+    "format-disconnected": "Disconnected",
+    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-wifi": "{essid}",
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected"
   },
-  "bluetooth": {
-    "format": "",
-    "format-disabled": "󰂳",
-    "format-connected": "󰂱 {num_connections}",
-    "tooltip-format": " {device_alias}",
-    "tooltip-format-connected": "{device_enumerate}",
-    "tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
-    "tooltip": true,
-    "on-click": "blueman-manager"
-  },
-  // SEPARATORS
-  "custom/separator#dot-line": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
-  },
-  "custom/separator#line": {
-    "format": "|",
-    "interval": "once",
-    "tooltip": false
-  },
-  "custom/separator#dot": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
-  },
-  // POWER MENU ENTRIES AND GROUP
-  "group/power": {
-    "orientation": "horizontal",
-    "modules": [
-      "custom/archlogo",
-      "custom/poweroff",
-      "custom/lock",
-      "custom/logout",
-      "custom/reboot"
-    ],
-    "drawer": {
-      "transition-left-to-right": true
-    }
-  },
-  "custom/lock": {
-    "format": "󰌾{}",
-    "exec": "echo ; echo 󰷛  Screen lock",
-    "interval": 86400, // once every day
-    "tooltip": true,
-    "on-click": "swaylock"
-  },
-  "custom/poweroff": {
-    "format": "{}",
-    "exec": "echo ; echo  Shutdown",
-    "interval": 86400, // once every day
-    "tooltip": true,
-    "on-click": "systemctl poweroff"
-  },
-  "custom/logout": {
-    "format": "󰗼{}",
-    "exec": "echo ; echo 󰗼 Logout",
-    "interval": 86400, // once every day
-    "tooltip": true,
-    "on-click": "hyprctl dispatch exit 0"
-  },
-  "custom/reboot": {
-    "format": "",
-    "exec": "echo ; echo  Reboot",
-    "interval": 86400, // once every day
-    "tooltip": true,
-    "on-click": "systemctl reboot"
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/power-menu.sh"
   },
   "custom/archlogo": {
     "format": "",
     "interval": "once",
     "tooltip": false
-  },
-  "systemd-failed-units": {
-    "hide-on-ok": true,
-    "format": "✗ {nr_failed}",
-    "format-ok": "✓",
-    "system": true,
-    "user": true
   }
 }

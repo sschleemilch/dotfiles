@@ -1,21 +1,17 @@
-@import "rose-pine-moon.css";
+@import "rose-pine.css";
 
 * {
-  font-family: "FiraCode Nerd Font";
-  font-size: 16px;
+  font-family: "FiraCode Nerd Font Propo";
+  font-size: 11pt;
 }
 
 window#waybar {
   background-color: @base;
 }
 
-window#waybar.hidden {
-  opacity: 0.2;
-}
-
 tooltip {
   background: @surface;
-  border: 1px solid @gold;
+  border: 1px solid @rose;
 }
 
 tooltip label {
@@ -26,121 +22,98 @@ label:focus {
   background-color: @base;
 }
 
+.modules-left {
+  padding-left: 1rem;
+}
+.modules-right {
+  padding-right: 1rem;
+}
+
 /* ALL MODULES */
-#cpu,
+#cpu-modules,
+#memory-modules,
+#disk-modules,
+#wireplumber-modules,
 #temperature,
-#memory,
-#disk,
-#custom-updates,
+#updates-modules,
 #systemd-failed-units,
-#wireplumber,
 #backlight,
-#bluetooth,
-#battery,
-#network,
+#workspaces,
+#battery-modules,
+#network-modules,
+#clock,
 #custom-lock,
-#custom-poweroff,
 #custom-logout,
 #custom-reboot,
-#custom-fan,
-#custom-weather,
-#custom-separator {
-  color: @subtle;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+#custom-fan {
+  color: @text;
+  border-radius: 8px;
+  background: @overlay;
+  transition: 300ms linear;
+  margin: 0.5rem;
 }
 
 #custom-archlogo {
-  font-size: 1.5em;
-  padding-left: 0.5em;
-  padding-right: 1em;
-  color: @subtle;
+  font-size: 1.5rem;
+  color: @rose;
+  padding-right: 1rem;
 }
 
-/* LEFT */
-#custom-reboot {
-  color: @rose;
+.icon {
+  color: @base;
+  background: @rose;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 1.5rem;
+  font-size: 12pt;
 }
-#custom-logout {
-  color: @foam;
-}
-#custom-lock {
-  color: @iris;
-}
-#custom-poweroff {
-  color: @rose;
-}
-#custom-fan.on {
-  color: @gold;
-}
-#custom-fan.off {
-  color: @muted;
-}
-#systemd-failed-units.degraded {
-  color: @love;
+.content {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
-/* MIDDLE */
+#custom-power {
+  color: @base;
+  background: @rose;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 1.5rem;
+  font-size: 12pt;
+  margin: 0.5rem;
+}
+
+#custom-updates-icon {
+  color: @base;
+  background: @rose;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 1.5rem;
+  font-size: 12pt;
+}
+#custom-updates-content {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#clock {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+#workspaces {
+  padding-left: 0;
+  padding-right: 0;
+}
 #workspaces button {
-  color: @highlightHigh;
-}
-#workspaces button.focused {
-  background-color: transparent;
-}
-#workspace button.hover {
-  background-color: transparent;
+  color: @text;
+  border: 0;
+  box-shadow: none;
 }
 #workspaces button.active {
-  color: @gold;
+  color: @base;
+  background: @rose;
 }
 #workspaces button:hover {
-  box-shadow: inherit;
-  text-shadow: inherit;
-  background: transparent;
-  border: transparent;
-}
-
-/* RIGHT */
-#custom-updates {
-  color: @gold;
-}
-#custom-updates.ok {
-  color: @subtle;
-}
-#custom-weather {
-  color: @subtle;
-}
-#backlight {
-  color: @gold;
-}
-#wireplumber {
-  color: @subtle;
-}
-#battery {
-  color: @subtle;
-}
-#clock {
-  color: @subtle;
-  padding-right: 20px;
-  padding-left: 15px;
-}
-#network {
-  color: @subtle;
-}
-#bluetooth {
-  color: @subtle;
-}
-#battery.warning:not(.charging) {
-  color: @rose;
-}
-#battery.critical:not(.charging) {
-  color: @love;
-}
-#battery.discharging {
-  color: @gold;
-}
-#battery.charging,
-#battery.full,
-#battery.plugged {
-  color: @foam;
+  background: @overlay;
+  color: @text;
 }

@@ -6,9 +6,8 @@ NOT_RUNNING=󰠝
 CLASS="off"
 ICON=$NOT_RUNNING
 if [ $RPM != 0 ]; then
-    CLASS="on"
-    ICON=$RUNNING
+  CLASS="on"
+  ICON=$RUNNING
 fi
 
 echo "{\"text\": \"$ICON\", \"tooltip\": \"RPM: $RPM\", \"class\": \"$CLASS\"}"
-
