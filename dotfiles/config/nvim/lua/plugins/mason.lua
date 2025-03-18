@@ -29,6 +29,7 @@ return {
         'gofumpt',
         'buf',
         'marksman',
+        'hyprls',
       },
     },
     config = function(_, opts)
