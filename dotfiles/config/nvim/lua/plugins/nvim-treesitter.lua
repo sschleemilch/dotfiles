@@ -41,6 +41,7 @@ return {
           'vimdoc',
           'xml',
           'yaml',
+          'rasi',
         },
         highlight = { enable = true },
         indent = { enable = true },
