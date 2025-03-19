@@ -63,12 +63,16 @@ dotfiles:
   d_dunst:
     src: config/dunst
     dst: ~/.config/dunst
+  d_rofi:
+    src: config/rofi
+    dst: ~/.config/rofi
 profiles:
   hyprland:
     dotfiles:
       - d_hypr
       - d_waybar
       - d_dunst
+      - d_rofi
   cli:
     dotfiles:
       - d_git
