@@ -1,17 +1,17 @@
-@import "rose-pine.css";
+@import "rose-pine-moon.css";
 
 * {
   font-family: "FiraCode Nerd Font Propo";
-  font-size: 11pt;
+  font-size: 10pt;
 }
 
 window#waybar {
-  background-color: @base;
+  background-color: @transparent;
 }
 
 tooltip {
   background: @surface;
-  border: 1px solid @rose;
+  border: 1px solid @subtle;
 }
 
 tooltip label {
@@ -49,17 +49,17 @@ label:focus {
 
 #custom-archlogo {
   font-size: 1.5rem;
-  color: @rose;
+  color: @subtle;
   padding-right: 1rem;
 }
 
 .icon {
   color: @base;
-  background: @rose;
+  background: @subtle;
   border-radius: 8px;
   padding: 0.5rem;
   min-width: 1.5rem;
-  font-size: 12pt;
+  font-size: 11pt;
 }
 .content {
   margin-right: 1rem;
@@ -68,7 +68,7 @@ label:focus {
 
 #custom-updates-icon {
   color: @base;
-  background: @rose;
+  background: @subtle;
   border-radius: 8px;
   padding: 0.5rem;
   min-width: 1.5rem;
@@ -95,7 +95,7 @@ label:focus {
 }
 #workspaces button.active {
   color: @base;
-  background: @rose;
+  background: @subtle;
 }
 #workspaces button:hover {
   background: @overlay;

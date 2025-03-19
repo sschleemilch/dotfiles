@@ -12,11 +12,11 @@
     gap_size = 5
     font = "FiraCode Nerd Font 12"
 
-    # icon_theme = "rose-pine-icons"
+    # icon_theme = "Papirus"
     enable_recursive_icon_lookup = true
     corner_radius = 10
 
-    background = "#1f1d2e"
+    background = "#2a273f"
     foreground = "#e0def4"
 
     icon_position = "off"
@@ -30,10 +30,10 @@
 
 [urgency_normal]
     background = "#1f1d2e"
-    highlight = "#ebbcba"
-    frame_color = "#ebbcba"
+    highlight = "#ea9a97"
+    frame_color = "#ea9a97"
     default_icon = "dialog-warning"
-    format = "<b><span foreground='#ebbcba'>%s</span></b>\n%b"
+    format = "<b><span foreground='#ea9a97'>%s</span></b>\n%b"
 
 [urgency_critical]
     background = "#1f1d2e"
