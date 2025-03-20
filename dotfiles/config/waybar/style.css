@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-  background-color: @transparent;
+  background-color: @base;
 }
 
 tooltip {
@@ -44,10 +44,9 @@ label:focus {
 #clock {
   color: @text;
   border-radius: 8px;
-  background: @highlightMed;
-  border: 2px solid @subtle;
+  background: @overlay;
   transition: 300ms linear;
-  margin: 0.5rem 0.5rem 0rem 0.5rem;
+  margin: 0.5rem;
 }
 
 #custom-archlogo {
@@ -67,6 +66,7 @@ label:focus {
   background: @subtle;
   padding: 0.5rem;
   min-width: 1.5rem;
+  border-radius: 8px;
 }
 .content {
   margin-right: 1rem;
@@ -79,6 +79,7 @@ label:focus {
   padding: 0.5rem;
   min-width: 1.5rem;
   font-size: 12pt;
+  border-radius: 8px;
 }
 #custom-updates-content {
   margin-right: 1rem;
@@ -99,7 +100,7 @@ label:focus {
   color: @text;
   border: 0;
   box-shadow: none;
-  border-radius: 0px;
+  border-radius: 8px;
 }
 #workspaces button.active {
   color: @base;
