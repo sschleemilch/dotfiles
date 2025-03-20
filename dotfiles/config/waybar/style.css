@@ -2,7 +2,7 @@
 
 * {
   font-family: "FiraCode Nerd Font Propo";
-  font-size: 10pt;
+  font-size: 11pt;
 }
 
 window#waybar {
@@ -10,8 +10,9 @@ window#waybar {
 }
 
 tooltip {
-  background: @surface;
+  background: @overlay;
   border: 1px solid @subtle;
+  border-radius: 6px;
 }
 
 tooltip label {
@@ -23,10 +24,10 @@ label:focus {
 }
 
 .modules-left {
-  padding-left: 1rem;
+  padding-left: 10px;
 }
 .modules-right {
-  padding-right: 1rem;
+  padding-right: 10px;
 }
 
 /* ALL MODULES */
@@ -39,27 +40,33 @@ label:focus {
 #workspaces,
 #battery-modules,
 #network-modules,
+#custom-archlogo,
 #clock {
   color: @text;
   border-radius: 8px;
-  background: @overlay;
+  background: @highlightMed;
+  border: 2px solid @subtle;
   transition: 300ms linear;
-  margin: 0.5rem;
+  margin: 0.5rem 0.5rem 0rem 0.5rem;
 }
 
 #custom-archlogo {
-  font-size: 1.5rem;
-  color: @subtle;
-  padding-right: 1rem;
+  min-width: 2.5rem;
+  font-size: 12pt;
+  background: @subtle;
+  color: @base;
+  margin-left: 0;
+}
+
+#clock {
+  margin-right: 0;
 }
 
 .icon {
   color: @base;
   background: @subtle;
-  border-radius: 8px;
   padding: 0.5rem;
   min-width: 1.5rem;
-  font-size: 11pt;
 }
 .content {
   margin-right: 1rem;
@@ -69,7 +76,6 @@ label:focus {
 #custom-updates-icon {
   color: @base;
   background: @subtle;
-  border-radius: 8px;
   padding: 0.5rem;
   min-width: 1.5rem;
   font-size: 12pt;
@@ -87,17 +93,19 @@ label:focus {
 #workspaces {
   padding-left: 0;
   padding-right: 0;
+  border-radius: 8px;
 }
 #workspaces button {
   color: @text;
   border: 0;
   box-shadow: none;
+  border-radius: 0px;
 }
 #workspaces button.active {
   color: @base;
   background: @subtle;
 }
 #workspaces button:hover {
-  background: @overlay;
-  color: @text;
+  background: @subtle;
+  color: @base;
 }

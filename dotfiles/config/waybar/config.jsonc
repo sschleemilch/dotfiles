@@ -16,8 +16,8 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
-    "backlight",
-    "group/battery-modules",
+    // "backlight",
+    // "group/battery-modules",
     "group/wireplumber-modules",
     "group/network-modules",
     "clock"
