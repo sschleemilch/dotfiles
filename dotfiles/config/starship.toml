@@ -1,4 +1,5 @@
 format = """
+[┌─](fg:subtle bg:base)\
 [](fg:foam bg:base)\
 $directory\
 [](fg:foam bg:rose)\
@@ -14,16 +15,24 @@ $rust\
 $python\
 [](fg:gold bg:subtle)\
 $jobs\
-[](fg:subtle bg:love)\
-$status\
-[](fg:love bg:base)\
+[](fg:subtle bg:base)\
 $line_break\
+[└─](fg:subtle bg:base)\
+$status\
 $character\
 """
 palette = "rose_pine"
 
 [directory]
 format = "[  $path ](bg:foam fg:overlay)"
+
+[character]
+success_symbol = "[❯](fg:subtle)"
+error_symbol = "[❯](fg:love)"
+vimcmd_symbol = "[❯](fg:gold)"
+vimcmd_replace_one_symbol = "[❯](fg:gold)"
+vimcmd_replace_symbol = "[❯](fg:gold)"
+vimcmd_visual_symbol = "[❯](fg:gold)"
 
 [direnv]
 disabled = false
@@ -65,7 +74,7 @@ format = "[ $symbol($version) ](bg:gold fg:overlay)"
 symbol = " "
 
 [golang]
-format = "[ $symbol($version)](bg:gold fg:overlay)"
+format = "[ $symbol($version) ](bg:gold fg:overlay)"
 symbol = " "
 
 [nodejs]
@@ -88,4 +97,4 @@ iris= "#c4a7e7"
 
 [status]
 disabled = false
-format = "[  $status](bg:love fg:overlay)"
+format = "[](bg:base fg:love)[  $status ](bg:love fg:overlay)[](bg:base fg:love)"

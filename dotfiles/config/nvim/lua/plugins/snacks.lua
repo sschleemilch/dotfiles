@@ -4,14 +4,21 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+      styles = {
+        input = {
+          border = 'single',
+        },
+        notification = {
+          border = 'single',
+        },
+      },
       input = {},
       indent = {
         enabled = true,
         chunk = {
           enabled = true,
           char = {
-            corner_top = '╭',
-            corner_bottom = '╰',
+            arrow = '─',
           },
         },
       },
@@ -42,13 +49,13 @@ return {
             height = 0.7,
             {
               box = 'vertical',
-              border = 'rounded',
+              border = 'single',
               title = '{source} {live}',
               title_pos = 'center',
               { win = 'input', height = 1, border = 'bottom' },
               { win = 'list', border = 'none' },
             },
-            { win = 'preview', border = 'rounded', width = 0.5 },
+            { win = 'preview', border = 'single', width = 0.5 },
           },
         },
       },

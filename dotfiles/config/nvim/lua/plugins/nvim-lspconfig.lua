@@ -68,13 +68,13 @@ return {
         }, servers[server] or {})
 
         local border = {
-          { '╭', 'FloatBorder' },
+          { '┌', 'FloatBorder' },
           { '─', 'FloatBorder' },
-          { '╮', 'FloatBorder' },
+          { '┐', 'FloatBorder' },
           { '│', 'FloatBorder' },
-          { '╯', 'FloatBorder' },
+          { '┘', 'FloatBorder' },
           { '─', 'FloatBorder' },
-          { '╰', 'FloatBorder' },
+          { '└', 'FloatBorder' },
           { '│', 'FloatBorder' },
         }
 
