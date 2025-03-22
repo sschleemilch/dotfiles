@@ -1,85 +1,71 @@
 format = """
-[┌─](fg:subtle bg:base)\
-[](fg:foam bg:base)\
 $directory\
-[](fg:foam bg:rose)\
+$direnv\
 $git_branch\
 $git_state\
 $git_status\
-[](fg:rose bg:iris)\
-$direnv\
-[](fg:iris bg:gold)\
-$nodejs\
+$cmd_duration\
+$fill \
 $golang\
-$rust\
+$nodejs\
 $python\
-[](fg:gold bg:subtle)\
-$jobs\
-[](fg:subtle bg:base)\
 $line_break\
-[└─](fg:subtle bg:base)\
-$status\
+$jobs\
 $character\
 """
+
 palette = "rose_pine"
 
-[directory]
-format = "[  $path ](bg:foam fg:overlay)"
+[fill]
+symbol = " "
 
 [character]
-success_symbol = "[❯](fg:subtle)"
-error_symbol = "[❯](fg:love)"
-vimcmd_symbol = "[❯](fg:gold)"
-vimcmd_replace_one_symbol = "[❯](fg:gold)"
-vimcmd_replace_symbol = "[❯](fg:gold)"
-vimcmd_visual_symbol = "[❯](fg:gold)"
+success_symbol = "[❯](bold fg:subtle)"
+error_symbol = "[❯](bold fg:love)"
+vimcmd_symbol = "[❮](bold fg:foam)"
+vimcmd_replace_one_symbol = "[❮](bold fg:foam)"
+vimcmd_replace_symbol = "[❮](bold fg:foam)"
+vimcmd_visual_symbol = "[❮](bold fg:foam)"
+
+[directory]
+format = "[$path]($style) "
+style = "bold fg:foam"
 
 [direnv]
 disabled = false
-format = "[ ▼ ](bg:iris fg:overlay)"
+format = "[󰔷]($style) "
+style = "fg:rose"
 
-[git_branch]
-format = "[  $branch ](bg:rose fg:overlay)"
-
-[git_state]
-style = "bg:rose fg:overlay"
-format = '[\($state( $progress_current/$progress_total)\) ]($style)'
-
-[git_status]
-conflicted = "󰉁"
-deleted = " "
-behind = "󰁅"
-ahead = "󰁝"
-diverged = " "
-format = "[$ahead_behind$all_status ](bg:rose fg:overlay)"
-modified = " "
-renamed = " "
-staged = "󱊽"
-stashed = " "
-untracked = "󱙀"
+[cmd_duration]
+format = "[took](subtle) [$duration]($style) "
+style = "bold fg:gold"
 
 [jobs]
-format = "[ $symbol$number ](bg:subtle fg:overlay)"
+format = "[$symbol$number]($style) "
 number_threshold = 1
-symbol = " "
+symbol = " "
+style = "bold fg:rose"
 
-
-# Languages
-[python]
-format = "[ $symbol$pyenv_prefix($version )(($virtualenv)) ](bg:gold fg:overlay)"
-symbol = " "
-
-[rust]
-format = "[ $symbol($version) ](bg:gold fg:overlay)"
-symbol = " "
+[git_branch]
+format = "[ $symbol$branch]($style) "
+symbol = " "
+style = "bold fg:iris"
+[git_status]
+modified = "~"
+deleted = "-"
+style = "bold fg:iris"
 
 [golang]
-format = "[ $symbol($version) ](bg:gold fg:overlay)"
-symbol = " "
+format = "[go ($version)]($style) "
+style = "bold fg:rose"
 
 [nodejs]
-format = "[ $symbol($version) ](bg:gold fg:overlay)"
-symbol = "󰎙 "
+format = "[nodejs ($version)]($style) "
+style = "bold fg:pine"
+
+[python]
+format = '[py ${pyenv_prefix}(${version} )(\[$virtualenv\] )]($style)'
+style = "bold fg:gold"
 
 [palettes.rose_pine]
 base= "#232136"
@@ -94,7 +80,3 @@ rose= "#ea9a97"
 pine= "#3e8fb0"
 foam= "#9ccfd8"
 iris= "#c4a7e7"
-
-[status]
-disabled = false
-format = "[](bg:base fg:love)[  $status ](bg:love fg:overlay)[](bg:base fg:love)"
