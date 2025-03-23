@@ -55,7 +55,7 @@ label:focus {
 .icon {
   color: @base;
   background: @subtle;
-  min-width: 2.5rem;
+  min-width: 2.1rem;
   border-radius: 6px;
   font-size: 16pt;
 }
@@ -67,7 +67,7 @@ label:focus {
 #custom-updates-icon {
   color: @base;
   background: @subtle;
-  min-width: 2.5rem;
+  min-width: 2.1rem;
   border-radius: 6px;
   font-size: 16pt;
 }
@@ -82,15 +82,16 @@ label:focus {
 }
 
 #workspaces {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
   border-radius: 6px;
 }
 #workspaces button {
   color: @text;
-  border: 0;
+  min-width: 1.75rem;
   box-shadow: none;
   border-radius: 6px;
+  padding: 0.25rem;
 }
 #workspaces button.active {
   color: @base;
