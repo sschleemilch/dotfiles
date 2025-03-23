@@ -9,7 +9,7 @@ return {
       },
       completion = {
         menu = {
-          border = 'single',
+          border = 'rounded',
           draw = {
             columns = { { 'label', 'label_description', gap = 1 }, { 'kind_icon', 'kind' } },
             treesitter = { 'lsp' },
@@ -17,7 +17,7 @@ return {
         },
         documentation = {
           window = {
-            border = 'single',
+            border = 'rounded',
           },
         },
       },
@@ -25,7 +25,7 @@ return {
       signature = {
         enabled = true,
         window = {
-          border = 'single',
+          border = 'rounded',
         },
       },
       appearance = {

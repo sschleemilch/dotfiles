@@ -67,19 +67,8 @@ return {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
 
-        local border = {
-          { '┌', 'FloatBorder' },
-          { '─', 'FloatBorder' },
-          { '┐', 'FloatBorder' },
-          { '│', 'FloatBorder' },
-          { '┘', 'FloatBorder' },
-          { '─', 'FloatBorder' },
-          { '└', 'FloatBorder' },
-          { '│', 'FloatBorder' },
-        }
-
         local handlers = {
-          ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+          ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
         }
         server_opts.handlers = handlers
         require('lspconfig')[server].setup(server_opts)

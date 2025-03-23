@@ -10,6 +10,22 @@ return {
     circle_right = '',
     block = '▊',
   },
+  borders = {
+    single = {
+      top_left = '┌',
+      top_right = '┐',
+      bottom_left = '└',
+      bottom_right = '┘',
+    },
+    rounded = {
+      top_left = '╭',
+      top_right = '╮',
+      bottom_left = '╰',
+      bottom_right = '╯',
+    },
+    vertical = '│',
+    horizontal = '─',
+  },
   arrows = {
     right = '',
     down = '',

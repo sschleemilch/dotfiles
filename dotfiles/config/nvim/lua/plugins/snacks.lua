@@ -6,10 +6,10 @@ return {
     opts = {
       styles = {
         input = {
-          border = 'single',
+          border = 'rounded',
         },
         notification = {
-          border = 'single',
+          border = 'rounded',
         },
       },
       input = {},
@@ -18,7 +18,8 @@ return {
         chunk = {
           enabled = true,
           char = {
-            arrow = '─',
+            corner_top = '╭',
+            corner_bottom = '╰',
           },
         },
       },
@@ -49,13 +50,13 @@ return {
             height = 0.7,
             {
               box = 'vertical',
-              border = 'single',
+              border = 'rounded',
               title = '{source} {live}',
               title_pos = 'center',
               { win = 'input', height = 1, border = 'bottom' },
               { win = 'list', border = 'none' },
             },
-            { win = 'preview', border = 'single', width = 0.5 },
+            { win = 'preview', border = 'rounded', width = 0.5 },
           },
         },
       },
