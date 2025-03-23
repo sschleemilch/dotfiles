@@ -1,7 +1,7 @@
 @import "rose-pine-moon.css";
 
 * {
-  font-family: "FiraCode Nerd Font Propo";
+  font-family: "JetBrainsMono Nerd Font Mono";
   font-size: 11pt;
 }
 
@@ -40,21 +40,12 @@ label:focus {
 #workspaces,
 #battery-modules,
 #network-modules,
-#custom-archlogo,
 #clock {
   color: @text;
-  border-radius: 8px;
+  border-radius: 6px;
   background: @overlay;
   transition: 300ms linear;
   margin: 0.5rem;
-}
-
-#custom-archlogo {
-  min-width: 2.5rem;
-  font-size: 12pt;
-  background: @subtle;
-  color: @base;
-  margin-left: 0;
 }
 
 #clock {
@@ -64,9 +55,9 @@ label:focus {
 .icon {
   color: @base;
   background: @subtle;
-  padding: 0.5rem;
-  min-width: 1.5rem;
-  border-radius: 8px;
+  min-width: 2.5rem;
+  border-radius: 6px;
+  font-size: 16pt;
 }
 .content {
   margin-right: 1rem;
@@ -76,10 +67,9 @@ label:focus {
 #custom-updates-icon {
   color: @base;
   background: @subtle;
-  padding: 0.5rem;
-  min-width: 1.5rem;
-  font-size: 12pt;
-  border-radius: 8px;
+  min-width: 2.5rem;
+  border-radius: 6px;
+  font-size: 16pt;
 }
 #custom-updates-content {
   margin-right: 1rem;
@@ -94,13 +84,13 @@ label:focus {
 #workspaces {
   padding-left: 0;
   padding-right: 0;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 #workspaces button {
   color: @text;
   border: 0;
   box-shadow: none;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 #workspaces button.active {
   color: @base;

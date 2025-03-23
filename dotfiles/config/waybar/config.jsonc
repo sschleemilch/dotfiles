@@ -6,7 +6,6 @@
   "gtk-layer-shell": true,
   "output": "DP-1",
   "modules-left": [
-    "custom/archlogo",
     "group/cpu-modules",
     "group/memory-modules",
     "group/disk-modules",
@@ -206,9 +205,6 @@
     "format": "{volume}%",
     "tooltip-format": "Volume: {volume}%"
   },
-  "hyprland/window": {
-    "format": "󰈈 {}"
-  },
   "network#icon": {
     "interface": "wlp0s20f3",
     "format": "{ifname}",
@@ -234,10 +230,5 @@
     "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
     "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
     "tooltip-format-disconnected": "Disconnected"
-  },
-  "custom/archlogo": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
   }
 }

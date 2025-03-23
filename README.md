@@ -22,20 +22,18 @@ My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
 ## Usage
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/sschleemilch/dotfiles.git ~/.dotfiles
-    ```
+   ```bash
+   git clone https://github.com/sschleemilch/dotfiles.git ~/.dotfiles
+   ```
 1. [Install](https://dotdrop.readthedocs.io/en/latest/installation/) dotdrop as a package.
 1. Run `dotdrop` commands from within that repo or create an alias with `alias dotdrop='dotdrop --cfg=<repo>/config.yaml'`.
 1. `dotdrop install -p <PROFILE>` (check `dotdrop profiles` for available ones)
-
 
 ### `d_nvim`
 
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [node.js](https://nodejs.org)
-
 
 ### `d_fish`
 
@@ -46,5 +44,4 @@ My dotfiles handled by [dotdrop](https://github.com/deadc0de6/dotdrop).
 
 ### `d_kitty`
 
-- [FiraCode Font](https://github.com/tonsky/FiraCode)
-
+- [JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)
