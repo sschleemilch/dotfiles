@@ -138,7 +138,7 @@
     "tooltip": false
   },
   "custom/updates-icon": {
-    "format": "󰄠",
+    "format": "",
     "interval": "once",
     "tooltip": false
   },
