@@ -24,6 +24,7 @@ return {
         },
       },
       picker = {
+        prompt = ' ',
         win = {
           input = {
             keys = {
