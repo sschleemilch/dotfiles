@@ -5,6 +5,7 @@ return {
       'mason.nvim',
     },
     lazy = false,
+    enabled = true,
     opts = function()
       local icons = require('icons')
       ---@class PluginLspOpts
@@ -12,13 +13,16 @@ return {
         -- options for vim.diagnostic.config()
         ---@type vim.diagnostic.Opts
         diagnostics = {
-          underline = true,
+          underline = false,
           update_in_insert = false,
           virtual_text = {
             spacing = 2,
             source = 'if_many',
             prefix = '',
           },
+          -- virtual_lines = {
+          --   current_line = true,
+          -- },
           severity_sort = true,
           signs = {
             text = {
@@ -66,11 +70,6 @@ return {
         local server_opts = vim.tbl_deep_extend('force', {
           capabilities = vim.deepcopy(capabilities),
         }, servers[server] or {})
-
-        local handlers = {
-          ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
-        }
-        server_opts.handlers = handlers
         require('lspconfig')[server].setup(server_opts)
       end
 

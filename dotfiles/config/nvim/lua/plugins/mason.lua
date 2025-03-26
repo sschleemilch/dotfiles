@@ -14,7 +14,7 @@ return {
       ensure_installed = {
         'stylua',
         'shfmt',
-        'basedpyright',
+        'pyright',
         'ruff',
         'lua-language-server',
         'dockerfile-language-server',
@@ -29,7 +29,6 @@ return {
         'gofumpt',
         'buf',
         'marksman',
-        'hyprls',
       },
     },
     config = function(_, opts)
