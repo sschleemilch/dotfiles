@@ -4,14 +4,6 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      styles = {
-        input = {
-          border = 'rounded',
-        },
-        notification = {
-          border = 'rounded',
-        },
-      },
       input = {},
       indent = {
         enabled = true,

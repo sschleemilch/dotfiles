@@ -73,3 +73,7 @@ vim.o.ttimeoutlen = 10
 
 -- Rounded floating borders
 vim.o.winborder = 'rounded'
+
+-- Splits
+vim.o.splitright = true
+vim.o.splitbelow = true

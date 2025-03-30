@@ -7,9 +7,8 @@ return {
     opts_extend = { 'ensure_installed' },
     opts = {
       ui = {
-        border = 'rounded',
-        width = 0.8,
-        height = 0.8,
+        width = 1,
+        height = 1,
       },
       ensure_installed = {
         'stylua',
