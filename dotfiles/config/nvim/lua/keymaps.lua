@@ -44,8 +44,3 @@ map('v', '>', '>gv')
 
 -- lazy
 map('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
-
--- LSP
-map('n', 'gl', '<cmd>:lua vim.diagnostic.open_float(0)<cr>', { desc = 'Show Diagnostics' })
-map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code Action' })
-map('n', '<leader>cr', vim.lsp.buf.rename, { desc = 'Rename' })
