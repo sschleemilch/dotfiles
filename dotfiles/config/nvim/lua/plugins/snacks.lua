@@ -9,10 +9,6 @@ return {
         enabled = true,
         chunk = {
           enabled = true,
-          char = {
-            corner_top = '╭',
-            corner_bottom = '╰',
-          },
         },
       },
       picker = {

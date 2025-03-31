@@ -41,7 +41,7 @@ vim.wo.number = true
 
 -- Show whitespaces
 vim.opt.list = true
-vim.opt.listchars = { space = ' ', trail = '⋅', tab = '  ↦' }
+vim.opt.listchars = { space = ' ', trail = '⋅', tab = '  ' }
 
 -- Stores undo history for a file
 vim.o.undofile = true
