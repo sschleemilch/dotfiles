@@ -20,11 +20,11 @@ window {
     enabled:                     true;
     margin:                      0px;
     padding:                     0px;
-    border:                      3px solid;
+    border:                      2px solid;
     border-radius:               10px;
     border-color:                @subtle;
     cursor:                      "default";
-    background-color:            @base;
+    background-color:            @surface;
 }
 
 mainbox {
@@ -98,12 +98,12 @@ element {
     cursor:                      pointer;
 }
 element normal.normal {
-    background-color:            @base;
+    background-color:            @surface;
     text-color:                  @text;
 }
 element selected.normal {
-    background-color:            @subtle;
-    text-color:                  @base;
+    background-color:            @rose;
+    text-color:                  @surface;
 }
 element-text {
     background-color:            transparent;
