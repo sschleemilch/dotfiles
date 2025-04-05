@@ -1,0 +1,1 @@
+hyprland kitty uwsm greetd greetd-regreet dunst xdg-desktop-portal-hyprland hyprpolkitagent neovim ttf-jetbrains-mono-nerd ttf-jetbrains-mono vivaldi rofi-wayland waybar fish ripgrep fd starship direnv zoxide fzf nodejs npm rust bat btop hyprpaper hyprlock eza lazygit xdg-desktop-portal-gtk nwg-look wl-clipboard orchis-theme brightnessctl pipewire wireplumber
