@@ -5,7 +5,7 @@
   "exclusive": true,
   "gtk-layer-shell": true,
   {%@@ if profile == "desos" @@%}
-  "output"="DP-1",
+  "output": "DP-1",
   {%@@ else @@%}
   "output": "eDP-1",
   {%@@ endif @@%}
@@ -228,7 +228,6 @@
     "tooltip-format": "Volume: {volume}%"
   },
   "network#icon": {
-  "modules-left": [
   {%@@ if profile == "desos" @@%}
     "interface": "wlp0s20f3",
   {%@@ else @@%}
