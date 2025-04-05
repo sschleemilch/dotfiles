@@ -4,7 +4,11 @@
   "mode": "dock",
   "exclusive": true,
   "gtk-layer-shell": true,
-  "output": "DP-1",
+  {%@@ if profile == "desos" @@%}
+  "output"="DP-1",
+  {%@@ else @@%}
+  "output": "eDP-1",
+  {%@@ endif @@%}
   "modules-left": [
     "group/cpu-modules",
     "group/memory-modules",
@@ -15,10 +19,14 @@
     "hyprland/workspaces"
   ],
   "modules-right": [
-    // "backlight",
-    // "group/battery-modules",
+    {%@@ if profile == "ladon" @@%}
+    "group/backlight-modules",
+    {%@@ endif @@%}
     "group/wireplumber-modules",
     "group/network-modules",
+    {%@@ if profile == "ladon" @@%}
+    "group/battery-modules",
+    {%@@ endif @@%}
     "clock"
   ],
   "group/cpu-modules": {
@@ -68,6 +76,13 @@
     "modules": [
       "network#icon",
       "network#content"
+    ]
+  },
+  "group/backlight-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "backlight#icon",
+      "backlight#content"
     ]
   },
   "battery#icon": {
@@ -121,18 +136,25 @@
       "5": []
     }
   },
-  "backlight": {
+  "backlight#icon": {
     "device": "amdgpu_bl1",
-    "format": "{icon}{percent}%",
+    "format": "{icon}",
     "format-icons": [
-      " ",
-      " ",
-      " ",
-      "󰃝 ",
-      "󰃞 ",
-      "󰃟 ",
-      "󰃠 "
+      "",
+      "",
+      "",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠"
     ],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "tooltip": false
+  },
+  "backlight#content": {
+    "device": "amdgpu_bl1",
+    "format": "{percent}%",
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
     "tooltip": false
@@ -206,7 +228,12 @@
     "tooltip-format": "Volume: {volume}%"
   },
   "network#icon": {
+  "modules-left": [
+  {%@@ if profile == "desos" @@%}
     "interface": "wlp0s20f3",
+  {%@@ else @@%}
+    "interface": "wlp1s0",
+  {%@@ endif @@%}
     "format": "{ifname}",
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀",
@@ -223,7 +250,11 @@
     "tooltip-format-disconnected": "Disconnected"
   },
   "network#content": {
+  {%@@ if profile == "desos" @@%}
     "interface": "wlp0s20f3",
+  {%@@ else @@%}
+    "interface": "wlp1s0",
+  {%@@ endif @@%}
     "format-disconnected": "Disconnected",
     "format-ethernet": "{ipaddr}/{cidr}",
     "format-wifi": "{essid}",

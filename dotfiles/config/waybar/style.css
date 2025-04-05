@@ -36,10 +36,10 @@ label:focus {
 #disk-modules,
 #wireplumber-modules,
 #updates-modules,
-#backlight,
 #workspaces,
 #battery-modules,
 #network-modules,
+#backlight-modules,
 #clock {
   color: @text;
   border-radius: 6px;

@@ -97,6 +97,7 @@ profiles:
       - f_face
     include:
       - cli
+      - hyprland
   work:
     include:
       - cli
