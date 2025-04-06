@@ -1,0 +1,4 @@
+.venv
+.direnv
+*.orig
+dotfiles/config/tmux/plugins

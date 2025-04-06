@@ -1,0 +1,262 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mode": "dock",
+  "exclusive": true,
+  "gtk-layer-shell": true,
+{{- if eq .chezmoi.hostname "desos" }}
+  "output": "DP-1",
+{{- else if eq .chezmoi.hostname "ladon" -}}
+  "output": "eDP-1",
+{{- end }}
+  "modules-left": [
+    "group/cpu-modules",
+    "group/memory-modules",
+    "group/disk-modules",
+    "group/updates-modules"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+{{- if eq .chezmoi.hostname "ladon" -}}
+    "group/backlight-modules",
+{{- end }}
+    "group/wireplumber-modules",
+    "group/network-modules",
+{{- if eq .chezmoi.hostname "ladon" -}}
+    "group/battery-modules",
+{{- end }}
+    "clock"
+  ],
+  "group/cpu-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu#icon",
+      "cpu#content"
+    ]
+  },
+  "group/memory-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "memory#icon",
+      "memory#content"
+    ]
+  },
+  "group/disk-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "disk#icon",
+      "disk#content"
+    ]
+  },
+  "group/wireplumber-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "wireplumber#icon",
+      "wireplumber#content"
+    ]
+  },
+  "group/battery-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "battery#icon",
+      "battery#content"
+    ]
+  },
+  "group/updates-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/updates-icon",
+      "custom/updates-content"
+    ]
+  },
+  "group/network-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "network#icon",
+      "network#content"
+    ]
+  },
+  "group/backlight-modules": {
+    "orientation": "inherit",
+    "modules": [
+      "backlight#icon",
+      "backlight#content"
+    ]
+  },
+  "battery#icon": {
+    "interval": 30,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}",
+    "format-charging": "",
+    "format-plugged": "",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "battery#content": {
+    "interval": 30,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{capacity}%",
+    "format-charging": "{capacity}%",
+    "format-plugged": "{capacity}%",
+    "format-alt": "{time} {icon}"
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%H:%M, %B %d}",
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    }
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "🌎 $1"
+    }
+  },
+  "backlight#icon": {
+    "device": "amdgpu_bl1",
+    "format": "{icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "tooltip": false
+  },
+  "backlight#content": {
+    "device": "amdgpu_bl1",
+    "format": "{percent}%",
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "tooltip": false
+  },
+  "custom/updates-icon": {
+    "format": "",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/updates-content": {
+    "format": "{}",
+    "exec": "yay -Qu | wc -l",
+    "exec-if": "exit 0",
+    "interval": 3600,
+    "signal": 8,
+    "tooltip": false
+  },
+  "cpu#icon": {
+    "interval": "once",
+    "format": ""
+  },
+  "cpu#content": {
+    "interval": 2,
+    "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+    "format-icons": [
+      "<span color='#6e6a86'>▁</span>", // green
+      "<span color='#6e6a86'>▂</span>", // blue
+      "<span color='#e0def4'>▃</span>", // white
+      "<span color='#e0def4'>▄</span>", // white
+      "<span color='#f6c177'>▅</span>", // yellow
+      "<span color='#f6c177'>▆</span>", // yellow
+      "<span color='#ea9a97'>▇</span>", // orange
+      "<span color='#eb6f92'>█</span>" // red
+    ]
+  },
+  "memory#icon": {
+    "interval": "once",
+    "format": ""
+  },
+  "memory#content": {
+    "interval": 10,
+    "format": "{used:0.1f}G",
+    "tooltip": true,
+    "tooltip-format": "Memory - {used:0.1f}GB used",
+    "on-click": "kitty --title btop btop"
+  },
+  "disk#icon": {
+    "interval": "once",
+    "format": "󰋊",
+    "path": "/"
+  },
+  "disk#content": {
+    "interval": 60,
+    "format": "{percentage_used}%",
+    "path": "/"
+  },
+  "wireplumber#icon": {
+    "format": "{icon}",
+    "format-muted": "",
+    "on-click": "helvum",
+    "format-icons": [
+      "",
+      "",
+      "󰕾",
+      ""
+    ],
+    "tooltip-format": "Volume: {volume}%"
+  },
+  "wireplumber#content": {
+    "format": "{volume}%",
+    "tooltip-format": "Volume: {volume}%"
+  },
+  "network#icon": {
+    "interface": {{ .network_interface | quote }},
+    "format": "{ifname}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰌙",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+  "network#content": {
+    "interface": {{ .network_interface | quote }},
+    "format-disconnected": "Disconnected",
+    "format-ethernet": "{ipaddr}/{cidr}",
+    "format-wifi": "{essid}",
+    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "Disconnected"
+  }
+}

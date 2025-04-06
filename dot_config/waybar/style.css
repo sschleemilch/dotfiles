@@ -1,0 +1,106 @@
+@import "rose-pine-moon.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font Mono";
+  font-size: 11pt;
+}
+
+window#waybar {
+  background-color: @base;
+}
+
+tooltip {
+  background: @overlay;
+  border: 1px solid @subtle;
+  border-radius: 6px;
+}
+
+tooltip label {
+  color: @text;
+}
+
+label:focus {
+  background-color: @base;
+}
+
+.modules-left {
+  padding-left: 10px;
+}
+.modules-right {
+  padding-right: 10px;
+}
+
+/* ALL MODULES */
+#cpu-modules,
+#memory-modules,
+#disk-modules,
+#wireplumber-modules,
+#updates-modules,
+#workspaces,
+#battery-modules,
+#network-modules,
+#backlight-modules,
+#clock {
+  color: @text;
+  border-radius: 6px;
+  background: @overlay;
+  transition: 300ms linear;
+  margin: 0.5rem;
+}
+
+#clock {
+  margin-right: 0;
+}
+
+.icon {
+  color: @base;
+  background: @subtle;
+  min-width: 2.1rem;
+  border-radius: 6px;
+  font-size: 16pt;
+}
+.content {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#custom-updates-icon {
+  color: @base;
+  background: @subtle;
+  min-width: 2.1rem;
+  border-radius: 6px;
+  font-size: 16pt;
+}
+#custom-updates-content {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#clock {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+#workspaces {
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
+  border-radius: 6px;
+}
+#workspaces button {
+  color: @text;
+  min-width: 1.75rem;
+  box-shadow: none;
+  border-radius: 6px;
+  padding: 0.25rem;
+}
+#workspaces button.active {
+  color: @base;
+  background: @subtle;
+}
+#workspaces button:hover {
+  background: @subtle;
+  color: @base;
+}
+#window {
+  color: @foam;
+}

@@ -1,0 +1,82 @@
+format = """
+$directory\
+$direnv\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$fill \
+$golang\
+$nodejs\
+$python\
+$line_break\
+$jobs\
+$character\
+"""
+
+palette = "rose_pine"
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](bold fg:subtle)"
+error_symbol = "[❯](bold fg:love)"
+vimcmd_symbol = "[❮](bold fg:foam)"
+vimcmd_replace_one_symbol = "[❮](bold fg:foam)"
+vimcmd_replace_symbol = "[❮](bold fg:foam)"
+vimcmd_visual_symbol = "[❮](bold fg:foam)"
+
+[directory]
+format = "[$path]($style) "
+style = "bold fg:foam"
+
+[direnv]
+disabled = false
+format = "[󰔷]($style) "
+style = "fg:rose"
+
+[cmd_duration]
+format = "[took](subtle) [$duration]($style) "
+style = "bold fg:gold"
+
+[jobs]
+format = "[$symbol$number]($style) "
+number_threshold = 1
+symbol = " "
+style = "bold fg:rose"
+
+[git_branch]
+format = "[ $symbol$branch]($style) "
+symbol = " "
+style = "bold fg:iris"
+[git_status]
+modified = "~"
+deleted = "-"
+style = "bold fg:iris"
+
+[golang]
+format = "[go ($version)]($style) "
+style = "bold fg:rose"
+
+[nodejs]
+format = "[nodejs ($version)]($style) "
+style = "bold fg:pine"
+
+[python]
+format = '[py ${pyenv_prefix}(${version} )(\[$virtualenv\] )]($style)'
+style = "bold fg:gold"
+
+[palettes.rose_pine]
+base= "#232136"
+surface= "#2a273f"
+overlay= "#393552"
+muted= "#6e6a86"
+subtle= "#908caa"
+text= "#e0def4"
+love= "#eb6f92"
+gold= "#f6c177"
+rose= "#ea9a97"
+pine= "#3e8fb0"
+foam= "#9ccfd8"
+iris= "#c4a7e7"

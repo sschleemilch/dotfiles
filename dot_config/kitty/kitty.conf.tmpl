@@ -1,0 +1,58 @@
+font_size 12
+
+# Tabs
+map ctrl+shift+h previous_tab
+map ctrl+shift+l next_tab
+
+map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
+map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
+map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
+map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
+allow_remote_control yes
+
+window_padding_width 0 10 0 10
+
+{{- if eq .chezmoi.os "darwin" }}
+listen_on unix:/tmp/mykitty
+{{- else }}
+listen_on unix:@mykitty
+{{- end }}
+
+# Tab style
+tab_bar_style custom
+tab_bar_margin_width 5.5
+tab_separator " / "
+
+cursor_trail 3
+
+enable_audio_bell no
+enabled_layouts grid
+
+macos_quit_when_last_window_closed yes
+
+# BEGIN_KITTY_THEME
+# Rosé Pine Moon
+include current-theme.conf
+# END_KITTY_THEME
+
+# Tab colors
+# active_tab_foreground #e0def4
+# active_tab_background #232136
+# inactive_tab_foreground #6e6a86
+# inactive_tab_background #232136
+
+active_tab_foreground #232136
+active_tab_background #908caa
+inactive_tab_foreground #908caa
+inactive_tab_background #393552
+
+# Window border
+active_border_color #908caa
+inactive_border_color #44415a
+
+# BEGIN_KITTY_FONTS
+font_family      family="JetBrainsMono Nerd Font"
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+# END_KITTY_FONTS

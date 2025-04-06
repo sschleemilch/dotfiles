@@ -1,0 +1,43 @@
+[global]
+    width = 400
+    offset = 10x10
+
+    progress_bar_min_width = 380
+    progress_bar_max_width = 380
+    progress_bar_corner_radius = 2
+
+    padding = 15
+    horizontal_padding = 10
+    frame_width = 2
+    gap_size = 5
+    font = "JetBrainsMono 12"
+
+    # icon_theme = "Papirus"
+    enable_recursive_icon_lookup = true
+    corner_radius = 10
+
+    background = "#2a273f"
+    foreground = "#e0def4"
+
+    icon_position = "off"
+
+[urgency_low]
+    background = "#2a273f"
+    highlight = "#6e6a86"
+    frame_color = "#6e6a86"
+    default_icon = "dialog-information"
+    format = "<b><span foreground='#6e6a86'>%s</span></b>\n%b"
+
+[urgency_normal]
+    background = "#2a273f"
+    highlight = "#ea9a97"
+    frame_color = "#ea9a97"
+    default_icon = "dialog-warning"
+    format = "<b><span foreground='#ea9a97'>%s</span></b>\n%b"
+
+[urgency_critical]
+    background = "#2a273f"
+    highlight = "#eb6f92"
+    frame_color = "#eb6f92"
+    default_icon = "dialog-error"
+    format = "<b><span foreground='#eb6f92'>%s</span></b>\n%b"

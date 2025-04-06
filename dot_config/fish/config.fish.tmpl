@@ -1,0 +1,73 @@
+function add_to_fish_user_paths_if_exists
+    for dir in $argv
+        if test -d $dir
+            set -Ua fish_user_paths $dir
+        end
+    end
+end
+ 
+add_to_fish_user_paths_if_exists $HOME/.local/bin $HOME/go/bin /usr/local/bin/
+ 
+{{ if eq .chezmoi.os "darwin" }}
+add_to_fish_user_paths_if_exists /opt/homebrew/bin
+{{ end }}
+
+{{- if eq .chezmoi.hostname "LPT....?" }}
+prepend_to_sys_path_if_exists /opt/homebrew/opt/python@3.12/libexec/bin
+set -x http_proxy 127.0.0.1:3128
+set -x https_proxy 127.0.0.1:3128
+{{- end }}
+
+function prepend_to_sys_path_if_exists
+    for dir in $argv
+        if test -d $dir
+            set -gx PATH $dir $PATH
+        end
+    end
+end
+
+
+set -x FZF_DEFAULT_OPTS "
+  --highlight-line
+  --info=inline-right
+  --ansi
+  --layout=reverse
+  --border=none
+	--color=fg:#908caa,bg:#232136,hl:#ea9a97
+	--color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+	--color=border:#44415a,header:#3e8fb0,gutter:#232136
+	--color=spinner:#f6c177,info:#9ccfd8
+	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
+
+
+set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git"'
+
+set -x EDITOR nvim
+set -x VISUAL nvim
+
+set -U fish_greeting
+
+if status is-interactive
+  fish_vi_key_bindings
+  function starship_transient_prompt_func
+    starship module character
+  end
+  starship init fish | source
+  enable_transience
+  zoxide init fish | source
+  fzf --fish | source
+  direnv hook fish | source
+
+  # Aliases
+  abbr -a la eza -a
+  abbr -a ll eza -l
+  abbr -a lla eza -la
+  abbr -a ls eza
+  abbr -a lt eza --tree
+  abbr -a tree eza --tree
+  abbr -a v nvim
+  abbr -a gg lazygit
+  abbr -a cm chezmoi
+end
+
+fish_config theme choose "rose_pine_moon"

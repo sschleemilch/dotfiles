@@ -1,0 +1,14 @@
+{{- if eq .chezmoi.hostname "desos" }}
+monitor=DP-1,2560x1440@144,2560x0,1
+monitor=HDMI-A-1,3840x2160@60,0x0,1.5
+workspace=1,monitor:HDMI-A-1
+workspace=2,monitor:DP-1
+workspace=3,monitor:DP-1
+workspace=4,monitor:DP-1
+workspace=5,monitor:DP-1
+workspace=6,monitor:DP-1
+workspace=7,monitor:DP-1
+workspace=8,monitor:DP-1
+{{ else if eq .chezmoi.hostname "ladon" -}}
+monitor = eDP-1, 1920x1200@60, 0x0, 1
+{{- end }}
