@@ -30,6 +30,10 @@ enabled_layouts grid
 
 macos_quit_when_last_window_closed yes
 
+{{- if eq .chezmoi.hostname "LPTP2048124" }}
+shell /opt/homebrew/bin/fish
+{{- end }}
+
 # BEGIN_KITTY_THEME
 # Rosé Pine Moon
 include current-theme.conf
@@ -51,7 +55,11 @@ active_border_color #908caa
 inactive_border_color #44415a
 
 # BEGIN_KITTY_FONTS
+{{- if eq .chezmoi.hostname "LPTP2048124" }}
+font_family      family="JetBrains Mono"
+{{- else }}
 font_family      family="JetBrainsMono Nerd Font"
+{{- end }}
 bold_font        auto
 italic_font      auto
 bold_italic_font auto

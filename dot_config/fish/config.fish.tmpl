@@ -12,11 +12,6 @@ add_to_fish_user_paths_if_exists $HOME/.local/bin $HOME/go/bin /usr/local/bin/
 add_to_fish_user_paths_if_exists /opt/homebrew/bin
 {{ end }}
 
-{{- if eq .chezmoi.hostname "LPT....?" }}
-prepend_to_sys_path_if_exists /opt/homebrew/opt/python@3.12/libexec/bin
-set -x http_proxy 127.0.0.1:3128
-set -x https_proxy 127.0.0.1:3128
-{{- end }}
 
 function prepend_to_sys_path_if_exists
     for dir in $argv
@@ -25,6 +20,14 @@ function prepend_to_sys_path_if_exists
         end
     end
 end
+
+{{- if eq .chezmoi.hostname "LPTP2048124" }}
+prepend_to_sys_path_if_exists /opt/homebrew/opt/python@3.12/libexec/bin
+prepend_to_sys_path_if_exists /opt/homebrew/opt/openjdk/bin
+set -x http_proxy 127.0.0.1:3128
+set -x https_proxy 127.0.0.1:3128
+set -x GOPRIVATE 'atc-github.azure.cloud.bmw/*'
+{{- end }}
 
 
 set -x FZF_DEFAULT_OPTS "
