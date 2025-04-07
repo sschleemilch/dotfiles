@@ -45,3 +45,11 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ### `kitty`
 
 - [JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)
+
+### `hypr`
+
+- Existing `~/wallpaper.png`
+
+### `rofi`
+
+- Existing `~/wallpaper_small.png`

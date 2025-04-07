@@ -1,70 +1,76 @@
 configuration {
-	modi:                       "drun";
-  show-icons:                 false;
-	drun-display-format:        "{name}";
-	window-format:              "{w} · {c} · {t}";
+	modi:                         "drun";
+  show-icons:                   false;
+	drun-display-format:          "{name}";
+	window-format:                "{w} · {c} · {t}";
 }
 
 @import                          "~/.config/rofi/base.rasi"
 
 window {
-    transparency:                "real";
+    enabled:                     true;
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
-    height:                      500px;
-    x-offset:                    0px;
-    y-offset:                    0px;
-
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     0px;
+    width:                       900;
     border:                      2px solid;
     border-radius:               10px;
-    border-color:                @subtle;
+    border-color:                @muted;
     cursor:                      "default";
-    background-color:            @base;
+    background-color:            transparent;
 }
 
 mainbox {
     enabled:                     true;
-    spacing:                     20px;
-    margin:                      0px;
-    padding:                     30px;
-    border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
-    border-color:                @subtle;
+    spacing:                     0px;
     background-color:            transparent;
-    children:                    [ "inputbar", "message", "listview" ];
+    orientation:                 horizontal;
+    children:                    [ "imagebox", "listview" ];
+}
+
+imagebox {
+    padding:                     20px;
+    background-color:            transparent;
+    background-image:            url("~/wallpaper_small.png", height);
+    orientation:                 vertical;
+    border-color:                @muted;
+    border:                      0 2px 0 0;
+    children:                    [ "inputbar" ];
 }
 
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    margin:                      0px;
-    padding:                     0px 20px;
-    border:                      0px solid;
-    border-radius:               100px;
-    border-color:                @subtle;
-    background-color:            transparent;
+    padding:                     15px;
+    border:                      2px solid;
+    border-radius:               10px;
+    border-color:                @muted;
+    background-color:            @base;
     text-color:                  @text;
-    children:                    [ "entry" ];
+    children:                    ["textbox-prompt-colon", "entry" ];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    str:                         "❯";
+    background-color:            inherit;
+    text-color:                  @subtle;
 }
 
 entry {
     enabled:                     true;
-    padding:                     5px 0px;
     background-color:            inherit;
     text-color:                  @text;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "";
     placeholder-color:           @subtle;
 }
 
 listview {
     enabled:                     true;
     columns:                     1;
+    padding: 20px;
     lines:                       8;
     cycle:                       true;
     dynamic:                     true;
@@ -73,14 +79,8 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-
     spacing:                     5px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @subtle;
-    background-color:            transparent;
+    background-color:            @base;
     text-color:                  @text;
     cursor:                      "default";
 }
@@ -90,9 +90,7 @@ element {
     spacing:                     10px;
     margin:                      0px;
     padding:                     15px 20px;
-    border:                      0px solid;
     border-radius:               10px;
-    border-color:                @subtle;
     background-color:            transparent;
     text-color:                  @text;
     cursor:                      pointer;
@@ -102,7 +100,7 @@ element normal.normal {
     text-color:                  @text;
 }
 element selected.normal {
-    background-color:            @rose;
+    background-color:            @subtle;
     text-color:                  @base;
 }
 element-text {
@@ -113,3 +111,4 @@ element-text {
     vertical-align:              0.5;
     horizontal-align:            0.0;
 }
+
