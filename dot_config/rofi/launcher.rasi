@@ -1,8 +1,14 @@
 configuration {
-	modi:                         "drun";
+	modi:                         "combi";
+  combi-modi:                   "drun,window";
   show-icons:                   false;
 	drun-display-format:          "{name}";
-	window-format:                "{w} · {c} · {t}";
+  display-drun:                 " ";
+  display-window:               " ";
+  display-run:                  " ";
+  display-keys:                 " ";
+  display-ssh:                  "󰢹 ";
+  window-format:                "{w} · {c} · {t}";
 }
 
 @import                          "~/.config/rofi/base.rasi"
@@ -100,6 +106,10 @@ element normal.normal {
     text-color:                  @text;
 }
 element selected.normal {
+    background-color:            @rose;
+    text-color:                  @base;
+}
+element selected.active {
     background-color:            @subtle;
     text-color:                  @base;
 }
