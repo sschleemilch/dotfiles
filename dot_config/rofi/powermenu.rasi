@@ -1,0 +1,44 @@
+@import                          "base.rasi"
+
+window {
+    padding: 50px;
+    location:                    center;
+    anchor:                      center;
+    border-radius:               10px;
+    border-color:                @muted;
+    border:                      2px solid;
+    width:                       600px;
+    background-color:            @base;
+}
+
+mainbox {
+    children:                    [ "listview" ];
+}
+
+listview {
+    columns:                     4;
+    lines:                       1;
+    layout:                      vertical;
+    spacing:                     40px;
+    cursor:                      "default";
+    background-color:            @base;
+}
+
+element {
+    border-radius:               10px;
+    background-color:            inherit;
+    text-color:                  @subtle;
+    cursor:                      pointer;
+}
+element-text {
+    font:                        "JetBrainsMono Nerd Font Mono bold 48";
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+element selected.normal {
+    background-color:            @rose;
+    text-color:                  @base;
+}

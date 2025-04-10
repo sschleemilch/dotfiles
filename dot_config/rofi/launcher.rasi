@@ -11,7 +11,7 @@ configuration {
   window-format:                "{w} · {c} · {t}";
 }
 
-@import                          "~/.config/rofi/base.rasi"
+@import                          "base.rasi"
 
 window {
     enabled:                     true;
