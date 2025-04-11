@@ -52,4 +52,4 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 ### `rofi`
 
-- Existing `~/wallpaper_small.png`
+- Existing `~/launcher.png`

@@ -37,7 +37,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("~/wallpaper_small.png", height);
+    background-image:            url("~/launcher.png", height);
     orientation:                 vertical;
     border-color:                @muted;
     border:                      0 2px 0 0;
