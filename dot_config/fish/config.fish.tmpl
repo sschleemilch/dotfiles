@@ -71,6 +71,9 @@ if status is-interactive
   abbr -a v nvim
   abbr -a gg lazygit
   abbr -a cm chezmoi
+{{- if eq .chezmoi.os "linux" }}
+  abbr -a hypr 'if uwsm check may-start; exec uwsm start hyprland.desktop; end'
+{{- end }}
 end
 
 fish_config theme choose "rose_pine_moon"
