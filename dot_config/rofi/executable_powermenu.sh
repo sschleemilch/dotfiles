@@ -1,30 +1,28 @@
 #!/usr/bin/env bash
 
-shutdown=''
-reboot=''
-lock='󰌾'
-logout='󰍃'
+config=launcher.rasi
 
-rofi_cmd() {
-  rofi -dmenu -theme powermenu.rasi
-}
+actions=$(echo -e "  Lock\n  Shutdown\n  Reboot\n  Suspend\n  Hibernate\n  Logout")
 
-run_rofi() {
-  echo -e "$lock\n$shutdown\n$logout\n$reboot" | rofi_cmd
-}
+selected_option=$(echo -e "$actions" | rofi -dmenu -i -config "${config}" -run-command "uwsm app -- {cmd}" || pkill -x rofi)
 
-chosen="$(run_rofi)"
-case ${chosen} in
-$shutdown)
-  systemctl poweroff
-  ;;
-$reboot)
-  systemctl reboot
-  ;;
-$lock)
+case "$selected_option" in
+*Lock)
   hyprlock
   ;;
-$logout)
+*Shutdown)
+  systemctl poweroff
+  ;;
+*Reboot)
+  systemctl reboot
+  ;;
+*Suspend)
+  systemctl suspend
+  ;;
+*Hibernate)
+  systemctl hibernate
+  ;;
+*Logout)
   hyprctl dispatch exit
   ;;
 esac
