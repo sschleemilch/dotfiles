@@ -30,7 +30,6 @@ label:focus {
   padding-right: 10px;
 }
 
-/* ALL MODULES */
 #cpu-modules,
 #memory-modules,
 #disk-modules,
@@ -45,40 +44,52 @@ label:focus {
   border-radius: 6px;
   border: 2px solid @subtle;
   transition: 300ms linear;
-  margin: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-top: 10px;
 }
 
-#clock {
-  margin-right: 0;
+#memory-modules {
+  color: @rose;
+}
+#disk-modules {
+  color: @foam;
+}
+#cpu-modules {
+  color: @gold;
+}
+#backlight-modules {
+  color: @gold;
+}
+#wireplumber-modules {
+  color: @foam;
+}
+#network-modules {
+  color: @iris;
+}
+#battery-modules {
+  color: @rose;
 }
 
 .icon {
-  min-width: 2.1rem;
-  border-radius: 0px;
   font-size: 16pt;
 }
 .content {
-  margin-right: 1rem;
-  margin-left: 0.5rem;
+  margin-left: 0.75rem;
 }
 
 #custom-updates-icon {
-  min-width: 2.1rem;
-  border-radius: 0px;
   font-size: 16pt;
+  color: @iris;
 }
 #custom-updates-content {
-  margin-right: 1rem;
-  margin-left: 0.5rem;
-}
-
-#clock {
-  padding-right: 1rem;
-  padding-left: 1rem;
+  color: @iris;
+  margin-left: 0.75rem;
 }
 
 #workspaces {
   border-radius: 6px;
+  padding: 0;
 }
 #workspaces button {
   color: @text;
