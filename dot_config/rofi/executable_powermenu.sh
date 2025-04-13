@@ -1,28 +1,19 @@
 #!/usr/bin/env bash
 
-config=launcher.rasi
+config=powermenu.rasi
 
-actions=$(echo -e "  Lock\n  Shutdown\n  Reboot\n  Suspend\n  Hibernate\n  Logout")
+actions=$(echo -e "  Shutdown\n  Reboot\n  Logout")
 
-selected_option=$(echo -e "$actions" | rofi -dmenu -i -config "${config}" -run-command "uwsm app -- {cmd}" || pkill -x rofi)
+selected_option=$(echo -e "$actions" | rofi -dmenu -i -config "${config}" || pkill -x rofi)
 
 case "$selected_option" in
-*Lock)
-  hyprlock
-  ;;
 *Shutdown)
   systemctl poweroff
   ;;
 *Reboot)
   systemctl reboot
   ;;
-*Suspend)
-  systemctl suspend
-  ;;
-*Hibernate)
-  systemctl hibernate
-  ;;
 *Logout)
-  hyprctl dispatch exit
+  uwsm stop
   ;;
 esac

@@ -9,6 +9,8 @@ configuration {
   display-keys:                 " ";
   display-ssh:                  "󰢹 ";
   window-format:                "{w} · {c} · {t}";
+  run-command:                  "uwsm app -- {cmd}";
+  run-shell-command:            "uwsm app -- {terminal} -e {cmd}";
 }
 
 @import                          "base.rasi"
@@ -18,38 +20,27 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       900;
+    width:                       600px;
+    padding:                     20px;
     border:                      2px solid;
     border-radius:               10px;
     border-color:                @muted;
     cursor:                      "default";
-    background-color:            transparent;
+    background-color:            @base;
 }
 
 mainbox {
     enabled:                     true;
     spacing:                     0px;
     background-color:            transparent;
-    orientation:                 horizontal;
-    children:                    [ "imagebox", "listview" ];
-}
-
-imagebox {
-    padding:                     20px;
-    background-color:            transparent;
-    background-image:            url("~/launcher.png", height);
     orientation:                 vertical;
-    border-color:                @muted;
-    border:                      0 2px 0 0;
-    children:                    [ "inputbar" ];
+    spacing:                     20px;
+    children:                    [ "inputbar", "listview" ];
 }
 
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     15px;
-    border:                      2px solid;
-    border-radius:               10px;
     border-color:                @muted;
     background-color:            @base;
     text-color:                  @text;
@@ -76,7 +67,6 @@ entry {
 listview {
     enabled:                     true;
     columns:                     1;
-    padding: 20px;
     lines:                       8;
     cycle:                       true;
     dynamic:                     true;
