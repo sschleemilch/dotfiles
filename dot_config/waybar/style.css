@@ -43,7 +43,7 @@ label:focus {
 #clock {
   color: @text;
   border-radius: 6px;
-  background: @overlay;
+  border: 2px solid @subtle;
   transition: 300ms linear;
   margin: 0.5rem;
 }
@@ -53,27 +53,23 @@ label:focus {
 }
 
 .icon {
-  color: @base;
-  background: @subtle;
   min-width: 2.1rem;
-  border-radius: 6px;
+  border-radius: 0px;
   font-size: 16pt;
 }
 .content {
   margin-right: 1rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 #custom-updates-icon {
-  color: @base;
-  background: @subtle;
   min-width: 2.1rem;
-  border-radius: 6px;
+  border-radius: 0px;
   font-size: 16pt;
 }
 #custom-updates-content {
   margin-right: 1rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 #clock {
@@ -82,15 +78,13 @@ label:focus {
 }
 
 #workspaces {
-  padding-left: 0.1rem;
-  padding-right: 0.1rem;
   border-radius: 6px;
 }
 #workspaces button {
   color: @text;
   min-width: 1.75rem;
   box-shadow: none;
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 0.25rem;
 }
 #workspaces button.active {
