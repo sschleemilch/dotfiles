@@ -1,7 +1,7 @@
 configuration {
 	modi:                         "combi";
   combi-modi:                   "drun,window";
-  show-icons:                   false;
+  show-icons:                   true;
 	drun-display-format:          "{name}";
   display-drun:                 " ";
   display-window:               " ";
@@ -13,59 +13,47 @@ configuration {
   run-shell-command:            "uwsm app -- {terminal} -e {cmd}";
 }
 
-@import                          "base.rasi"
+@theme "base.rasi"
+
 
 window {
-    enabled:                     true;
-    location:                    center;
-    anchor:                      center;
+    width:                       25em;
+    transparency:                "real";
     fullscreen:                  false;
-    width:                       600px;
-    padding:                     20px;
-    border:                      2px solid;
-    border-radius:               10px;
-    border-color:                @muted;
+    enabled:                     true;
     cursor:                      "default";
-    background-color:            @base;
+    border-color:                @muted;
+    background-color:            @surface;
+    border-radius:               30px;
+    border:                      2px;
+}
+mainbox {
+    padding:                     1em;
+    orientation:                 vertical;
+    children:                    [ "inputbar" , "listbox" ];
+    background-color:            transparent;
 }
 
-mainbox {
-    enabled:                     true;
-    spacing:                     0px;
-    background-color:            transparent;
-    orientation:                 vertical;
-    spacing:                     20px;
-    children:                    [ "inputbar", "listview" ];
-}
 
 inputbar {
-    enabled:                     true;
-    spacing:                     10px;
-    border-color:                @muted;
+    padding:                     4em;
+    children:                    [ "entry" ];
     background-color:            @base;
-    text-color:                  @text;
-    children:                    ["textbox-prompt-colon", "entry" ];
+    background-image:            url("~/launcher.png", width);
+    border-radius:               1em 1em 0em 0em;
 }
-
-textbox-prompt-colon {
-    enabled:                     true;
-    expand:                      false;
-    str:                         "❯";
-    background-color:            inherit;
-    text-color:                  @subtle;
-}
-
 entry {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  @text;
-    cursor:                      text;
-    placeholder:                 "";
-    placeholder-color:           @subtle;
+    enabled:                     false;
 }
 
+listbox {
+    children:                    [ "listview"];
+    background-color:            @base;
+    border-radius:               0em 0em 1em 1em;
+}
 listview {
-    enabled:                     true;
+    spacing:                     0.4em;
+    padding:                     1em;
     columns:                     1;
     lines:                       8;
     cycle:                       true;
@@ -73,42 +61,55 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
+    expand:                      false;
     fixed-height:                true;
     fixed-columns:               true;
-    spacing:                     5px;
+    cursor:                      "default";
     background-color:            @base;
     text-color:                  @text;
-    cursor:                      "default";
 }
 
 element {
     enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     15px 20px;
-    border-radius:               10px;
+    spacing:                     1em;
+    padding:                     0.2em 0.2em 0.2em 1.5em;
+    cursor:                      pointer;
     background-color:            transparent;
     text-color:                  @text;
-    cursor:                      pointer;
-}
-element normal.normal {
-    background-color:            @base;
-    text-color:                  @text;
+    border-radius:               30px;
 }
 element selected.normal {
-    background-color:            @rose;
+    background-color:            @subtle;
     text-color:                  @base;
 }
 element selected.active {
     background-color:            @subtle;
     text-color:                  @base;
 }
-element-text {
+element-icon {
+    size:                        2em;
+    cursor:                      inherit;
     background-color:            transparent;
     text-color:                  inherit;
-    highlight:                   inherit;
-    cursor:                      inherit;
+}
+element-text {
     vertical-align:              0.5;
     horizontal-align:            0.0;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
 }
 
+error-message {
+    text-color:                  @text;
+    background-color:            @base;
+    text-transform:              capitalize;
+    children:                    [ "textbox" ];
+}
+
+textbox {
+    text-color:                  inherit;
+    background-color:            inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
