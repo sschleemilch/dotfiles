@@ -1,7 +1,11 @@
 return {
   {
     'folke/flash.nvim',
-    opts = {},
+    opts = {
+      prompt = {
+        enabled = false,
+      },
+    },
     lazy = false,
     keys = {
       {
