@@ -49,6 +49,7 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ### `hypr`
 
 - Existing `~/wallpaper.png`
+- [Orbitron](https://github.com/theleagueof/orbitron) for `hyprlock`
 
 ### `rofi`
 
