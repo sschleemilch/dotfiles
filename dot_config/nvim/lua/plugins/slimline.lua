@@ -15,13 +15,15 @@ return {
       },
       configs = {
         mode = {
-          verbose = true,
+          style = 'bg',
+          verbose = false,
         },
         diagnostics = {
           workspace = true,
         },
         progress = {
           column = true,
+          follow = false,
         }
       },
     },
