@@ -5,15 +5,24 @@ return {
     lazy = false,
     -- dev = true,
     opts = {
+      bold = true,
       style = 'fg',
+      components = {
+        left = {
+          'mode',
+          'git'
+        }
+      },
       configs = {
         mode = {
-          style = 'bg',
           verbose = true,
         },
         diagnostics = {
-          workspace = false,
+          workspace = true,
         },
+        progress = {
+          column = true,
+        }
       },
     },
   },

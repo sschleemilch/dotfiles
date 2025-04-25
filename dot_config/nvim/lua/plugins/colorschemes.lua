@@ -24,6 +24,7 @@ return {
         BlinkCmpKindText = { fg = 'text' },
         BlinkCmpKindConstant = { fg = 'gold' },
         BlinkCmpSignatureHelpBorder = { fg = 'muted' },
+
         -- Snacks
         SnacksIndentChunk = { fg = 'subtle' },
         SnacksIndentScope = { fg = 'subtle' },
@@ -34,7 +35,14 @@ return {
 
         -- Mini
         MiniFilesTitleFocused = { bg = 'base' },
-        MiniClueTitle = { bg = 'base' }
+        MiniClueTitle = { bg = 'base' },
+        MiniTablineFill = { bg = 'base' },
+        MiniTablineHidden = { bg = 'base', fg = 'subtle' },
+        MiniTablineCurrent = { bg = 'base', fg = 'text' },
+        MiniTablineVisible = { bg = 'base', fg = 'text' },
+        MiniTablineModifiedCurrent = { bg = 'base', fg = 'text' },
+        MiniTablineModifiedHidden = { bg = 'base', fg = 'subtle' },
+        MiniTablineModifiedVisible = { bg = 'base', fg = 'text' },
       },
     },
 
