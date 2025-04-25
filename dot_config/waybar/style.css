@@ -47,6 +47,7 @@ label:focus {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   margin-top: 10px;
+  background-color: @base;
 }
 
 #memory-modules {
