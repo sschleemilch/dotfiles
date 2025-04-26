@@ -10,8 +10,11 @@ return {
       components = {
         left = {
           'mode',
-          'git'
-        }
+          'git',
+          function()
+            return require('nvim-navic').get_location()
+          end,
+        },
       },
       configs = {
         mode = {
@@ -24,7 +27,7 @@ return {
         progress = {
           column = true,
           follow = false,
-        }
+        },
       },
     },
   },

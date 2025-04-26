@@ -14,6 +14,7 @@ return {
         FloatTitle = { bg = 'base' },
         FloatFooter = { bg = 'base' },
         NormalFloat = { bg = 'base' },
+        StatusLine = { bg = 'base' },
         Pmenu = { bg = 'base', fg = 'muted' },
 
         -- Blink
