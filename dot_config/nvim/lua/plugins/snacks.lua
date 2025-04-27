@@ -1,24 +1,24 @@
 return {
   {
-    "folke/snacks.nvim",
+    'folke/snacks.nvim',
     priority = 1000,
     lazy = false,
     opts = {
       input = {},
       indent = {
         indent = {
-          char = "╎",
+          char = '╎',
         },
         scope = {
-          char = "╎",
+          char = '╎',
         },
       },
       picker = {
-        prompt = " ❯ ",
+        prompt = ' ❯ ',
         win = {
           input = {
             keys = {
-              ["<Esc>"] = { "close", mode = { "n", "i" } },
+              ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
             },
           },
         },
@@ -35,19 +35,19 @@ return {
         layout = {
           layout = {
             backdrop = false,
-            box = "horizontal",
+            box = 'horizontal',
             width = 0.7,
             min_width = 120,
             height = 0.7,
             {
-              box = "vertical",
-              border = "rounded",
-              title = "{source} {live}",
-              title_pos = "center",
-              { win = "input", height = 1,     border = "bottom" },
-              { win = "list",  border = "none" },
+              box = 'vertical',
+              border = 'rounded',
+              title = '{source} {live}',
+              title_pos = 'center',
+              { win = 'input', height = 1, border = 'bottom' },
+              { win = 'list', border = 'none' },
             },
-            { win = "preview", border = "rounded", width = 0.5 },
+            { win = 'preview', border = 'rounded', width = 0.5 },
           },
         },
       },
@@ -61,183 +61,183 @@ return {
         preset = {
           keys = {
             {
-              icon = " ",
-              key = "f",
-              desc = "find file",
+              icon = ' ',
+              key = 'f',
+              desc = 'find file',
               action = ":lua Snacks.dashboard.pick('files')",
             },
             {
-              icon = " ",
-              key = "r",
-              desc = "Recent Files",
+              icon = ' ',
+              key = 'r',
+              desc = 'Recent Files',
               action = ":lua Snacks.dashboard.pick('oldfiles')",
             },
-            { icon = "", key = "e", desc = "Explorer", action = ":lua require('mini.files').open()" },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = '', key = 'e', desc = 'Explorer', action = ":lua require('mini.files').open()" },
+            { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
             {
-              icon = " ",
-              key = "g",
-              desc = "Find Text",
+              icon = ' ',
+              key = 'g',
+              desc = 'Find Text',
               action = ":lua Snacks.dashboard.pick('live_grep')",
             },
-            { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy },
-            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+            { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy },
+            { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
           },
         },
       },
     },
     keys = {
       {
-        "<leader>bd",
+        '<leader>bd',
         function()
           Snacks.bufdelete()
         end,
-        desc = "Delete Buffer",
+        desc = 'Delete Buffer',
       },
       {
-        "<leader>nh",
+        '<leader>nh',
         function()
           Snacks.notifier.show_history()
         end,
-        desc = "Notification history",
+        desc = 'Notification history',
       },
       {
-        "<leader>gg",
+        '<leader>gg',
         function()
           Snacks.lazygit()
         end,
-        desc = "Lazygit",
+        desc = 'Lazygit',
       },
       {
-        "<leader><leader>",
+        '<leader><leader>',
         function()
           Snacks.picker.files()
         end,
-        desc = "Find Files",
+        desc = 'Find Files',
       },
       {
-        "<leader>ff",
+        '<leader>ff',
         function()
           Snacks.picker.files()
         end,
-        desc = "Find Files",
+        desc = 'Find Files',
       },
       {
-        "<leader>,",
+        '<leader>,',
         function()
           Snacks.picker.buffers()
         end,
-        desc = "Buffers",
+        desc = 'Buffers',
       },
       {
-        "<leader>fb",
+        '<leader>fb',
         function()
           Snacks.picker.buffers()
         end,
-        desc = "Buffers",
+        desc = 'Buffers',
       },
       {
-        "<leader>fx",
+        '<leader>fx',
         function()
           Snacks.picker()
         end,
-        desc = "Picker",
+        desc = 'Picker',
       },
       {
-        "<leader>/",
+        '<leader>/',
         function()
           Snacks.picker.grep()
         end,
-        desc = "Grep",
+        desc = 'Grep',
       },
       {
-        "<leader>fg",
+        '<leader>fg',
         function()
           Snacks.picker.grep()
         end,
-        desc = "Grep",
+        desc = 'Grep',
       },
       {
-        "<leader>fr",
+        '<leader>fr',
         function()
           Snacks.picker.recent()
         end,
-        desc = "Recent",
+        desc = 'Recent',
       },
       {
-        "<leader>fh",
+        '<leader>fh',
         function()
           Snacks.picker.help()
         end,
-        desc = "Help Pages",
+        desc = 'Help Pages',
       },
       {
-        "<leader>fq",
+        '<leader>fq',
         function()
           Snacks.picker.qflist()
         end,
-        desc = "Quickfix List",
+        desc = 'Quickfix List',
       },
       {
-        "<leader>fs",
+        '<leader>fs',
         function()
           Snacks.picker.lsp_symbols()
         end,
-        desc = "LSP Symbols",
+        desc = 'LSP Symbols',
       },
       {
-        "<leader>fd",
+        '<leader>fd',
         function()
           Snacks.picker.diagnostics_buffer()
         end,
-        desc = "Diagnostics Buffer",
+        desc = 'Diagnostics Buffer',
       },
       {
-        "<leader>fD",
+        '<leader>fD',
         function()
           Snacks.picker.diagnostics()
         end,
-        desc = "Diagnostics Workspace",
+        desc = 'Diagnostics Workspace',
       },
       {
-        "gd",
+        'gd',
         function()
           Snacks.picker.lsp_definitions()
         end,
-        desc = "Goto Definition",
+        desc = 'Goto Definition',
       },
       {
-        "grr",
+        'grr',
         function()
           Snacks.picker.lsp_references()
         end,
         nowait = true,
-        desc = "References",
+        desc = 'References',
       },
       {
-        "gri",
+        'gri',
         function()
           Snacks.picker.lsp_implementations()
         end,
-        desc = "Goto Implementation",
+        desc = 'Goto Implementation',
       },
       {
-        "gy",
+        'gy',
         function()
           Snacks.picker.lsp_type_definitions()
         end,
-        desc = "Goto T[y]pe Definition",
+        desc = 'Goto T[y]pe Definition',
       },
     },
     init = function()
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "VeryLazy",
+      vim.api.nvim_create_autocmd('User', {
+        pattern = 'VeryLazy',
         callback = function()
           -- Create some toggle mappings
-          Snacks.toggle.diagnostics():map("<leader>td")
-          Snacks.toggle.indent():map("<leader>ti")
-          Snacks.toggle.words():map("<leader>tw")
-          Snacks.toggle.dim():map("<leader>tD")
+          Snacks.toggle.diagnostics():map('<leader>td')
+          Snacks.toggle.indent():map('<leader>ti')
+          Snacks.toggle.words():map('<leader>tw')
+          Snacks.toggle.dim():map('<leader>tD')
         end,
       })
     end,

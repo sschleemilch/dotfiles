@@ -30,10 +30,6 @@ return {
         SnacksIndentChunk = { fg = 'subtle' },
         SnacksIndentScope = { fg = 'subtle' },
 
-        -- Trouble
-        TroubleNormal = { bg = 'base' },
-        TroubleNormalNC = { bg = 'base' },
-
         -- Mini
         MiniFilesTitleFocused = { bg = 'base' },
         MiniClueTitle = { bg = 'base' },

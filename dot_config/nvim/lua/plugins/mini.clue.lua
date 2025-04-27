@@ -3,7 +3,7 @@ return {
     'echasnovski/mini.clue',
     event = 'VeryLazy',
     opts = function()
-      local miniclue = require 'mini.clue'
+      local miniclue = require('mini.clue')
 
       return {
         triggers = {
@@ -30,10 +30,9 @@ return {
           { mode = 'n', keys = '<leader>b', desc = '+buffers' },
           { mode = 'n', keys = '<leader>c', desc = '+code' },
           { mode = 'n', keys = '<leader>f', desc = '+find' },
-          { mode = 'n', keys = '<leader>x', desc = '+trouble' },
-          { mode = 'n', keys = '<leader>x', desc = '+toggle' },
-          { mode = 'n', keys = '[',         desc = '+prev' },
-          { mode = 'n', keys = ']',         desc = '+next' },
+          { mode = 'n', keys = '<leader>t', desc = '+toggle' },
+          { mode = 'n', keys = '[', desc = '+prev' },
+          { mode = 'n', keys = ']', desc = '+next' },
           -- Builtins.
           miniclue.gen_clues.builtin_completion(),
           miniclue.gen_clues.g(),
