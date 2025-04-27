@@ -1,7 +1,5 @@
 return {
-  {
-    'echasnovski/mini.ai',
-    lazy = false,
-    opts = {},
-  },
+  'echasnovski/mini.ai',
+  lazy = false,
+  opts = {},
 }

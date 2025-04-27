@@ -1,7 +1,5 @@
 return {
-  {
-    'lewis6991/gitsigns.nvim',
-    lazy = false,
-    opts = {},
-  },
+  'lewis6991/gitsigns.nvim',
+  lazy = false,
+  opts = {},
 }

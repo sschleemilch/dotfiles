@@ -1,6 +1,4 @@
 return {
-  {
-    'xzbdmw/colorful-menu.nvim',
-    opts = {},
-  },
+  'xzbdmw/colorful-menu.nvim',
+  opts = {},
 }

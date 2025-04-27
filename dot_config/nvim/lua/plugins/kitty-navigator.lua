@@ -1,6 +1,4 @@
 return {
-  {
-    'MunsMan/kitty-navigator.nvim',
-    opts = { keybindings = {} },
-  },
+  'MunsMan/kitty-navigator.nvim',
+  opts = { keybindings = {} },
 }
