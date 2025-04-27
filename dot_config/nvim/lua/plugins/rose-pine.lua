@@ -16,15 +16,6 @@ return {
       StatusLine = { bg = 'base' },
       Pmenu = { bg = 'base', fg = 'muted' },
 
-      -- Blink
-      BlinkCmpKindFunction = { fg = 'rose' },
-      BlinkCmpKindMethod = { fg = 'rose' },
-      BlinkCmpKindVariable = { fg = 'iris' },
-      BlinkCmpKindKeyword = { fg = 'pine' },
-      BlinkCmpKindText = { fg = 'text' },
-      BlinkCmpKindConstant = { fg = 'gold' },
-      BlinkCmpSignatureHelpBorder = { fg = 'muted' },
-
       -- Snacks
       SnacksIndentChunk = { fg = 'subtle' },
       SnacksIndentScope = { fg = 'subtle' },
