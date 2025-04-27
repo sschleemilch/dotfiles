@@ -26,10 +26,10 @@ return {
       MiniTablineFill = { bg = 'base' },
       MiniTablineHidden = { bg = 'base', fg = 'subtle' },
       MiniTablineCurrent = { bg = 'base', fg = 'text' },
-      MiniTablineVisible = { bg = 'base', fg = 'text' },
+      MiniTablineVisible = { bg = 'base', fg = 'subtle' },
       MiniTablineModifiedCurrent = { bg = 'base', fg = 'text' },
       MiniTablineModifiedHidden = { bg = 'base', fg = 'subtle' },
-      MiniTablineModifiedVisible = { bg = 'base', fg = 'text' },
+      MiniTablineModifiedVisible = { bg = 'base', fg = 'subtle' },
     },
   },
 
