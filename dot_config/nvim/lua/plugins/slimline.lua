@@ -10,15 +10,12 @@ return {
       left = {
         'mode',
         'git',
-        function()
-          return require('nvim-navic').get_location()
-        end,
       },
     },
     configs = {
       mode = {
         style = 'bg',
-        verbose = false,
+        verbose = true,
       },
       diagnostics = {
         workspace = true,
@@ -27,6 +24,16 @@ return {
         column = true,
         follow = false,
       },
+    },
+
+    sep = {
+      left = '',
+      right = '',
+    },
+
+    spaces = {
+      left = '',
+      right = '',
     },
   },
 }

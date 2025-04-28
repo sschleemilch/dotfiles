@@ -23,18 +23,18 @@ vim.diagnostic.config {
 }
 
 local lsps = {
-  "lua_ls",
-  "pyright",
-  "ruff",
-  "dockerls",
-  "gopls",
-  "ts_ls",
-  "jsonls",
-  "yamlls",
-  "astro",
-  "ltex",
-  "buf_ls",
-  "marksman",
+  'lua_ls',
+  'basedpyright',
+  'ruff',
+  'dockerls',
+  'gopls',
+  'ts_ls',
+  'jsonls',
+  'yamlls',
+  'astro',
+  'ltex',
+  'buf_ls',
+  'marksman',
 }
 
 vim.lsp.enable(lsps)

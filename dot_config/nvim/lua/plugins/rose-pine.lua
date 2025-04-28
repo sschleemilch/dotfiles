@@ -14,6 +14,10 @@ return {
       FloatFooter = { bg = 'base' },
       NormalFloat = { bg = 'base' },
       StatusLine = { bg = 'base' },
+
+      WinBar = { bg = 'base' },
+      WinBarNC = { bg = 'base' },
+
       Pmenu = { bg = 'base', fg = 'muted' },
 
       -- Snacks

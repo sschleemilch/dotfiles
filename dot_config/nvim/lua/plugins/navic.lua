@@ -8,6 +8,7 @@ return {
       },
       highlight = true,
       depth_limit = 5,
+      separator = ' ❯ ',
       icons = {
         Array = MiniIcons.get('lsp', 'array') .. ' ',
         Boolean = MiniIcons.get('lsp', 'boolean') .. ' ',
