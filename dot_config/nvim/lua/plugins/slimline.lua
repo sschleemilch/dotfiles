@@ -26,11 +26,6 @@ return {
       },
     },
 
-    sep = {
-      left = '',
-      right = '',
-    },
-
     spaces = {
       left = '',
       right = '',
