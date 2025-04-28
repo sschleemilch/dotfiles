@@ -12,7 +12,7 @@ window#waybar {
 tooltip {
   background: @overlay;
   border: 1px solid @subtle;
-  border-radius: 6px;
+  border-radius: 0px;
 }
 
 tooltip label {
@@ -41,7 +41,7 @@ label:focus {
 #backlight-modules,
 #clock {
   color: @text;
-  border-radius: 6px;
+  border-radius: 0px;
   border: 2px solid @subtle;
   transition: 300ms linear;
   padding-left: 0.75rem;
@@ -89,7 +89,7 @@ label:focus {
 }
 
 #workspaces {
-  border-radius: 6px;
+  border-radius: 0px;
   padding: 0;
 }
 #workspaces button {
