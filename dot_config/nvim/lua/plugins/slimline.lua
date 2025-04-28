@@ -5,7 +5,7 @@ return {
   -- dev = true,
   opts = {
     bold = true,
-    style = 'fg',
+    style = 'bg',
     components = {
       left = {
         'mode',
@@ -14,11 +14,11 @@ return {
     },
     configs = {
       mode = {
-        style = 'bg',
         verbose = true,
       },
       diagnostics = {
         workspace = true,
+        style = 'fg',
       },
       progress = {
         column = true,
@@ -34,6 +34,11 @@ return {
     spaces = {
       left = '',
       right = '',
+    },
+
+    hl = {
+      primary = 'BufferVisible',
+      secondary = 'BufferInactiveSign',
     },
   },
 }
