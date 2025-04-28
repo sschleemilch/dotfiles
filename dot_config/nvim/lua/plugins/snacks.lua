@@ -40,14 +40,25 @@ return {
           height = 0.7,
           {
             box = 'vertical',
-            border = 'rounded',
+            border = 'single',
             title = '{source} {live}',
             title_pos = 'center',
             { win = 'input', height = 1, border = 'bottom' },
             { win = 'list', border = 'none' },
           },
-          { win = 'preview', border = 'rounded', width = 0.5 },
+          { win = 'preview', border = 'single', width = 0.5 },
         },
+      },
+    },
+    styles = {
+      notification = {
+        border = 'single',
+      },
+      input = {
+        border = 'single',
+      },
+      notification_history = {
+        border = 'single',
       },
     },
     bigfile = { enabled = true },

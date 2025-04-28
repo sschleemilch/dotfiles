@@ -10,7 +10,7 @@ map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
 map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
 allow_remote_control yes
 
-window_padding_width 0 10 0 10
+window_padding_width 5 10 5 10
 
 {{- if eq .chezmoi.os "darwin" }}
 listen_on unix:/tmp/mykitty
@@ -20,7 +20,7 @@ listen_on unix:@mykitty
 
 # Tab style
 tab_bar_style custom
-tab_bar_margin_width 7
+tab_bar_margin_width 2
 
 cursor_trail 3
 
