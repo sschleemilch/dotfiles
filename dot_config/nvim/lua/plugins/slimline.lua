@@ -27,13 +27,18 @@ return {
     },
 
     sep = {
-      left = '',
-      right = '',
+      left = '',
+      right = '',
+      hide = {
+        first = true,
+        last = true,
+      },
     },
 
     spaces = {
       left = '',
       right = '',
+      components = '',
     },
 
     hl = {
