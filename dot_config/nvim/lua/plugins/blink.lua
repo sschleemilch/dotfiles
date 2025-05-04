@@ -1,8 +1,6 @@
-return {
-  'saghen/blink.cmp',
-  lazy = false,
-  version = 'v1.*',
-  opts = {
+MiniDeps.later(function()
+  MiniDeps.add('saghen/blink.cmp')
+  require('blink.cmp').setup({
     keymap = {
       preset = 'default',
     },
@@ -46,5 +44,5 @@ return {
     signature = {
       enabled = true,
     },
-  },
-}
+  })
+end)

@@ -1,19 +1,6 @@
-return {
-  'stevearc/conform.nvim',
-  dependencies = { 'mason.nvim' },
-  lazy = false,
-  cmd = 'ConformInfo',
-  keys = {
-    {
-      '<leader>cF',
-      function()
-        require('conform').format()
-      end,
-      mode = { 'n', 'v' },
-      desc = 'Format',
-    },
-  },
-  opts = {
+MiniDeps.later(function()
+  MiniDeps.add('stevearc/conform.nvim')
+  require('conform').setup({
     formatters_by_ft = {
       lua = { 'stylua' },
       sh = { 'shfmt' },
@@ -41,5 +28,5 @@ return {
       quiet = false,
       lsp_format = 'fallback',
     },
-  },
-}
+  })
+end)

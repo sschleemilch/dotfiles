@@ -3,12 +3,11 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
 -- UI characters
-local arrows = require('icons').arrows
 vim.opt.fillchars = {
   eob = ' ',
   fold = ' ',
-  foldclose = arrows.right,
-  foldopen = arrows.down,
+  foldclose = Icons.arrows.right,
+  foldopen = Icons.arrows.down,
   foldsep = ' ',
   msgsep = '─',
   stl = ' ',
@@ -64,7 +63,7 @@ vim.o.completeopt = 'menuone,noselect,noinsert'
 -- Always show sign column
 vim.o.signcolumn = 'yes'
 
-vim.opt.shortmess:append { I = true, c = true, C = true, w = true, s = true }
+vim.opt.shortmess:append({ I = true, c = true, C = true, w = true, s = true })
 
 -- Update times and timeouts.
 vim.o.updatetime = 300
@@ -77,3 +76,25 @@ vim.o.winborder = 'single'
 -- Splits
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+-- delayed diagnostics config
+MiniDeps.later(function()
+  vim.diagnostic.config({
+    underline = false,
+    update_in_insert = false,
+    virtual_text = {
+      spacing = 2,
+      source = 'if_many',
+      prefix = '',
+    },
+    severity_sort = true,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = Icons.diagnostics.Error,
+        [vim.diagnostic.severity.WARN] = Icons.diagnostics.Warn,
+        [vim.diagnostic.severity.HINT] = Icons.diagnostics.Hint,
+        [vim.diagnostic.severity.INFO] = Icons.diagnostics.Info,
+      },
+    },
+  })
+end)

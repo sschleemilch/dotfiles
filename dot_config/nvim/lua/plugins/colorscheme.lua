@@ -1,10 +1,6 @@
-return {
-  'rose-pine/neovim',
-  lazy = false,
-  enabled = true,
-  priority = 1000,
-  name = 'rose-pine',
-  opts = {
+MiniDeps.now(function()
+  MiniDeps.add('rose-pine/neovim')
+  require('rose-pine').setup({
     dim_inactive_windows = false,
     highlight_groups = {
       -- General
@@ -35,10 +31,6 @@ return {
       MiniTablineModifiedHidden = { bg = 'overlay', fg = 'subtle' },
       MiniTablineModifiedVisible = { bg = 'overlay', fg = 'subtle' },
     },
-  },
-
-  config = function(_, opts)
-    require('rose-pine').setup(opts)
-    vim.cmd([[colorscheme rose-pine-moon]])
-  end,
-}
+  })
+  vim.cmd('colorscheme rose-pine-moon')
+end)

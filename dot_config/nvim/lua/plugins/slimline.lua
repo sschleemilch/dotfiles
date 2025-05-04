@@ -1,9 +1,6 @@
-return {
-  'sschleemilch/slimline.nvim',
-  -- 'slimline.nvim',
-  lazy = false,
-  -- dev = true,
-  opts = {
+MiniDeps.now(function()
+  MiniDeps.add('sschleemilch/slimline.nvim')
+  require('slimline').setup({
     bold = true,
     style = 'bg',
     components = {
@@ -45,5 +42,5 @@ return {
       primary = 'BufferVisible',
       secondary = 'BufferInactiveSign',
     },
-  },
-}
+  })
+end)

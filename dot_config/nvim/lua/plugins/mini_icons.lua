@@ -1,8 +1,5 @@
-return {
-  'echasnovski/mini.icons',
-  enabled = true,
-  lazy = false,
-  opts = {
+MiniDeps.now(function()
+  require('mini.icons').setup({
     lsp = {
       boolean = { glyph = '󰨙', hl = 'MiniIconsOrange' },
       enum = { glyph = '', hl = 'MiniIconsPurple' },
@@ -25,5 +22,5 @@ return {
       value = { glyph = '', hl = 'MiniIconsBlue' },
       variable = { glyph = '󰀫', hl = 'MiniIconsCyan' },
     },
-  },
-}
+  })
+end)

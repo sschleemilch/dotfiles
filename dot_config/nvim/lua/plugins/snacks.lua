@@ -1,8 +1,6 @@
-return {
-  'folke/snacks.nvim',
-  priority = 1000,
-  lazy = false,
-  opts = {
+MiniDeps.now(function()
+  MiniDeps.add('folke/snacks.nvim')
+  require('snacks').setup({
     input = {},
     indent = {
       indent = {
@@ -90,165 +88,59 @@ return {
             desc = 'Find Text',
             action = ":lua Snacks.dashboard.pick('live_grep')",
           },
-          { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy },
           { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
         },
       },
+      sections = {
+        { section = 'header' },
+        { section = 'keys', gap = 1, padding = 1 },
+      },
     },
-  },
-  keys = {
-    {
-      '<leader>bd',
-      function()
-        Snacks.bufdelete()
-      end,
-      desc = 'Delete Buffer',
-    },
-    {
-      '<leader>nh',
-      function()
-        Snacks.notifier.show_history()
-      end,
-      desc = 'Notification history',
-    },
-    {
-      '<leader>gg',
-      function()
-        Snacks.lazygit()
-      end,
-      desc = 'Lazygit',
-    },
-    {
-      '<leader><leader>',
-      function()
-        Snacks.picker.files()
-      end,
-      desc = 'Find Files',
-    },
-    {
-      '<leader>ff',
-      function()
-        Snacks.picker.files()
-      end,
-      desc = 'Find Files',
-    },
-    {
-      '<leader>,',
-      function()
-        Snacks.picker.buffers()
-      end,
-      desc = 'Buffers',
-    },
-    {
-      '<leader>fb',
-      function()
-        Snacks.picker.buffers()
-      end,
-      desc = 'Buffers',
-    },
-    {
-      '<leader>fx',
-      function()
-        Snacks.picker()
-      end,
-      desc = 'Picker',
-    },
-    {
-      '<leader>/',
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = 'Grep',
-    },
-    {
-      '<leader>fg',
-      function()
-        Snacks.picker.grep()
-      end,
-      desc = 'Grep',
-    },
-    {
-      '<leader>fr',
-      function()
-        Snacks.picker.recent()
-      end,
-      desc = 'Recent',
-    },
-    {
-      '<leader>fh',
-      function()
-        Snacks.picker.help()
-      end,
-      desc = 'Help Pages',
-    },
-    {
-      '<leader>fq',
-      function()
-        Snacks.picker.qflist()
-      end,
-      desc = 'Quickfix List',
-    },
-    {
-      '<leader>fs',
-      function()
-        Snacks.picker.lsp_symbols()
-      end,
-      desc = 'LSP Symbols',
-    },
-    {
-      '<leader>fd',
-      function()
-        Snacks.picker.diagnostics_buffer()
-      end,
-      desc = 'Diagnostics Buffer',
-    },
-    {
-      '<leader>fD',
-      function()
-        Snacks.picker.diagnostics()
-      end,
-      desc = 'Diagnostics Workspace',
-    },
-    {
-      'gd',
-      function()
-        Snacks.picker.lsp_definitions()
-      end,
-      desc = 'Goto Definition',
-    },
-    {
-      'grr',
-      function()
-        Snacks.picker.lsp_references()
-      end,
-      nowait = true,
-      desc = 'References',
-    },
-    {
-      'gri',
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-      desc = 'Goto Implementation',
-    },
-    {
-      'gy',
-      function()
-        Snacks.picker.lsp_type_definitions()
-      end,
-      desc = 'Goto T[y]pe Definition',
-    },
-  },
-  init = function()
-    vim.api.nvim_create_autocmd('User', {
-      pattern = 'VeryLazy',
-      callback = function()
-        -- Create some toggle mappings
-        Snacks.toggle.diagnostics():map('<leader>td')
-        Snacks.toggle.indent():map('<leader>ti')
-        Snacks.toggle.words():map('<leader>tw')
-        Snacks.toggle.dim():map('<leader>tD')
-      end,
-    })
-  end,
-}
+  })
+  vim.keymap.set('n', '<leader>bd', function()
+    Snacks.bufdelete()
+  end, { desc = 'Delete buffer' })
+  vim.keymap.set('n', '<leader>nh', function()
+    Snacks.notifier.show_history()
+  end, { desc = 'Notification history' })
+  vim.keymap.set('n', '<leader><leader>', function()
+    Snacks.picker.files()
+  end, { desc = 'Find file' })
+  vim.keymap.set('n', '<leader>,', function()
+    Snacks.picker.buffers()
+  end, { desc = 'Find buffer' })
+  vim.keymap.set('n', '<leader>/', function()
+    Snacks.picker.grep()
+  end, { desc = 'Grep' })
+  vim.keymap.set('n', '<leader>fr', function()
+    Snacks.picker.recent()
+  end, { desc = 'Find recent file' })
+  vim.keymap.set('n', '<leader>fh', function()
+    Snacks.picker.help()
+  end, { desc = 'Find help page' })
+  vim.keymap.set('n', '<leader>fq', function()
+    Snacks.picker.qflist()
+  end, { desc = 'Quickfixes' })
+  vim.keymap.set('n', '<leader>fs', function()
+    Snacks.picker.lsp_symbols()
+  end, { desc = 'LSP Symbols' })
+  vim.keymap.set('n', '<leader>fd', function()
+    Snacks.picker.diagnostics_buffer()
+  end, { desc = 'Diagnostics (buffer)' })
+  vim.keymap.set('n', '<leader>fD', function()
+    Snacks.picker.diagnostics()
+  end, { desc = 'Diagnostics' })
+  vim.keymap.set('n', '<leader>gd', function()
+    Snacks.picker.lsp_definitions()
+  end, { desc = 'Goto LSP Definition' })
+  vim.keymap.set('n', '<leader>grr', function()
+    Snacks.picker.lsp_references()
+  end, { desc = 'Goto LSP references' })
+end)
+
+MiniDeps.later(function()
+  Snacks.toggle.diagnostics():map('<leader>td')
+  Snacks.toggle.indent():map('<leader>ti')
+  Snacks.toggle.words():map('<leader>tw')
+  Snacks.toggle.dim():map('<leader>tD')
+end)

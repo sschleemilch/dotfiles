@@ -1,4 +1,4 @@
-return {
+_G.Icons = {
   separators = {
     triangle_lower_left = '',
     triangle_lower_right = '',
@@ -8,7 +8,7 @@ return {
     powerline_right = '',
     circle_left = '',
     circle_right = '',
-    block = '▊',
+    block = '█',
   },
   borders = {
     single = {
