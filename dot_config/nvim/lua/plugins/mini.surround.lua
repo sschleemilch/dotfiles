@@ -1,6 +1,6 @@
 return {
   'echasnovski/mini.surround',
-  lazy = false,
+  event = 'VeryLazy',
   opts = {
     mappings = {
       add = 'gsa', -- Add surrounding in Normal and Visual modes

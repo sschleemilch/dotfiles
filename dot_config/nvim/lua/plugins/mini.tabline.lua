@@ -7,5 +7,4 @@ return {
       return MiniTabline.default_format(buf_id, label) .. suffix
     end,
   },
-  enabled = true,
 }

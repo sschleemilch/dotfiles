@@ -1,5 +1,5 @@
 return {
   'echasnovski/mini.ai',
-  lazy = false,
+  event = 'VeryLazy',
   opts = {},
 }

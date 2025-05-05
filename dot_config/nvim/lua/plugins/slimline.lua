@@ -1,7 +1,7 @@
 return {
   'sschleemilch/slimline.nvim',
   -- 'slimline.nvim',
-  lazy = false,
+  event = 'VeryLazy',
   -- dev = true,
   opts = {
     bold = true,

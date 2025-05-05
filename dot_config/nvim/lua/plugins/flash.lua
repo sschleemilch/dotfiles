@@ -5,7 +5,7 @@ return {
       enabled = false,
     },
   },
-  lazy = false,
+  event = 'VeryLazy',
   keys = {
     {
       's',

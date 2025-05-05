@@ -1,4 +1,4 @@
-return {
+_G.Icons = {
   separators = {
     triangle_lower_left = '',
     triangle_lower_right = '',

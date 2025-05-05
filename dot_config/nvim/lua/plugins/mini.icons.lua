@@ -1,6 +1,5 @@
 return {
   'echasnovski/mini.icons',
-  enabled = true,
   lazy = false,
   opts = {
     lsp = {
