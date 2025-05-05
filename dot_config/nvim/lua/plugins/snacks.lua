@@ -11,18 +11,11 @@ MiniDeps.now(function()
       },
     },
     styles = {
-      notification = {
-        border = 'single',
-      },
       input = {
-        border = 'single',
-      },
-      notification_history = {
         border = 'single',
       },
     },
     bigfile = { enabled = true },
-    notifier = { enabled = true },
     quickfile = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
@@ -30,9 +23,6 @@ MiniDeps.now(function()
   vim.keymap.set('n', '<leader>bd', function()
     Snacks.bufdelete()
   end, { desc = 'Delete buffer' })
-  vim.keymap.set('n', '<leader>nh', function()
-    Snacks.notifier.show_history()
-  end, { desc = 'Notification history' })
 end)
 
 MiniDeps.later(function()

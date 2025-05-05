@@ -1,10 +1,11 @@
 -- Now
 require('plugins.colorscheme')
 require('plugins.mini-icons')
-require('plugins.snacks')
+require('plugins.mini-notify')
 require('plugins.mini-starter')
 require('plugins.slimline')
 require('plugins.mini-tabline')
+require('plugins.snacks')
 
 -- Later
 require('plugins.nvim-treesitter')

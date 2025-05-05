@@ -37,6 +37,8 @@ MiniDeps.now(function()
       MiniPickPrompt = { bg = 'base', fg = 'foam' },
       MiniPickBorderText = { bg = 'base' },
       MiniPickMatchRanges = { fg = 'rose' },
+      -- Starter
+      MiniStarterItemBullet = { fg = 'overlay' },
     },
   })
   vim.cmd('colorscheme rose-pine-moon')
