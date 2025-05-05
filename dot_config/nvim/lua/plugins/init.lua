@@ -2,6 +2,7 @@
 require('plugins.colorscheme')
 require('plugins.mini_icons')
 require('plugins.snacks')
+require('plugins.mini_starter')
 require('plugins.slimline')
 require('plugins.mini_tabline')
 
