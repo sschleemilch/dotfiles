@@ -1,5 +1,8 @@
 MiniDeps.later(function()
-  MiniDeps.add('saghen/blink.cmp')
+  MiniDeps.add({
+    source = 'saghen/blink.cmp',
+    checkout = 'v1.2.0',
+  })
   require('blink.cmp').setup({
     keymap = {
       preset = 'default',

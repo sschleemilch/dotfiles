@@ -1,21 +1,22 @@
 -- Now
 require('plugins.colorscheme')
-require('plugins.mini_icons')
+require('plugins.mini-icons')
 require('plugins.snacks')
-require('plugins.mini_starter')
+require('plugins.mini-starter')
 require('plugins.slimline')
-require('plugins.mini_tabline')
+require('plugins.mini-tabline')
 
 -- Later
 require('plugins.nvim-treesitter')
 
-require('plugins.mini_extra')
-require('plugins.mini_ai')
-require('plugins.mini_clue')
-require('plugins.mini_files')
-require('plugins.mini_hipatterns')
-require('plugins.mini_pairs')
-require('plugins.mini_surround')
+require('plugins.mini-extra')
+require('plugins.mini-ai')
+require('plugins.mini-clue')
+require('plugins.mini-files')
+require('plugins.mini-hipatterns')
+require('plugins.mini-pairs')
+require('plugins.mini-pick')
+require('plugins.mini-surround')
 
 require('plugins.conform')
 require('plugins.flash')

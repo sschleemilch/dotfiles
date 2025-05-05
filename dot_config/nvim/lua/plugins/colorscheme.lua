@@ -21,8 +21,11 @@ MiniDeps.now(function()
       SnacksIndentScope = { fg = 'subtle' },
 
       -- Mini
+      -- Files
       MiniFilesTitleFocused = { bg = 'base' },
+      -- Clue
       MiniClueTitle = { bg = 'base' },
+      -- Tabline
       MiniTablineFill = { bg = 'base' },
       MiniTablineHidden = { bg = 'overlay', fg = 'subtle' },
       MiniTablineCurrent = { bg = 'subtle', fg = 'base' },
@@ -30,6 +33,10 @@ MiniDeps.now(function()
       MiniTablineModifiedCurrent = { bg = 'subtle', fg = 'base' },
       MiniTablineModifiedHidden = { bg = 'overlay', fg = 'subtle' },
       MiniTablineModifiedVisible = { bg = 'overlay', fg = 'subtle' },
+      -- Pick
+      MiniPickPrompt = { bg = 'base', fg = 'foam' },
+      MiniPickBorderText = { bg = 'base' },
+      MiniPickMatchRanges = { fg = 'rose' },
     },
   })
   vim.cmd('colorscheme rose-pine-moon')
