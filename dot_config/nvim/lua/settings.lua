@@ -45,6 +45,9 @@ vim.opt.listchars = { space = ' ', trail = '⋅', tab = '  ' }
 -- Stores undo history for a file
 vim.o.undofile = true
 
+vim.o.backup = false -- Don't store backup while overwriting the file
+vim.o.writebackup = false -- Don't store backup while overwriting the file
+
 -- Case insensitive searching unless search has capitals
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -63,7 +66,7 @@ vim.o.completeopt = 'menuone,noselect,noinsert'
 -- Always show sign column
 vim.o.signcolumn = 'yes'
 
-vim.opt.shortmess:append({ I = true, c = true, C = true, w = true, s = true })
+vim.opt.shortmess:append({ I = true, c = true, C = true, W = true, s = true })
 
 -- Update times and timeouts.
 vim.o.updatetime = 300

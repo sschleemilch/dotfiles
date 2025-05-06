@@ -4,16 +4,22 @@ local function map(mode, lhs, rhs, opts)
 end
 
 -- better up/down
-map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
-map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
-map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
-map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
+map({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
+map({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
--- Move to window using the <ctrl> hjkl keys
-map('n', '<C-h>', '<C-w>h', { desc = 'Go to Left Window', remap = true })
-map('n', '<C-j>', '<C-w>j', { desc = 'Go to Lower Window', remap = true })
-map('n', '<C-k>', '<C-w>k', { desc = 'Go to Upper Window', remap = true })
-map('n', '<C-l>', '<C-w>l', { desc = 'Go to Right Window', remap = true })
+-- Reselect latest changed, put, or yanked text
+map(
+  'n',
+  'gV',
+  '"`[" . strpart(getregtype(), 0, 1) . "`]"',
+  { expr = true, replace_keycodes = false, desc = 'Visually select changed text' }
+)
+
+-- Window navigation
+map('n', '<C-H>', '<C-w>h', { desc = 'Focus on left window' })
+map('n', '<C-J>', '<C-w>j', { desc = 'Focus on below window' })
+map('n', '<C-K>', '<C-w>k', { desc = 'Focus on above window' })
+map('n', '<C-L>', '<C-w>l', { desc = 'Focus on right window' })
 
 -- Move lines
 map('v', 'J', ":m '>+1<CR>gv=gv")
@@ -47,7 +53,10 @@ map('n', 'n', 'nzzzv', { desc = 'Next result' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous result' })
 
 -- save file
-map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save File' })
+-- Alternative way to save and exit in Normal mode.
+-- NOTE: Adding `redraw` helps with `cmdheight=0` if buffer is not modified
+map('n', '<C-S>', '<Cmd>silent! update | redraw<CR>', { desc = 'Save' })
+map({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
 
 -- better indenting
 map('v', '<', '<gv')
