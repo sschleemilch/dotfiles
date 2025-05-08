@@ -7,8 +7,7 @@ return {
   lazy = false,
   opts = {
     ui = {
-      width = 1,
-      height = 1,
+      backdrop = 100,
     },
     ensure_installed = {
       'stylua',
