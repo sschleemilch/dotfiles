@@ -38,6 +38,7 @@ return {
           box = 'horizontal',
           width = 0.7,
           min_width = 120,
+          min_height = 15,
           height = 0.7,
           {
             box = 'vertical',
