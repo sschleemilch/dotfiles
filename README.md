@@ -39,6 +39,10 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 ### `kitty`
 
+- [MonoLisa](https://www.monolisa.dev/)
+
+### `waybar`, `rofi`, `dunst`
+
 - [JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)
 
 ### `hypr`
