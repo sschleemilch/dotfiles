@@ -14,7 +14,7 @@ return {
       },
     },
     picker = {
-      prompt = ' ❯ ',
+      prompt = Icons.arrows.right .. ' ',
       win = {
         input = {
           keys = {

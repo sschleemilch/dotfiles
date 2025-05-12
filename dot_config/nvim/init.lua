@@ -19,6 +19,7 @@ require('settings')
 require('keymaps')
 require('autocommands')
 require('filetypes')
+require('winbar')
 
 require('lazy').setup('plugins', {
   change_detection = { notify = false },

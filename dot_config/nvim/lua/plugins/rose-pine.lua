@@ -14,8 +14,9 @@ return {
       NormalFloat = { bg = 'base' },
       StatusLine = { bg = 'base' },
 
-      WinBar = { bg = 'base' },
+      WinBar = { fg = 'text', bg = 'base' },
       WinBarNC = { bg = 'base' },
+      WinBarSeparator = { fg = 'subtle' },
 
       Pmenu = { bg = 'base', fg = 'muted' },
 
@@ -26,13 +27,6 @@ return {
       -- Mini
       MiniFilesTitleFocused = { bg = 'base' },
       MiniClueTitle = { bg = 'base' },
-      MiniTablineFill = { bg = 'base' },
-      MiniTablineHidden = { bg = 'overlay', fg = 'subtle' },
-      MiniTablineCurrent = { bg = 'subtle', fg = 'base' },
-      MiniTablineVisible = { bg = 'overlay', fg = 'subtle' },
-      MiniTablineModifiedCurrent = { bg = 'subtle', fg = 'base' },
-      MiniTablineModifiedHidden = { bg = 'overlay', fg = 'subtle' },
-      MiniTablineModifiedVisible = { bg = 'overlay', fg = 'subtle' },
     },
   },
 
