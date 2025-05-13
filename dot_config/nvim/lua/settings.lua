@@ -82,7 +82,7 @@ vim.o.splitbelow = true
 
 -- Diagnostics
 vim.diagnostic.config({
-  underline = false,
+  underline = true,
   update_in_insert = false,
   virtual_text = {
     spacing = 2,
