@@ -89,9 +89,6 @@ vim.diagnostic.config({
     source = 'if_many',
     prefix = '',
   },
-  -- virtual_lines = {
-  --   current_line = true,
-  -- },
   severity_sort = true,
   signs = {
     text = {

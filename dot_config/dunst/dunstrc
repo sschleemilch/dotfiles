@@ -10,34 +10,34 @@
     horizontal_padding = 10
     frame_width = 2
     gap_size = 5
-    font = "JetBrainsMono 12"
+    font = "MonoLisa 12"
 
     # icon_theme = "Papirus"
     enable_recursive_icon_lookup = true
     corner_radius = 10
 
-    background = "#2a273f"
-    foreground = "#e0def4"
+    background = "#1f1f28"
+    foreground = "#dcd7ba"
 
     icon_position = "off"
 
 [urgency_low]
-    background = "#2a273f"
+    background = "#1f1f28"
     highlight = "#6e6a86"
     frame_color = "#6e6a86"
     default_icon = "dialog-information"
     format = "<b><span foreground='#6e6a86'>%s</span></b>\n%b"
 
 [urgency_normal]
-    background = "#2a273f"
-    highlight = "#ea9a97"
-    frame_color = "#ea9a97"
+    background = "#1f1f28"
+    highlight = "#c34043"
+    frame_color = "#c34043"
     default_icon = "dialog-warning"
-    format = "<b><span foreground='#ea9a97'>%s</span></b>\n%b"
+    format = "<b><span foreground='#c34043'>%s</span></b>\n%b"
 
 [urgency_critical]
-    background = "#2a273f"
-    highlight = "#eb6f92"
-    frame_color = "#eb6f92"
+    background = "#1f1f28"
+    highlight = "#e82424"
+    frame_color = "#e82424"
     default_icon = "dialog-error"
-    format = "<b><span foreground='#eb6f92'>%s</span></b>\n%b"
+    format = "<b><span foreground='#e82424'>%s</span></b>\n%b"

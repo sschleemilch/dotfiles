@@ -22,13 +22,12 @@ window {
     fullscreen:                  false;
     enabled:                     true;
     cursor:                      "default";
-    border-color:                @muted;
-    background-color:            @surface;
+    border-color:                @sumiInk4;
+    background-color:            @sumiInk2;
     border-radius:               0px;
     border:                      2px;
 }
 mainbox {
-    padding:                     1em;
     orientation:                 vertical;
     children:                    [ "inputbar" , "listbox" ];
     background-color:            transparent;
@@ -38,7 +37,7 @@ mainbox {
 inputbar {
     padding:                     4em;
     children:                    [ "entry" ];
-    background-color:            @base;
+    background-color:            @sumiInk2;
     background-image:            url("~/launcher.png", width);
     border-radius:               0em 0em 0em 0em;
 }
@@ -48,7 +47,7 @@ entry {
 
 listbox {
     children:                    [ "listview"];
-    background-color:            @base;
+    background-color:            @sumiInk2;
     border-radius:               0em 0em 0em 0em;
 }
 listview {
@@ -65,8 +64,8 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     cursor:                      "default";
-    background-color:            @base;
-    text-color:                  @text;
+    background-color:            @sumiInk2;
+    text-color:                  @fujiWhite;
 }
 
 element {
@@ -75,16 +74,16 @@ element {
     padding:                     0.2em 0.2em 0.2em 1.5em;
     cursor:                      pointer;
     background-color:            transparent;
-    text-color:                  @text;
+    text-color:                  @fujiWhite;
     border-radius:               0px;
 }
 element selected.normal {
-    background-color:            @subtle;
-    text-color:                  @base;
+    background-color:            @waveBlue1;
+    text-color:                  @fujiWhite;
 }
 element selected.active {
     background-color:            @subtle;
-    text-color:                  @base;
+    text-color:                  @fujiWhite;
 }
 element-icon {
     size:                        2em;
@@ -101,8 +100,8 @@ element-text {
 }
 
 error-message {
-    text-color:                  @text;
-    background-color:            @base;
+    text-color:                  @fujiWhite;
+    background-color:            @sumiInk2;
     text-transform:              capitalize;
     children:                    [ "textbox" ];
 }

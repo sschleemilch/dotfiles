@@ -35,15 +35,14 @@ return {
       },
     },
 
+    hl = {
+      primary = 'NormalFloat',
+    },
+
     spaces = {
       left = '',
       right = '',
       components = '',
-    },
-
-    hl = {
-      primary = 'BufferVisible',
-      secondary = 'BufferInactiveSign',
     },
   },
 }

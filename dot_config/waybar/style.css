@@ -1,4 +1,4 @@
-@import "rose-pine-moon.css";
+@import "kanagawa.css";
 
 * {
   font-family: "JetBrainsMono Nerd Font Mono";
@@ -10,17 +10,17 @@ window#waybar {
 }
 
 tooltip {
-  background: @overlay;
-  border: 1px solid @subtle;
+  background: @sumiInk1;
+  border: 1px solid @sumiInk4;
   border-radius: 0px;
 }
 
 tooltip label {
-  color: @text;
+  color: @fujiWhite;
 }
 
 label:focus {
-  background-color: @base;
+  background-color: @sumiInk1;
 }
 
 .modules-left {
@@ -40,36 +40,36 @@ label:focus {
 #network-modules,
 #backlight-modules,
 #clock {
-  color: @text;
+  color: @fujiWhite;
   border-radius: 0px;
-  border: 2px solid @subtle;
+  border: 2px solid @sumiInk4;
   transition: 300ms linear;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   margin-top: 10px;
-  background-color: @base;
+  background-color: @sumiInk2;
 }
 
 #memory-modules {
-  color: @rose;
+  color: @sakuraPink;
 }
 #disk-modules {
-  color: @foam;
+  color: @springBlue;
 }
 #cpu-modules {
-  color: @gold;
+  color: @autumnYellow;
 }
 #backlight-modules {
-  color: @gold;
+  color: @autumnYellow;
 }
 #wireplumber-modules {
-  color: @foam;
+  color: @springBlue;
 }
 #network-modules {
-  color: @iris;
+  color: @oniViolet;
 }
 #battery-modules {
-  color: @rose;
+  color: @sakuraPink;
 }
 
 .icon {
@@ -81,10 +81,10 @@ label:focus {
 
 #custom-updates-icon {
   font-size: 16pt;
-  color: @iris;
+  color: @oniViolet;
 }
 #custom-updates-content {
-  color: @iris;
+  color: @oniViolet;
   margin-left: 0.75rem;
 }
 
@@ -93,20 +93,20 @@ label:focus {
   padding: 0;
 }
 #workspaces button {
-  color: @text;
+  color: @fujiWhite;
   min-width: 1.75rem;
   box-shadow: none;
   border-radius: 0px;
   padding: 0.25rem;
 }
 #workspaces button.active {
-  color: @base;
-  background: @subtle;
+  /* color: @sumiInk1; */
+  background: @sumiInk4;
 }
 #workspaces button:hover {
-  background: @subtle;
-  color: @base;
+  background: @sumiInk4;
+  color: @sumiInk1;
 }
 #window {
-  color: @foam;
+  color: @springBlue;
 }
