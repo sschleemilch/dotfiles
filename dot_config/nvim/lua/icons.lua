@@ -8,7 +8,12 @@ _G.Icons = {
     powerline_right = '',
     circle_left = '',
     circle_right = '',
-    block = '▊',
+    block = {
+      full = '█',
+      shadelight = '░',
+      shademedium = '▒',
+      shadedark = '▓',
+    },
   },
   borders = {
     single = {
