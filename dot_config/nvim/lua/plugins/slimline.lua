@@ -18,11 +18,9 @@ return {
       },
       diagnostics = {
         workspace = true,
-        style = 'fg',
       },
       progress = {
         column = true,
-        follow = false,
       },
     },
 
