@@ -1,7 +1,7 @@
 configuration {
 	modi:                         "combi";
   combi-modi:                   "drun,window";
-  show-icons:                   true;
+  show-icons:                   false;
 	drun-display-format:          "{name}";
   display-drun:                 " ";
   display-window:               " ";
@@ -17,7 +17,7 @@ configuration {
 
 
 window {
-    width:                       25em;
+    width:                       20em;
     transparency:                "real";
     fullscreen:                  false;
     enabled:                     true;
