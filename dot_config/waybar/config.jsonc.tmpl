@@ -31,7 +31,7 @@
     "clock"
   ],
   "custom/cpu": {
-    "exec": "~/workspace/sysbars/sysbars cpu",
+    "exec": "~/workspace/sysbars/sysbars cpu -format waybar",
     "format": "  {text}  {percentage}%",
     "interval": 2,
     "return-type": "json"
@@ -104,13 +104,13 @@
     "tooltip": false
   },
   "custom/memory": {
-    "exec": "~/workspace/sysbars/sysbars mem",
+    "exec": "~/workspace/sysbars/sysbars mem -format waybar",
     "format": "  {text}  {percentage}%",
     "interval": 2,
     "return-type": "json"
   },
   "custom/disk": {
-    "exec": "~/workspace/sysbars/sysbars disk",
+    "exec": "~/workspace/sysbars/sysbars disk -format waybar",
     "format": "󰋊  {text}  {percentage}%",
     "interval": 1200,
     "return-type": "json"
