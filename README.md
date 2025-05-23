@@ -43,7 +43,8 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 ### `waybar`, `rofi`, `dunst`
 
-- [JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)
+- waybar: [JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)
+- rofi, dunst: [MonoLisa](https://www.monolisa.dev/)
 
 ### `hypr`
 
