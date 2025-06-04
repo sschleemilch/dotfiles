@@ -3,6 +3,14 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
+    scroll = {
+      animate = {
+        duration = {
+          step = 20,
+          total = 150,
+        },
+      },
+    },
     statuscolumn = {},
     input = {},
     indent = {

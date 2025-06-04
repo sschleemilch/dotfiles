@@ -1,5 +1,5 @@
 return {
   'echasnovski/mini.ai',
-  event = 'VeryLazy',
+  event = 'BufReadPre',
   opts = {},
 }
