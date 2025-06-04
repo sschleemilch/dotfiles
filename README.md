@@ -43,13 +43,10 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 ### `waybar`, `rofi`, `dunst`
 
-- [JetBrainsMono](https://github.com/JetBrains/JetBrainsMono)
+- waybar: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip)
+- rofi, dunst: [MonoLisa](https://www.monolisa.dev/)
 
 ### `hypr`
 
 - Existing `~/wallpaper.png`
 - [Orbitron](https://github.com/theleagueof/orbitron) for `hyprlock`
-
-### `rofi`
-
-- Existing `~/launcher.png`

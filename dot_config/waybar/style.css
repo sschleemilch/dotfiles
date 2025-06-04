@@ -1,8 +1,8 @@
 @import "kanagawa.css";
 
 * {
-  font-family: "JetBrainsMono Nerd Font Mono";
-  font-size: 11pt;
+  font-family: "FiraCode Nerd Font";
+  font-size: 10pt;
 }
 
 window#waybar {
@@ -20,7 +20,7 @@ tooltip label {
 }
 
 label:focus {
-  background-color: @sumiInk1;
+  background-color: transparent;
 }
 
 .modules-left {
@@ -30,64 +30,51 @@ label:focus {
   padding-right: 10px;
 }
 
-#cpu-modules,
-#memory-modules,
-#disk-modules,
-#wireplumber-modules,
-#updates-modules,
+#cpu,
+#memory,
+#disk,
+#custom-updates,
+#wireplumber,
 #workspaces,
-#battery-modules,
-#network-modules,
-#backlight-modules,
+#battery,
+#network,
+#backlight,
 #clock {
   color: @fujiWhite;
   border-radius: 0px;
-  border: 2px solid @sumiInk4;
+  border: 0px solid @sumiInk4;
   transition: 300ms linear;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  margin-top: 10px;
-  background-color: @sumiInk2;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: transparent;
 }
 
-#memory-modules {
+#memory {
   color: @sakuraPink;
 }
-#disk-modules {
+#disk {
   color: @springBlue;
 }
-#cpu-modules {
+#cpu {
   color: @autumnYellow;
 }
-#backlight-modules {
+#backlight {
   color: @autumnYellow;
 }
-#wireplumber-modules {
+#wireplumber {
   color: @springBlue;
 }
-#network-modules {
+#network {
   color: @oniViolet;
 }
-#battery-modules {
+#battery {
   color: @sakuraPink;
 }
-
-.icon {
-  font-size: 16pt;
-}
-.content {
-  margin-left: 0.75rem;
-}
-
-#custom-updates-icon {
-  font-size: 16pt;
+#custom-updates {
   color: @oniViolet;
 }
-#custom-updates-content {
-  color: @oniViolet;
-  margin-left: 0.75rem;
-}
-
 #workspaces {
   border-radius: 0px;
   padding: 0;
@@ -100,11 +87,11 @@ label:focus {
   padding: 0.25rem;
 }
 #workspaces button.active {
-  /* color: @sumiInk1; */
-  background: @sumiInk4;
+  color: @sumiInk1;
+  background: @oldWhite;
 }
 #workspaces button:hover {
-  background: @sumiInk4;
+  background: @oldWhite;
   color: @sumiInk1;
 }
 #window {

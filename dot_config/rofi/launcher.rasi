@@ -1,7 +1,7 @@
 configuration {
 	modi:                         "combi";
   combi-modi:                   "drun,window";
-  show-icons:                   true;
+  show-icons:                   false;
 	drun-display-format:          "{name}";
   display-drun:                 " ";
   display-window:               " ";
@@ -17,40 +17,29 @@ configuration {
 
 
 window {
-    width:                       25em;
-    transparency:                "real";
-    fullscreen:                  false;
-    enabled:                     true;
+    width:                       20em;
     cursor:                      "default";
+    background-color:            transparent;
     border-color:                @sumiInk4;
-    background-color:            @sumiInk2;
-    border-radius:               0px;
     border:                      2px;
 }
 mainbox {
     orientation:                 vertical;
-    children:                    [ "inputbar" , "listbox" ];
+    children:                    [ "inputbar" , "listview" ];
     background-color:            transparent;
 }
 
-
 inputbar {
-    padding:                     4em;
     children:                    [ "entry" ];
-    background-color:            @sumiInk2;
-    background-image:            url("~/launcher.png", width);
-    border-radius:               0em 0em 0em 0em;
+    background-color:            transparent;
 }
+
 entry {
     enabled:                     false;
 }
 
-listbox {
-    children:                    [ "listview"];
-    background-color:            @sumiInk2;
-    border-radius:               0em 0em 0em 0em;
-}
 listview {
+    background-color:            transparent;
     spacing:                     0.4em;
     padding:                     1em;
     columns:                     1;
@@ -64,51 +53,49 @@ listview {
     fixed-height:                true;
     fixed-columns:               true;
     cursor:                      "default";
-    background-color:            @sumiInk2;
     text-color:                  @fujiWhite;
 }
 
 element {
+    background-color:            transparent;
     enabled:                     true;
     spacing:                     1em;
-    padding:                     0.2em 0.2em 0.2em 1.5em;
+    padding:                     0.2em 0.2em 0.2em 0.75em;
     cursor:                      pointer;
-    background-color:            transparent;
     text-color:                  @fujiWhite;
-    border-radius:               0px;
 }
 element selected.normal {
-    background-color:            @waveBlue1;
-    text-color:                  @fujiWhite;
+    background-color:            @oldWhite;
+    text-color:                  @sumiInk1;
 }
 element selected.active {
-    background-color:            @subtle;
-    text-color:                  @fujiWhite;
+    background-color:            @oldWhite;
+    text-color:                  @sumiInk1;
 }
 element-icon {
+    background-color:            transparent;
     size:                        2em;
     cursor:                      inherit;
-    background-color:            transparent;
     text-color:                  inherit;
 }
 element-text {
+    background-color:            transparent;
     vertical-align:              0.5;
     horizontal-align:            0.0;
     cursor:                      inherit;
-    background-color:            transparent;
     text-color:                  inherit;
 }
 
 error-message {
     text-color:                  @fujiWhite;
-    background-color:            @sumiInk2;
+    background-color:            transparent;
     text-transform:              capitalize;
     children:                    [ "textbox" ];
 }
 
 textbox {
+    background-color:            transparent;
     text-color:                  inherit;
-    background-color:            inherit;
     vertical-align:              0.5;
     horizontal-align:            0.5;
 }

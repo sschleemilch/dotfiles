@@ -11,116 +11,65 @@
   "output": "eDP-1",
 {{- end }}
   "modules-left": [
-    "group/cpu-modules",
-    "group/memory-modules",
-    "group/disk-modules",
-    "group/updates-modules"
+    "cpu",
+    "memory",
+    "disk",
+    "custom/updates"
   ],
   "modules-center": [
     "hyprland/workspaces"
   ],
   "modules-right": [
 {{- if eq .chezmoi.hostname "ladon" -}}
-    "group/backlight-modules",
+    "backlight",
 {{- end }}
-    "group/wireplumber-modules",
-    "group/network-modules",
+    "wireplumber",
+    "network",
 {{- if eq .chezmoi.hostname "ladon" -}}
-    "group/battery-modules",
+    "battery",
 {{- end }}
     "clock"
   ],
-  "group/cpu-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "cpu#icon",
-      "cpu#content"
-    ]
-  },
-  "group/memory-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "memory#icon",
-      "memory#content"
-    ]
-  },
-  "group/disk-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "disk#icon",
-      "disk#content"
-    ]
-  },
-  "group/wireplumber-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "wireplumber#icon",
-      "wireplumber#content"
-    ]
-  },
-  "group/battery-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "battery#icon",
-      "battery#content"
-    ]
-  },
-  "group/updates-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "custom/updates-icon",
-      "custom/updates-content"
-    ]
-  },
-  "group/network-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "network#icon",
-      "network#content"
-    ]
-  },
-  "group/backlight-modules": {
-    "orientation": "inherit",
-    "modules": [
-      "backlight#icon",
-      "backlight#content"
-    ]
-  },
-  "battery#icon": {
-    "interval": 30,
-    "states": {
-      "good": 95,
-      "warning": 30,
-      "critical": 20
-    },
-    "format": "{icon}",
-    "format-charging": "",
-    "format-plugged": "",
+  "cpu": {
+{{- if eq .chezmoi.hostname "desos" }}
+    "format": "  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9} {usage}%",
+{{- else if eq .chezmoi.hostname "ladon" -}}
+    "format": "  {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {usage}%",
+{{- end }}
+    "interval": 2,
     "format-icons": [
-      "󰂎",
-      "󰁺",
-      "󰁻",
-      "󰁼",
-      "󰁽",
-      "󰁾",
-      "󰁿",
-      "󰂀",
-      "󰂁",
-      "󰂂",
-      "󰁹"
+      "<span color='#54546d'>▁</span>",
+      "<span color='#54546d'>▂</span>",
+      "<span color='#9cabca'>▃</span>",
+      "<span color='#9cabca'>▄</span>",
+      "<span color='#ffa066'>▅</span>",
+      "<span color='#ffa066'>▆</span>",
+      "<span color='#e46876'>▇</span>",
+      "<span color='#ff5d62'>█</span>"
     ]
   },
-  "battery#content": {
+  "battery": {
     "interval": 30,
     "states": {
       "good": 95,
       "warning": 30,
       "critical": 20
     },
-    "format": "{capacity}%",
-    "format-charging": "{capacity}%",
-    "format-plugged": "{capacity}%",
-    "format-alt": "{time} {icon}"
+    "format": "{icon}  {capatity}%",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂄",
+    "format-icons": [
+      "󰂎 ",
+      "󰁺 ",
+      "󰁻 ",
+      "󰁼 ",
+      "󰁽 ",
+      "󰁾 ",
+      "󰁿 ",
+      "󰂀 ",
+      "󰂂 ",
+      "󰁹 "
+    ]
   },
   "clock": {
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -143,119 +92,78 @@
       "(.*) — Mozilla Firefox": "🌎 $1"
     }
   },
-  "backlight#icon": {
+  "backlight": {
     "device": "amdgpu_bl1",
-    "format": "{icon}",
+    "format": "󱍖   {icon}  {percent}%",
     "format-icons": [
-      "",
-      "",
-      "",
-      "󰃝",
-      "󰃞",
-      "󰃟",
-      "󰃠"
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
     "tooltip": false
   },
-  "backlight#content": {
-    "device": "amdgpu_bl1",
-    "format": "{percent}%",
-    "on-scroll-up": "brightnessctl set 1%+",
-    "on-scroll-down": "brightnessctl set 1%-",
-    "tooltip": false
-  },
-  "custom/updates-icon": {
-    "format": "",
-    "interval": "once",
-    "tooltip": false
-  },
-  "custom/updates-content": {
-    "format": "{}",
-    "exec": "yay -Qyu | wc -l",
+  "custom/updates": {
+    "format": "   {}",
+    "exec": "checkupdates | wc -l",
     "exec-if": "exit 0",
     "interval": 3600,
     "signal": 8,
     "tooltip": false
   },
-  "cpu#icon": {
-    "interval": "once",
-    "format": ""
+  "memory": {
+    "format": "     {percentage}%",
+    "interval": 10
   },
-  "cpu#content": {
-    "interval": 2,
-    "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
-    "format-icons": [
-      "<span color='#6e6a86'>▁</span>", // green
-      "<span color='#6e6a86'>▂</span>", // blue
-      "<span color='#e0def4'>▃</span>", // white
-      "<span color='#e0def4'>▄</span>", // white
-      "<span color='#f6c177'>▅</span>", // yellow
-      "<span color='#f6c177'>▆</span>", // yellow
-      "<span color='#ea9a97'>▇</span>", // orange
-      "<span color='#eb6f92'>█</span>" // red
-    ]
-  },
-  "memory#icon": {
-    "interval": "once",
-    "format": ""
-  },
-  "memory#content": {
-    "interval": 10,
-    "format": "{used:0.1f}G",
-    "tooltip": true,
-    "tooltip-format": "Memory - {used:0.1f}GB used",
-    "on-click": "kitty --title btop btop"
-  },
-  "disk#icon": {
-    "interval": "once",
-    "format": "󰋊",
+  "disk": {
+    "format": "󰋊  {percentage_used}%",
+    "interval": 1200,
     "path": "/"
   },
-  "disk#content": {
-    "interval": 60,
-    "format": "{percentage_used}%",
-    "path": "/"
-  },
-  "wireplumber#icon": {
-    "format": "{icon}",
-    "format-muted": "",
+  "wireplumber": {
+    "format": "  {icon}  {volume}%",
+    "format-muted": " ",
     "on-click": "helvum",
     "format-icons": [
-      "",
-      "",
-      "󰕾",
-      ""
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
     "tooltip-format": "Volume: {volume}%"
   },
-  "wireplumber#content": {
-    "format": "{volume}%",
-    "tooltip-format": "Volume: {volume}%"
-  },
-  "network#icon": {
+  "network": {
     "interface": {{ .network_interface | quote }},
     "format": "{ifname}",
-    "format-wifi": "{icon}",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰌙",
+    "format-wifi": "󰖩  {icon}  {signalStrength}%",
+    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
+    "format-disconnected": "󰌙  Disconnected",
     "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
     ],
-    "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
-    "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
-    "tooltip-format-disconnected": "Disconnected"
-  },
-  "network#content": {
-    "interface": {{ .network_interface | quote }},
-    "format-disconnected": "Disconnected",
-    "format-ethernet": "{ipaddr}/{cidr}",
-    "format-wifi": "{essid}",
     "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
     "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
     "tooltip-format-disconnected": "Disconnected"
