@@ -37,6 +37,7 @@ vim.o.expandtab = true -- Use spaces instead of tabs
 
 -- Line Numbers
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Show whitespaces
 vim.opt.list = true

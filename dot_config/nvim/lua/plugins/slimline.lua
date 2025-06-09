@@ -9,7 +9,6 @@ return {
     components = {
       left = {
         'mode',
-        'git',
       },
     },
     configs = {

@@ -6,6 +6,8 @@ end
 -- better up/down
 map({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 map({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
 
 -- Window navigation
 map('n', '<C-H>', '<C-w>h', { desc = 'Focus on left window' })

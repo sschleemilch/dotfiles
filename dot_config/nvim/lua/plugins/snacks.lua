@@ -3,24 +3,8 @@ return {
   priority = 1000,
   lazy = false,
   opts = {
-    scroll = {
-      animate = {
-        duration = {
-          step = 20,
-          total = 150,
-        },
-      },
-    },
     statuscolumn = {},
     input = {},
-    indent = {
-      indent = {
-        char = '╎',
-      },
-      scope = {
-        char = '╎',
-      },
-    },
     picker = {
       prompt = Icons.arrows.right .. ' ',
       win = {
@@ -75,44 +59,6 @@ return {
     notifier = {},
     quickfile = {},
     words = {},
-    dashboard = {
-      enabled = true,
-      sections = {
-        { section = 'header' },
-        { section = 'keys', gap = 1, padding = 3 },
-        { section = 'startup' },
-      },
-      preset = {
-        header = [[
-    _   __                _         
-   / | / /__  ____ _   __(_)___ ___ 
-  /  |/ / _ \/ __ \ | / / / __ `__ \
- / /|  /  __/ /_/ / |/ / / / / / / /
-/_/ |_/\___/\____/|___/_/_/ /_/ /_/
-]],
-        keys = {
-          {
-            icon = ' ',
-            key = 'f',
-            desc = 'Find file',
-            action = ":lua Snacks.dashboard.pick('files')",
-          },
-          {
-            icon = ' ',
-            key = 'r',
-            desc = 'Recent Files',
-            action = ":lua Snacks.dashboard.pick('oldfiles')",
-          },
-          { icon = '', key = 'e', desc = 'Explorer', action = ":lua require('mini.files').open()" },
-          {
-            icon = ' ',
-            key = 'g',
-            desc = 'Find Text',
-            action = ":lua Snacks.dashboard.pick('live_grep')",
-          },
-        },
-      },
-    },
   },
   keys = {
     {
@@ -165,13 +111,6 @@ return {
       desc = 'Recent',
     },
     {
-      '<leader>fh',
-      function()
-        Snacks.picker.help()
-      end,
-      desc = 'Help Pages',
-    },
-    {
       '<leader>fq',
       function()
         Snacks.picker.qflist()
@@ -214,30 +153,16 @@ return {
       nowait = true,
       desc = 'References',
     },
-    {
-      'gri',
-      function()
-        Snacks.picker.lsp_implementations()
-      end,
-      desc = 'Goto Implementation',
-    },
-    {
-      'gy',
-      function()
-        Snacks.picker.lsp_type_definitions()
-      end,
-      desc = 'Goto T[y]pe Definition',
-    },
   },
   init = function()
     vim.api.nvim_create_autocmd('User', {
       pattern = 'VeryLazy',
       callback = function()
         -- Create some toggle mappings
-        Snacks.toggle.diagnostics():map('<leader>td')
-        Snacks.toggle.indent():map('<leader>ti')
-        Snacks.toggle.words():map('<leader>tw')
-        Snacks.toggle.dim():map('<leader>tD')
+        Snacks.toggle.diagnostics():map('<leader>ud')
+        Snacks.toggle.indent():map('<leader>ui')
+        Snacks.toggle.words():map('<leader>uw')
+        Snacks.toggle.dim():map('<leader>uD')
       end,
     })
 
