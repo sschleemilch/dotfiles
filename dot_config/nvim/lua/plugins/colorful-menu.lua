@@ -1,5 +1,5 @@
 return {
-  'xzbdmw/colorful-menu.nvim',
-  opts = {},
-  event = 'InsertEnter',
+    'xzbdmw/colorful-menu.nvim',
+    opts = {},
+    event = 'InsertEnter',
 }

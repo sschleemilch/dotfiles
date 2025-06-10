@@ -1,5 +1,5 @@
 vim.filetype.add({
-  extension = {
-    vspec = 'yaml',
-  },
+    extension = {
+        vspec = 'yaml',
+    },
 })

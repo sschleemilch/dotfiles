@@ -1,102 +1,46 @@
--- <space> is leader
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
--- UI characters
-vim.opt.fillchars = {
-  eob = ' ',
-  fold = ' ',
-  foldclose = Icons.arrows.right,
-  foldopen = Icons.arrows.down,
-  foldsep = ' ',
-  msgsep = '─',
-  stl = ' ',
-}
+vim.o.clipboard = 'unnamedplus' -- Always sync clipboard with OS
 
--- Folding
-vim.o.foldlevel = 99
-vim.o.foldcolumn = '0'
-vim.o.foldlevelstart = 99
-vim.o.foldmethod = 'expr'
-vim.wo.foldtext = ''
-vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-
--- Highlight cursor line
-vim.o.cursorline = true
-
--- Sync clipboard with OS
-vim.o.clipboard = 'unnamedplus'
-
--- Wrap long lines at words
-vim.o.linebreak = true
+vim.o.wrap = false -- Do not wrap long lines
 
 -- Indents
-vim.o.shiftwidth = 2 -- size of an indent
-vim.o.tabstop = 2 -- Number of spaces tabs count for
-vim.o.expandtab = true -- Use spaces instead of tabs
+vim.o.shiftwidth = 4 -- size of an indent
+vim.o.tabstop = 4 -- Number of spaces tabs count for
+vim.o.smartindent = true -- Smartly indent newlines
 
--- Line Numbers
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.o.expandtab = true -- Expands tabs to spaces
 
--- Show whitespaces
-vim.opt.list = true
-vim.opt.listchars = { space = ' ', trail = '⋅', tab = '  ' }
+-- Linue numbers
+vim.wo.nu = true -- shows the abolsute line number at cursor
+vim.wo.rnu = true -- and relative line numbers above and below
 
--- Stores undo history for a file
-vim.o.undofile = true
-
-vim.o.backup = false -- Don't store backup while overwriting the file
+vim.o.undofile = true -- Stores undo history persistent
 vim.o.writebackup = false -- Don't store backup while overwriting the file
-
--- Case insensitive searching unless search has capitals
-vim.o.ignorecase = true
-vim.o.smartcase = true
-
--- Enable mouse
-vim.o.mouse = 'a' -- Enable mouse
-
--- Status line
-vim.o.laststatus = 3
-vim.o.cmdheight = 1
-
--- Completion
-vim.o.pumheight = 15 -- Max popup entries
-vim.o.completeopt = 'menuone,noselect,noinsert'
-
--- Always show sign column
-vim.o.signcolumn = 'yes'
-
-vim.opt.shortmess:append({ I = true, c = true, C = true, W = true, s = true })
-
--- Update times and timeouts.
-vim.o.updatetime = 300
-vim.o.timeoutlen = 500
-vim.o.ttimeoutlen = 10
-
--- floating border style
-vim.o.winborder = 'single'
-
--- Splits
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.o.laststatus = 3 -- Only one status line in window
+vim.o.signcolumn = 'yes' -- Always show sign column
+vim.opt.shortmess:append({ I = true }) -- Disable intro message
+vim.o.updatetime = 300 -- Lower update time. Triggers CursorHold earlier
+vim.o.winborder = 'single' -- floating border style
+vim.o.scrolloff = 8 -- Keep more context when scrolling
 
 -- Diagnostics
 vim.diagnostic.config({
-  underline = true,
-  update_in_insert = false,
-  virtual_text = {
-    spacing = 2,
-    source = 'if_many',
-    prefix = '',
-  },
-  severity_sort = true,
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = Icons.diagnostics.Error,
-      [vim.diagnostic.severity.WARN] = Icons.diagnostics.Warn,
-      [vim.diagnostic.severity.HINT] = Icons.diagnostics.Hint,
-      [vim.diagnostic.severity.INFO] = Icons.diagnostics.Info,
+    underline = true,
+    update_in_insert = false,
+    virtual_text = {
+        spacing = 2,
+        source = 'if_many',
+        prefix = '',
     },
-  },
+    severity_sort = true,
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = Icons.diagnostics.Error,
+            [vim.diagnostic.severity.WARN] = Icons.diagnostics.Warn,
+            [vim.diagnostic.severity.HINT] = Icons.diagnostics.Hint,
+            [vim.diagnostic.severity.INFO] = Icons.diagnostics.Info,
+        },
+    },
 })
