@@ -27,20 +27,7 @@ vim.o.scrolloff = 8 -- Keep more context when scrolling
 
 -- Diagnostics
 vim.diagnostic.config({
-    underline = true,
-    update_in_insert = false,
     virtual_text = {
-        spacing = 2,
-        source = 'if_many',
-        prefix = '',
-    },
-    severity_sort = true,
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = Icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN] = Icons.diagnostics.Warn,
-            [vim.diagnostic.severity.HINT] = Icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = Icons.diagnostics.Info,
-        },
+        current_line = true,
     },
 })

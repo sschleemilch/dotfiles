@@ -8,7 +8,7 @@ function M.render()
         return string.format('%%#Winbar#%s', abs_path)
     end
 
-    local separator = ' %#WinbarSeparator#' .. Icons.arrows.right .. ' '
+    local separator = '%#WinbarSeparator#' .. ' > '
 
     local path, filename = vim.fn.fnamemodify(abs_path, ':.:h'), vim.fn.fnamemodify(abs_path, ':t')
     local dir_icon, dir_hl = MiniIcons.get('directory', path)

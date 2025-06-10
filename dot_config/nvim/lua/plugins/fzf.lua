@@ -33,12 +33,6 @@ return {
             diagnostics = {
                 -- Remove dashed line between items
                 multiline = 1,
-                diag_icons = {
-                    Icons.diagnostics.Error,
-                    Icons.diagnostics.Warn,
-                    Icons.diagnostics.Info,
-                    Icons.diagnostics.Hint,
-                },
             },
             hls = {
                 border = 'FloatBorder',
