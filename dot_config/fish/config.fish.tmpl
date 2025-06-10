@@ -35,15 +35,14 @@ set -x FZF_DEFAULT_OPTS "
   --info=inline-right
   --wrap
   --ansi
+  --prompt='❯ '
   --layout=reverse
   --border=none
 	--color=fg:#c8c093,bg:#1f1f28,hl:#7fb4ca
 	--color=fg+:#dcd7ba,bg+:#223249,hl+:#7fb4ca
-	--color=spinner:#dca561,info:#7fb4ca
+	--color=spinner:#dca561,info:#7fb4ca,separator:#54546d
 	--color=pointer:#7fb4ca,gutter:#1f1f29,marker:#c34043,prompt:#7fb4ca"
 
-
-set -x FZF_DEFAULT_COMMAND 'rg --files --hidden --glob "!.git"'
 
 set -x EDITOR nvim
 set -x VISUAL nvim
