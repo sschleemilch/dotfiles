@@ -35,7 +35,7 @@ function M.render()
                 :totable(),
             separator
         ),
-        string.format('%%#%s#%s %%#Normal#%s', file_hl, file_icon, filename),
+        string.format('%%#%s#%s %%#Normal#%s%%M', file_hl, file_icon, filename),
     })
 end
 
