@@ -23,15 +23,6 @@ return {
             },
         },
 
-        sep = {
-            left = '',
-            right = '',
-            hide = {
-                first = true,
-                last = true,
-            },
-        },
-
         hl = {
             primary = 'NormalFloat',
         },
@@ -39,7 +30,6 @@ return {
         spaces = {
             left = '',
             right = '',
-            components = '',
         },
     },
 }
