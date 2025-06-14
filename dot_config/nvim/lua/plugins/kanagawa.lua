@@ -32,8 +32,6 @@ return {
 
                 -- Blink
                 BlinkCmpMenuBorder = { bg = theme.ui.bg, fg = theme.ui.float.fg_border },
-                -- Winbar
-                WinBarSeparator = { fg = theme.syn.comment },
                 -- Mini
                 MiniFilesTitleFocused = { bg = theme.ui.bg },
                 MiniFilesTitle = { bg = theme.ui.bg },

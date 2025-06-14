@@ -18,7 +18,6 @@ vim.wo.rnu = true -- and relative line numbers above and below
 
 vim.o.undofile = true -- Stores undo history persistent
 vim.o.writebackup = false -- Don't store backup while overwriting the file
-vim.o.laststatus = 3 -- Only one status line in window
 vim.o.signcolumn = 'yes' -- Always show sign column
 vim.opt.shortmess:append({ I = true }) -- Disable intro message
 vim.o.updatetime = 300 -- Lower update time. Triggers CursorHold earlier
@@ -29,5 +28,6 @@ vim.o.scrolloff = 8 -- Keep more context when scrolling
 vim.diagnostic.config({
     virtual_text = {
         current_line = true,
+        prefix = '',
     },
 })

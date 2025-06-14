@@ -1,57 +1,81 @@
-local M = {}
----@return string
-function M.render()
-    local abs_path = vim.fs.normalize(vim.fn.expand('%:p') --[[@as string]])
+-- Cache for the last known buffer diagnostics
+local last_buffer_diagnostics = {}
 
-    -- No special styling for diff views.
-    if vim.startswith(abs_path, 'diffview') then
-        return string.format('%%#Winbar#%s', abs_path)
+---@param diagnostic vim.Diagnostic
+---@return {ERROR: integer, WARN: integer, INFO: integer, HINT: integer}
+local function count_diagnostics(diagnostic)
+    local count = {
+        ERROR = 0,
+        WARN = 0,
+        INFO = 0,
+        HINT = 0,
+    }
+    for _, diag in ipairs(diagnostic) do
+        local sev = vim.diagnostic.severity[diag.severity]
+        count[sev] = count[sev] + 1
     end
-
-    local separator = '%#WinbarSeparator#' .. ' -> '
-
-    local path, filename = vim.fn.fnamemodify(abs_path, ':.:h'), vim.fn.fnamemodify(abs_path, ':t')
-    local dir_icon, dir_hl = MiniIcons.get('directory', path)
-
-    if path == '.' then
-        path = ''
-    else
-        path = path .. separator
-    end
-
-    local MiniIcons = require('mini.icons')
-    local prefix = string.format('%%#%s#%s %%#Winbar#%s', dir_hl, dir_icon, separator)
-
-    local file_icon, file_hl = MiniIcons.get('file', abs_path)
-
-    return table.concat({
-        ' ',
-        prefix,
-        table.concat(
-            vim.iter(vim.split(path, '/'))
-                :map(function(segment)
-                    return string.format('%%#Winbar#%s', segment)
-                end)
-                :totable(),
-            separator
-        ),
-        string.format('%%#%s#%s %%#Normal#%s%%M', file_hl, file_icon, filename),
-    })
+    return count
 end
 
-vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-    group = augroup('winbar'),
-    desc = 'Attach winbar',
-    callback = function(args)
-        if
-            not vim.api.nvim_win_get_config(0).zindex -- Not a floating window
-            and vim.bo[args.buf].buftype == '' -- Normal buffer
-            and vim.api.nvim_buf_get_name(args.buf) ~= '' -- Has a file name
-            and not vim.wo[0].diff -- Not in diff mode
-        then
-            vim.wo.winbar = "%{%v:lua.require'winbar'.render()%}"
+---@param buffer_count integer
+---@param workspace_count integer
+---@param prefix string
+---@param hl_suffix string
+---@return string
+local function render_component(buffer_count, workspace_count, prefix, hl_suffix)
+    local ret = ''
+    if buffer_count > 0 or workspace_count > 0 then
+        ret = ret .. string.format('%%#DiagnosticVirtualText%s# %s: ', hl_suffix, prefix)
+        if buffer_count > 0 then
+            ret = ret .. string.format('%d', buffer_count)
         end
+        if buffer_count ~= workspace_count then
+            ret = ret .. string.format('(%d)', workspace_count)
+        end
+        ret = ret .. ' '
+    end
+    return ret
+end
+
+---@param buf_nr integer
+---@param diagnostics vim.Diagnostic[]
+local function update_winbar(buf_nr, diagnostics)
+    if
+        not vim.api.nvim_win_get_config(0).zindex -- Not a floating window
+        and vim.bo[buf_nr].buftype == '' -- Normal buffer
+        and vim.api.nvim_buf_get_name(buf_nr) ~= '' -- Has a file name
+        and not vim.wo[0].diff -- Not in diff mode
+        and vim.api.nvim_get_mode().mode ~= 'i' -- Not in insert mode
+    then
+        local buffer_count = count_diagnostics(diagnostics)
+        local workspace_count = count_diagnostics(vim.diagnostic.get(nil))
+        local content = table.concat({
+            render_component(buffer_count.ERROR, workspace_count.ERROR, 'E', 'Error'),
+            render_component(buffer_count.WARN, workspace_count.WARN, 'W', 'Warn'),
+            render_component(buffer_count.INFO, workspace_count.INFO, 'I', 'Info'),
+            render_component(buffer_count.HINT, workspace_count.HINT, 'H', 'Hint'),
+        }, '')
+        content = content .. '%#WinBar# '
+        vim.wo.winbar = content
+    end
+end
+
+vim.api.nvim_create_autocmd({ 'ModeChanged', 'BufEnter' }, {
+    group = augroup('winbar/attach'),
+    desc = 'Attach winbar',
+    callback = function()
+        local buf_nr = vim.api.nvim_get_current_buf()
+        -- Use cached diagnostics if available, otherwise get fresh ones
+        local diagnostics = last_buffer_diagnostics[buf_nr] or vim.diagnostic.get(buf_nr)
+        update_winbar(buf_nr, diagnostics)
     end,
 })
 
-return M
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+    group = augroup('winbar/diagnostics'),
+    callback = function(args)
+        -- Store the latest diagnostics for this buffer
+        last_buffer_diagnostics[args.buf] = args.data.diagnostics
+        update_winbar(args.buf, args.data.diagnostics)
+    end,
+})
