@@ -3,10 +3,7 @@ return {
     opts = {
         notification = {
             window = {
-                align = 'top',
-            },
-            view = {
-                stack_upwards = false,
+                winblend = 50,
             },
         },
     },
