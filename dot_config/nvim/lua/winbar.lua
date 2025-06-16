@@ -50,6 +50,7 @@ local function update_winbar(buf_nr, diagnostics)
         local buffer_count = count_diagnostics(diagnostics)
         local workspace_count = count_diagnostics(vim.diagnostic.get(nil))
         local content = table.concat({
+            '%=',
             render_component(buffer_count.ERROR, workspace_count.ERROR, 'E', 'Error'),
             render_component(buffer_count.WARN, workspace_count.WARN, 'W', 'Warn'),
             render_component(buffer_count.INFO, workspace_count.INFO, 'I', 'Info'),
