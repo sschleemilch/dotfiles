@@ -3,7 +3,7 @@ return {
     opts = {
         notification = {
             window = {
-                winblend = 50,
+                winblend = 0,
             },
         },
     },
