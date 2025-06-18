@@ -25,7 +25,7 @@ end
 local function render_component(buffer_count, workspace_count, prefix, hl_suffix)
     local ret = ''
     if buffer_count > 0 or workspace_count > 0 then
-        ret = ret .. string.format('%%#DiagnosticVirtualText%s# %s: ', hl_suffix, prefix)
+        ret = ret .. string.format('%%#DiagnosticVirtualText%s# %s:', hl_suffix, prefix)
         if buffer_count > 0 then
             ret = ret .. string.format('%d', buffer_count)
         end
