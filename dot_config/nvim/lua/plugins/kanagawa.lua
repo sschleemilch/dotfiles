@@ -42,9 +42,6 @@ return {
                 DiagnosticVirtualTextInfo = makeDiagnosticColor(theme.diag.info),
                 DiagnosticVirtualTextWarn = makeDiagnosticColor(theme.diag.warning),
                 DiagnosticVirtualTextError = makeDiagnosticColor(theme.diag.error),
-
-                StatusLine = { bg = theme.ui.bg },
-                StatusLineNC = { bg = theme.ui.bg },
             }
         end,
     },
