@@ -1,15 +1,12 @@
 return {
     'sschleemilch/slimline.nvim',
     -- 'slimline.nvim',
-    enabled = true,
     -- dev = true,
     opts = {
-        bold = false,
-        style = 'bg',
         components = {
             left = {
+                'mode',
                 'path',
-                ' ',
                 'diagnostics',
             },
             right = {
@@ -18,16 +15,18 @@ return {
         },
         components_inactive = {
             left = {
+                'mode',
                 'path',
-            },
-            right = {
-                'progress',
             },
         },
         configs = {
+            path = {
+                icons = {
+                    modified = '*',
+                },
+            },
             diagnostics = {
                 workspace = true,
-                style = 'fg',
                 icons = {
                     ERROR = 'E:',
                     WARN = 'W:',
@@ -37,7 +36,6 @@ return {
             },
             progress = {
                 column = true,
-                follow = false,
             },
         },
 
