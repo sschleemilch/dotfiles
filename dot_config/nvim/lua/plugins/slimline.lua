@@ -1,7 +1,6 @@
 return {
     'sschleemilch/slimline.nvim',
     -- 'slimline.nvim',
-    enabled = true,
     -- dev = true,
     opts = {
         bold = false,
@@ -9,7 +8,6 @@ return {
         components = {
             left = {
                 'path',
-                ' ',
                 'diagnostics',
             },
             right = {
@@ -25,9 +23,22 @@ return {
             },
         },
         configs = {
+            path = {
+                sep = {
+                    left = '',
+                    right = '',
+                },
+                icons = {
+                    modified = '*',
+                    read_only = '[RO]',
+                },
+            },
             diagnostics = {
+                sep = {
+                    left = '',
+                    right = '',
+                },
                 workspace = true,
-                style = 'fg',
                 icons = {
                     ERROR = 'E:',
                     WARN = 'W:',
