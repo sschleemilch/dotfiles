@@ -1,22 +1,6 @@
 font_size 12
 
-# Tabs
-map ctrl+shift+h previous_tab
-map ctrl+shift+l next_tab
-
-map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
-map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
-map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
-map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
-allow_remote_control yes
-
 window_padding_width 5 10 5 10
-
-{{- if eq .chezmoi.os "darwin" }}
-listen_on unix:/tmp/mykitty
-{{- else }}
-listen_on unix:@mykitty
-{{- end }}
 
 # Tab style
 tab_bar_style powerline
