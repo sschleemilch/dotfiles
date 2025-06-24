@@ -10,6 +10,7 @@ add_to_fish_user_paths_if_exists $HOME/.local/bin $HOME/go/bin /usr/local/bin/
  
 {{ if eq .chezmoi.os "darwin" }}
 add_to_fish_user_paths_if_exists /opt/homebrew/bin
+set -x SHELL /opt/homebrew/bin/fish
 {{ end }}
 
 
