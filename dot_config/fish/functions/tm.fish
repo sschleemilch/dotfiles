@@ -14,7 +14,7 @@ function tm
     return
   end
 
-  set -l session (tmux list-sessions -F "#{session_name}" 2> /dev/null | fzf --exit-0)
+  set -l session (tmux list-sessions -F "#{session_name}" 2> /dev/null | fzf --select-1 --exit-0)
 
   if test -n "$session"
     tmux $change -t "$session"
