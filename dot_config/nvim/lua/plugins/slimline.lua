@@ -7,6 +7,7 @@ return {
         style = 'bg',
         components = {
             left = {
+                'mode',
                 'path',
                 'diagnostics',
             },
@@ -16,6 +17,7 @@ return {
         },
         components_inactive = {
             left = {
+                'mode',
                 'path',
             },
             right = {
@@ -23,6 +25,11 @@ return {
             },
         },
         configs = {
+            mode = {
+                sep = {
+                    right = '',
+                },
+            },
             path = {
                 sep = {
                     left = '',
@@ -50,10 +57,6 @@ return {
                 column = true,
                 follow = false,
             },
-        },
-
-        hl = {
-            primary = 'NormalFloat',
         },
 
         spaces = {

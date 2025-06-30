@@ -39,10 +39,11 @@ set -x FZF_DEFAULT_OPTS "
   --ansi
   --border=sharp
   --layout=reverse
-  --color=fg:#c8c093,bg:#1f1f28,hl:#7fb4ca
-  --color=fg+:#dcd7ba,bg+:#223249,hl+:#7fb4ca
-  --color=spinner:#dca561,info:#7fb4ca,separator:#54546d
-  --color=pointer:#7fb4ca,gutter:#1f1f29,marker:#c34043,prompt:#7fb4ca"
+  --color=fg:#908caa,bg:#191724,hl:#ebbcba
+  --color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+  --color=border:#403d52,header:#31748f,gutter:#191724
+  --color=spinner:#f6c177,info:#9ccfd8
+  --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 
 
 set -x EDITOR nvim
@@ -76,3 +77,5 @@ if status is-interactive
   abbr -a hypr 'if uwsm check may-start; exec uwsm start hyprland.desktop; end'
 {{- end }}
 end
+
+fish_config theme choose "rose_pine"
