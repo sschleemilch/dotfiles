@@ -3,9 +3,10 @@ return {
     -- 'slimline.nvim',
     -- dev = true,
     opts = {
+        bold = false,
+        style = 'bg',
         components = {
             left = {
-                'mode',
                 'path',
                 'diagnostics',
             },
@@ -15,17 +16,28 @@ return {
         },
         components_inactive = {
             left = {
-                'mode',
                 'path',
+            },
+            right = {
+                'progress',
             },
         },
         configs = {
             path = {
+                sep = {
+                    left = '',
+                    right = '',
+                },
                 icons = {
                     modified = '*',
+                    read_only = '[RO]',
                 },
             },
             diagnostics = {
+                sep = {
+                    left = '',
+                    right = '',
+                },
                 workspace = true,
                 icons = {
                     ERROR = 'E:',
@@ -36,6 +48,7 @@ return {
             },
             progress = {
                 column = true,
+                follow = false,
             },
         },
 
