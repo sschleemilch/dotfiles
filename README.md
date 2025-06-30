@@ -19,7 +19,7 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 ```toml
 [data]
   email = "<email>"
-  network_interface = "wlp0s20f3"
+  network_interface = "wlp0s20f3" # only for `waybar`
 ```
 
 ## Dependencies
@@ -29,6 +29,7 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [node.js](https://nodejs.org)
+- [fzf](https://github.com/junegunn/fzf)
 
 ### `fish`
 
@@ -41,6 +42,10 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 - [MonoLisa](https://www.monolisa.dev/)
 
+### `ghostty`
+
+- [MonoLisa](https://www.monolisa.dev/)
+
 ### `waybar`, `rofi`, `dunst`
 
 - waybar: [FiraCode Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip)
@@ -50,3 +55,7 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 - Existing `~/wallpaper.png`
 - [Orbitron](https://github.com/theleagueof/orbitron) for `hyprlock`
+
+### `tmux`
+
+- [tpm](https://github.com/tmux-plugins/tpm)
