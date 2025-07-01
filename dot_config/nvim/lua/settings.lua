@@ -23,6 +23,8 @@ vim.o.updatetime = 300 -- Lower update time. Triggers CursorHold earlier
 vim.o.winborder = 'single' -- floating border style
 vim.o.scrolloff = 8 -- Keep more context when scrolling
 
+vim.o.fillchars = 'eob: ' -- Remove ~ from end of file
+
 -- Diagnostics
 vim.diagnostic.config({
     virtual_text = {
