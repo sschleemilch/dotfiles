@@ -25,26 +25,13 @@ return {
             },
         },
         configs = {
-            mode = {
-                sep = {
-                    right = '',
-                },
-            },
             path = {
-                sep = {
-                    left = '',
-                    right = '',
-                },
                 icons = {
                     modified = '*',
                     read_only = '[RO]',
                 },
             },
             diagnostics = {
-                sep = {
-                    left = '',
-                    right = '',
-                },
                 workspace = true,
                 icons = {
                     ERROR = 'E:',
