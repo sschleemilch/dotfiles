@@ -33,12 +33,6 @@ return {
             },
             diagnostics = {
                 workspace = true,
-                icons = {
-                    ERROR = 'E:',
-                    WARN = 'W:',
-                    HINT = 'H:',
-                    INFO = 'I:',
-                },
             },
             progress = {
                 column = true,
