@@ -12,9 +12,10 @@ return {
             'jsonls',
             'yamlls',
             'astro',
-            'ltex',
+            'ltex_plus',
             'buf_ls',
             'marksman',
+            'graphql',
         })
     end,
 }

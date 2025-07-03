@@ -5,25 +5,6 @@ return {
     opts = {
         bold = false,
         style = 'bg',
-        components = {
-            left = {
-                'mode',
-                'path',
-                'diagnostics',
-            },
-            right = {
-                'progress',
-            },
-        },
-        components_inactive = {
-            left = {
-                'mode',
-                'path',
-            },
-            right = {
-                'progress',
-            },
-        },
         configs = {
             path = {
                 icons = {
@@ -39,7 +20,6 @@ return {
                 follow = false,
             },
         },
-
         spaces = {
             components = '',
             left = '',

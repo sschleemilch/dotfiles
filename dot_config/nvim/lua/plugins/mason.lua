@@ -22,11 +22,12 @@ return {
             'json-lsp',
             'prettier',
             'yaml-language-server',
-            'ltex-ls',
+            'ltex-ls-plus',
             'goimports',
             'gofumpt',
             'buf',
             'marksman',
+            'graphql-language-service-cli',
         },
     },
     config = function(_, opts)

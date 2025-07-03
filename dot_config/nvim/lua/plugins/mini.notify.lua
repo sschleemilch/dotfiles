@@ -1,18 +1,26 @@
 return {
     'echasnovski/mini.notify',
-    opts = {
-        content = {
-            format = function(notif)
-                return ' ' .. notif.msg .. ' '
-            end,
-        },
-        window = {
-            config = {
-                title = '',
-                border = 'none',
+    opts = function()
+        local ignore = {
+            'ltex_plus',
+        }
+        return {
+            content = {
+                format = function(notif)
+                    if vim.tbl_contains(ignore, notif.data.client_name) then
+                        return ''
+                    end
+                    return ' ' .. notif.msg .. ' '
+                end,
             },
-        },
-    },
+            window = {
+                config = {
+                    title = '',
+                    border = 'none',
+                },
+            },
+        }
+    end,
     init = function()
         vim.notify = require('mini.notify').make_notify()
     end,
