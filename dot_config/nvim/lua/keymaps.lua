@@ -20,8 +20,6 @@ map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
 
 -- buffers
-map('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
-map('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 _G.close_other_buffers = function()
     local current_bufnr = vim.api.nvim_get_current_buf()
     local buffers = vim.api.nvim_list_bufs()
@@ -40,12 +38,6 @@ map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsea
 -- Keeping the cursor centered.
 map('n', 'n', 'nzzzv', { desc = 'Next result' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous result' })
-
--- save file
--- Alternative way to save and exit in Normal mode.
--- NOTE: Adding `redraw` helps with `cmdheight=0` if buffer is not modified
-map('n', '<C-S>', '<Cmd>silent! update | redraw<CR>', { desc = 'Save' })
-map({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
 
 -- better indenting
 map('v', '<', '<gv')
