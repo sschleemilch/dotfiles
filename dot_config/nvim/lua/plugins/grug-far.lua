@@ -1,13 +1,5 @@
-return {
-    'MagicDuck/grug-far.nvim',
-    opts = {},
-    cmd = 'GrugFar',
-    keys = {
-        {
-            '<leader>sr',
-            '<cmd>GrugFar<cr>',
-            desc = 'Replace in files (Grug-far)',
-            mode = { 'n', 'v' },
-        },
-    },
-}
+MiniDeps.later(function()
+    MiniDeps.add('MagicDuck/grug-far.nvim')
+    require('grug-far').setup()
+    vim.keymap.set({ 'n', 'v' }, '<leader>sr', '<cmd>GrugFar<cr>', { desc = 'Replace in files (Grug-far)' })
+end)

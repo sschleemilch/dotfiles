@@ -1,14 +1,8 @@
-return {
-    'folke/trouble.nvim',
-    opts = {
+MiniDeps.later(function()
+    MiniDeps.add('folke/trouble.nvim')
+    require('trouble').setup({
         auto_preview = false,
         auto_close = true,
-    },
-    keys = {
-        {
-            '<leader>tt',
-            '<cmd>Trouble diagnostics toggle<cr>',
-            desc = 'Diagnostics (Trouble)',
-        },
-    },
-}
+    })
+    vim.keymap.set('n', '<leader>tt', '<cmd>Trouble diagnostics toggle<cr>', { desc = 'Diagnostics (trouble)' })
+end)

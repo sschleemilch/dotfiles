@@ -1,7 +1,5 @@
-return {
-    'echasnovski/mini.surround',
-    event = 'VeryLazy',
-    opts = {
+MiniDeps.later(function()
+    require('mini.surround').setup({
         mappings = {
             add = 'gsa',
             delete = 'gsd',
@@ -11,5 +9,5 @@ return {
             highlight = '',
             update_n_lines = '',
         },
-    },
-}
+    })
+end)

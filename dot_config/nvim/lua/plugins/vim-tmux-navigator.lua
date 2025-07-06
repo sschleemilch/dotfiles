@@ -1,3 +1,3 @@
-return {
-    'christoomey/vim-tmux-navigator',
-}
+MiniDeps.later(function()
+    MiniDeps.add('christoomey/vim-tmux-navigator')
+end)

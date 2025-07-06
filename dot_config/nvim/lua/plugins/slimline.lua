@@ -1,8 +1,7 @@
-return {
-    'sschleemilch/slimline.nvim',
-    -- 'slimline.nvim',
-    -- dev = true,
-    opts = {
+MiniDeps.now(function()
+    -- MiniDeps.add({ name = 'slimline.nvim', checkout = 'HEAD' })
+    MiniDeps.add('sschleemilch/slimline.nvim')
+    require('slimline').setup({
         bold = false,
         style = 'bg',
         configs = {
@@ -33,5 +32,5 @@ return {
             left = '',
             right = '',
         },
-    },
-}
+    })
+end)
