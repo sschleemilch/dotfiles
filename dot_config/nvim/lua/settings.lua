@@ -25,6 +25,9 @@ vim.o.scrolloff = 8 -- Keep more context when scrolling
 
 vim.o.fillchars = 'eob: ' -- Remove ~ from end of file
 
+-- Max completion menu entries
+vim.o.pumheight = 15
+
 -- Diagnostics
 vim.diagnostic.config({
     signs = {

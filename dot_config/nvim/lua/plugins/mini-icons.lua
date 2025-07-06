@@ -23,4 +23,5 @@ MiniDeps.now(function()
             variable = { glyph = '󰀫', hl = 'MiniIconsCyan' },
         },
     })
+    MiniDeps.later(MiniIcons.tweak_lsp_kind)
 end)

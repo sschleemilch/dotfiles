@@ -11,8 +11,6 @@ MiniDeps.now(function()
 
             StatusLine = { bg = 'base' },
 
-            Pmenu = { bg = 'base', fg = 'muted' },
-
             -- Mini
             MiniFilesTitleFocused = { bg = 'base' },
             MiniClueTitle = { bg = 'base' },
