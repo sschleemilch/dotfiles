@@ -51,4 +51,5 @@ now_if_args(function()
         indent = { enable = true },
     })
     MiniDeps.add('nvim-treesitter/nvim-treesitter-context')
+    require('treesitter-context').setup()
 end)
