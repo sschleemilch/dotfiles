@@ -31,6 +31,9 @@ set -x GOPRIVATE 'atc-github.azure.cloud.bmw/*'
 {{- end }}
 
 
+set -x RIPGREP_CONFIG_PATH ~/.config/ripgreprc
+
+
 set -x FZF_DEFAULT_OPTS "
   --highlight-line
   --info=inline-right
