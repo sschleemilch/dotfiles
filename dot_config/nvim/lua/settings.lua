@@ -12,6 +12,9 @@ vim.o.smartindent = true -- Smartly indent newlines
 
 vim.o.expandtab = true -- Expands tabs to spaces
 
+vim.o.ignorecase = true
+vim.o.smartcase = true -- Not ignoring case if search contains capital letters
+
 -- Linue numbers
 vim.wo.nu = true -- shows the abolsute line number at cursor
 vim.wo.rnu = true -- and relative line numbers above and below
