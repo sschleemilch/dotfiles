@@ -32,9 +32,6 @@ _G.close_other_buffers = function()
 end
 map('n', '<leader>bo', ':lua close_other_buffers()<CR>', { desc = 'Close Other Buffers' })
 
--- Clear search with <esc>
-map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
-
 -- Keeping the cursor centered.
 map('n', 'n', 'nzzzv', { desc = 'Next result' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous result' })
@@ -42,3 +39,15 @@ map('n', 'N', 'Nzzzv', { desc = 'Previous result' })
 -- better indenting
 map('v', '<', '<gv')
 map('v', '>', '>gv')
+
+-- Run command and put result into scratch buffer
+map('n', '<space>c', function()
+    vim.ui.input({}, function(c)
+        if c and c ~= '' then
+            vim.cmd('noswapfile vnew')
+            vim.bo.buftype = 'nofile'
+            vim.bo.bufhidden = 'wipe'
+            vim.api.nvim_buf_set_lines(0, 0, -1, false, vim.fn.systemlist(c))
+        end
+    end)
+end)
