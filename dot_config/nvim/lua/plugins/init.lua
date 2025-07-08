@@ -1,5 +1,5 @@
 -- Now
-require('plugins.rose-pine')
+-- require('plugins.rose-pine')
 require('plugins.mini-icons')
 require('plugins.mini-notify')
 require('plugins.slimline')

@@ -14,6 +14,10 @@ if not vim.loop.fs_stat(mini_path) then
     vim.cmd('echo "Installed `mini.nvim`" | redraw')
 end
 
+vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'StatusLine', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { link = 'Normal' })
+
 require('mini.deps').setup({ path = { package = path_package } })
 
 require('settings')

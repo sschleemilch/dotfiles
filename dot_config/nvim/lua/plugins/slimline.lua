@@ -12,6 +12,7 @@ MiniDeps.now(function()
                 },
             },
             diagnostics = {
+                style = 'fg',
                 workspace = true,
             },
             progress = {
