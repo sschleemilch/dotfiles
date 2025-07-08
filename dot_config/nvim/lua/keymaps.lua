@@ -32,6 +32,9 @@ _G.close_other_buffers = function()
 end
 map('n', '<leader>bo', ':lua close_other_buffers()<CR>', { desc = 'Close Other Buffers' })
 
+-- Clear search highlight
+map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
+
 -- Keeping the cursor centered.
 map('n', 'n', 'nzzzv', { desc = 'Next result' })
 map('n', 'N', 'Nzzzv', { desc = 'Previous result' })
