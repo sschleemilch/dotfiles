@@ -3,31 +3,55 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
 
-# Tokyonight
 gui:
   nerdFontsVersion: "3"
+  # Tokyonight
+  # theme:
+  #   activeBorderColor:
+  #     - "#ff9e64"
+  #     - "bold"
+  #   inactiveBorderColor:
+  #     - "#27a1b9"
+  #   searchingActiveBorderColor:
+  #     - "#ff9e64"
+  #     - "bold"
+  #   optionsTextColor:
+  #     - "#7aa2f7"
+  #   selectedLineBgColor:
+  #     - "#283457"
+  #   cherryPickedCommitFgColor:
+  #     - "#7aa2f7"
+  #   cherryPickedCommitBgColor:
+  #     - "#bb9af7"
+  #   markedBaseCommitFgColor:
+  #     - "#7aa2f7"
+  #   markedBaseCommitBgColor:
+  #     - "#e0af68"
+  #   unstagedChangesColor:
+  #     - "#db4b4b"
+  #   defaultFgColor:
+  #     - "#c0caf5"
+  # Catppuccin
   theme:
     activeBorderColor:
-      - "#ff9e64"
-      - "bold"
+      - "#89b4fa"
+      - bold
     inactiveBorderColor:
-      - "#27a1b9"
-    searchingActiveBorderColor:
-      - "#ff9e64"
-      - "bold"
+      - "#a6adc8"
     optionsTextColor:
-      - "#7aa2f7"
+      - "#89b4fa"
     selectedLineBgColor:
-      - "#283457"
-    cherryPickedCommitFgColor:
-      - "#7aa2f7"
+      - "#313244"
     cherryPickedCommitBgColor:
-      - "#bb9af7"
-    markedBaseCommitFgColor:
-      - "#7aa2f7"
-    markedBaseCommitBgColor:
-      - "#e0af68"
+      - "#45475a"
+    cherryPickedCommitFgColor:
+      - "#89b4fa"
     unstagedChangesColor:
-      - "#db4b4b"
+      - "#f38ba8"
     defaultFgColor:
-      - "#c0caf5"
+      - "#cdd6f4"
+    searchingActiveBorderColor:
+      - "#f9e2af"
+
+  authorColors:
+    "*": "#b4befe"
