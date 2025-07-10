@@ -1,7 +1,8 @@
 -- Now
 -- require('plugins.colorschemes.rose-pine')
 -- require('plugins.colorschemes.kanagawa')
-require('plugins.colorschemes.tokyonight')
+-- require('plugins.colorschemes.tokyonight')
+require('plugins.colorschemes.catppuccin')
 require('plugins.mini-icons')
 require('plugins.mini-notify')
 require('plugins.slimline')
