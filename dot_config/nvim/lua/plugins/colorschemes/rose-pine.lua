@@ -3,18 +3,16 @@ MiniDeps.now(function()
     require('rose-pine').setup({
         styles = {
             bold = false,
-            italic = false,
+            italic = true,
         },
         dim_inactive_windows = false,
         highlight_groups = {
-            -- General
             FloatBorder = { bg = 'base' },
             FloatTitle = { bg = 'base' },
             FloatFooter = { bg = 'base' },
             NormalFloat = { bg = 'base' },
-
             StatusLine = { bg = 'base' },
-
+            StatusLineNC = { bg = 'base' },
             -- Mini
             MiniFilesTitleFocused = { bg = 'base' },
             MiniClueTitle = { bg = 'base' },

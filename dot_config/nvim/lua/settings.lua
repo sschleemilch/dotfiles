@@ -15,10 +15,6 @@ vim.o.expandtab = true -- Expands tabs to spaces
 vim.o.ignorecase = true
 vim.o.smartcase = true -- Not ignoring case if search contains capital letters
 
--- Linue numbers
-vim.wo.nu = true -- shows the abolsute line number at cursor
-vim.wo.rnu = true -- and relative line numbers above and below
-
 vim.o.undofile = true -- Stores undo history persistent
 vim.o.writebackup = false -- Don't store backup while overwriting the file
 vim.o.signcolumn = 'yes' -- Always show sign column
