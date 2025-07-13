@@ -1,8 +1,17 @@
 -- Now
--- require('plugins.colorschemes.rose-pine')
--- require('plugins.colorschemes.kanagawa')
--- require('plugins.colorschemes.tokyonight')
+{{ if eq .colorscheme "rose-pine" -}}
+require('plugins.colorschemes.rose-pine')
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+require('plugins.colorschemes.kanagawa')
+{{- end -}}
+{{ if eq .colorscheme "tokyonight" -}}
+require('plugins.colorschemes.tokyonight')
+{{- end -}}
+{{ if eq .colorscheme "catppuccin" -}}
 require('plugins.colorschemes.catppuccin')
+{{- end }}
+
 require('plugins.mini-icons')
 require('plugins.mini-notify')
 require('plugins.slimline')

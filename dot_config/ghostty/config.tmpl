@@ -1,8 +1,18 @@
 font-family = MonoLisa
-# theme = rose-pine
-# theme = Kanagawa Wave
-# theme = tokyonight_night
+
+{{ if eq .colorscheme "rose-pine" -}}
+theme = rose-pine
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+theme = Kanagawa Wave
+{{- end -}}
+{{ if eq .colorscheme "tokyonight" -}}
+theme = tokyonight_night
+{{- end -}}
+{{ if eq .colorscheme "catppuccin" -}}
 theme = catppuccin-mocha
+{{- end }}
+
 {{ if eq .chezmoi.os "darwin" }}
 command = /opt/homebrew/bin/fish
 {{ end }}
