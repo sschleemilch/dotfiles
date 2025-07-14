@@ -15,37 +15,39 @@ set -g @plugin "tmux-plugins/tmux-sensible"
 set -g @plugin "tmux-plugins/tmux-prefix-highlight"
 set -g @plugin "christoomey/vim-tmux-navigator"
 
-# # Rose Pine
-# accent="#ebbcba"
-# accent_dim="#908caa"
-# bg="#191724"
-# input="#c4a7e7"
-# active="#e0def4"
-# inactive="#908caa"
 
-# Kanagawa
-# accent="#7fb4ca"
-# accent_dim="#727169"
-# bg="#1f1f28"
-# input="#ff9e3b"
-# active="#dcd7ba"
-# inactive="#727169"
-
-# Tokyonight
-# accent="#2ac3de"
-# accent_dim="#565f89"
-# bg="#1a1b26"
-# input="#ff9e64"
-# active="#c0caf5"
-# inactive="#565f89"
-
-# Catppuccin
+{{ if eq .colorscheme "rose-pine" -}}
+accent="#ebbcba"
+accent_dim="#908caa"
+bg="#191724"
+input="#c4a7e7"
+active="#e0def4"
+inactive="#908caa"
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+accent="#7fb4ca"
+accent_dim="#727169"
+bg="#1f1f28"
+input="#ff9e3b"
+active="#dcd7ba"
+inactive="#727169"
+{{- end -}}
+{{ if eq .colorscheme "tokyonight" -}}
+accent="#2ac3de"
+accent_dim="#565f89"
+bg="#1a1b26"
+input="#ff9e64"
+active="#c0caf5"
+inactive="#565f89"
+{{- end -}}
+{{ if eq .colorscheme "catppuccin" -}}
 accent="#89dceb"
 accent_dim="#9399b2"
 bg="#1e1e2e"
 input="#fab387"
 active="#cdd6f4"
 inactive="#9399b2"
+{{- end }}
 
 set -g status "on"
 
