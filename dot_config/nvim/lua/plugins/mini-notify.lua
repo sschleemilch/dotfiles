@@ -2,14 +2,18 @@ MiniDeps.now(function()
     local ignore = {
         'ltex_plus',
     }
+    local predicate = function(notif)
+        return not vim.tbl_contains(ignore, notif.data.client_name)
+    end
+    local custom_sort = function(notif_arr)
+        return MiniNotify.default_sort(vim.tbl_filter(predicate, notif_arr))
+    end
     require('mini.notify').setup({
         content = {
             format = function(notif)
-                if vim.tbl_contains(ignore, notif.data.client_name) then
-                    return ''
-                end
                 return ' ' .. notif.msg .. ' '
             end,
+            sort = custom_sort,
         },
         window = {
             config = {
