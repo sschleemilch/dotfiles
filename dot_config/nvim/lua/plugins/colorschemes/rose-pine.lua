@@ -3,7 +3,7 @@ MiniDeps.now(function()
     require('rose-pine').setup({
         styles = {
             bold = false,
-            italic = true,
+            italic = false,
         },
         dim_inactive_windows = false,
         highlight_groups = {
