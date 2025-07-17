@@ -22,7 +22,13 @@ vim.o.updatetime = 300 -- Lower update time. Triggers CursorHold earlier
 vim.o.winborder = 'single' -- floating border style
 vim.o.scrolloff = 8 -- Keep more context when scrolling
 
-vim.o.fillchars = 'eob: ' -- Remove ~ from end of file
+vim.o.foldlevelstart = 99 -- Do not fold initially
+vim.wo.foldtext = '' -- Do not modify the line that is folded
+
+vim.opt.fillchars = {
+    eob = ' ',
+    fold = ' ',
+}
 
 -- Max completion menu entries
 vim.o.pumheight = 15
