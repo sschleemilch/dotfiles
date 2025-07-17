@@ -34,7 +34,7 @@ vim.opt.fillchars = {
 vim.o.pumheight = 15
 
 -- Diagnostics
-vim.diagnostic.config({
+local diagnostic_opts = {
     signs = {
         text = {
             [vim.diagnostic.severity.ERROR] = ' ',
@@ -47,4 +47,8 @@ vim.diagnostic.config({
         current_line = true,
         prefix = '',
     },
-})
+}
+
+MiniDeps.later(function()
+    vim.diagnostic.config(diagnostic_opts)
+end)
