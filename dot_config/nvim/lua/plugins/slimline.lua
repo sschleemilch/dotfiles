@@ -4,6 +4,12 @@ MiniDeps.now(function()
     require('slimline').setup({
         bold = false,
         style = 'bg',
+        components = {
+            left = {
+                'mode',
+                'path',
+            },
+        },
         configs = {
             path = {
                 icons = {
