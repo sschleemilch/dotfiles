@@ -19,6 +19,12 @@ MiniDeps.now(function()
             },
             diagnostics = {
                 workspace = true,
+                icons = {
+                    ERROR = '● ',
+                    WARN = '● ',
+                    HINT = '● ',
+                    INFO = '● ',
+                },
             },
             progress = {
                 column = true,
