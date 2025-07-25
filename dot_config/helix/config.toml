@@ -4,3 +4,9 @@ theme = "rose_pine"
 end-of-line-diagnostics = "hint"
 gutters = ["diagnostics", "spacer", "diff"]
 
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["spinner", "workspace-diagnostics", "selections", "register", "position", "file-encoding"]

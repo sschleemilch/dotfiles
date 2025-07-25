@@ -1,4 +1,0 @@
-inherits =  "rose_pine"
-
-"ui.statusline" = { fg = "subtle", bg = "base" }
-"ui.statusline.inactive" = { fg = "muted", bg = "base" }
