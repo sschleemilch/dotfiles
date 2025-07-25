@@ -1,0 +1,4 @@
+theme = "rose_pine"
+
+[editor]
+end-of-line-diagnostics = "hint"
