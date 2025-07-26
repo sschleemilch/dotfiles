@@ -1,0 +1,9 @@
+inherits = "rose_pine"
+
+"ui.statusline" = { "fg" = "text", "bg" = "base"}
+"ui.statusline.inactive" = { "fg" = "subtle", "bg" = "base"}
+
+"ui.popup" = { bg = "base", fg = "subtle" }
+"ui.popup.info" = { bg = "base", fg = "subtle"}
+"ui.menu" = { bg = "base", fg = "subtle" }
+"ui.help" = { bg = "base", fg = "subtle" }
