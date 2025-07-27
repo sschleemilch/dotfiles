@@ -11,8 +11,7 @@ MiniDeps.now(function()
             FloatTitle = { bg = 'base' },
             FloatFooter = { bg = 'base' },
             NormalFloat = { bg = 'base' },
-            StatusLine = { bg = 'base' },
-            StatusLineNC = { bg = 'base' },
+
             -- Mini
             MiniFilesTitleFocused = { bg = 'base' },
             MiniClueTitle = { bg = 'base' },

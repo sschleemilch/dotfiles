@@ -12,6 +12,8 @@ require('plugins.colorschemes.tokyonight')
 require('plugins.colorschemes.catppuccin')
 {{- end }}
 
+vim.api.nvim_set_hl(0, 'MsgArea', { link = 'StatusLine' })
+
 require('plugins.mini-icons')
 require('plugins.mini-notify')
 require('plugins.slimline')

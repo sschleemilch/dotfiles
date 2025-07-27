@@ -19,8 +19,6 @@ MiniDeps.now(function()
                 FloatTitle = { bg = theme.ui.bg },
                 FloatFooter = { bg = theme.ui.bg },
                 NormalFloat = { bg = theme.ui.bg },
-                StatusLine = { bg = theme.ui.bg },
-                StatusLineNC = { bg = theme.ui.bg },
                 -- Mini
                 MiniFilesTitleFocused = { bg = theme.ui.bg },
                 MiniFilesTitle = { bg = theme.ui.bg },

@@ -3,6 +3,9 @@ MiniDeps.now(function()
     MiniDeps.add('sschleemilch/slimline.nvim')
     require('slimline').setup({
         style = 'fg',
+        hl = {
+            base = 'StatusLine',
+        },
         components = {
             left = {
                 'mode',
