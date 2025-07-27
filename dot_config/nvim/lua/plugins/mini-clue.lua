@@ -16,6 +16,7 @@ MiniDeps.later(function()
             -- Moving between stuff.
             { mode = 'n', keys = '[' },
             { mode = 'n', keys = ']' },
+            { mode = 'n', keys = '<Leader>' },
         },
         clues = {
             -- Builtins.
