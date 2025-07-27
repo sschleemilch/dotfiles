@@ -2,21 +2,18 @@ MiniDeps.now(function()
     -- MiniDeps.add({ name = 'slimline.nvim', checkout = 'HEAD' })
     MiniDeps.add('sschleemilch/slimline.nvim')
     require('slimline').setup({
-        bold = false,
-        style = 'bg',
+        style = 'fg',
         components = {
             left = {
                 'mode',
                 'path',
             },
         },
+        spaces = {
+            left = '',
+            right = '',
+        },
         configs = {
-            path = {
-                icons = {
-                    modified = '*',
-                    read_only = '[RO]',
-                },
-            },
             diagnostics = {
                 workspace = true,
                 icons = {
@@ -30,19 +27,6 @@ MiniDeps.now(function()
                 column = true,
                 follow = false,
             },
-        },
-        spaces = {
-            components = '',
-            left = '',
-            right = '',
-        },
-        sep = {
-            hide = {
-                first = true,
-                last = true,
-            },
-            left = '',
-            right = '',
         },
     })
 end)

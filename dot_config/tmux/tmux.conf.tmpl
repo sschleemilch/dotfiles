@@ -53,14 +53,14 @@ set -g status "on"
 
 set -g status-justify "left"
 
-set -g mode-style "fg=$input,bg=$bg"
-set -g message-style "fg=$input,bg=$bg"
-set -g message-command-style "fg=$input,bg=$bg"
+set -g mode-style "fg=$input"
+set -g message-style "fg=$input"
+set -g message-command-style "fg=$input"
 
 set -g pane-border-style "fg=$inactive"
 set -g pane-active-border-style "fg=$active"
 
-set -g status-style "fg=$active,bg=$bg"
+set -g status-style "fg=$active"
 set -g status-position "bottom"
 
 set -g status-left-length "100"
@@ -69,17 +69,16 @@ set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
 
-setw -g window-status-activity-style "underscore,fg=$input,bg=$bg"
-setw -g window-status-style "NONE,fg=$active,bg=$bg"
+setw -g window-status-activity-style "underscore,fg=$input"
+setw -g window-status-style "NONE,fg=$active"
 
 setw -g window-status-separator ""
-set -g status-left "#[fg=$bg,bg=$accent] #S #[fg=$accent,bg=$bg]"
-set -g status-right "#{prefix_highlight}#[fg=$accent_dim,bg=$bg]#[fg=$bg,bg=$accent_dim] %d.%m.%Y  %H:%M #[fg=$accent,bg=$accent_dim]#[fg=#1b1d2b,bg=$accent] #h "
-setw -g window-status-format "#[fg=$inactive,bg=$bg]#[fg=$bg,bg=$inactive] #I  #W #[fg=$inactive,bg=$bg]"
-setw -g window-status-current-format "#[fg=$active,bg=$bg]#[fg=$bg,bg=$active] #I  #W #[fg=$active,bg=$bg]"
+set -g status-left "#[fg=$accent] #S"
+set -g status-right "#{prefix_highlight}#[fg=$accent_dim] %d.%m.%Y %H:%M #[fg=$accent] #h "
+setw -g window-status-format "  #[fg=$inactive]#I:#W"
+setw -g window-status-current-format "  #[fg=$active]#I:#W"
 # tmux-plugins/tmux-prefix-highlight
-set -g @prefix_highlight_output_prefix "#[fg=$input]#[bg=$bg]#[fg=$bg]#[bg=$input] "
-set -g @prefix_highlight_output_suffix " "
+set -g @prefix_highlight_output_prefix "#[fg=$input]#[bg=$bg]"
 set -g @prefix_highlight_show_copy_mode 'on'
 set -g @prefix_highlight_prefix_prompt 'WAIT'
 set -g @prefix_highlight_copy_prompt 'COPY'
