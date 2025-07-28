@@ -3,7 +3,6 @@ MiniDeps.now(function()
     require('tokyonight').setup({
         styles = {
             keywords = { italic = false },
-            floats = 'normal',
         },
     })
     vim.cmd('colorscheme tokyonight-night')
