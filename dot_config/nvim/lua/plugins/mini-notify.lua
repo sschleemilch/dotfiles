@@ -17,6 +17,7 @@ MiniDeps.now(function()
         },
         window = {
             config = {
+                border = 'solid',
                 title = '',
             },
         },

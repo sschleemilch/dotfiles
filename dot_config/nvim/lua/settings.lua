@@ -19,7 +19,6 @@ vim.o.undofile = true -- Stores undo history persistent
 vim.o.writebackup = false -- Don't store backup while overwriting the file
 vim.o.signcolumn = 'yes' -- Always show sign column
 vim.o.updatetime = 300 -- Lower update time. Triggers CursorHold earlier
-vim.o.winborder = 'single' -- floating border style
 vim.o.scrolloff = 8 -- Keep more context when scrolling
 
 vim.o.foldlevelstart = 99 -- Do not fold initially

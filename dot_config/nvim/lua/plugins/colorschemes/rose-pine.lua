@@ -6,19 +6,6 @@ MiniDeps.now(function()
             italic = false,
         },
         dim_inactive_windows = false,
-        highlight_groups = {
-            FloatBorder = { bg = 'base' },
-            FloatTitle = { bg = 'base' },
-            FloatFooter = { bg = 'base' },
-            NormalFloat = { bg = 'base' },
-
-            -- Mini
-            MiniFilesTitleFocused = { bg = 'base' },
-            MiniClueTitle = { bg = 'base' },
-            MiniPickPrompt = { bg = 'base', fg = 'foam' },
-            MiniPickBorderText = { bg = 'base' },
-            MiniPickMatchRanges = { fg = 'rose' },
-        },
     })
     vim.cmd('colorscheme rose-pine')
 end)
