@@ -12,11 +12,17 @@ MiniDeps.now(function()
                 'path',
             },
         },
-        spaces = {
+        sep = {
             left = '',
             right = '',
         },
+        spaces = {
+            right = '',
+        },
         configs = {
+            mode = {
+                style = 'bg',
+            },
             diagnostics = {
                 workspace = true,
                 icons = {
