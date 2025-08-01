@@ -3,8 +3,6 @@ vim.g.maplocalleader = ','
 
 vim.o.clipboard = 'unnamedplus' -- Always sync clipboard with OS
 
-vim.o.wrap = false -- Do not wrap long lines
-
 -- Indents
 vim.o.shiftwidth = 4 -- size of an indent
 vim.o.tabstop = 4 -- Number of spaces tabs count for
