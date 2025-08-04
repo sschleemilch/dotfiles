@@ -97,6 +97,13 @@ set -l COLORS "--color=bg+:#283457 \
   --color=spinner:#ff007c"
 fish_config theme choose "tokyonight"
 {{- end -}}
+{{- if eq .colorscheme "kanagawa" -}}
+set -l COLORS "--color=fg:#c8c093,fg+:#c8c093,bg:#16161d,bg+:#223249
+  --color=hl:#7e9cd8,hl+:#7e9cd8,info:#c8c093,marker:#ff9e3b
+  --color=prompt:#7e9cd8,spinner:#ff9e3b,pointer:#ff9e3b,header:#6a9589
+  --color=gutter:#16161d,border:#16161d,separator:#54546d,label:#aeaeae
+  --color=query:#7e9cd8"
+{{- end -}}
 {{- if eq .colorscheme "catppuccin" -}}
 set -l COLORS "--color=bg+:#313244,bg:#181825,spinner:#F5E0DC,hl:#F38BA8 \
   --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
