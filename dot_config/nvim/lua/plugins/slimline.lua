@@ -16,21 +16,28 @@ MiniDeps.now(function()
             left = '',
             right = '',
         },
-        spaces = {
-            right = '',
-        },
         configs = {
             mode = {
                 style = 'bg',
+                format = {
+                    ['n'] = { short = 'NOR' },
+                    ['v'] = { short = 'VIS' },
+                    ['V'] = { short = 'V-L' },
+                    ['\22'] = { short = 'V-B' },
+                    ['s'] = { short = 'SEL' },
+                    ['S'] = { short = 'S-L' },
+                    ['\19'] = { short = 'S-B' },
+                    ['i'] = { short = 'INS' },
+                    ['R'] = { short = 'REP' },
+                    ['c'] = { short = 'CMD' },
+                    ['r'] = { short = 'PRO' },
+                    ['!'] = { short = 'SHE' },
+                    ['t'] = { short = 'TER' },
+                    ['U'] = { short = 'UNK' },
+                },
             },
             diagnostics = {
                 workspace = true,
-                icons = {
-                    ERROR = 'E:',
-                    WARN = 'W:',
-                    HINT = 'H:',
-                    INFO = 'I:',
-                },
             },
             progress = {
                 column = true,
