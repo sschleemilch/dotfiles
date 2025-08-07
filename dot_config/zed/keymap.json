@@ -1,0 +1,57 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "g r a": "editor::ToggleCodeActions",
+      "g d": "editor::GoToDefinition",
+      "g t": "editor::GoToTypeDefinition",
+      "g r r": "editor::FindAllReferences",
+      "g r n": "editor::Rename",
+      "space s": "outline::Toggle",
+      "space S": "project_symbols::Toggle",
+      "space D": "diagnostics::Deploy",
+      "space e": "project_panel::ToggleFocus",
+      "space t": "workspace::ToggleBottomDock",
+      "space f": "file_finder::Toggle",
+      "space p": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      "space f": "file_finder::Toggle",
+      "space p": "projects::OpenRecent"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
+    "bindings": {
+      "g c": "editor::ToggleComments"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space e": "workspace::ToggleLeftDock",
+      "n": "project_panel::NewFile",
+      "shift-n": "project_panel::NewDirectory",
+      "d": "project_panel::Trash",
+      "r": "project_panel::Rename",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "l": ["workspace::SendKeystrokes", "enter space e"]
+    }
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+
+  "vim_mode": true,
+  "ui_font_size": 16,
+
+  "buffer_font_size": 15,
+  "buffer_font_family": "MonoLisa",
+
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Rosé Pine"
+  },
+
+  "tab_bar": {
+    "show": false
+  },
+
+  "scrollbar": {
+    "show": "never"
+  },
+
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "selections_menu": false,
+    "agent_review": false,
+    "code_actions": false
+  },
+
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": false
+    },
+    "hunk_style": "staged_hollow"
+  }
+}
