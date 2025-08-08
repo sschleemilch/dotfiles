@@ -16,6 +16,9 @@ MiniDeps.now(function()
             left = '',
             right = '',
         },
+        spaces = {
+            components = '',
+        },
         configs = {
             mode = {
                 style = 'bg',
