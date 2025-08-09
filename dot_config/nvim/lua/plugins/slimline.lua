@@ -15,6 +15,11 @@ MiniDeps.now(function()
             right = '',
         },
         configs = {
+            path = {
+                icons = {
+                    folder = '',
+                },
+            },
             mode = {
                 format = {
                     ['n'] = { short = 'NOR' },
@@ -35,6 +40,12 @@ MiniDeps.now(function()
             },
             diagnostics = {
                 workspace = true,
+                icons = {
+                    ERROR = 'E:',
+                    WARN = 'W:',
+                    INFO = 'I:',
+                    HINT = 'H:',
+                },
             },
             progress = {
                 column = true,

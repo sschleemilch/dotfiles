@@ -35,14 +35,6 @@ vim.o.pumheight = 15
 
 -- Diagnostics
 local diagnostic_opts = {
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = '●',
-            [vim.diagnostic.severity.WARN] = '●',
-            [vim.diagnostic.severity.HINT] = '●',
-            [vim.diagnostic.severity.INFO] = '●',
-        },
-    },
     virtual_text = {
         current_line = true,
         prefix = '',
