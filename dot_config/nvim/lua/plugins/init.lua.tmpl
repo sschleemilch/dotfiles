@@ -12,7 +12,22 @@ require('plugins.colorschemes.tokyonight')
 require('plugins.colorschemes.catppuccin')
 {{- end }}
 
-vim.api.nvim_set_hl(0, 'MsgArea', { link = 'NormalFloat' })
+-- Adjust highlights
+vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Comment' })
+vim.api.nvim_set_hl(0, 'StatusLineNC', { link = 'Normal' })
+vim.api.nvim_set_hl(0, 'StatusLine', { link = 'Normal' })
+
+--- @param hl string
+local function clear_bg(hl)
+    local current = vim.api.nvim_get_hl(0, { name = hl, link = false })
+    vim.api.nvim_set_hl(0, hl, { fg = current.fg, bg = 'NONE' })
+end
+clear_bg('FloatTitle')
+clear_bg('MiniFilesTitleFocused')
+clear_bg('MiniPickBorderText')
+clear_bg('MiniPickPrompt')
+clear_bg('MiniClueTitle')
 
 require('plugins.mini-icons')
 require('plugins.mini-notify')

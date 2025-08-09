@@ -3,25 +3,19 @@ MiniDeps.now(function()
     MiniDeps.add('sschleemilch/slimline.nvim')
     require('slimline').setup({
         style = 'fg',
-        hl = {
-            base = 'StatusLine',
-        },
         components = {
             left = {
                 'mode',
                 'path',
             },
         },
-        sep = {
+        spaces = {
+            components = '',
             left = '',
             right = '',
         },
-        spaces = {
-            components = '',
-        },
         configs = {
             mode = {
-                style = 'bg',
                 format = {
                     ['n'] = { short = 'NOR' },
                     ['v'] = { short = 'VIS' },

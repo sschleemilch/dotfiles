@@ -71,19 +71,19 @@ if status is-interactive
 end
 
 {{ if eq .colorscheme "rose-pine" -}}
-set -l COLORS "--color=fg:#908caa,bg:#1f1d2e,hl:#ebbcba
+set -l COLORS "--color=fg:#908caa,bg:#191724,hl:#ebbcba
 	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
- 	--color=border:#1f1d2e,header:#31748f,gutter:#1f1d2e
+ 	--color=border:#908caa,header:#31748f,gutter:#191724
  	--color=spinner:#f6c177,info:#9ccfd8
  	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
 fish_config theme choose "rose_pine"
 {{- end -}}
 {{- if eq .colorscheme "tokyonight" -}}
 set -l COLORS "--color=bg+:#283457 \
-  --color=bg:#16161e \
-  --color=border:#16161e \
+  --color=bg:#1a1b26 \
+  --color=border:#565f89 \
   --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
+  --color=gutter:#1a1b26 \
   --color=header:#ff9e64 \
   --color=hl+:#2ac3de \
   --color=hl:#2ac3de \
@@ -98,18 +98,18 @@ set -l COLORS "--color=bg+:#283457 \
 fish_config theme choose "tokyonight"
 {{- end -}}
 {{- if eq .colorscheme "kanagawa" -}}
-set -l COLORS "--color=fg:#c8c093,fg+:#c8c093,bg:#16161d,bg+:#223249
+set -l COLORS "--color=fg:#c8c093,fg+:#c8c093,bg:#1f1f28,bg+:#223249
   --color=hl:#7e9cd8,hl+:#7e9cd8,info:#c8c093,marker:#ff9e3b
   --color=prompt:#7e9cd8,spinner:#ff9e3b,pointer:#ff9e3b,header:#6a9589
-  --color=gutter:#16161d,border:#16161d,separator:#54546d,label:#aeaeae
+  --color=gutter:#1f1f28,border:#727169,separator:#54546d,label:#aeaeae
   --color=query:#7e9cd8"
 {{- end -}}
 {{- if eq .colorscheme "catppuccin" -}}
-set -l COLORS "--color=bg+:#313244,bg:#181825,spinner:#F5E0DC,hl:#F38BA8 \
+set -l COLORS "--color=bg+:#313244,bg:#1e1e2e,spinner:#F5E0DC,hl:#F38BA8 \
   --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
   --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
-  --color=selected-bg:#45475A,gutter:#181825 \
-  --color=border:#181825,label:#CDD6F4"
+  --color=selected-bg:#45475A,gutter:#1e1e2e \
+  --color=border:#9399b2,label:#CDD6F4"
 fish_config theme choose "catppuccin_mocha"
 {{- end }}
 
@@ -119,7 +119,7 @@ set -x FZF_DEFAULT_OPTS "
     --wrap
     --tmux 60%,70%
     --ansi
-    --border=block
+    --border=sharp
     --layout=reverse
     $COLORS"
 

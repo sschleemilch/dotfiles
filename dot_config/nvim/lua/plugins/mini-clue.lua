@@ -30,7 +30,7 @@ MiniDeps.later(function()
         window = {
             delay = 500,
             config = {
-                border = 'solid',
+                border = 'single',
             },
         },
     })
