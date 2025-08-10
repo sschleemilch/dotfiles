@@ -32,6 +32,30 @@ gui:
     defaultFgColor:
       - "#c0caf5"
   {{- end -}}
+  {{ if eq .colorscheme "vague" -}}
+  theme:
+    activeBorderColor:
+      - "#aeaed1"
+      - "bold"
+    inactiveBorderColor:
+      - "#606079"
+    optionsTextColor:
+      - "#606079"
+    selectedLineBgColor:
+      - "#252530"
+    cherryPickedCommitFgColor:
+      - "#d8647e"
+    cherryPickedCommitBgColor:
+      - "bg"
+    markedBaseCommitFgColor:
+      - "#f3be7c"
+    markedBaseCommitBgColor:
+      - "bg"
+    unstagedChangesColor:
+      - "#d8647e"
+    defaultFgColor:
+      - "#cdcdcd"
+  {{- end -}}
   {{ if eq .colorscheme "catppuccin" -}}
   theme:
     activeBorderColor:

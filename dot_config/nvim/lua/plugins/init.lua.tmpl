@@ -8,6 +8,9 @@ require('plugins.colorschemes.kanagawa')
 {{ if eq .colorscheme "tokyonight" -}}
 require('plugins.colorschemes.tokyonight')
 {{- end -}}
+{{ if eq .colorscheme "vague" -}}
+require('plugins.colorschemes.vague')
+{{- end -}}
 {{ if eq .colorscheme "catppuccin" -}}
 require('plugins.colorschemes.catppuccin')
 {{- end }}
