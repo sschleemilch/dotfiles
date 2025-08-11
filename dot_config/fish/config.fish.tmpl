@@ -6,7 +6,7 @@ function add_to_fish_user_paths_if_exists
     end
 end
  
-add_to_fish_user_paths_if_exists $HOME/.local/bin $HOME/go/bin /usr/local/bin/
+add_to_fish_user_paths_if_exists $HOME/.local/bin $HOME/go/bin /usr/local/bin/ $HOME/.local/share/bob/nvim-bin
  
 {{ if eq .chezmoi.os "darwin" }}
 add_to_fish_user_paths_if_exists /opt/homebrew/bin
