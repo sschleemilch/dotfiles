@@ -30,7 +30,6 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 - [ripgrep](https://github.com/BurntSushi/ripgrep)
 - [fd](https://github.com/sharkdp/fd)
 - [node.js](https://nodejs.org)
-- [fzf](https://github.com/junegunn/fzf)
 
 ### `fish`
 
