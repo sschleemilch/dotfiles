@@ -34,13 +34,9 @@ vim.opt.fillchars = {
 vim.o.pumheight = 15
 
 -- Diagnostics
-local diagnostic_opts = {
+vim.diagnostic.config({
     virtual_text = {
         current_line = true,
         prefix = '',
     },
-}
-
-MiniDeps.later(function()
-    vim.diagnostic.config(diagnostic_opts)
-end)
+})

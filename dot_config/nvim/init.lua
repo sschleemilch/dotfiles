@@ -15,10 +15,3 @@ if not vim.loop.fs_stat(mini_path) then
 end
 
 require('mini.deps').setup({ path = { package = path_package } })
-
-require('settings')
-require('keymaps')
-require('autocommands')
-require('filetypes')
-
-require('plugins')
