@@ -1,4 +1,31 @@
--- Now
+vim.pack.add({
+    {{ if eq .colorscheme "rose-pine" -}}
+    { src = 'https://github.com/rose-pine/neovim' },
+    {{- end -}}
+    {{ if eq .colorscheme "kanagawa" -}}
+    { src = 'https://github.com/rebelot/kanagawa.nvim' },
+    {{- end -}}
+    {{ if eq .colorscheme "tokyonight" -}}
+    { src = 'https://github.com/folke/tokyonight.nvim' },
+    {{- end -}}
+    {{ if eq .colorscheme "vague" -}}
+    { src = 'https://github.com/vague2k/vague.nvim' },
+    {{- end -}}
+    {{ if eq .colorscheme "catppuccin" -}}
+    { src = 'https://github.com/catppuccin/nvim' },
+    {{- end }}
+    { src = 'https://github.com/sschleemilch/slimline.nvim' },
+    { src = 'https://github.com/echasnovski/mini.nvim' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
+    { src = 'https://github.com/stevearc/conform.nvim' },
+    { src = 'https://github.com/folke/flash.nvim' },
+    { src = 'https://github.com/MagicDuck/grug-far.nvim' },
+    { src = 'https://github.com/christoomey/vim-tmux-navigator' },
+    { src = 'https://github.com/neovim/nvim-lspconfig' },
+    { src = 'https://github.com/williamboman/mason.nvim' },
+}, { load = true, confirm = false })
+
 {{ if eq .colorscheme "rose-pine" -}}
 require('plugins.colorschemes.rose-pine')
 {{- end -}}
@@ -32,29 +59,25 @@ clear_bg('MiniPickBorderText')
 clear_bg('MiniPickPrompt')
 clear_bg('MiniClueTitle')
 
+require('plugins.slimline')
 require('plugins.mini-icons')
 require('plugins.mini-notify')
-require('plugins.slimline')
-
--- Later
 require('plugins.nvim-treesitter')
-
-require('plugins.mini-extra')
-require('plugins.mini-ai')
+require('mini.extra').setup()
+require('mini.ai').setup()
 require('plugins.mini-clue')
 require('plugins.mini-completion')
 require('plugins.mini-files')
 require('plugins.mini-hipatterns')
 require('plugins.mini-pick')
-require('plugins.mini-pairs')
+require('mini.pairs').setup()
 require('plugins.mini-surround')
 require('plugins.mini-diff')
-
 require('plugins.conform')
 require('plugins.flash')
-require('plugins.grug-far')
-require('plugins.vim-tmux-navigator')
+
+require('grug-far').setup()
+vim.keymap.set({ 'n', 'v' }, '<leader>gf', '<cmd>GrugFar<cr>', { desc = 'Replace in files (Grug-far)' })
 
 require('plugins.nvim-lspconfig')
-
 require('plugins.mason')
