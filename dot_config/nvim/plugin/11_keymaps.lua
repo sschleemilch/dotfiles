@@ -9,12 +9,6 @@ map({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-u>', '<C-u>zz')
 
--- Window navigation
-map('n', '<C-H>', '<C-w>h', { desc = 'Focus on left window' })
-map('n', '<C-J>', '<C-w>j', { desc = 'Focus on below window' })
-map('n', '<C-K>', '<C-w>k', { desc = 'Focus on above window' })
-map('n', '<C-L>', '<C-w>l', { desc = 'Focus on right window' })
-
 -- Move lines
 map('v', 'J', ":m '>+1<CR>gv=gv")
 map('v', 'K', ":m '<-2<CR>gv=gv")
