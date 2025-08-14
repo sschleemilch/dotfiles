@@ -40,3 +40,5 @@ vim.diagnostic.config({
         prefix = '',
     },
 })
+
+require('vim._extui').enable({})
