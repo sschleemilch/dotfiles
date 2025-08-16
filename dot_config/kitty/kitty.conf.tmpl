@@ -1,36 +1,50 @@
 font_size 12
 
-window_padding_width 5 10 5 10
-
-# Tab style
-tab_bar_style powerline
-tab_powerline_style round
+tab_bar_style custom
 
 cursor_trail 3
+
+window_padding_width 0 5
+window_padding_width 0 5
 
 enable_audio_bell no
 enabled_layouts grid
 
 macos_quit_when_last_window_closed yes
 
-{{- if eq .chezmoi.hostname "LPTP2048124" }}
+map ctrl+shift+h previous_tab
+map ctrl+shift+l next_tab
+
+map ctrl+j kitten pass_keys.py neighboring_window bottom ctrl+j
+map ctrl+k kitten pass_keys.py neighboring_window top    ctrl+k
+map ctrl+h kitten pass_keys.py neighboring_window left   ctrl+h
+map ctrl+l kitten pass_keys.py neighboring_window right  ctrl+l
+
+allow_remote_control yes
+
+{{- if eq .chezmoi.os "darwin" }}
+listen_on unix:/tmp/mykitty
 shell /opt/homebrew/bin/fish
+{{- else }}
+listen_on unix:@mykitty
 {{- end }}
 
-# BEGIN_KITTY_THEME
-# Kanagawa
-include current-theme.conf
-# END_KITTY_THEME
 
-# Tab colors
-active_tab_foreground #1f1f28
-active_tab_background #c8c093
-inactive_tab_foreground #1f1f28
-inactive_tab_background #727169
-
-# Window border
-active_border_color #c8c093
-inactive_border_color #727169
+{{ if eq .colorscheme "rose-pine" -}}
+include rose-pine.conf
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+include kanagawa.conf
+{{- end -}}
+{{ if eq .colorscheme "tokyonight" -}}
+include tokyo_night_night.conf
+{{- end -}}
+{{ if eq .colorscheme "vague" -}}
+include vague.conf
+{{- end -}}
+{{ if eq .colorscheme "catppuccin" -}}
+include Catppuccin-Mocha.conf
+{{- end }}
 
 # BEGIN_KITTY_FONTS
 font_family      family="MonoLisa"
