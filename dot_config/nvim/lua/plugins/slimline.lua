@@ -1,5 +1,5 @@
 require('slimline').setup({
-    style = 'fg',
+    style = 'bg',
     components = {
         left = {
             'mode',
@@ -11,10 +11,19 @@ require('slimline').setup({
         left = '',
         right = '',
     },
+    sep = {
+        hide = {
+            first = true,
+            last = true,
+        },
+        left = '',
+        right = '',
+    },
     configs = {
         path = {
             icons = {
                 folder = '',
+                modified = '*',
             },
         },
         mode = {
