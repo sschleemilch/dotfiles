@@ -8,9 +8,6 @@ vim.pack.add({
     {{ if eq .colorscheme "tokyonight" -}}
     { src = 'https://github.com/folke/tokyonight.nvim' },
     {{- end -}}
-    {{ if eq .colorscheme "vague" -}}
-    { src = 'https://github.com/vague2k/vague.nvim' },
-    {{- end -}}
     {{ if eq .colorscheme "catppuccin" -}}
     { src = 'https://github.com/catppuccin/nvim' },
     {{- end }}
@@ -34,9 +31,6 @@ require('plugins.colorschemes.kanagawa')
 {{- end -}}
 {{ if eq .colorscheme "tokyonight" -}}
 require('plugins.colorschemes.tokyonight')
-{{- end -}}
-{{ if eq .colorscheme "vague" -}}
-require('plugins.colorschemes.vague')
 {{- end -}}
 {{ if eq .colorscheme "catppuccin" -}}
 require('plugins.colorschemes.catppuccin')

@@ -20,7 +20,7 @@ My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 [data]
   email = "<email>"
   network_interface = "wlp0s20f3" # only for `waybar`
-  colorscheme = "<rose-pine|tokyonight|kanagawa|catppuccin|vague>"
+  colorscheme = "<rose-pine|tokyonight|kanagawa|catppuccin>"
 ```
 
 ## Dependencies

@@ -104,23 +104,6 @@ set -l COLORS "--color=fg:#c8c093,fg+:#c8c093,bg:#1f1f28,bg+:#223249
   --color=gutter:#1f1f28,border:#727169,separator:#54546d,label:#aeaeae
   --color=query:#7e9cd8"
 {{- end -}}
-{{- if eq .colorscheme "vague" -}}
-set -l COLORS "
-    --color=hl:#f3be7c
-    --color=bg:-1
-    --color=gutter:-1
-    --color=bg+:#252530
-    --color=fg+:#aeaed1
-    --color=hl+:#f3be7c
-    --color=border:#606079
-    --color=prompt:#bb9dbd
-    --color=query:#aeaed1
-    --color=pointer:#aeaed1
-    --color=scrollbar:#aeaed1
-    --color=info:#f3be7c
-    --color=spinner:#7fa563"
-fish_config theme choose "vague"
-{{- end -}}
 {{- if eq .colorscheme "catppuccin" -}}
 set -l COLORS "--color=bg+:#313244,bg:#1e1e2e,spinner:#F5E0DC,hl:#F38BA8 \
   --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
