@@ -36,6 +36,9 @@ include rose-pine.conf
 {{ if eq .colorscheme "kanagawa" -}}
 include kanagawa.conf
 {{- end -}}
+{{ if eq .colorscheme "carbonfox" -}}
+include carbonfox.conf
+{{- end -}}
 {{ if eq .colorscheme "tokyonight" -}}
 include tokyo_night_night.conf
 {{- end -}}

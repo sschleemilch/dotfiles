@@ -5,6 +5,9 @@ vim.pack.add({
     {{ if eq .colorscheme "kanagawa" -}}
     { src = 'https://github.com/rebelot/kanagawa.nvim' },
     {{- end -}}
+    {{ if eq .colorscheme "carbonfox" -}}
+    { src = 'https://github.com/EdenEast/nightfox.nvim' },
+    {{- end -}}
     {{ if eq .colorscheme "tokyonight" -}}
     { src = 'https://github.com/folke/tokyonight.nvim' },
     {{- end -}}
@@ -28,6 +31,9 @@ require('plugins.colorschemes.rose-pine')
 {{- end -}}
 {{ if eq .colorscheme "kanagawa" -}}
 require('plugins.colorschemes.kanagawa')
+{{- end -}}
+{{ if eq .colorscheme "carbonfox" -}}
+vim.cmd('colorscheme carbonfox')
 {{- end -}}
 {{ if eq .colorscheme "tokyonight" -}}
 require('plugins.colorschemes.tokyonight')
