@@ -1,5 +1,5 @@
 function color -d 'change colorscheme'
-    set -l colors "rose-pine" "tokyonight" "kanagawa" "catppuccin" "carbonfox" "techbase"
+    set -l colors "rose-pine" "tokyonight-night" "kanagawa" "catppuccin" "carbonfox" "techbase"
     set -l config_file ~/.config/chezmoi/chezmoi.toml
     set -l selected_color (printf "%s\n" $colors | fzf)
 

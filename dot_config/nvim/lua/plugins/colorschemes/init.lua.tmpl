@@ -19,7 +19,7 @@ setup = function ()
     vim.cmd('colorscheme carbonfox')
 end
 {{- end -}}
-{{ if eq .colorscheme "tokyonight" -}}
+{{ if eq .colorscheme "tokyonight-night" -}}
 spec = { src = 'https://github.com/folke/tokyonight.nvim' }
 setup = function ()
     require('plugins.colorschemes.tokyonight')
