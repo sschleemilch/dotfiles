@@ -11,6 +11,9 @@ vim.pack.add({
     {{ if eq .colorscheme "tokyonight" -}}
     { src = 'https://github.com/folke/tokyonight.nvim' },
     {{- end -}}
+    {{ if eq .colorscheme "techbase" -}}
+    { src = 'https://github.com/mcauley-penney/techbase.nvim' },
+    {{- end -}}
     {{ if eq .colorscheme "catppuccin" -}}
     { src = 'https://github.com/catppuccin/nvim' },
     {{- end }}
@@ -37,6 +40,10 @@ vim.cmd('colorscheme carbonfox')
 {{- end -}}
 {{ if eq .colorscheme "tokyonight" -}}
 require('plugins.colorschemes.tokyonight')
+{{- end -}}
+{{ if eq .colorscheme "techbase" -}}
+require('techbase').setup({})
+vim.cmd('colorscheme techbase')
 {{- end -}}
 {{ if eq .colorscheme "catppuccin" -}}
 require('plugins.colorschemes.catppuccin')

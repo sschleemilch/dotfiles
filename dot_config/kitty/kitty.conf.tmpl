@@ -42,6 +42,9 @@ include carbonfox.conf
 {{ if eq .colorscheme "tokyonight" -}}
 include tokyo_night_night.conf
 {{- end -}}
+{{ if eq .colorscheme "techbase" -}}
+include techbase.conf
+{{- end -}}
 {{ if eq .colorscheme "catppuccin" -}}
 include Catppuccin-Mocha.conf
 {{- end }}
