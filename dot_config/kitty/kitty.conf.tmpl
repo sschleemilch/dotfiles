@@ -31,22 +31,22 @@ listen_on unix:@mykitty
 
 
 {{ if eq .colorscheme "rose-pine" -}}
-include rose-pine.conf
+include themes/rose-pine.conf
 {{- end -}}
 {{ if eq .colorscheme "kanagawa" -}}
-include kanagawa.conf
+include themes/kanagawa.conf
 {{- end -}}
 {{ if eq .colorscheme "carbonfox" -}}
-include carbonfox.conf
+include themes/carbonfox.conf
 {{- end -}}
 {{ if eq .colorscheme "tokyonight" -}}
-include tokyo_night_night.conf
+include themes/tokyonight-night.conf
 {{- end -}}
 {{ if eq .colorscheme "techbase" -}}
-include techbase.conf
+include themes/techbase.conf
 {{- end -}}
 {{ if eq .colorscheme "catppuccin" -}}
-include Catppuccin-Mocha.conf
+include themes/catppuccin-mocha.conf
 {{- end }}
 
 # BEGIN_KITTY_FONTS
