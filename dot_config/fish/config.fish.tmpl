@@ -104,6 +104,9 @@ set -l COLORS "--color=fg:#c8c093,fg+:#c8c093,bg:#1f1f28,bg+:#223249
   --color=gutter:#1f1f28,border:#727169,separator:#54546d,label:#aeaeae
   --color=query:#7e9cd8"
 {{- end -}}
+{{- if eq .colorscheme "techbase" -}}
+set -l COLORS "--color=gutter:-1,bg+:#121e42,pointer:#1a8c9b,info:#474b65,hl:#1a8c9b,hl+:#1a8c9b,prompt:#1a8c9b"
+{{- end -}}
 {{- if eq .colorscheme "carbonfox" -}}
 
 set -l COLORS "--color=gutter:-1,bg+:#2a2a2a,pointer:#3ddbd9,info:#8cb6ff,hl:#3ddbd9,hl+:#3ddbd9"
