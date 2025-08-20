@@ -1,22 +1,4 @@
-vim.pack.add({
-    {{ if eq .colorscheme "rose-pine" -}}
-    { src = 'https://github.com/rose-pine/neovim' },
-    {{- end -}}
-    {{ if eq .colorscheme "kanagawa" -}}
-    { src = 'https://github.com/rebelot/kanagawa.nvim' },
-    {{- end -}}
-    {{ if eq .colorscheme "carbonfox" -}}
-    { src = 'https://github.com/EdenEast/nightfox.nvim' },
-    {{- end -}}
-    {{ if eq .colorscheme "tokyonight" -}}
-    { src = 'https://github.com/folke/tokyonight.nvim' },
-    {{- end -}}
-    {{ if eq .colorscheme "techbase" -}}
-    { src = 'https://github.com/mcauley-penney/techbase.nvim' },
-    {{- end -}}
-    {{ if eq .colorscheme "catppuccin" -}}
-    { src = 'https://github.com/catppuccin/nvim' },
-    {{- end }}
+local specs = {
     { src = 'https://github.com/sschleemilch/slimline.nvim' },
     { src = 'https://github.com/echasnovski/mini.nvim' },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
@@ -27,28 +9,14 @@ vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
     { src = 'https://github.com/williamboman/mason.nvim' },
     { src = 'https://github.com/MunsMan/kitty-navigator.nvim' },
-}, { load = true, confirm = false })
+}
 
-{{ if eq .colorscheme "rose-pine" -}}
-require('plugins.colorschemes.rose-pine')
-{{- end -}}
-{{ if eq .colorscheme "kanagawa" -}}
-require('plugins.colorschemes.kanagawa')
-{{- end -}}
-{{ if eq .colorscheme "carbonfox" -}}
-vim.cmd('colorscheme carbonfox')
-{{- end -}}
-{{ if eq .colorscheme "tokyonight" -}}
-require('plugins.colorschemes.tokyonight')
-{{- end -}}
-{{ if eq .colorscheme "techbase" -}}
-require('techbase').setup({})
-vim.cmd('colorscheme techbase')
-vim.api.nvim_set_hl(0, 'DiagnosticHint', { link = 'DiagnosticInfo' })
-{{- end -}}
-{{ if eq .colorscheme "catppuccin" -}}
-require('plugins.colorschemes.catppuccin')
-{{- end }}
+local colorscheme = require('plugins.colorschemes')
+table.insert(specs, colorscheme.spec)
+
+vim.pack.add(specs, { load = true, confirm = false })
+
+colorscheme.setup()
 
 -- Adjust highlights
 vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })

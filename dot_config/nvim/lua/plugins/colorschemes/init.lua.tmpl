@@ -1,0 +1,44 @@
+local spec
+local setup = function() end
+
+{{ if eq .colorscheme "rose-pine" -}}
+spec = { src = "https://github.com/rose-pine/neovim" }
+setup = function()
+	require("plugins.colorschemes.rose-pine")
+end
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+spec = { src = 'https://github.com/rebelot/kanagawa.nvim' }
+setup = function ()
+    require('plugins.colorschemes.kanagawa')
+end
+{{- end -}}
+{{ if eq .colorscheme "carbonfox" -}}
+spec = { src = 'https://github.com/EdenEast/nightfox.nvim' }
+setup = function ()
+    vim.cmd('colorscheme carbonfox')
+end
+{{- end -}}
+{{ if eq .colorscheme "tokyonight" -}}
+spec = { src = 'https://github.com/folke/tokyonight.nvim' }
+setup = function ()
+    require('plugins.colorschemes.tokyonight')
+end
+{{- end -}}
+{{ if eq .colorscheme "techbase" -}}
+spec = { src = 'https://github.com/mcauley-penney/techbase.nvim' }
+setup = function ()
+    require('techbase').setup({})
+    vim.cmd('colorscheme techbase')
+    vim.api.nvim_set_hl(0, 'DiagnosticHint', { link = 'DiagnosticInfo' })
+end
+{{- end -}}
+{{ if eq .colorscheme "catppuccin" -}}
+spec = { src = 'https://github.com/catppuccin/nvim' }
+setup = function ()
+    require('plugins.colorschemes.catppuccin')
+end
+{{- end }}
+
+
+return { spec = spec, setup = setup }
