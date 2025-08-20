@@ -33,6 +33,8 @@ clear_bg('FloatTitle')
 clear_bg('MiniFilesTitleFocused')
 clear_bg('MiniPickBorderText')
 clear_bg('MiniPickPrompt')
+clear_bg('MiniPickPromptPrefix')
+clear_bg('MiniPickPromptCaret')
 clear_bg('MiniClueTitle')
 
 require('plugins.slimline')

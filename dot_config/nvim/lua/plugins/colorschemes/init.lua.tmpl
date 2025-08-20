@@ -33,7 +33,7 @@ setup = function ()
     vim.api.nvim_set_hl(0, 'DiagnosticHint', { link = 'DiagnosticInfo' })
 end
 {{- end -}}
-{{ if eq .colorscheme "catppuccin" -}}
+{{ if eq .colorscheme "catppuccin-mocha" -}}
 spec = { src = 'https://github.com/catppuccin/nvim' }
 setup = function ()
     require('plugins.colorschemes.catppuccin')
