@@ -5,7 +5,7 @@ function color -d 'change colorscheme'
 
     if test -n "$selected_color"
         echo "setting colorscheme '$selected_color'"
-        sed -i "s/colorscheme = \".*\"/colorscheme = \"$selected_color\"/" $config_file
+        sed "s/colorscheme = \".*\"/colorscheme = \"$selected_color\"/" "$config_file" > "$config_file.tmp" && mv "$config_file.tmp" "$config_file"
         chezmoi apply
         kitten @ action load_config_file
         . ~/.config/fish/config.fish
