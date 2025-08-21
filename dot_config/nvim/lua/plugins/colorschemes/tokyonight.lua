@@ -3,4 +3,4 @@ require('tokyonight').setup({
         keywords = { italic = false },
     },
 })
-vim.cmd('colorscheme tokyonight-night')
+vim.cmd.colorscheme('tokyonight-night')
