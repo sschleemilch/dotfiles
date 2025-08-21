@@ -123,6 +123,21 @@ set -l COLORS "--color=fg:#c8c093,fg+:#c8c093,bg:#1f1f28,bg+:#223249
 {{- if eq .colorscheme "techbase" -}}
 set -l COLORS "--color=gutter:-1,bg+:#121e42,pointer:#1a8c9b,info:#474b65,hl:#1a8c9b,hl+:#1a8c9b,prompt:#1a8c9b"
 {{- end -}}
+{{- if eq .colorscheme "vague" -}}
+set -l COLORS "--color=hl:#f3be7c
+    --color=bg:-1
+    --color=gutter:-1
+    --color=bg+:#252530
+    --color=fg+:#aeaed1
+    --color=hl+:#f3be7c
+    --color=border:#606079
+    --color=prompt:#bb9dbd
+    --color=query:#aeaed1:bold
+    --color=pointer:#aeaed1
+    --color=scrollbar:#aeaed1
+    --color=info:#f3be7c
+    --color=spinner:#7fa563"
+{{- end -}}
 {{- if eq .colorscheme "carbonfox" -}}
 
 set -l COLORS "--color=gutter:-1,bg+:#2a2a2a,pointer:#3ddbd9,info:#8cb6ff,hl:#3ddbd9,hl+:#3ddbd9"

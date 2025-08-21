@@ -48,6 +48,13 @@ setup = function ()
     vim.api.nvim_set_hl(0, 'DiagnosticHint', { link = 'DiagnosticInfo' })
 end
 {{- end -}}
+{{ if eq .colorscheme "vague" -}}
+spec = { src = 'https://github.com/vague2k/vague.nvim' }
+setup = function ()
+    require('vague').setup({})
+    vim.cmd.colorscheme('vague')
+end
+{{- end -}}
 {{ if eq .colorscheme "catppuccin-mocha" -}}
 spec = { src = 'https://github.com/catppuccin/nvim' }
 setup = function ()
