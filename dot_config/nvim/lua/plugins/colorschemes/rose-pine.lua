@@ -5,4 +5,3 @@ require('rose-pine').setup({
     },
     dim_inactive_windows = false,
 })
-vim.cmd('colorscheme rose-pine')

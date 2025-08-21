@@ -33,6 +33,12 @@ listen_on unix:@mykitty
 {{ if eq .colorscheme "rose-pine" -}}
 include themes/rose-pine.conf
 {{- end -}}
+{{ if eq .colorscheme "rose-pine-moon" -}}
+include themes/rose-pine-moon.conf
+{{- end -}}
+{{ if eq .colorscheme "rose-pine-dawn" -}}
+include themes/rose-pine-dawn.conf
+{{- end -}}
 {{ if eq .colorscheme "kanagawa" -}}
 include themes/kanagawa.conf
 {{- end -}}
