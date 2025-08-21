@@ -1,5 +1,5 @@
 require('slimline').setup({
-    style = 'bg',
+    style = 'fg',
     components = {
         left = {
             'mode',
@@ -16,8 +16,8 @@ require('slimline').setup({
             first = true,
             last = true,
         },
-        left = '',
-        right = '',
+        left = '',
+        right = '',
     },
     configs = {
         path = {
@@ -27,6 +27,7 @@ require('slimline').setup({
             },
         },
         mode = {
+            style = 'bg',
             format = {
                 ['n'] = { short = 'NOR' },
                 ['v'] = { short = 'VIS' },

@@ -20,7 +20,8 @@ def draw_tab(
     if index == 1:
         screen.draw(" ")
     else:
-        screen.draw("")
+        pass
+        # screen.draw("")
     screen.cursor.fg = orig_fg
     screen.cursor.bg = orig_bg
     screen.draw(" ")
@@ -36,7 +37,8 @@ def draw_tab(
     screen.draw(" ")
     screen.cursor.fg = orig_bg
     screen.cursor.bg = as_rgb(color_as_int(draw_data.default_bg))
-    screen.draw("")
+    # screen.draw("")
+    screen.draw(" ")
     screen.cursor.fg = orig_fg
     screen.cursor.bg = orig_bg
     end = screen.cursor.x
