@@ -31,6 +31,8 @@
     "code_actions": false
   },
 
+  "status_bar": {},
+
   "diagnostics": {
     "inline": {
       "enabled": true
@@ -38,10 +40,23 @@
   },
 
   "git": {
-    "git_gutter": "tracked_files",
     "inline_blame": {
       "enabled": false
-    },
-    "hunk_style": "staged_hollow"
+    }
+  },
+
+  "terminal": {
+    "shell": {
+      "program": "fish"
+    }
+  },
+
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  "indent_guides": {
+    "enabled": false
   }
 }

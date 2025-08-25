@@ -17,7 +17,8 @@
       "space e": "project_panel::ToggleFocus",
       "space t": "workspace::ToggleBottomDock",
       "space f": "file_finder::Toggle",
-      "space p": "projects::OpenRecent"
+      "space p": "projects::OpenRecent",
+      "space b": "tab_switcher::ToggleAll"
     }
   },
   {
