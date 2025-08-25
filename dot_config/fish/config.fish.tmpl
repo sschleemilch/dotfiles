@@ -31,14 +31,12 @@ set -x GOPRIVATE 'atc-github.azure.cloud.bmw/*'
 {{- end }}
 
 
-set -x RIPGREP_CONFIG_PATH ~/.config/ripgreprc
-
-
-
-
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x MANPAGER 'nvim +Man!'
+
 set -x K9S_CONFIG_DIR ~/.config/k9s
+set -x RIPGREP_CONFIG_PATH ~/.config/ripgreprc
 
 set -U fish_greeting
 
