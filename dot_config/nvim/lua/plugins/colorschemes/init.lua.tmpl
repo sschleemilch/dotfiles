@@ -24,25 +24,25 @@ end
 {{- end -}}
 {{ if eq .colorscheme "kanagawa" -}}
 spec = { src = 'https://github.com/rebelot/kanagawa.nvim' }
-setup = function ()
+setup = function()
     require('plugins.colorschemes.kanagawa')
 end
 {{- end -}}
 {{ if eq .colorscheme "carbonfox" -}}
 spec = { src = 'https://github.com/EdenEast/nightfox.nvim' }
-setup = function ()
+setup = function()
     vim.cmd.colorscheme('carbonfox')
 end
 {{- end -}}
 {{ if eq .colorscheme "tokyonight-night" -}}
 spec = { src = 'https://github.com/folke/tokyonight.nvim' }
-setup = function ()
+setup = function()
     require('plugins.colorschemes.tokyonight')
 end
 {{- end -}}
 {{ if eq .colorscheme "techbase" -}}
 spec = { src = 'https://github.com/mcauley-penney/techbase.nvim' }
-setup = function ()
+setup = function()
     require('techbase').setup({})
     vim.cmd.colorscheme('techbase')
     vim.api.nvim_set_hl(0, 'DiagnosticHint', { link = 'DiagnosticInfo' })
@@ -50,14 +50,17 @@ end
 {{- end -}}
 {{ if eq .colorscheme "vague" -}}
 spec = { src = 'https://github.com/vague2k/vague.nvim' }
-setup = function ()
-    require('vague').setup({})
+setup = function()
+    require('vague').setup({
+        bold = false,
+        italic = false
+    })
     vim.cmd.colorscheme('vague')
 end
 {{- end -}}
 {{ if eq .colorscheme "catppuccin-mocha" -}}
 spec = { src = 'https://github.com/catppuccin/nvim' }
-setup = function ()
+setup = function()
     require('plugins.colorschemes.catppuccin')
 end
 {{- end }}
