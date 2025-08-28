@@ -1,6 +1,6 @@
 local specs = {
     { src = 'https://github.com/sschleemilch/slimline.nvim' },
-    { src = 'https://github.com/echasnovski/mini.nvim' },
+    { src = 'https://github.com/nvim-mini/mini.nvim' },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
     { src = 'https://github.com/stevearc/conform.nvim' },
