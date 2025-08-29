@@ -22,6 +22,8 @@ vim.o.updatetime = 300 -- Lower update time. Triggers CursorHold earlier
 vim.o.winborder = 'single' -- floating border style
 vim.o.scrolloff = 8 -- Keep more context when scrolling
 
+vim.o.nu = true -- line numbers
+
 vim.o.foldlevelstart = 99 -- Do not fold initially
 vim.wo.foldtext = '' -- Do not modify the line that is folded
 
