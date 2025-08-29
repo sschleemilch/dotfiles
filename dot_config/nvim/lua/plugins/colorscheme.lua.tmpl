@@ -1,0 +1,94 @@
+local src
+local setup
+local post = function ()
+    -- Adjust highlights
+    vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Comment' })
+    vim.api.nvim_set_hl(0, 'StatusLineNC', { link = 'Normal' })
+    vim.api.nvim_set_hl(0, 'StatusLine', { link = 'Normal' })
+
+    --- @param hl string
+    local function clear_bg(hl)
+        local current = vim.api.nvim_get_hl(0, { name = hl, link = false })
+        vim.api.nvim_set_hl(0, hl, { fg = current.fg, bg = 'NONE' })
+    end
+    clear_bg('FloatTitle')
+    clear_bg('MiniFilesTitleFocused')
+    clear_bg('MiniPickBorderText')
+    clear_bg('MiniPickPrompt')
+    clear_bg('MiniPickPromptPrefix')
+    clear_bg('MiniPickPromptCaret')
+    clear_bg('MiniClueTitle')
+end
+
+{{ if eq .colorscheme "rose-pine" -}}
+src = "https://github.com/rose-pine/neovim"
+setup = function()
+    require("plugins.rose-pine")
+    vim.cmd.colorscheme('rose-pine')
+end
+{{- end -}}
+{{ if eq .colorscheme "rose-pine-moon" -}}
+src = "https://github.com/rose-pine/neovim"
+setup = function()
+    require("plugins.rose-pine")
+    vim.cmd.colorscheme('rose-pine-moon')
+end
+{{- end -}}
+{{ if eq .colorscheme "rose-pine-dawn" -}}
+src = "https://github.com/rose-pine/neovim"
+setup = function()
+    require("plugins.rose-pine")
+    vim.cmd.colorscheme('rose-pine-dawn')
+end
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+src = 'https://github.com/rebelot/kanagawa.nvim'
+setup = function()
+    require('plugins.kanagawa')
+end
+{{- end -}}
+{{ if eq .colorscheme "carbonfox" -}}
+src = 'https://github.com/EdenEast/nightfox.nvim'
+setup = function()
+    vim.cmd.colorscheme('carbonfox')
+end
+{{- end -}}
+{{ if eq .colorscheme "tokyonight-night" -}}
+src = 'https://github.com/folke/tokyonight.nvim'
+setup = function()
+    require('plugins.tokyonight')
+end
+{{- end -}}
+{{ if eq .colorscheme "techbase" -}}
+src = 'https://github.com/mcauley-penney/techbase.nvim'
+setup = function()
+    require('techbase').setup({})
+    vim.cmd.colorscheme('techbase')
+    vim.api.nvim_set_hl(0, 'DiagnosticHint', { link = 'DiagnosticInfo' })
+end
+{{- end -}}
+{{ if eq .colorscheme "vague" -}}
+src = 'https://github.com/vague2k/vague.nvim'
+setup = function()
+    require('vague').setup({
+        bold = false,
+        italic = false
+    })
+    vim.cmd.colorscheme('vague')
+end
+{{- end -}}
+{{ if eq .colorscheme "catppuccin-mocha" -}}
+src = 'https://github.com/catppuccin/nvim'
+setup = function()
+    require('plugins.catppuccin')
+end
+{{- end }}
+
+return {
+    src = src,
+    setup = function ()
+        setup()
+        post()
+    end
+}

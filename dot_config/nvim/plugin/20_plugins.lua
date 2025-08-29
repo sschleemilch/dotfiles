@@ -1,64 +1,13 @@
-local specs = {
-    { src = 'https://github.com/sschleemilch/slimline.nvim' },
-    { src = 'https://github.com/nvim-mini/mini.nvim' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context' },
-    { src = 'https://github.com/stevearc/conform.nvim' },
-    { src = 'https://github.com/folke/flash.nvim' },
-    { src = 'https://github.com/MagicDuck/grug-far.nvim' },
-    { src = 'https://github.com/neovim/nvim-lspconfig' },
-    { src = 'https://github.com/williamboman/mason.nvim' },
-    { src = 'https://github.com/MunsMan/kitty-navigator.nvim' },
-}
+---@class Plugin : vim.pack.Spec
+---@field setup function?
 
-local colorscheme = require('plugins.colorschemes')
-table.insert(specs, colorscheme.spec)
+---@type Plugin[]
+local plugins = require('plugins')
 
-vim.pack.add(specs, { load = true, confirm = false })
+vim.pack.add(plugins, { load = true, confirm = false })
 
-colorscheme.setup()
-
--- Adjust highlights
-vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Comment' })
-vim.api.nvim_set_hl(0, 'StatusLineNC', { link = 'Normal' })
-vim.api.nvim_set_hl(0, 'StatusLine', { link = 'Normal' })
-
---- @param hl string
-local function clear_bg(hl)
-    local current = vim.api.nvim_get_hl(0, { name = hl, link = false })
-    vim.api.nvim_set_hl(0, hl, { fg = current.fg, bg = 'NONE' })
+for _, plugin in ipairs(plugins) do
+    if plugin.setup ~= nil then
+        plugin.setup()
+    end
 end
-clear_bg('FloatTitle')
-clear_bg('MiniFilesTitleFocused')
-clear_bg('MiniPickBorderText')
-clear_bg('MiniPickPrompt')
-clear_bg('MiniPickPromptPrefix')
-clear_bg('MiniPickPromptCaret')
-clear_bg('MiniClueTitle')
-
-require('plugins.slimline')
-require('plugins.mini-icons')
-require('plugins.mini-notify')
-require('plugins.nvim-treesitter')
-require('mini.extra').setup()
-require('mini.ai').setup()
-require('plugins.mini-clue')
-require('plugins.mini-completion')
-require('plugins.mini-files')
-require('plugins.mini-hipatterns')
-require('plugins.mini-pick')
-require('mini.pairs').setup()
-require('plugins.mini-surround')
-require('plugins.mini-diff')
-require('plugins.conform')
-require('plugins.flash')
-
-require('grug-far').setup()
-vim.keymap.set({ 'n', 'v' }, '<leader>gf', '<cmd>GrugFar<cr>', { desc = 'Replace in files (Grug-far)' })
-
-require('plugins.nvim-lspconfig')
-require('plugins.mason')
-require('kitty-navigator').setup({
-    keybindings = {},
-})
