@@ -1,0 +1,28 @@
+{{ if eq .colorscheme "rose-pine" -}}
+theme = "rose_pine"
+{{- end -}}
+{{ if eq .colorscheme "kanagawa" -}}
+theme = "kanagawa"
+{{- end -}}
+{{ if eq .colorscheme "tokyonight" -}}
+theme = "tokyonight"
+{{- end -}}
+{{ if eq .colorscheme "catppuccin" -}}
+theme = "catppuccin_mocha"
+{{- end }}
+
+
+[editor]
+end-of-line-diagnostics = "hint"
+gutters = ["diagnostics", "spacer", "diff"]
+popup-border = "all"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["spinner", "workspace-diagnostics", "selections", "register", "position", "file-encoding"]
+
+[editor.cursor-shape]
+insert = "bar"
