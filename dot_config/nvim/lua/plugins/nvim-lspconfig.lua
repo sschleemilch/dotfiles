@@ -15,6 +15,7 @@ return {
             'buf_ls',
             'marksman',
             'graphql',
+            'rust_analyzer',
         })
         vim.lsp.config('lua_ls', {
             settings = {

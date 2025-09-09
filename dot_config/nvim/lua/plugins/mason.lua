@@ -25,6 +25,7 @@ return {
             'buf',
             'marksman',
             'graphql-language-service-cli',
+            'rust-analyzer',
         }
         local mr = require('mason-registry')
         mr.refresh(function()
