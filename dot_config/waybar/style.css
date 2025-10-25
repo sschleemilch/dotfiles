@@ -1,4 +1,4 @@
-@import "kanagawa.css";
+@import "rose-pine.css";
 
 * {
   font-family: "FiraCode Nerd Font";
@@ -6,17 +6,17 @@
 }
 
 window#waybar {
-  background-color: transparent;
+  background-color: @surface;
 }
 
 tooltip {
-  background: @sumiInk1;
-  border: 1px solid @sumiInk4;
+  background: @overlay;
+  border: 1px solid @muted;
   border-radius: 0px;
 }
 
 tooltip label {
-  color: @fujiWhite;
+  color: @text;
 }
 
 label:focus {
@@ -40,60 +40,62 @@ label:focus {
 #network,
 #backlight,
 #clock {
-  color: @fujiWhite;
+  color: @text;
   border-radius: 0px;
-  border: 0px solid @sumiInk4;
+  border: 0px solid @text;
   transition: 300ms linear;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: transparent;
 }
 
 #memory {
-  color: @sakuraPink;
+  color: @iris;
 }
 #disk {
-  color: @springBlue;
+  color: @foam;
 }
 #cpu {
-  color: @autumnYellow;
+  color: @gold;
 }
 #backlight {
-  color: @autumnYellow;
+  color: @gold;
 }
 #wireplumber {
-  color: @springBlue;
+  color: @rose;
 }
 #network {
-  color: @oniViolet;
+  color: @iris;
 }
 #battery {
-  color: @sakuraPink;
+  color: @foam;
 }
 #custom-updates {
-  color: @oniViolet;
+  color: @rose;
 }
 #workspaces {
   border-radius: 0px;
   padding: 0;
 }
 #workspaces button {
-  color: @fujiWhite;
+  color: @text;
   min-width: 1.75rem;
   box-shadow: none;
   border-radius: 0px;
   padding: 0.25rem;
 }
 #workspaces button.active {
-  color: @sumiInk1;
-  background: @oldWhite;
+  color: @base;
+  background: @text;
 }
 #workspaces button:hover {
-  background: @oldWhite;
-  color: @sumiInk1;
+  background: @text;
+  color: @base;
 }
 #window {
-  color: @springBlue;
+  color: @foam;
 }

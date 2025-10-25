@@ -1,7 +1,5 @@
 LICENSE
 README.md
 packages.txt
-.config/dunst
 .config/hypr
 .config/uwsm
-.config/waybar

@@ -12,32 +12,32 @@
     gap_size = 5
     font = "MonoLisa 12"
 
-    # icon_theme = "Papirus"
+    icon_theme = "Neuwaita"
     enable_recursive_icon_lookup = true
     corner_radius = 10
 
-    background = "#1f1f28"
-    foreground = "#dcd7ba"
+    background = "#26233a"
+    foreground = "#e0def4"
 
     icon_position = "off"
 
 [urgency_low]
-    background = "#1f1f28"
-    highlight = "#6e6a86"
-    frame_color = "#6e6a86"
+    background = "#26233a"
+    highlight = "#e0def4"
+    frame_color = "#e0def4"
     default_icon = "dialog-information"
-    format = "<b><span foreground='#6e6a86'>%s</span></b>\n%b"
+    format = "<b><span foreground='#e0def4'>%s</span></b>\n%b"
 
 [urgency_normal]
-    background = "#1f1f28"
-    highlight = "#c34043"
-    frame_color = "#c34043"
+    background = "#26233a"
+    highlight = "#ebbcba"
+    frame_color = "#ebbcba"
     default_icon = "dialog-warning"
-    format = "<b><span foreground='#c34043'>%s</span></b>\n%b"
+    format = "<b><span foreground='#ebbcba'>%s</span></b>\n%b"
 
 [urgency_critical]
-    background = "#1f1f28"
-    highlight = "#e82424"
-    frame_color = "#e82424"
+    background = "#26233a"
+    highlight = "#eb6f92"
+    frame_color = "#eb6f92"
     default_icon = "dialog-error"
-    format = "<b><span foreground='#e82424'>%s</span></b>\n%b"
+    format = "<b><span foreground='#eb6f92'>%s</span></b>\n%b"
