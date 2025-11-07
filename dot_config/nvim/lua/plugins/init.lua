@@ -5,7 +5,7 @@ return {
     require('plugins.conform'),
     require('plugins.flash'),
     require('plugins.grug-far'),
-    require('plugins.kitty-navigator'),
+    require('plugins.vim-tmux-navigator'),
     require('plugins.mason'),
     require('plugins.nvim-lspconfig'),
     require('plugins.nvim-treesitter'),
