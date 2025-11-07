@@ -20,4 +20,8 @@ theme = Catppuccin Mocha
 command = /opt/homebrew/bin/fish
 {{ end }}
 
+{{ if ne .chezmoi.os "darwin" }}
+window-decoration = none
+{{ end }}
+
 window-padding-balance = true
