@@ -24,7 +24,8 @@ end
 
 {{- if eq .chezmoi.hostname "LPTP2048124" }}
 prepend_to_sys_path_if_exists /opt/homebrew/opt/python@3.12/libexec/bin
-prepend_to_sys_path_if_exists /opt/homebrew/opt/openjdk/bin
+prepend_to_sys_path_if_exists /opt/homebrew/opt/openjdk@21/bin
+add_to_fish_user_paths_if_exists $HOME/Library/Android/sdk/platform-tools
 set -x http_proxy 127.0.0.1:3128
 set -x https_proxy 127.0.0.1:3128
 set -x GOPRIVATE 'atc-github.azure.cloud.bmw/*'
