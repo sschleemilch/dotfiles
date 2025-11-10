@@ -10,6 +10,10 @@ bind-key -T copy-mode-vi 'v' send -X begin-selection
 bind-key -T copy-mode-vi 'V' send -X select-line
 bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 
+# Start splits in same dir as current pane
+bind  %  split-window -h -c "#{pane_current_path}"
+bind '"' split-window -v -c "#{pane_current_path}"
+
 bind-key -n C-S-h previous-window
 bind-key -n C-S-l next-window
 
