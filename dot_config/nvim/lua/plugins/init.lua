@@ -1,6 +1,5 @@
 return {
     require('plugins.colorscheme'),
-    require('plugins.slimline'),
     require('plugins.mini'),
     require('plugins.conform'),
     require('plugins.flash'),

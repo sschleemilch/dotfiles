@@ -1,13 +1,15 @@
 local hls = {
-    inactive = 'StlInactive',
+    mode_inactive = 'StatuslineModeInactive',
     ref = {
         normal = vim.api.nvim_get_hl(0, { name = 'Normal', link = false }),
         comment = vim.api.nvim_get_hl(0, { name = 'Comment', link = false }),
     },
 }
-vim.api.nvim_set_hl(0, hls.inactive, { bg = hls.ref.comment.fg, fg = hls.ref.normal.bg })
+vim.api.nvim_set_hl(0, hls.mode_inactive, { bg = hls.ref.comment.fg, fg = hls.ref.normal.bg })
 
 vim.o.showmode = false
+
+local separator = ' ▪ '
 
 ---@param active boolean
 ---@return string
@@ -29,9 +31,52 @@ local function mode_component(active)
         ['t'] = { display = 'TER', hl = 'MiniStatuslineModeCommand' },
     }
     local current = map[vim.fn.mode()] or { display = 'OTH', hl = 'MiniStatuslineModeOther' }
-    local hl = active and current.hl or hls.inactive
+    local hl = active and current.hl or hls.mode_inactive
 
-    return string.format('%%#%s# %s ', hl, current.display)
+    return string.format('%%#%s# %s %%* ', hl, current.display)
+end
+
+local lsp_clients = {}
+local map_lsps = {}
+
+local track_lsp = vim.schedule_wrap(function(data)
+    if not vim.api.nvim_buf_is_valid(data.buf) then
+        lsp_clients[data.buf] = nil
+        return
+    end
+    local attached_clients = vim.lsp.get_clients({ bufnr = data.buf })
+
+    local it = vim.iter(attached_clients)
+    it:map(function(client)
+        if map_lsps[client.name] == false then
+            return nil
+        end
+        local name = map_lsps[client.name] or client.name:gsub('language.server', 'ls')
+        return name
+    end)
+    local names = it:totable()
+    if #names > 0 then
+        lsp_clients[data.buf] = string.format('%s', table.concat(names, ','))
+    else
+        lsp_clients[data.buf] = nil
+    end
+end)
+
+vim.api.nvim_create_autocmd(
+    { 'LspAttach', 'LspDetach', 'BufEnter' },
+    { group = augroup('track_lsp'), pattern = '*', callback = track_lsp, desc = 'Track LSP Clients' }
+)
+
+--- @return  string
+local function lsp_clients_component()
+    local clients = lsp_clients[vim.api.nvim_get_current_buf()]
+    return clients and (clients .. separator) or ''
+end
+
+--- @return string
+local function diagnostic_component()
+    local status = (pcall(require, 'vim.diagnostic') and vim.diagnostic.status()) or ''
+    return status ~= '' and (status .. separator) or ''
 end
 
 ---@param active integer
@@ -40,15 +85,12 @@ _G.statusline = function(active)
 
     return table.concat({
         mode_component(is_active),
-        is_active and '%#StatusLine#' or '%#StatusLineNC#',
-        ' %t %H%W%M%R',
+        '%t %H%W%M%R',
         '%=',
-        "%{% &busy > 0 ? '◐ ' : '' %}",
-        "%(%{luaeval('(pcall(require, ''vim.diagnostic'') and vim.diagnostic.status()) or '''' ')} %)",
+        (vim.o.busy and vim.o.busy > 0 and '◐ ') or '',
+        diagnostic_component(),
+        lsp_clients_component(),
         '%(%Y %)',
-        '%(%{&fileencoding} %)',
-        '%(%{&fileformat} %)',
-        '%7.(%c%V%) ',
     })
 end
 
