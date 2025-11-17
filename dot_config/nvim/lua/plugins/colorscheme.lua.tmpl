@@ -4,8 +4,6 @@ local post = function ()
     -- Adjust highlights
     vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
     vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Comment' })
-    vim.api.nvim_set_hl(0, 'StatusLineNC', { link = 'Normal' })
-    vim.api.nvim_set_hl(0, 'StatusLine', { link = 'Normal' })
 
     --- @param hl string
     local function clear_bg(hl)
