@@ -3,12 +3,27 @@ local hl_comment = vim.api.nvim_get_hl(0, { name = 'Comment', link = false })
 local hl_mode_inactive = 'StatuslineModeInactive'
 vim.api.nvim_set_hl(0, hl_mode_inactive, { bg = hl_comment.fg, fg = hl_normal.bg })
 
+local diagnostic_hls = {
+    [vim.diagnostic.severity.ERROR] = '%#DiagnosticError#',
+    [vim.diagnostic.severity.WARN] = '%#DiagnosticWarn#',
+    [vim.diagnostic.severity.INFO] = '%#DiagnosticInfo#',
+    [vim.diagnostic.severity.HINT] = '%#DiagnosticHint#',
+}
+
+local user_signs = vim.tbl_get(vim.diagnostic.config() --[[@as vim.diagnostic.Opts]], 'signs', 'text') or {}
+local signs = vim.tbl_extend('keep', user_signs, { 'E', 'W', 'I', 'H' })
+
 vim.o.showmode = false
 
 local separator = ' ▪ '
 
 -- Caches the complete mode string to spare `string.format` calls entirely
+--- @type table<string, string>
 local mode_cache = {}
+
+-- Caches the diagnostic counts for a given buffer
+--- @type table<integer, table>
+local diagnostics_cache = {}
 
 -- Tracks attached LSP clients for buffer IDs
 -- Using Lsp* and BufferEnter events to update
@@ -20,12 +35,11 @@ local lsp_clients = {}
 --- E.g. { ['tsserver'] = 'TS', ['pyright'] = 'Python', ['GitHub Copilot'] = false }
 local map_lsps = {}
 
----@param active boolean
----@return string
-local function mode_component(active)
-    local mode = vim.fn.mode()
-
-    local cache_key = mode .. (active and '+' or '-')
+--- @param mode string
+--- @param active boolean
+--- @return string
+local function mode_component(mode, active)
+    local cache_key = mode .. (active and '+' or '')
     if mode_cache[cache_key] then
         return mode_cache[cache_key]
     end
@@ -82,27 +96,53 @@ vim.api.nvim_create_autocmd(
     { group = augroup('track_lsp'), pattern = '*', callback = track_lsp, desc = 'Track LSP Clients' }
 )
 
+--- @param bufnr integer
 --- @return  string
-local function lsp_clients_component()
-    local clients = lsp_clients[vim.api.nvim_get_current_buf()]
+local function lsp_clients_component(bufnr)
+    local clients = lsp_clients[bufnr]
     return clients and (clients .. separator) or ''
 end
 
+--- @param bufnr integer
+--- @param mode string
+--- @param active boolean
 --- @return string
-local function diagnostic_component()
-    local status = (pcall(require, 'vim.diagnostic') and vim.diagnostic.status()) or ''
-    return status ~= '' and (status .. separator) or ''
+local function diagnostic_component(bufnr, mode, active)
+    local counts
+    if mode == 'i' then
+        counts = diagnostics_cache[bufnr] or {}
+    else
+        counts = vim.diagnostic.count(bufnr)
+    end
+
+    diagnostics_cache[bufnr] = counts
+
+    local result_str = vim.iter(pairs(counts))
+        :map(function(severity, count)
+            return ('%s%s:%s%s'):format(
+                active and diagnostic_hls[severity] or '',
+                signs[severity],
+                count,
+                active and '%*' or ''
+            )
+        end)
+        :join(' ')
+
+    return result_str .. (result_str ~= '' and separator or '')
 end
 
 ---@param active integer
 _G.statusline = function(active)
+    local bufnr = vim.api.nvim_get_current_buf()
+    local is_active = active == 1
+    local mode = vim.fn.mode()
     return table.concat({
-        mode_component(active == 1),
+        mode_component(mode, is_active),
         '%t %H%W%M%R',
         '%=',
         (vim.o.busy and vim.o.busy > 0 and '◐ ') or '',
-        diagnostic_component(),
-        lsp_clients_component(),
+        diagnostic_component(bufnr, mode, is_active),
+        lsp_clients_component(bufnr),
         '%(%Y %)',
     })
 end
