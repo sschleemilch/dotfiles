@@ -3,7 +3,7 @@ return {
     setup = function()
         vim.lsp.enable({
             'lua_ls',
-            'basedpyright',
+            'ty',
             'ruff',
             'dockerls',
             'gopls',
