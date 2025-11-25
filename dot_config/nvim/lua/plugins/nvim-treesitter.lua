@@ -34,6 +34,7 @@ return {
             'yaml',
             'rust',
             'ron',
+            'http',
         }
         local isnt_installed = function(lang)
             return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0
