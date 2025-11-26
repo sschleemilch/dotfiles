@@ -9,4 +9,5 @@ return {
     require('plugins.nvim-lspconfig'),
     require('plugins.nvim-treesitter'),
     require('plugins.nvim-treesitter-context'),
+    require('plugins.vim-fugitive'),
 }
