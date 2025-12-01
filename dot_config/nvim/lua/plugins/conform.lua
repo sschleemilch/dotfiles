@@ -18,6 +18,7 @@ return {
                 graphql = { 'prettier' },
                 go = { 'goimports', 'gofumpt' },
                 proto = { 'buf' },
+                astro = { 'prettier' },
             },
             format_on_save = {
                 timeout_ms = 500,
