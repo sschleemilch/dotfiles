@@ -131,6 +131,21 @@ local function diagnostic_component(bufnr, mode, active)
     return result_str .. (result_str ~= '' and separator or '')
 end
 
+--- @param filetype string
+--- @param active boolean
+--- @return string
+local function filetype_component(filetype, active)
+    if filetype == '' then
+        return ''
+    end
+    local icon, hl = MiniIcons.get('filetype', filetype) --luacheck: ignore
+    filetype = icon .. ' ' .. filetype
+    if active then
+        filetype = '%#' .. hl .. '#' .. filetype
+    end
+    return filetype .. ' '
+end
+
 ---@param active integer
 _G.statusline = function(active)
     local bufnr = vim.api.nvim_get_current_buf()
@@ -143,7 +158,7 @@ _G.statusline = function(active)
         (vim.o.busy and vim.o.busy > 0 and '◐ ') or '',
         diagnostic_component(bufnr, mode, is_active),
         lsp_clients_component(bufnr),
-        '%(%Y %)',
+        filetype_component(vim.bo.filetype, is_active),
     })
 end
 
