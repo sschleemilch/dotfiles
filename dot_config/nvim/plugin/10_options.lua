@@ -34,6 +34,7 @@ vim.opt.fillchars = {
 
 -- Max completion menu entries
 vim.o.pumheight = 15
+vim.o.pumborder = 'single'
 
 -- Diagnostics
 vim.diagnostic.config({
