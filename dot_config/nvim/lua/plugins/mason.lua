@@ -26,6 +26,7 @@ return {
             'marksman',
             'graphql-language-service-cli',
             'rust-analyzer',
+            'nixfmt',
         }
         local mr = require('mason-registry')
         mr.refresh(function()
