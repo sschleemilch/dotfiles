@@ -90,10 +90,10 @@ label:focus {
 }
 #workspaces button.active {
   color: @base;
-  background: @text;
+  background: @muted;
 }
 #workspaces button:hover {
-  background: @text;
+  background: @muted;
   color: @base;
 }
 #window {

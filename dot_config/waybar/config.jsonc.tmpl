@@ -14,9 +14,9 @@
     "cpu",
     "memory",
     "disk",
-    "custom/updates"
   ],
   "modules-center": [
+    "hyprland/workspaces"
   ],
   "modules-right": [
 {{- if eq .chezmoi.hostname "ladon" -}}
@@ -108,14 +108,6 @@
     ],
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
-    "tooltip": false
-  },
-  "custom/updates": {
-    "format": "   {}",
-    "exec": "checkupdates | wc -l",
-    "exec-if": "exit 0",
-    "interval": 3600,
-    "signal": 8,
     "tooltip": false
   },
   "memory": {
