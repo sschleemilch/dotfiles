@@ -1,4 +1,4 @@
-@import "rose-pine.css";
+@import "catppuccin_mocha.css";
 
 * {
   font-family: "FiraCode Nerd Font";
@@ -6,12 +6,12 @@
 }
 
 window#waybar {
-  background-color: @surface;
+  background-color: @surface0;
 }
 
 tooltip {
-  background: @overlay;
-  border: 1px solid @muted;
+  background: @surface0;
+  border: 1px solid @overlay1;
   border-radius: 0px;
 }
 
@@ -54,28 +54,25 @@ label:focus {
 }
 
 #memory {
-  color: @iris;
+  color: @mauve;
 }
 #disk {
-  color: @foam;
+  color: @peach;
 }
 #cpu {
-  color: @gold;
+  color: @pink;
 }
 #backlight {
-  color: @gold;
+  color: @rosewater;
 }
 #wireplumber {
-  color: @rose;
+  color: @blue;
 }
 #network {
-  color: @iris;
+  color: @green;
 }
 #battery {
-  color: @foam;
-}
-#custom-updates {
-  color: @rose;
+  color: @maroon;
 }
 #workspaces {
   border-radius: 0px;
@@ -90,12 +87,9 @@ label:focus {
 }
 #workspaces button.active {
   color: @base;
-  background: @muted;
+  background: @overlay2;
 }
 #workspaces button:hover {
-  background: @muted;
+  background: @overlay2;
   color: @base;
-}
-#window {
-  color: @foam;
 }
