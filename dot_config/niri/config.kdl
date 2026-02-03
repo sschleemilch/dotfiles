@@ -274,7 +274,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -i ~/workspace/wallpaper/space_rose_pine.png"
+spawn-sh-at-startup "swaybg -i ~/wallpaper.png"
 
 hotkey-overlay {
     skip-at-startup
