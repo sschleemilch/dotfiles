@@ -1,0 +1,100 @@
+{
+    "layer": "top",
+    "position": "top",
+    "mode": "dock",
+    "spacing": 12,
+    "exclusive": true,
+    "gtk-layer-shell": true,
+    "modules-left": [
+        "cpu",
+        "memory",
+        "disk"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        "backlight",
+        "wireplumber",
+        "network",
+        "battery",
+        "clock"
+    ],
+    "cpu": {
+        "format": "  {usage}%"
+    },
+    "battery": {
+        "format": "{icon} {capatity}%",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+        ]
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M, %B %d}",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": []
+        }
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "🌎 $1"
+        }
+    },
+    "backlight": {
+        "device": "amdgpu_bl1",
+        "format": "󱍖  {percent}%",
+        "on-scroll-up": "brightnessctl set 1%+",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "  {percentage}%"
+    },
+    "disk": {
+        "format": "󰋊 {percentage_used}%",
+        "interval": 1200,
+        "path": "/"
+    },
+    "wireplumber": {
+        "format": "  {volume}%",
+        "format-muted": " ",
+        "on-click": "helvum",
+        "tooltip-format": "Volume: {volume}%"
+    },
+    "network": {
+        "interface": "wlp0s20f3",
+        "format": "{ifname}",
+        "format-wifi": "{icon} {signalStrength}%",
+        "format-ethernet": "󰈀 ",
+        "format-disconnected": "󰲛 ",
+        "format-icons": [
+            "󰤯 ",
+            "󰤟 ",
+            "󰤢 ",
+            "󰤥 ",
+            "󰤨 "
+        ],
+        "tooltip-format-wifi": "WiFi: {essid} ({signalStrength}%)\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+        "tooltip-format-ethernet": "Ethernet: {ifname}\n󰅃 {bandwidthUpBytes} 󰅀 {bandwidthDownBytes}",
+        "tooltip-format-disconnected": "Disconnected"
+    }
+}

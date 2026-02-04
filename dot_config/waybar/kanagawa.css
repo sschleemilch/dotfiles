@@ -34,3 +34,8 @@
 @define-color waveRed 	#E46876;
 @define-color peachRed 	#FF5D62;
 @define-color surimiOrange 	#FFA066;
+
+/* Exports */
+@define-color background @sumiInk1;
+@define-color foreground @fujiWhite;
+@define-color surface @sumiInk3;

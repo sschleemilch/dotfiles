@@ -21,3 +21,8 @@
 @define-color highlightLow    #2a283e;
 @define-color highlightMed    #44415a;
 @define-color highlightHigh   #56526e;
+
+/* Exports */
+@define-color background @base;
+@define-color foreground @text;
+@define-color surface @surface;

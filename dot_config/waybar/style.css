@@ -1,26 +1,19 @@
-@import "catppuccin_mocha.css";
+@import "colorscheme.css";
 
 * {
   font-family: "FiraCode Nerd Font";
   font-size: 10pt;
+  color: @foreground;
 }
 
 window#waybar {
-  background-color: @surface0;
+  background-color: @background;
 }
 
 tooltip {
-  background: @surface0;
-  border: 1px solid @overlay1;
+  background: @surface;
+  border: 0px solid @base;
   border-radius: 0px;
-}
-
-tooltip label {
-  color: @text;
-}
-
-label:focus {
-  background-color: transparent;
 }
 
 .modules-left {
@@ -40,46 +33,20 @@ label:focus {
 #network,
 #backlight,
 #clock {
-  color: @text;
-  border-radius: 0px;
-  border: 0px solid @text;
-  transition: 300ms linear;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
-  background-color: transparent;
 }
 
-#memory {
-  color: @mauve;
-}
-#disk {
-  color: @peach;
-}
-#cpu {
-  color: @pink;
-}
-#backlight {
-  color: @rosewater;
-}
-#wireplumber {
-  color: @blue;
-}
-#network {
-  color: @green;
-}
-#battery {
-  color: @maroon;
-}
 #workspaces {
   border-radius: 0px;
   padding: 0;
 }
+
 #workspaces button {
-  color: @text;
   min-width: 1.75rem;
   box-shadow: none;
   border-radius: 0px;
@@ -87,9 +54,9 @@ label:focus {
 }
 #workspaces button.active {
   color: @base;
-  background: @overlay2;
+  background: @surface;
 }
 #workspaces button:hover {
-  background: @overlay2;
+  background: @surface;
   color: @base;
 }
