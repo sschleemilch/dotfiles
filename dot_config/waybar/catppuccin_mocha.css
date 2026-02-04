@@ -29,3 +29,4 @@
 @define-color background @base;
 @define-color foreground @text;
 @define-color surface @surface0;
+@define-color accent @blue;

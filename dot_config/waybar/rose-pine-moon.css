@@ -26,3 +26,4 @@
 @define-color background @base;
 @define-color foreground @text;
 @define-color surface @surface_;
+@define-color accent @foam;
