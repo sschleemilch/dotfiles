@@ -1,7 +1,7 @@
 @import "colorscheme.css";
 
 * {
-  font-family: "FiraCode Nerd Font";
+  font-family: "CommitMono Nerd Font";
   font-size: 10pt;
   color: @foreground;
 }
