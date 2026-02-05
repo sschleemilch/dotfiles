@@ -1,0 +1,30 @@
+@define-color fg #f2f4f8;
+@define-color bg #161616;
+
+@define-color black #282828;
+@define-color red #ee5396;
+@define-color green #25be6a;
+@define-color yellow #08bdba;
+@define-color blue #78a9ff;
+@define-color magenta #be95ff;
+@define-color cyan #33b1ff;
+@define-color white #dfdfe0;
+
+@define-color brightBlack #484848;
+@define-color brightRed #f16da6;
+@define-color brightGreen #46c880;
+@define-color brightYellow #2dc7c4;
+@define-color brightBlue #8cb6ff;
+@define-color brightMagenta #c8a5ff;
+@define-color brightCyan #52bdff;
+@define-color brightWhite #e4e4e5;
+
+@define-color selection #2a2a2a;
+@define-color cursor #f2f4f8;
+@define-color cursorText #161616;
+
+/* Exports */
+@define-color background @bg;
+@define-color foreground @fg;
+@define-color surface @selection;
+@define-color accent @blue;
