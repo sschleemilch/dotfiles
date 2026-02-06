@@ -188,6 +188,12 @@ layout {
 
 include "colors.kdl"
 
+cursor {
+    xcursor-size 24
+    xcursor-theme "Bibata-Modern-Ice"
+    hide-after-inactive-ms 3000
+}
+
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
