@@ -6,20 +6,20 @@
     "exclusive": true,
     "gtk-layer-shell": true,
     "modules-left": [
-        "cpu",
-        "memory",
-        "disk"
-    ],
-    "modules-center": [
         "hyprland/workspaces",
         "niri/workspaces"
     ],
+    "modules-center": [
+        "clock"
+    ],
     "modules-right": [
+        "cpu",
+        "memory",
+        "disk",
         "backlight",
         "wireplumber",
         "network",
-        "battery",
-        "clock"
+        "battery"
     ],
     "cpu": {
         "format": "  {usage}%"

@@ -41,23 +41,27 @@ tooltip {
   color: @foreground;
 }
 
+#clock {
+  font-weight: bold;
+}
+
 #workspaces {
-  border-radius: 0px;
+  border-radius: 4px;
+  font-weight: bold;
   padding: 0;
 }
 
 #workspaces button {
   min-width: 1.75rem;
   box-shadow: none;
-  border-radius: 0px;
   padding: 0.25rem;
   color: @foreground;
 }
 #workspaces button.active {
   color: @accent;
-  border: 1px solid @accent;
+  border: 2px solid @accent;
 }
 #workspaces button:hover {
-  border: 1px solid @accent;
+  border: 2px solid @accent;
   background-color: @background;
 }
