@@ -32,7 +32,7 @@ layout {
 
     // Always visible
     border {
-        active-color "#2dc7c4"
+        active-color "#78a9ff"
         inactive-color "#484848"
 
         // Color of the border around windows that request your attention.
