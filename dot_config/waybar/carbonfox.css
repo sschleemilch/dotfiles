@@ -28,3 +28,4 @@
 @define-color foreground @fg;
 @define-color surface @selection;
 @define-color accent @blue;
+@define-color danger @red;

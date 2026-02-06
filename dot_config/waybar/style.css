@@ -45,6 +45,10 @@ tooltip {
   font-weight: bold;
 }
 
+#battery.low {
+  color: @danger;
+}
+
 #workspaces {
   border-radius: 4px;
   font-weight: bold;

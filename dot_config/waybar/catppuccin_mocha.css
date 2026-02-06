@@ -30,3 +30,4 @@
 @define-color foreground @text;
 @define-color surface @surface0;
 @define-color accent @blue;
+@define-color danger @red;
