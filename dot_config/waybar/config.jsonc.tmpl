@@ -25,7 +25,7 @@
         "format": "  {usage}%"
     },
     "battery": {
-        "format": "{icon} {capatity}%",
+        "format": "{icon} {capacity}%",
         "format-icons": [
             "󰂎",
             "󰁺",
@@ -82,7 +82,11 @@
         "tooltip-format": "Volume: {volume}%"
     },
     "network": {
+{{- if eq .chezmoi.hostname "desos" }}
         "interface": "wlp0s20f3",
+{{ else if eq .chezmoi.hostname "ladon" -}}
+        "interface": "wlp1s0",
+{{- end }}
         "format": "{ifname}",
         "format-wifi": "{icon} {signalStrength}%",
         "format-ethernet": "󰈀 ",
