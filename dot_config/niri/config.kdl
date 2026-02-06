@@ -276,7 +276,7 @@ binds {
     //
     // Most actions that you can bind here can also be invoked programmatically with
     // `niri msg action do-something`.
-    Mod+Shift+ß { show-hotkey-overlay; }
+    // Mod+Shift+ß { show-hotkey-overlay; }
 
     Mod+Space hotkey-overlay-title="Applications" { spawn "fuzzel"; }
     Mod+E hotkey-overlay-title="Explorer" { spawn "nautilus"; }
