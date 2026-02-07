@@ -41,12 +41,9 @@ tooltip {
   color: @foreground;
 }
 
-#clock {
-  font-weight: bold;
-}
-
 #battery.low {
-  color: @danger;
+  background-color: @danger;
+  color: @background;
 }
 
 #workspaces {
@@ -58,7 +55,7 @@ tooltip {
 #workspaces button {
   min-width: 1.75rem;
   box-shadow: none;
-  padding: 0.25rem;
+  padding: 0;
   color: @foreground;
 }
 #workspaces button.active {
