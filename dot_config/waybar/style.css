@@ -6,20 +6,13 @@
 }
 
 window#waybar {
-  background-color: @background;
+  background-color: @transparent;
 }
 
 tooltip {
   background: @surface;
-  border: 0px solid @base;
+  border: 1px solid @accent;
   border-radius: 0px;
-}
-
-.modules-left {
-  padding-left: 10px;
-}
-.modules-right {
-  padding-right: 10px;
 }
 
 #cpu,
@@ -32,12 +25,6 @@ tooltip {
 #network,
 #backlight,
 #clock {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
   color: @foreground;
 }
 
@@ -46,23 +33,14 @@ tooltip {
   color: @background;
 }
 
-#workspaces {
-  border-radius: 4px;
-  font-weight: bold;
-  padding: 0;
-}
-
 #workspaces button {
   min-width: 1.75rem;
-  box-shadow: none;
   padding: 0;
   color: @foreground;
 }
 #workspaces button.active {
   color: @accent;
-  border: 2px solid @accent;
 }
 #workspaces button:hover {
-  border: 2px solid @accent;
-  background-color: @background;
+  color: @accent;
 }
