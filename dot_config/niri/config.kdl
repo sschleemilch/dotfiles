@@ -200,7 +200,7 @@ cursor {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-spawn-at-startup "waybar"
+spawn-at-startup "quickshell"
 spawn-sh-at-startup "swaybg -i ~/wallpaper.png"
 
 hotkey-overlay {

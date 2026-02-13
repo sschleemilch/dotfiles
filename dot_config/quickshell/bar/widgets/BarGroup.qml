@@ -14,7 +14,7 @@ Item {
     property real spacing: 10
 
     // Fixed width based on bar width with margin for border visibility
-    implicitWidth: Colors.barWidth - 8
+    implicitWidth: Colors.barWidth - 12
     implicitHeight: column.implicitHeight + padding * 2
 
     default property alias children: column.children
