@@ -5,33 +5,62 @@ import qs.services
 Item {
     id: root
 
-    width: Colors.barWidth
-    height: wsColumn.height
+    property int dotSize: 6
+    property int buttonSize: 24
+    property int activeIndicatorPadding: 4
 
+    width: buttonSize
+    height: buttonSize * Niri.workspaces.length
+
+    // Active workspace indicator (filled pill, round)
+    Rectangle {
+        id: activeIndicator
+        width: buttonSize
+        height: buttonSize
+        radius: width / 2
+        color: Colors.accent
+
+        y: {
+            let idx = Niri.workspaces.findIndex(ws => ws.id === Niri.focusedWorkspaceId)
+            return idx >= 0 ? idx * buttonSize : 0
+        }
+
+        Behavior on y {
+            NumberAnimation {
+                duration: 150
+                easing.type: Easing.OutCubic
+            }
+        }
+    }
+
+    // Workspace dots
     Column {
-        id: wsColumn
-        width: parent.width
-        spacing: 2
+        anchors.fill: parent
 
         Repeater {
             model: Niri.workspaces
 
-            Rectangle {
+            Item {
                 required property var modelData
+                required property int index
 
-                width: Colors.barWidth - 10
-                height: Colors.barWidth - 10
+                width: buttonSize
+                height: buttonSize
 
-                anchors.horizontalCenter: parent.horizontalCenter
-                color: modelData.id === Niri.focusedWorkspaceId ? Colors.accent : "transparent"
-
-                Text {
+                Rectangle {
                     anchors.centerIn: parent
-                    text: modelData.idx
-                    font.family: Colors.textFont
-                    font.pixelSize: Colors.textSize + 2
-                    font.bold: modelData.id === Niri.focusedWorkspaceId
-                    color: modelData.id === Niri.focusedWorkspaceId ? Colors.bar : (modelData.active_window_id ? Colors.text : Colors.dimmed)
+                    width: dotSize
+                    height: width
+                    radius: width / 2
+                    color: (modelData.id === Niri.focusedWorkspaceId || modelData.active_window_id)
+                        ? Colors.text
+                        : Colors.dimmed
+
+                    Behavior on color {
+                        ColorAnimation {
+                            duration: 150
+                        }
+                    }
                 }
 
                 MouseArea {
@@ -42,21 +71,17 @@ Item {
         }
     }
 
+    // Scroll to switch workspaces
     MouseArea {
         anchors.fill: parent
         acceptedButtons: Qt.NoButton
 
         onWheel: event => {
-            if (event.angleDelta.y > 0) {
-                let currentIdx = Niri.workspaces.findIndex(ws => ws.id === Niri.focusedWorkspaceId);
-                if (currentIdx > 0) {
-                    Niri.switchToWorkspace(Niri.workspaces[currentIdx - 1].idx);
-                }
-            } else if (event.angleDelta.y < 0) {
-                let currentIdx = Niri.workspaces.findIndex(ws => ws.id === Niri.focusedWorkspaceId);
-                if (currentIdx < Niri.workspaces.length - 1) {
-                    Niri.switchToWorkspace(Niri.workspaces[currentIdx + 1].idx);
-                }
+            let currentIdx = Niri.workspaces.findIndex(ws => ws.id === Niri.focusedWorkspaceId)
+            if (event.angleDelta.y > 0 && currentIdx > 0) {
+                Niri.switchToWorkspace(Niri.workspaces[currentIdx - 1].idx)
+            } else if (event.angleDelta.y < 0 && currentIdx < Niri.workspaces.length - 1) {
+                Niri.switchToWorkspace(Niri.workspaces[currentIdx + 1].idx)
             }
         }
     }

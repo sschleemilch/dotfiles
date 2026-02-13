@@ -1,12 +1,11 @@
 import QtQuick
 import Quickshell.Services.UPower
+import qs.components
 import qs.common
 
 Column {
     id: root
 
-    width: Colors.barWidth
-    spacing: 1
     visible: batteries.length > 0
 
     readonly property var batteries: {
@@ -19,7 +18,7 @@ Column {
     }
 
     readonly property var device: batteries.length > 0 ? batteries[0] : null
-    readonly property int level: device ? Math.round(device.percentage) : 0
+    readonly property int level: device ? Math.round(device.percentage * 100) : 0
     readonly property bool charging: device
         ? device.state === UPowerDeviceState.Charging
         : false
@@ -34,9 +33,9 @@ Column {
         return Colors.text;
     }
 
-    Text {
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: {
+    CircularProgress {
+        value: root.level / 100
+        icon: {
             if (root.charging) return "\u{f0084}";
             if (root.level > 75) return "\uf240";
             if (root.level > 50) return "\uf241";
@@ -44,16 +43,6 @@ Column {
             if (root.level > 5) return "\uf243";
             return "\uf244";
         }
-        font.family: Colors.iconFont
-        font.pixelSize: Colors.iconSize
-        color: root.statusColor
-    }
-
-    Text {
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: root.level + "%"
-        font.family: Colors.textFont
-        font.pixelSize: Colors.textSize
-        color: root.statusColor
+        colPrimary: root.statusColor
     }
 }

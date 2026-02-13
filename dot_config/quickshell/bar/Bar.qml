@@ -23,35 +23,43 @@ PanelWindow {
 
     Column {
         id: topSection
+        width: parent.width
         anchors.top: parent.top
         anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
         spacing: 15
 
-        Workspaces {}
+        BarGroup {
+            Workspaces {}
+        }
     }
 
     Column {
         id: centerSection
+        width: parent.width
         anchors.verticalCenter: parent.verticalCenter
         spacing: 15
 
-        Cpu {}
-        Memory {}
-        Disk {}
+        BarGroup {
+            Cpu {}
+            Memory {}
+            Disk {}
+        }
     }
 
     Column {
         id: bottomSection
+        width: parent.width
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
         spacing: 15
 
         Clock {}
-        Brightness {}
-        Sound {}
-        Network {}
-        Battery {}
+
+        BarGroup {
+            Brightness {}
+            Sound {}
+            Battery {}
+            Network {}
+        }
     }
 }

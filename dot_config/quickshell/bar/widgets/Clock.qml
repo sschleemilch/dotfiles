@@ -5,8 +5,9 @@ import qs.common
 Column {
     id: root
 
-    width: Colors.barWidth
     spacing: 0
+
+    anchors.horizontalCenter: parent.horizontalCenter
 
     SystemClock {
         id: clock

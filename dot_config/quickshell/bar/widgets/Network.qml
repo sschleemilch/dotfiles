@@ -5,7 +5,6 @@ import qs.common
 Column {
     id: root
 
-    width: Colors.barWidth
     spacing: 1
 
     property string status: "disconnected"

@@ -6,12 +6,10 @@ import qs.components
 Column {
     id: root
 
-    width: Colors.barWidth
-    anchors.horizontalCenter: parent.horizontalCenter
     visible: Dgop.available
 
-    FilledBar {
-        value: Dgop.memoryUsage
+    CircularProgress {
+        value: Dgop.memoryUsage / 100
         icon: ""
     }
 }
