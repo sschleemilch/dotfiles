@@ -13,8 +13,8 @@ Item {
     property real radius: width / 2
     property real spacing: 10
 
-    // Fixed width based on bar width with margin for border visibility
-    implicitWidth: Colors.barWidth - 12
+    // Width relative to parent with padding for border visibility
+    width: parent.width - 8
     implicitHeight: column.implicitHeight + padding * 2
 
     default property alias children: column.children

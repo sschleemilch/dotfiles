@@ -7,7 +7,7 @@ Item {
     anchors.horizontalCenter: parent.horizontalCenter
 
     property real value: 0.0
-    property int size: 24
+    property int size: 28
     property string icon: ""
 
     property color colPrimary: Colors.text
@@ -18,6 +18,10 @@ Item {
 
     readonly property real clampedValue: Math.max(0, Math.min(1, value))
 
+    onValueChanged: canvas.requestPaint()
+    onColPrimaryChanged: canvas.requestPaint()
+    onColSecondaryChanged: canvas.requestPaint()
+
     Canvas {
         id: canvas
         anchors.fill: parent
@@ -27,19 +31,17 @@ Item {
             const ctx = getContext("2d")
             ctx.reset()
 
-            const w = width
-            const h = height
-            const r = Math.floor(w / 2)
+            const r = Math.floor(width / 2)
             const cx = r
             const cy = r
 
-            // ---- Background circle ----
+            // Background
             ctx.beginPath()
             ctx.arc(cx, cy, r, 0, Math.PI * 2)
             ctx.fillStyle = root.colSecondary
             ctx.fill()
 
-            // ---- Filled pie ----
+            // Pie
             if (root.clampedValue > 0) {
                 ctx.beginPath()
                 ctx.moveTo(cx, cy)
@@ -56,16 +58,8 @@ Item {
                 ctx.fill()
             }
         }
-
-        Connections {
-            target: root
-            function onValueChanged() { canvas.requestPaint() }
-            function onColPrimaryChanged() { canvas.requestPaint() }
-            function onColSecondaryChanged() { canvas.requestPaint() }
-        }
     }
 
-    // ===== Center Icon / Text =====
     Text {
         anchors.centerIn: parent
         text: icon

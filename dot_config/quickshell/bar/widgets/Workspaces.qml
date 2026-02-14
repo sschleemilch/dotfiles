@@ -6,7 +6,7 @@ Item {
     id: root
 
     property int dotSize: 6
-    property int buttonSize: 24
+    property int buttonSize: 28
     property int activeIndicatorPadding: 4
 
     width: buttonSize
@@ -67,21 +67,6 @@ Item {
                     anchors.fill: parent
                     onClicked: Niri.switchToWorkspace(modelData.idx)
                 }
-            }
-        }
-    }
-
-    // Scroll to switch workspaces
-    MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.NoButton
-
-        onWheel: event => {
-            let currentIdx = Niri.workspaces.findIndex(ws => ws.id === Niri.focusedWorkspaceId)
-            if (event.angleDelta.y > 0 && currentIdx > 0) {
-                Niri.switchToWorkspace(Niri.workspaces[currentIdx - 1].idx)
-            } else if (event.angleDelta.y < 0 && currentIdx < Niri.workspaces.length - 1) {
-                Niri.switchToWorkspace(Niri.workspaces[currentIdx + 1].idx)
             }
         }
     }

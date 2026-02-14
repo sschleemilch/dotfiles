@@ -16,7 +16,6 @@ Singleton {
     readonly property string iconFont: "CommitMono Nerd Font"
     readonly property string textFont: "CommitMono Nerd Font"
 
-    readonly property int barWidth: 50
     readonly property int iconSize: 16
     readonly property int textSize: 11
 }

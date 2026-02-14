@@ -12,4 +12,24 @@ Column {
         value: Dgop.diskUsagePercent / 100
         icon: "󰋊"
     }
+    // One {
+    //     value: Dgop.diskUsagePercent / 100
+    //     // icon: "󰋊"
+    // }
+    // Two {
+    //     value: Dgop.diskUsagePercent / 100
+    //     // icon: "󰋊"
+    // }
+    // Three {
+    //     value: Dgop.diskUsagePercent / 100
+    //     // icon: "󰋊"
+    // }
+    // Four {
+    //     value: Dgop.diskUsagePercent / 100
+    //     // icon: "󰋊"
+    // }
+    // Five {
+    //     value: Dgop.diskUsagePercent / 100
+    //     // icon: "󰋊"
+    // }
 }
