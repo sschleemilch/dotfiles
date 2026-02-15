@@ -5,6 +5,7 @@ import qs.common
 
 Column {
     id: root
+    anchors.horizontalCenter: parent.horizontalCenter
 
     visible: batteries.length > 0
 
@@ -30,10 +31,10 @@ Column {
     property color statusColor: {
         if (root.isLow) return Colors.danger;
         if (root.charging || root.pluggedIn) return Colors.accent;
-        return Colors.text;
+        return Colors.fg;
     }
 
-    CircularProgress {
+    Pie {
         value: root.level / 100
         icon: {
             if (root.charging) return "\u{f0084}";
@@ -43,6 +44,6 @@ Column {
             if (root.level > 5) return "\uf243";
             return "\uf244";
         }
-        colPrimary: root.statusColor
+        fg: root.statusColor
     }
 }

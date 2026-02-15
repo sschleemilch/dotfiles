@@ -4,6 +4,7 @@ import qs.common
 
 Column {
     id: root
+    anchors.horizontalCenter: parent.horizontalCenter
 
     spacing: 1
 
@@ -20,9 +21,9 @@ Column {
                 return "\u{f0200}";
             return "\u{f0551}";
         }
-        font.family: Colors.iconFont
-        font.pixelSize: Colors.iconSize
-        color: root.status === "connected" ? Colors.text : Colors.dimmed
+        font.family: Config.iconFont
+        font.pixelSize: Config.iconSize
+        color: root.status === "connected" ? Colors.fg: Colors.dimmed
     }
 
     Text {
@@ -34,9 +35,9 @@ Column {
                 return "ETH";
             return "OFF";
         }
-        font.family: Colors.textFont
-        font.pixelSize: Colors.textSize - 1
-        color: root.status === "connected" ? Colors.text : Colors.dimmed
+        font.family: Config.textFont
+        font.pixelSize: Config.textSize - 1
+        color: root.status === "connected" ? Colors.fg: Colors.dimmed
     }
 
     Component.onCompleted: pollNetwork()

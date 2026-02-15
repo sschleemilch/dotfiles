@@ -10,8 +10,8 @@ Item {
     property int size: 28
     property string icon: ""
 
-    property color colPrimary: Colors.text
-    property color colSecondary: Colors.dimmed
+    property color fg: Colors.fg
+    property color bg: Colors.dimmed
 
     width: size
     height: size
@@ -19,8 +19,8 @@ Item {
     readonly property real clampedValue: Math.max(0, Math.min(1, value))
 
     onValueChanged: canvas.requestPaint()
-    onColPrimaryChanged: canvas.requestPaint()
-    onColSecondaryChanged: canvas.requestPaint()
+    onFgChanged: canvas.requestPaint()
+    onBgChanged: canvas.requestPaint()
 
     Canvas {
         id: canvas
@@ -38,7 +38,7 @@ Item {
             // Background
             ctx.beginPath()
             ctx.arc(cx, cy, r, 0, Math.PI * 2)
-            ctx.fillStyle = root.colSecondary
+            ctx.fillStyle = root.bg
             ctx.fill()
 
             // Pie
@@ -54,7 +54,7 @@ Item {
                     false
                 )
                 ctx.closePath()
-                ctx.fillStyle = root.colPrimary
+                ctx.fillStyle = root.fg
                 ctx.fill()
             }
         }
@@ -64,6 +64,6 @@ Item {
         anchors.centerIn: parent
         text: icon
         font.pixelSize: size * 0.55
-        color: Colors.bar
+        color: Colors.bg
     }
 }

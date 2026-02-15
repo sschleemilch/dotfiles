@@ -5,10 +5,11 @@ import qs.services as Services
 
 Column {
     id: root
+    anchors.horizontalCenter: parent.horizontalCenter
 
     visible: Services.Brightness.available
 
-    CircularProgress {
+    Pie {
         value: Services.Brightness.level / 100
         icon: "󰃟"
 

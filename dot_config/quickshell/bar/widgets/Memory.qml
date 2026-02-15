@@ -5,10 +5,11 @@ import qs.components
 
 Column {
     id: root
+    anchors.horizontalCenter: parent.horizontalCenter
 
     visible: Dgop.available
 
-    CircularProgress {
+    Pie {
         value: Dgop.memoryUsage / 100
         icon: ""
     }

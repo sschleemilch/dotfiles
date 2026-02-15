@@ -5,6 +5,8 @@ import qs.services
 Item {
     id: root
 
+    anchors.horizontalCenter: parent.horizontalCenter
+
     property int dotSize: 6
     property int buttonSize: 28
     property int activeIndicatorPadding: 4
@@ -53,7 +55,7 @@ Item {
                     height: width
                     radius: width / 2
                     color: (modelData.id === Niri.focusedWorkspaceId || modelData.active_window_id)
-                        ? Colors.text
+                        ? Colors.fg
                         : Colors.dimmed
 
                     Behavior on color {

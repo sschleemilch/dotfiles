@@ -20,10 +20,10 @@ Column {
             let h = clock.hours;
             return (h < 10 ? "0" : "") + h;
         }
-        font.family: Colors.textFont
-        font.pixelSize: Colors.textSize + 4
+        font.family: Config.textFont
+        font.pixelSize: Config.textSize + 4
         font.bold: true
-        color: Colors.text
+        color: Colors.fg
     }
 
     Text {
@@ -32,8 +32,8 @@ Column {
             let m = clock.minutes;
             return (m < 10 ? "0" : "") + m;
         }
-        font.family: Colors.textFont
-        font.pixelSize: Colors.textSize + 4
+        font.family: Config.textFont
+        font.pixelSize: Config.textSize + 4
         font.bold: true
         color: Colors.dimmed
     }

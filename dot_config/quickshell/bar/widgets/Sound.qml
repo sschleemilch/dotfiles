@@ -5,6 +5,7 @@ import qs.common
 
 Column {
     id: root
+    anchors.horizontalCenter: parent.horizontalCenter
 
     readonly property PwNode sink: Pipewire.defaultAudioSink
     readonly property bool muted: sink?.audio?.muted ?? false
@@ -15,10 +16,10 @@ Column {
         objects: [root.sink]
     }
 
-    CircularProgress {
+    Pie {
         value: root.muted ? 0 : root.volume
         icon: root.muted ? "\uf026" : (root.volumePercent > 50 ? "\uf028" : "\uf027")
-        colPrimary: root.muted ? Colors.dimmed : Colors.text
+        fg: root.muted ? Colors.dimmed : Colors.fg
 
         MouseArea {
             anchors.fill: parent

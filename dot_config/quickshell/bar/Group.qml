@@ -13,7 +13,6 @@ Item {
     property real radius: width / 2
     property real spacing: 10
 
-    // Width relative to parent with padding for border visibility
     width: parent.width - 8
     implicitHeight: column.implicitHeight + padding * 2
 
