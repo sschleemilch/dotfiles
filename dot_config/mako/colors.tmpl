@@ -1,18 +1,1 @@
-{{ if eq .colorscheme "rose-pine" -}}
-include=~/.config/mako/colorschemas/rose_pine
-{{- end -}}
-{{ if eq .colorscheme "rose-pine-moon" -}}
-include=~/.config/mako/colorschemas/rose_pine_moon
-{{- end -}}
-{{ if eq .colorscheme "kanagawa" -}}
-include=~/.config/mako/colorschemas/kanagawa
-{{- end -}}
-{{ if eq .colorscheme "catppuccin-mocha" -}}
-include=~/.config/mako/colorschemas/catppuccin_mocha
-{{- end -}}
-{{ if eq .colorscheme "carbonfox" -}}
-include=~/.config/mako/colorschemas/carbonfox
-{{- end -}}
-{{ if eq .colorscheme "tokyonight-night" -}}
-include=~/.config/mako/colorschemas/tokyonight_night
-{{- end -}}
+include=~/.config/mako/colorschemas/{{ .colorscheme }}

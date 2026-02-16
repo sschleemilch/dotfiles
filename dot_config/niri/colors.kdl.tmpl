@@ -1,18 +1,1 @@
-{{ if eq .colorscheme "rose-pine" -}}
-include "rose_pine.kdl"
-{{- end -}}
-{{ if eq .colorscheme "rose-pine-moon" -}}
-include "rose_pine_moon.kdl"
-{{- end -}}
-{{ if eq .colorscheme "kanagawa" -}}
-include "kanagawa.kdl"
-{{- end -}}
-{{ if eq .colorscheme "catppuccin-mocha" -}}
-include "catppuccin_mocha.kdl"
-{{- end -}}
-{{ if eq .colorscheme "carbonfox" -}}
-include "carbonfox.kdl"
-{{- end -}}
-{{ if eq .colorscheme "tokyonight-night" -}}
-include "tokyonight_night.kdl"
-{{- end -}}
+include "{{ .colorscheme }}.kdl"

@@ -46,33 +46,7 @@ listen_on unix:@mykitty
 {{- end }}
 
 
-{{ if eq .colorscheme "rose-pine" -}}
-include themes/rose-pine.conf
-{{- end -}}
-{{ if eq .colorscheme "rose-pine-moon" -}}
-include themes/rose-pine-moon.conf
-{{- end -}}
-{{ if eq .colorscheme "rose-pine-dawn" -}}
-include themes/rose-pine-dawn.conf
-{{- end -}}
-{{ if eq .colorscheme "kanagawa" -}}
-include themes/kanagawa.conf
-{{- end -}}
-{{ if eq .colorscheme "carbonfox" -}}
-include themes/carbonfox.conf
-{{- end -}}
-{{ if eq .colorscheme "tokyonight-night" -}}
-include themes/tokyonight-night.conf
-{{- end -}}
-{{ if eq .colorscheme "techbase" -}}
-include themes/techbase.conf
-{{- end -}}
-{{ if eq .colorscheme "vague" -}}
-include themes/vague.conf
-{{- end -}}
-{{ if eq .colorscheme "catppuccin-mocha" -}}
-include themes/catppuccin-mocha.conf
-{{- end }}
+include themes/{{ .colorscheme }}.conf
 
 # BEGIN_KITTY_FONTS
 font_family      family="MonoLisa"

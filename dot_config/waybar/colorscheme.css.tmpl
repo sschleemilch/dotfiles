@@ -1,18 +1,1 @@
-{{ if eq .colorscheme "rose-pine" -}}
-@import "rose-pine.css";
-{{- end -}}
-{{ if eq .colorscheme "rose-pine-moon" -}}
-@import "rose-pine-moon.css";
-{{- end -}}
-{{ if eq .colorscheme "kanagawa" -}}
-@import "kanagawa.css";
-{{- end -}}
-{{ if eq .colorscheme "catppuccin-mocha" -}}
-@import "catppuccin_mocha.css";
-{{- end -}}
-{{ if eq .colorscheme "carbonfox" -}}
-@import "carbonfox.css";
-{{- end -}}
-{{ if eq .colorscheme "tokyonight-night" -}}
-@import "tokyonight-night.css";
-{{- end -}}
+@import "{{ .colorscheme }}.css";

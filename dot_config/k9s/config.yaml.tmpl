@@ -1,17 +1,3 @@
 k9s:
   ui:
-    {{ if eq .colorscheme "rose-pine" -}}
-    skin: rose-pine
-    {{- end -}}
-    {{ if eq .colorscheme "rose-pine-moon" -}}
-    skin: rose-pine-moon
-    {{- end -}}
-    {{ if eq .colorscheme "rose-pine-dawn" -}}
-    skin: rose-pine-dawn
-    {{- end -}}
-    {{ if eq .colorscheme "kanagawa" -}}
-    skin: kangawa
-    {{- end -}}
-    {{ if eq .colorscheme "catppuccin-mocha" -}}
-    skin: catppuccin-mocha
-    {{- end }}
+    skin: {{ .colorscheme }}
