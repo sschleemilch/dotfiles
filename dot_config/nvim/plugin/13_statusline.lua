@@ -68,12 +68,12 @@ local function mode_component(mode, active)
     return result
 end
 
-local track_lsp = vim.schedule_wrap(function(data)
-    if not vim.api.nvim_buf_is_valid(data.buf) then
-        lsp_clients[data.buf] = nil
+local track_lsp = vim.schedule_wrap(function(buf)
+    if not vim.api.nvim_buf_is_valid(buf) then
+        lsp_clients[buf] = nil
         return
     end
-    local attached_clients = vim.lsp.get_clients({ bufnr = data.buf })
+    local attached_clients = vim.lsp.get_clients({ bufnr = buf })
 
     local it = vim.iter(attached_clients)
     it:map(function(client)
@@ -85,16 +85,21 @@ local track_lsp = vim.schedule_wrap(function(data)
     end)
     local names = it:totable()
     if #names > 0 then
-        lsp_clients[data.buf] = string.format('%s', table.concat(names, ','))
+        lsp_clients[buf] = string.format('%s', table.concat(names, ','))
     else
-        lsp_clients[data.buf] = nil
+        lsp_clients[buf] = nil
     end
 end)
 
-vim.api.nvim_create_autocmd(
-    { 'LspAttach', 'LspDetach', 'BufEnter' },
-    { group = augroup('track_lsp'), pattern = '*', callback = track_lsp, desc = 'Track LSP Clients' }
-)
+Config.new_autocmd({ 'LspAttach', 'LspDetach', 'BufEnter' }, '*', function(data)
+    track_lsp(data.buf)
+end, 'Track LSP Clients')
+
+for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+        track_lsp(buf)
+    end
+end
 
 --- @param bufnr integer
 --- @return  string

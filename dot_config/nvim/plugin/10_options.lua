@@ -3,6 +3,12 @@ vim.g.maplocalleader = ','
 
 vim.o.clipboard = 'unnamedplus' -- Always sync clipboard with OS
 
+-- Enable all filetype plugins and syntax (if not enabled, for better startup)
+vim.cmd('filetype plugin indent on')
+if vim.fn.exists('syntax_on') ~= 1 then
+    vim.cmd('syntax enable')
+end
+
 -- Indents
 vim.o.shiftwidth = 4 -- size of an indent
 vim.o.tabstop = 4 -- Number of spaces tabs count for
@@ -37,11 +43,14 @@ vim.o.pumheight = 15
 vim.o.pumborder = 'single'
 
 -- Diagnostics
-vim.diagnostic.config({
+local diagnostic_opts = {
     virtual_text = {
         current_line = true,
         prefix = '',
     },
-})
+}
+Config.later(function()
+    vim.diagnostic.config(diagnostic_opts)
+end)
 
 require('vim._core.ui2').enable({})
