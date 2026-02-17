@@ -11,6 +11,6 @@ Column {
 
     Pie {
         value: Dgop.diskUsagePercent / 100
-        icon: "󰋊"
+        icon: "hard_drive"
     }
 }

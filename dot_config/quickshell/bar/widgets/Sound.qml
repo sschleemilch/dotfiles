@@ -18,7 +18,7 @@ Column {
 
     Pie {
         value: root.muted ? 0 : root.volume
-        icon: root.muted ? "\uf026" : (root.volumePercent > 50 ? "\uf028" : "\uf027")
+        icon: root.muted ? "volume_off" : (root.volumePercent > 50 ? "volume_up" : "volume_down")
         fg: root.muted ? Colors.dimmed : Colors.fg
 
         MouseArea {

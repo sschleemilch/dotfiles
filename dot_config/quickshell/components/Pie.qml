@@ -63,7 +63,8 @@ Item {
     Text {
         anchors.centerIn: parent
         text: icon
-        font.pixelSize: size * 0.55
+        font.pixelSize: size * 0.65
+        font.family: Config.iconFont
         color: Colors.bg
     }
 }

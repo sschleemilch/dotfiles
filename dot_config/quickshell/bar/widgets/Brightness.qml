@@ -11,7 +11,7 @@ Column {
 
     Pie {
         value: Services.Brightness.level / 100
-        icon: "󰃟"
+        icon: "brightness_6"
 
         MouseArea {
             anchors.fill: parent

@@ -12,6 +12,6 @@ Column {
 
     Pie {
         value: Dgop.cpuUsage / 100
-        icon: ""
+        icon: "memory"
     }
 }

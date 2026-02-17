@@ -11,6 +11,6 @@ Column {
 
     Pie {
         value: Dgop.memoryUsage / 100
-        icon: ""
+        icon: "memory_alt"
     }
 }

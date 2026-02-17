@@ -16,10 +16,10 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         text: {
             if (root.connectionType === "wifi")
-                return "\uf1eb";
+                return "wifi";
             if (root.connectionType === "ethernet")
-                return "\u{f0200}";
-            return "\u{f0551}";
+                return "cable";
+            return "globe_2_cancel";
         }
         font.family: Config.iconFont
         font.pixelSize: Config.iconSize
