@@ -7,37 +7,21 @@ Item {
 
     anchors.horizontalCenter: parent.horizontalCenter
 
+    property int hitSize: 28
+    property int barWidth: 6
+    property int activeHeight: 24
     property int dotSize: 6
-    property int buttonSize: 28
-    property int activeIndicatorPadding: 4
+    property int spacing: 4
 
-    width: buttonSize
-    height: buttonSize * Niri.workspaces.length
+    width: hitSize
+    height: (hitSize + spacing) * Niri.workspaces.length - spacing
 
-    // Active workspace indicator (filled pill, round)
-    Rectangle {
-        id: activeIndicator
-        width: buttonSize
-        height: buttonSize
-        radius: width / 2
-        color: Colors.accent
+    property int activeIndex:
+        Niri.workspaces.findIndex(ws => ws.id == Niri.focusedWorkspaceId)
 
-        y: {
-            let idx = Niri.workspaces.findIndex(ws => ws.id === Niri.focusedWorkspaceId)
-            return idx >= 0 ? idx * buttonSize : 0
-        }
-
-        Behavior on y {
-            NumberAnimation {
-                duration: 150
-                easing.type: Easing.OutCubic
-            }
-        }
-    }
-
-    // Workspace dots
     Column {
         anchors.fill: parent
+        spacing: spacing
 
         Repeater {
             model: Niri.workspaces
@@ -46,28 +30,32 @@ Item {
                 required property var modelData
                 required property int index
 
-                width: buttonSize
-                height: buttonSize
+                width: hitSize
+                height: hitSize
 
                 Rectangle {
                     anchors.centerIn: parent
-                    width: dotSize
-                    height: width
-                    radius: width / 2
-                    color: (modelData.id === Niri.focusedWorkspaceId || modelData.active_window_id)
-                        ? Colors.fg
-                        : Colors.dimmed
+                    width: barWidth
+                    height: index == root.activeIndex
+                            ? activeHeight
+                            : dotSize
 
-                    Behavior on color {
-                        ColorAnimation {
-                            duration: 150
+                    radius: width / 2
+
+                    color: index == root.activeIndex || modelData.active_window_id
+                            ? Colors.fg
+                            : Colors.dimmed
+
+                    Behavior on height {
+                        NumberAnimation {
+                            duration: 100
+                            easing.type: Easing.OutQuad
                         }
                     }
-                }
 
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: Niri.switchToWorkspace(modelData.idx)
+                    Behavior on color {
+                        ColorAnimation { duration: 150 }
+                    }
                 }
             }
         }

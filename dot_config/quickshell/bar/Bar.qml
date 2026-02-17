@@ -44,7 +44,7 @@ PanelWindow {
 
             spacing: root.spacing
 
-            Workspaces {}
+            Clock {}
             Group {
                 Cpu {}
                 Memory {}
@@ -59,6 +59,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
 
             spacing: root.spacing
+                Workspaces {}
         }
 
         Column {
@@ -70,7 +71,6 @@ PanelWindow {
 
             spacing: root.spacing
 
-            Clock {}
 
             Group {
                 Brightness {}
