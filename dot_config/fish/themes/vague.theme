@@ -1,0 +1,30 @@
+# name: 'Vague'
+# url: 'https://github.com/vague2k/vague.nvim'
+# preferred_background: 141415
+
+fish_color_normal cdcdcd
+fish_color_command 6e94b2
+fish_color_param aeaed1
+fish_color_keyword bb9dbd
+fish_color_quote 7fa563
+fish_color_redirection 8ba9c1
+fish_color_end f3be7c
+fish_color_comment 606079
+fish_color_error d8647e
+fish_color_gray 606079
+fish_color_selection --background=252530
+fish_color_search_match --background=252530
+fish_color_option 99b782
+fish_color_operator bebeda
+fish_color_escape f5cb96
+fish_color_autosuggestion 606079
+fish_color_cancel d8647e
+fish_color_cwd f3be7c
+fish_color_user 7fa563
+fish_color_host 6e94b2
+fish_color_host_remote 99b782
+fish_color_status d8647e
+fish_pager_color_progress 606079
+fish_pager_color_prefix bb9dbd
+fish_pager_color_completion cdcdcd
+fish_pager_color_description 606079

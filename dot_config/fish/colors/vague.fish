@@ -11,3 +11,4 @@ set -x FZF_COLORS "--color=hl:#f3be7c
     --color=scrollbar:#aeaed1
     --color=info:#f3be7c
     --color=spinner:#7fa563"
+fish_config theme choose "carbonfox"
