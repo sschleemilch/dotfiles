@@ -21,6 +21,9 @@ theme = Carbonfox
 {{ if eq .colorscheme "catppuccin-mocha" -}}
 theme = Catppuccin Mocha
 {{- end }}
+{{ if eq .colorscheme "vague" -}}
+theme = Vague
+{{- end }}
 
 {{ if eq .chezmoi.os "darwin" }}
 command = /opt/homebrew/bin/fish

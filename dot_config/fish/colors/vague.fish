@@ -1,6 +1,6 @@
-set -l COLORS "--color=hl:#f3be7c
-    --color=bg:-1
-    --color=gutter:-1
+set -x FZF_COLORS "--color=hl:#f3be7c
+    --color=bg:#141415
+    --color=gutter:#141415
     --color=bg+:#252530
     --color=fg+:#aeaed1
     --color=hl+:#f3be7c

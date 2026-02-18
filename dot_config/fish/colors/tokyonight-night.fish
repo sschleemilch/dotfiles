@@ -1,4 +1,4 @@
-set -l COLORS "--color=bg+:#283457 \
+set -x FZF_COLORS "--color=bg+:#283457 \
   --color=bg:#1a1b26 \
   --color=border:#565f89 \
   --color=fg:#c0caf5 \
