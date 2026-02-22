@@ -37,12 +37,12 @@ Column {
     Pie {
         value: root.level / 100
         icon: {
-            if (root.charging) return "\u{f0084}";
-            if (root.level > 75) return "\uf240";
-            if (root.level > 50) return "\uf241";
-            if (root.level > 25) return "\uf242";
-            if (root.level > 5) return "\uf243";
-            return "\uf244";
+            if (root.charging) return "battery_android_bolt";
+            if (root.level > 75) return "battery_android_5";
+            if (root.level > 50) return "battery_android_5";
+            if (root.level > 25) return "battery_android_3";
+            if (root.level > 5) return "battery_android_1";
+            return "battery_android_0";
         }
         fg: root.statusColor
     }
