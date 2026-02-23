@@ -13,12 +13,6 @@ Config.later = function(f)
 end
 
 Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
-Config.on_event = function(ev, f)
-    misc.safely('event:' .. ev, f)
-end
-Config.on_filetype = function(ft, f)
-    misc.safely('filetype:' .. ft, f)
-end
 
 local gr = vim.api.nvim_create_augroup('custom-config', {})
 Config.new_autocmd = function(event, pattern, callback, desc)
