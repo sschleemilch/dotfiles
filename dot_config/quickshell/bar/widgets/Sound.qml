@@ -16,10 +16,10 @@ Column {
         objects: [root.sink]
     }
 
-    Pie {
+    Meter {
         value: root.muted ? 0 : root.volume
         icon: root.muted ? "volume_off" : (root.volumePercent > 50 ? "volume_up" : "volume_down")
-        fg: root.muted ? Colors.dimmed : Colors.fg
+        color: root.muted ? Colors.dimmed : Colors.fg
 
         MouseArea {
             anchors.fill: parent

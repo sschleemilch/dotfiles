@@ -9,8 +9,11 @@ Column {
 
     visible: Dgop.available
 
-    Pie {
+    Meter {
         value: Dgop.memoryUsage / 100
         icon: "memory_alt"
+        color: Dgop.memoryUsage > 90 ? Colors.danger
+             : Dgop.memoryUsage > 75 ? Colors.warning
+             : Colors.fg
     }
 }

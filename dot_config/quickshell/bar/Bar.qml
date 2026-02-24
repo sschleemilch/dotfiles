@@ -44,11 +44,9 @@ PanelWindow {
             spacing: root.spacing
 
             Clock {}
-            Group {
-                Cpu {}
-                Memory {}
-                Disk {}
-            }
+            Cpu {}
+            Memory {}
+            Disk {}
         }
 
         Column {
@@ -71,11 +69,9 @@ PanelWindow {
             spacing: root.spacing
 
 
-            Group {
-                Brightness {}
-                Sound {}
-                Battery {}
-            }
+            Brightness {}
+            Sound {}
+            Battery {}
 
             Network {}
         }

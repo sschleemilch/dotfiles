@@ -34,16 +34,16 @@ Column {
         return Colors.fg;
     }
 
-    Pie {
+    Meter {
         value: root.level / 100
         icon: {
-            if (root.charging) return "battery_android_bolt";
-            if (root.level > 75) return "battery_android_5";
-            if (root.level > 50) return "battery_android_5";
-            if (root.level > 25) return "battery_android_3";
-            if (root.level > 5) return "battery_android_1";
-            return "battery_android_0";
+            if (root.charging) return "battery_charging_full";
+            if (root.level > 75) return "battery_6_bar";
+            if (root.level > 50) return "battery_5_bar";
+            if (root.level > 25) return "battery_3_bar";
+            if (root.level > 5) return "battery_0_bar";
+            return "battery_alert";
         }
-        fg: root.statusColor
+        color: root.statusColor
     }
 }

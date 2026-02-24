@@ -9,7 +9,7 @@ Column {
 
     visible: Services.Brightness.available
 
-    Pie {
+    Meter {
         value: Services.Brightness.level / 100
         icon: "brightness_6"
 
