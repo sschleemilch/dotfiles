@@ -10,8 +10,7 @@ Item {
     property int size: 28
     property string icon: ""
 
-    property color fg: Colors.fg
-    property color bg: Colors.dimmed
+    property color color: Colors.fg
 
     width: size
     height: size
@@ -19,8 +18,7 @@ Item {
     readonly property real clampedValue: Math.max(0, Math.min(1, value))
 
     onValueChanged: canvas.requestPaint()
-    onFgChanged: canvas.requestPaint()
-    onBgChanged: canvas.requestPaint()
+    onColorChanged: canvas.requestPaint()
 
     Canvas {
         id: canvas
@@ -38,7 +36,7 @@ Item {
             // Background
             ctx.beginPath()
             ctx.arc(cx, cy, r, 0, Math.PI * 2)
-            ctx.fillStyle = root.bg
+            ctx.fillStyle = Qt.darker(root.color, 1.5)
             ctx.fill()
 
             // Pie
@@ -54,7 +52,7 @@ Item {
                     false
                 )
                 ctx.closePath()
-                ctx.fillStyle = root.fg
+                ctx.fillStyle = root.color
                 ctx.fill()
             }
         }

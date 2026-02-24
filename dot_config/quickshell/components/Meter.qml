@@ -12,6 +12,8 @@ Item {
 
     property color color: Colors.fg
 
+    readonly property real clampedValue: Math.max(0, Math.min(1, value))
+
     width: 25
     height: 60
 
@@ -27,7 +29,7 @@ Item {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            height: root.value * parent.height < root.radius ? 0 : root.value * parent.height
+            height: root.clampedValue * parent.height < root.radius ? 0 : root.clampedValue * parent.height
             color: root.color
             radius: root.radius
         }
