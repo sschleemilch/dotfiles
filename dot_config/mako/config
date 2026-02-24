@@ -1,6 +1,6 @@
 include=~/.config/mako/colors
 
-font="CommitMono Nerd Font" 11
+font="MonoLisa" 11
 padding=10
 border-radius=10
 max-icon-size=48
