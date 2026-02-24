@@ -18,7 +18,7 @@ PanelWindow {
         bottom: true
     }
 
-    implicitWidth: 65
+    implicitWidth: 55
     color: "transparent"
 
     Rectangle {
@@ -26,7 +26,6 @@ PanelWindow {
 
         anchors.topMargin: margin
         anchors.bottomMargin: margin
-        anchors.leftMargin: margin
 
         color: Colors.bg
 
