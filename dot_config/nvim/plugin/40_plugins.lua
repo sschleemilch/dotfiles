@@ -142,12 +142,6 @@ later(function()
 end)
 
 later(function()
-    add({ 'https://github.com/MagicDuck/grug-far.nvim' })
-    require('grug-far').setup()
-    vim.keymap.set({ 'n', 'v' }, '<leader>gf', '<cmd>GrugFar<cr>', { desc = 'Replace in files (Grug-far)' })
-end)
-
-later(function()
     add({ 'https://github.com/folke/flash.nvim' })
 
     ---@diagnostic disable-next-line: redundant-parameter
