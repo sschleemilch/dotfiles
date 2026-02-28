@@ -1,37 +1,6 @@
 local add = vim.pack.add
 local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
-now(function()
-    add({
-        'https://github.com/sschleemilch/slimline.nvim',
-    })
-    require('slimline').setup({
-        components = {
-            left = {
-                'mode',
-                'path',
-            },
-            right = {
-                'diagnostics',
-                'filetype_lsp',
-            },
-        },
-        spaces = {
-            components = '',
-            left = '',
-            right = '',
-        },
-        sep = {
-            hide = {
-                first = true,
-                last = true,
-            },
-            left = '',
-            right = '',
-        },
-    })
-end)
-
 now_if_args(function()
     local ts_update = function()
         vim.cmd('TSUpdate')
