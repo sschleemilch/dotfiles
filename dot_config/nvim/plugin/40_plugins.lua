@@ -1,5 +1,5 @@
 local add = vim.pack.add
-local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
+local now_if_args, later = Config.now_if_args, Config.later
 
 now_if_args(function()
     local ts_update = function()
@@ -9,7 +9,7 @@ now_if_args(function()
 
     add({
         'https://github.com/nvim-treesitter/nvim-treesitter',
-        'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+        'https://github.com/nvim-treesitter/nvim-treesitter-context',
     })
 
     local languages = {
