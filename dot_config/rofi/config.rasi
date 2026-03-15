@@ -1,0 +1,10 @@
+configuration {
+  modi:                         "drun,window";
+  show-icons:                   false;
+  drun-display-format:          "{name}";
+  display-drun:                 " Applications";
+  display-window:               " Windows";
+  window-format:                "{w} · {c} · {t}";
+}
+
+@theme "theme.rasi"

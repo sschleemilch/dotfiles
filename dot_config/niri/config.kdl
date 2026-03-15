@@ -285,7 +285,7 @@ binds {
     // `niri msg action do-something`.
     // Mod+Shift+? { show-hotkey-overlay; }
 
-    Mod+Space hotkey-overlay-title="Applications" { spawn "fuzzel"; }
+    Mod+Space hotkey-overlay-title="Applications" { spawn "rofi" "-show"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
