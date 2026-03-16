@@ -10,7 +10,7 @@ PanelWindow {
     required property var screen
 
     readonly property int margin: 10
-    readonly property int spacing: 24
+    readonly property int spacing: 18
 
     anchors {
         left: true
@@ -44,9 +44,11 @@ PanelWindow {
             spacing: root.spacing
 
             Clock {}
-            Cpu {}
-            Memory {}
-            Disk {}
+            Group {
+                Cpu {}
+                Memory {}
+                Disk {}
+            }
         }
 
         Column {
@@ -56,7 +58,7 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
 
             spacing: root.spacing
-                Workspaces {}
+            Workspaces {}
         }
 
         Column {

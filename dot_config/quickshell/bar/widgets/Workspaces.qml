@@ -1,6 +1,6 @@
 import QtQuick
+import Quickshell.Hyprland
 import qs.common
-import qs.services
 
 Item {
     id: root
@@ -8,27 +8,23 @@ Item {
     anchors.horizontalCenter: parent.horizontalCenter
 
     property int hitSize: 28
-    property int barWidth: 6
+    property int barWidth: 8
     property int activeHeight: 24
-    property int dotSize: 6
+    property int inactiveHeight: 8
     property int spacing: 4
 
     width: hitSize
-    height: (hitSize + spacing) * Niri.workspaces.length - spacing
-
-    property int activeIndex:
-        Niri.workspaces.findIndex(ws => ws.id == Niri.focusedWorkspaceId)
+    height: (hitSize + spacing) * Math.max(1, Hyprland.workspaces.values.length) - spacing
 
     Column {
         anchors.fill: parent
-        spacing: spacing
+        spacing: root.spacing
 
         Repeater {
-            model: Niri.workspaces
+            model: Hyprland.workspaces
 
             Item {
-                required property var modelData
-                required property int index
+                required property HyprlandWorkspace modelData
 
                 width: hitSize
                 height: hitSize
@@ -36,15 +32,11 @@ Item {
                 Rectangle {
                     anchors.centerIn: parent
                     width: barWidth
-                    height: index == root.activeIndex
-                            ? activeHeight
-                            : dotSize
+                    height: modelData.focused ? activeHeight : inactiveHeight
 
                     radius: width / 2
 
-                    color: index == root.activeIndex || modelData.active_window_id
-                            ? Colors.fg
-                            : Colors.dimmed
+                    color: modelData.focused ? Colors.fg : Colors.dimmed
 
                     Behavior on height {
                         NumberAnimation {
@@ -56,6 +48,11 @@ Item {
                     Behavior on color {
                         ColorAnimation { duration: 150 }
                     }
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: modelData.activate()
                 }
             }
         }

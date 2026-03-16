@@ -10,7 +10,7 @@ Column {
 
     visible: Dgop.available
 
-    Meter {
+    Pie {
         value: Dgop.cpuUsage / 100
         icon: "memory"
         color: Dgop.cpuUsage > 90 ? Colors.danger

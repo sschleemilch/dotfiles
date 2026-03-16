@@ -9,7 +9,7 @@ Column {
 
     visible: Dgop.available
 
-    Meter {
+    Pie {
         value: Dgop.diskUsagePercent / 100
         icon: "hard_drive"
         color: Dgop.diskUsagePercent > 90 ? Colors.danger
