@@ -201,7 +201,8 @@ cursor {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "quickshell"
-spawn-sh-at-startup "swaybg -i ~/wallpaper.png"
+spawn-sh-at-startup "wl-pase --type text --watch cliphist store"
+spawn-at-startup "hyprpaper"
 
 hotkey-overlay {
     skip-at-startup
@@ -287,6 +288,7 @@ binds {
 
     Mod+Space hotkey-overlay-title="Applications" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "hyprlock"; }
+    Mod+C hotkey-overlay-title="Clipboard" { spawn-sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";}
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -463,7 +465,6 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    Mod+C { center-column; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
