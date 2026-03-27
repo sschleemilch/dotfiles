@@ -44,11 +44,8 @@ PanelWindow {
             spacing: root.spacing
 
             Clock {}
-            Group {
-                Cpu {}
-                Memory {}
-                Disk {}
-            }
+
+            Updates {}
         }
 
         Column {
