@@ -44,11 +44,8 @@ PanelWindow {
 
             spacing: root.spacing
 
-            Clock {}
-
+            Workspaces {}
             Updates {}
-
-            ActiveWindow {}
         }
 
         Column {
@@ -58,7 +55,8 @@ PanelWindow {
             anchors.verticalCenter: parent.verticalCenter
 
             spacing: root.spacing
-            Workspaces {}
+
+            ActiveWindow {}
         }
 
         Column {
@@ -71,11 +69,13 @@ PanelWindow {
             spacing: root.spacing
 
 
+            
             Brightness {}
             Sound {}
             Battery {}
-
             Network {}
+
+            Clock {}
         }
     }
 }

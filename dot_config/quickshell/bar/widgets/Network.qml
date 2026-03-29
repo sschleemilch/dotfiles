@@ -26,20 +26,6 @@ Column {
         color: root.status === "connected" ? Colors.fg: Colors.dimmed
     }
 
-    Text {
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: {
-            if (root.connectionType === "wifi" && root.ssid !== "")
-                return root.ssid.substring(0, 4);
-            if (root.connectionType === "ethernet")
-                return "ETH";
-            return "OFF";
-        }
-        font.family: Config.textFont
-        font.pixelSize: Config.textSize - 1
-        color: root.status === "connected" ? Colors.fg: Colors.dimmed
-    }
-
     Component.onCompleted: pollNetwork()
 
     Timer {

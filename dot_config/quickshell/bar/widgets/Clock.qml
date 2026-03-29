@@ -5,7 +5,7 @@ import qs.common
 Column {
     id: root
 
-    spacing: 0
+    spacing: -2
 
     anchors.horizontalCenter: parent.horizontalCenter
 
@@ -16,25 +16,27 @@ Column {
 
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
-        text: {
-            let h = clock.hours;
-            return (h < 10 ? "0" : "") + h;
-        }
+        text: Qt.locale().toString(clock.date, "hh:mm")
         font.family: Config.textFont
-        font.pixelSize: Config.textSize + 4
+        font.pixelSize: Config.textSize
+        color: Colors.fg
+    }
+
+
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        text: Qt.locale().toString(clock.date, "ddd")
+        font.family: Config.textFont
+        font.pixelSize: Config.textSize + 1
         font.bold: true
         color: Colors.fg
     }
 
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
-        text: {
-            let m = clock.minutes;
-            return (m < 10 ? "0" : "") + m;
-        }
+        text: Qt.locale().toString(clock.date, "dd.MM")
         font.family: Config.textFont
-        font.pixelSize: Config.textSize + 4
-        font.bold: true
-        color: Colors.dimmed
+        font.pixelSize: Config.textSize
+        color: Colors.fg
     }
 }

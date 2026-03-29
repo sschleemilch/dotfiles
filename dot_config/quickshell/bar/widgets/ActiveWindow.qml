@@ -15,15 +15,7 @@ Column {
     property var biggestWindow: HyprlandData.biggestWindowForWorkspace(HyprlandData.monitors[root.monitor?.id]?.activeWorkspace.id)
 
     anchors.horizontalCenter: parent.horizontalCenter
-    spacing: 4
 
-    Text {
-        anchors.horizontalCenter: parent.horizontalCenter
-        text: "select_window"
-        font.family: Config.iconFont
-        font.pixelSize: Config.iconSize
-        color: Colors.dimmed
-    }
 
     Row {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -32,7 +24,7 @@ Column {
         // App class
         Item {
             width: Config.textSize + 4
-            height: 150
+            height: 300
 
             Text {
                 width: parent.height
@@ -52,7 +44,7 @@ Column {
         // Window title
         Item {
             width: Config.textSize + 4
-            height: 150
+            height: 300
 
             Text {
                 width: parent.height
