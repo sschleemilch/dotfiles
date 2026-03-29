@@ -1,6 +1,7 @@
 import QtQuick
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Hyprland
 import qs.common
 import qs.bar.widgets
 
@@ -46,6 +47,8 @@ PanelWindow {
             Clock {}
 
             Updates {}
+
+            ActiveWindow {}
         }
 
         Column {
