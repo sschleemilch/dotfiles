@@ -10,5 +10,4 @@ Singleton {
     readonly property color dimmed: "#7f849c"
     readonly property color warning: "#f9e2af"
     readonly property color danger: "#f38ba8"
-    readonly property color ok: "#a6e3a1"
 }

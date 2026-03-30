@@ -17,7 +17,7 @@ Column {
         text: "package_2"
         font.family: Config.iconFont
         font.pixelSize: Config.iconSize
-        color: root.count > 0 ? Colors.ok : Colors.dimmed
+        color: root.count > 0 ? Colors.warning : Colors.dimmed
 
         MouseArea {
             anchors.fill: parent
@@ -27,10 +27,10 @@ Column {
 
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
-        text: root.checked ? (root.count > 0 ? root.count : "") : "?"
+        text: root.checked ? root.count : "?"
         font.family: Config.textFont
         font.pixelSize: Config.textSize
-        color: root.count > 0 ? Colors.ok : Colors.dimmed
+        color: root.count > 0 ? Colors.warning : Colors.dimmed
     }
 
     Timer {
