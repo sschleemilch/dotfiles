@@ -32,6 +32,7 @@ vim.o.nu = true -- line numbers
 
 vim.o.foldlevelstart = 99 -- Do not fold initially
 vim.wo.foldtext = '' -- Do not modify the line that is folded
+vim.o.foldmethod = 'indent'
 
 vim.opt.fillchars = {
     eob = ' ',
