@@ -33,10 +33,6 @@ later(function()
 end)
 
 later(function()
-    require('mini.ai').setup()
-end)
-
-later(function()
     local miniclue = require('mini.clue')
     miniclue.setup({
         triggers = {
