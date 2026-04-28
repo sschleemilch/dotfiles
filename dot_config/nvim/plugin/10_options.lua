@@ -1,8 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
-vim.o.clipboard = 'unnamedplus' -- Always sync clipboard with OS
-
 -- Enable all filetype plugins and syntax (if not enabled, for better startup)
 vim.cmd('filetype plugin indent on')
 if vim.fn.exists('syntax_on') ~= 1 then
@@ -54,13 +52,4 @@ Config.later(function()
     vim.diagnostic.config(diagnostic_opts)
 end)
 
-require('vim._core.ui2').enable({
-    msg = {
-        targets = {
-            progress = 'msg',
-        },
-        msg = {
-            timeout = 2000,
-        },
-    },
-})
+require('vim._core.ui2').enable({})
