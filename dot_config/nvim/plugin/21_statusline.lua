@@ -12,23 +12,41 @@ vim.o.showmode = false
 
 local separator = ' ▪ '
 
+local mode_hl_normal = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeNormal', link = false })
+local mode_hl_visual = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeVisual', link = false })
+local mode_hl_insert = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeInsert', link = false })
+local mode_hl_replace = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeReplace', link = false })
+local mode_hl_command = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeCommand', link = false })
+local mode_hl_other = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeOther', link = false })
+local mode_hl_inactive = vim.api.nvim_get_hl(0, { name = 'StatusLineNC', link = false })
+local normal = vim.api.nvim_get_hl(0, { name = 'Normal', link = false })
+
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormalSep', { fg = mode_hl_normal.bg })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsertSep', { fg = mode_hl_insert.bg })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisualSep', { fg = mode_hl_visual.bg })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplaceSep', { fg = mode_hl_replace.bg })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommandSep', { fg = mode_hl_command.bg })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeOtherSep', { fg = mode_hl_other.bg })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeInactive', { bg = mode_hl_inactive.fg, fg = normal.bg, bold = true })
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeInactiveSep', { fg = mode_hl_inactive.bg })
+
 -- Note that: \19 = ^S and \22 = ^V.
 local mode_map = {
-    ['n']   = { display = 'NOR', hl = 'Function' },
-    ['v']   = { display = 'VIS', hl = 'Keyword' },
-    ['V']   = { display = 'V-L', hl = 'Keyword' },
-    ['\22'] = { display = 'V-B', hl = 'Keyword' },
-    ['s']   = { display = 'SEL', hl = 'Keyword' },
-    ['S']   = { display = 'S-L', hl = 'Keyword' },
-    ['\19'] = { display = 'S-B', hl = 'Keyword' },
-    ['i']   = { display = 'INS', hl = 'String' },
-    ['R']   = { display = 'REP', hl = 'Statement' },
-    ['c']   = { display = 'CMD', hl = 'Type' },
-    ['r']   = { display = 'PRO', hl = 'Type' },
-    ['!']   = { display = 'SHE', hl = 'Type' },
-    ['t']   = { display = 'TER', hl = 'Type' },
+    ['n']   = { display = 'NOR', hl = 'MiniStatuslineModeNormal', sep = 'MiniStatuslineModeNormalSep' },
+    ['v']   = { display = 'VIS', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['V']   = { display = 'V-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['\22'] = { display = 'V-B', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['s']   = { display = 'SEL', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['S']   = { display = 'S-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['\19'] = { display = 'S-B', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['i']   = { display = 'INS', hl = 'MiniStatuslineModeInsert', sep = 'MiniStatuslineModeInsertSep' },
+    ['R']   = { display = 'REP', hl = 'MiniStatuslineModeReplace', sep = 'MiniStatuslineModeReplaceSep' },
+    ['c']   = { display = 'CMD', hl = 'MiniStatuslineModeCommand', sep = 'MiniStatuslineModeCommandSep' },
+    ['r']   = { display = 'PRO', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
+    ['!']   = { display = 'SHE', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
+    ['t']   = { display = 'TER', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
 }
-local mode_map_unknown = { display = 'OTH', hl = 'Error' }
+local mode_map_unknown = { display = 'OTH', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' }
 
 -- Caches the complete mode string to spare `string.format` calls entirely
 --- @type table<string, table<string, string>>
@@ -58,9 +76,10 @@ local function mode_component(mode, active)
     end
 
     local current = mode_map[mode] or mode_map_unknown
-    local hl = active and current.hl or ''
+    local hl = active and current.hl or 'MiniStatuslineModeInactive'
+    local hl_sep = active and current.sep or 'MiniStatuslineModeInactiveSep'
 
-    local result = string.format('%%#%s# %s %%* ', hl, current.display)
+    local result = string.format('%%#%s#%%#%s#%s%%#%s#%%* ', hl_sep, hl, current.display, hl_sep)
     cache[mode] = result
     return result
 end
