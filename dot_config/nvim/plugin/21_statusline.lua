@@ -32,19 +32,19 @@ vim.api.nvim_set_hl(0, 'MiniStatuslineModeInactiveSep', { fg = mode_hl_inactive.
 
 -- Note that: \19 = ^S and \22 = ^V.
 local mode_map = {
-    ['n']   = { display = 'NOR', hl = 'MiniStatuslineModeNormal', sep = 'MiniStatuslineModeNormalSep' },
-    ['v']   = { display = 'VIS', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['V']   = { display = 'V-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['n'] = { display = 'NOR', hl = 'MiniStatuslineModeNormal', sep = 'MiniStatuslineModeNormalSep' },
+    ['v'] = { display = 'VIS', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['V'] = { display = 'V-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
     ['\22'] = { display = 'V-B', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['s']   = { display = 'SEL', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['S']   = { display = 'S-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['s'] = { display = 'SEL', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
+    ['S'] = { display = 'S-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
     ['\19'] = { display = 'S-B', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['i']   = { display = 'INS', hl = 'MiniStatuslineModeInsert', sep = 'MiniStatuslineModeInsertSep' },
-    ['R']   = { display = 'REP', hl = 'MiniStatuslineModeReplace', sep = 'MiniStatuslineModeReplaceSep' },
-    ['c']   = { display = 'CMD', hl = 'MiniStatuslineModeCommand', sep = 'MiniStatuslineModeCommandSep' },
-    ['r']   = { display = 'PRO', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
-    ['!']   = { display = 'SHE', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
-    ['t']   = { display = 'TER', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
+    ['i'] = { display = 'INS', hl = 'MiniStatuslineModeInsert', sep = 'MiniStatuslineModeInsertSep' },
+    ['R'] = { display = 'REP', hl = 'MiniStatuslineModeReplace', sep = 'MiniStatuslineModeReplaceSep' },
+    ['c'] = { display = 'CMD', hl = 'MiniStatuslineModeCommand', sep = 'MiniStatuslineModeCommandSep' },
+    ['r'] = { display = 'PRO', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
+    ['!'] = { display = 'SHE', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
+    ['t'] = { display = 'TER', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
 }
 local mode_map_unknown = { display = 'OTH', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' }
 
@@ -92,7 +92,9 @@ local track_lsp = vim.schedule_wrap(function(buf)
     local attached_clients = vim.lsp.get_clients({ bufnr = buf })
 
     local names = vim.iter(attached_clients)
-        :filter(function(client) return map_lsps[client.name] ~= false end)
+        :filter(function(client)
+            return map_lsps[client.name] ~= false
+        end)
         :map(function(client)
             return map_lsps[client.name] or client.name:gsub('language.server', 'ls')
         end)
@@ -144,11 +146,13 @@ local function diagnostic_component(bufnr, mode, active)
 
     local parts = {}
     for severity, count in pairs(counts) do
-        parts[#parts + 1] = string.format('%s%s:%s%s',
+        parts[#parts + 1] = string.format(
+            '%s%s:%s%s',
             active and diagnostic_hls[severity] or '',
             signs[severity],
             count,
-            active and '%*' or '')
+            active and '%*' or ''
+        )
     end
     local result_str = table.concat(parts, ' ')
 
@@ -176,6 +180,7 @@ _G.statusline = function(active)
     local mode = vim.fn.mode()
     local busy = vim.o.busy
     return table.concat({
+        ' ',
         mode_component(mode, is_active),
         '%t %H%W%M%R',
         '%=',
@@ -183,8 +188,9 @@ _G.statusline = function(active)
         diagnostic_component(bufnr, mode, is_active),
         lsp_clients_component(bufnr),
         filetype_component(vim.bo[bufnr].filetype, is_active),
+        ' ',
     })
 end
 
 vim.go.statusline =
-'%{%(nvim_get_current_win()==#g:actual_curwin || &laststatus==3) ? v:lua.statusline(1) : v:lua.statusline(0)%}'
+    '%{%(nvim_get_current_win()==#g:actual_curwin || &laststatus==3) ? v:lua.statusline(1) : v:lua.statusline(0)%}'
