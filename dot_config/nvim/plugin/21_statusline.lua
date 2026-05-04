@@ -10,43 +10,26 @@ local signs = vim.tbl_extend('keep', user_signs, { 'E', 'W', 'I', 'H' })
 
 vim.o.showmode = false
 
-local separator = ' ▪ '
-
-local mode_hl_normal = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeNormal', link = false })
-local mode_hl_visual = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeVisual', link = false })
-local mode_hl_insert = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeInsert', link = false })
-local mode_hl_replace = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeReplace', link = false })
-local mode_hl_command = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeCommand', link = false })
-local mode_hl_other = vim.api.nvim_get_hl(0, { name = 'MiniStatuslineModeOther', link = false })
-local mode_hl_inactive = vim.api.nvim_get_hl(0, { name = 'StatusLineNC', link = false })
-local normal = vim.api.nvim_get_hl(0, { name = 'Normal', link = false })
-
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormalSep', { fg = mode_hl_normal.bg })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsertSep', { fg = mode_hl_insert.bg })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisualSep', { fg = mode_hl_visual.bg })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplaceSep', { fg = mode_hl_replace.bg })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommandSep', { fg = mode_hl_command.bg })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeOtherSep', { fg = mode_hl_other.bg })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeInactive', { bg = mode_hl_inactive.fg, fg = normal.bg, bold = true })
-vim.api.nvim_set_hl(0, 'MiniStatuslineModeInactiveSep', { fg = mode_hl_inactive.bg })
+-- local separator = ' ▪ '
+local separator = '  '
 
 -- Note that: \19 = ^S and \22 = ^V.
 local mode_map = {
-    ['n'] = { display = 'NOR', hl = 'MiniStatuslineModeNormal', sep = 'MiniStatuslineModeNormalSep' },
-    ['v'] = { display = 'VIS', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['V'] = { display = 'V-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['\22'] = { display = 'V-B', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['s'] = { display = 'SEL', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['S'] = { display = 'S-L', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['\19'] = { display = 'S-B', hl = 'MiniStatuslineModeVisual', sep = 'MiniStatuslineModeVisualSep' },
-    ['i'] = { display = 'INS', hl = 'MiniStatuslineModeInsert', sep = 'MiniStatuslineModeInsertSep' },
-    ['R'] = { display = 'REP', hl = 'MiniStatuslineModeReplace', sep = 'MiniStatuslineModeReplaceSep' },
-    ['c'] = { display = 'CMD', hl = 'MiniStatuslineModeCommand', sep = 'MiniStatuslineModeCommandSep' },
-    ['r'] = { display = 'PRO', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
-    ['!'] = { display = 'SHE', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
-    ['t'] = { display = 'TER', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' },
+    ['n'] = { display = 'NOR', hl = 'Type' },
+    ['v'] = { display = 'VIS', hl = 'Define' },
+    ['V'] = { display = 'V-L', hl = 'Define' },
+    ['\22'] = { display = 'V-B', hl = 'Define' },
+    ['s'] = { display = 'SEL', hl = 'Define' },
+    ['S'] = { display = 'S-L', hl = 'Define' },
+    ['\19'] = { display = 'S-B', hl = 'Define' },
+    ['i'] = { display = 'INS', hl = 'Function' },
+    ['R'] = { display = 'REP', hl = 'Statement' },
+    ['c'] = { display = 'CMD', hl = 'String' },
+    ['r'] = { display = 'PRO', hl = 'Error' },
+    ['!'] = { display = 'SHE', hl = 'Error' },
+    ['t'] = { display = 'TER', hl = 'Error' },
 }
-local mode_map_unknown = { display = 'OTH', hl = 'MiniStatuslineModeOther', sep = 'MiniStatuslineModeOtherSep' }
+local mode_map_unknown = { display = 'OTH', hl = 'Error' }
 
 -- Caches the complete mode string to spare `string.format` calls entirely
 --- @type table<string, table<string, string>>
@@ -76,10 +59,9 @@ local function mode_component(mode, active)
     end
 
     local current = mode_map[mode] or mode_map_unknown
-    local hl = active and current.hl or 'MiniStatuslineModeInactive'
-    local hl_sep = active and current.sep or 'MiniStatuslineModeInactiveSep'
+    local hl = active and current.hl or ''
 
-    local result = string.format('%%#%s#%%#%s#%s%%#%s#%%* ', hl_sep, hl, current.display, hl_sep)
+    local result = string.format('%%#%s#%s%%*', hl, current.display)
     cache[mode] = result
     return result
 end
@@ -98,12 +80,8 @@ local track_lsp = vim.schedule_wrap(function(buf)
         :map(function(client)
             return map_lsps[client.name] or client.name:gsub('language.server', 'ls')
         end)
-        :totable()
-    if #names > 0 then
-        lsp_clients[buf] = table.concat(names, ', ')
-    else
-        lsp_clients[buf] = nil
-    end
+        :join(', ')
+    lsp_clients[buf] = names ~= '' and names or nil
 end)
 
 Config.new_autocmd({ 'LspAttach', 'LspDetach', 'BufEnter' }, '*', function(data)
@@ -126,13 +104,6 @@ for _, buf in ipairs(vim.api.nvim_list_bufs()) do
 end
 
 --- @param bufnr integer
---- @return  string
-local function lsp_clients_component(bufnr)
-    local clients = lsp_clients[bufnr]
-    return clients and (clients .. separator) or ''
-end
-
---- @param bufnr integer
 --- @param mode string
 --- @param active boolean
 --- @return string
@@ -145,18 +116,14 @@ local function diagnostic_component(bufnr, mode, active)
     local counts = diagnostics_cache[bufnr] or {}
 
     local parts = {}
+    local prefix_hls = active and diagnostic_hls or {}
+    local suffix = active and '%*' or ''
     for severity, count in pairs(counts) do
-        parts[#parts + 1] = string.format(
-            '%s%s:%s%s',
-            active and diagnostic_hls[severity] or '',
-            signs[severity],
-            count,
-            active and '%*' or ''
-        )
+        parts[#parts + 1] = string.format('%s%s:%s%s', prefix_hls[severity] or '', signs[severity], count, suffix)
     end
     local result_str = table.concat(parts, ' ')
 
-    return result_str .. (result_str ~= '' and separator or '')
+    return result_str
 end
 
 --- @param filetype string
@@ -168,9 +135,9 @@ local function filetype_component(filetype, active)
     end
     local icon, hl = MiniIcons.get('filetype', filetype) --luacheck: ignore
     if active then
-        return string.format('%%#%s#%s %s ', hl, icon, filetype)
+        return string.format('%%#%s#%s %s', hl, icon, filetype)
     end
-    return string.format('%s %s ', icon, filetype)
+    return string.format('%s %s', icon, filetype)
 end
 
 ---@param active integer
@@ -179,17 +146,21 @@ _G.statusline = function(active)
     local is_active = active == 1
     local mode = vim.fn.mode()
     local busy = vim.o.busy
-    return table.concat({
-        ' ',
-        mode_component(mode, is_active),
-        '%t %H%W%M%R',
-        '%=',
-        (busy and busy > 0 and '◐ ') or '',
+
+    local left = mode_component(mode, is_active) .. separator .. '%t%H%W%M%R'
+
+    local right = vim.iter({
+        (busy and busy > 0 and '◐') or '',
         diagnostic_component(bufnr, mode, is_active),
-        lsp_clients_component(bufnr),
+        lsp_clients[bufnr] or '',
         filetype_component(vim.bo[bufnr].filetype, is_active),
-        ' ',
     })
+        :filter(function(s)
+            return s ~= ''
+        end)
+        :join(separator)
+
+    return ' ' .. left .. '%=' .. right .. ' '
 end
 
 vim.go.statusline =
