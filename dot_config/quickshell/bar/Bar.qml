@@ -45,7 +45,6 @@ PanelWindow {
             spacing: root.spacing
 
             Workspaces {}
-            Updates {}
         }
 
         Column {
@@ -70,6 +69,7 @@ PanelWindow {
 
 
             
+            Updates {}
             Brightness {}
             Sound {}
             Battery {}
