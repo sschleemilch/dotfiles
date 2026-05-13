@@ -1,0 +1,17 @@
+{{- if eq .chezmoi.hostname "desos" }}
+hl.monitor({
+	output = "DP-1",
+	mode = "2560x1440@144",
+	position = "0x0",
+	---@diagnostic disable-next-line: assign-type-mismatch
+	scale = 1,
+})
+{{ else if eq .chezmoi.hostname "ladon" -}}
+hl.monitor({
+	output = "eDP-1",
+	mode = "1920x1200@60",
+	position = "0x0",
+	---@diagnostic disable-next-line: assign-type-mismatch
+	scale = 1,
+})
+{{- end }}
