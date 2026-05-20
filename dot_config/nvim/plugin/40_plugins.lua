@@ -202,7 +202,7 @@ later(function()
     end)
 end)
 
-later(function()
+now_if_args(function()
     add({ 'https://github.com/mistweaverco/kulala.nvim' })
     require('kulala').setup({})
 end)
