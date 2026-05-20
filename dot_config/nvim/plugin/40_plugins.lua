@@ -43,6 +43,7 @@ now_if_args(function()
         'yaml',
         'rust',
         'ron',
+        'http',
     }
     local isnt_installed = function(lang)
         return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0
@@ -199,4 +200,9 @@ later(function()
             end
         end
     end)
+end)
+
+later(function()
+    add({ 'https://github.com/mistweaverco/kulala.nvim' })
+    require('kulala').setup({})
 end)
