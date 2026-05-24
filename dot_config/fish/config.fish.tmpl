@@ -35,11 +35,6 @@ set -g fish_greeting
 
 if status is-interactive
   fish_vi_key_bindings
-  function starship_transient_prompt_func
-    starship module character
-  end
-  starship init fish | source
-  enable_transience
   zoxide init fish | source
   fzf --fish | source
   direnv hook fish | source
@@ -55,10 +50,6 @@ if status is-interactive
   abbr -a v nvim
   abbr -a gg lazygit
   abbr -a cm chezmoi
-{{- if eq .chezmoi.os "linux" }}
-  abbr -a hypr 'if uwsm check may-start; exec uwsm start hyprland.desktop; end'
-  abbr -a hx helix
-{{- end }}
 end
 
 source ~/.config/fish/colors/{{ .colorscheme }}.fish
@@ -74,3 +65,14 @@ set -x FZF_DEFAULT_OPTS "
     $FZF_COLORS"
 
 set -x _ZO_FZF_OPTS $FZF_DEFAULT_OPTS
+
+set -g tide_prompt_transient_enabled true
+set -g tide_left_prompt_items pwd git jobs cmd_duration newline character
+set -g tide_right_prompt_items status direnv node python rustc go
+set -g tide_cmd_duration_color yellow
+set -g tide_jobs_color white
+set -g tide_python_icon py
+set -g tide_git_icon 
+set -g tide_node_icon nodejs
+set -g tide_go_icon go
+set -g tide_rustc_icon rust
