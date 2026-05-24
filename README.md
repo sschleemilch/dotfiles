@@ -3,15 +3,6 @@
  Dotfiles for <a href="https://github.com/sschleemilch">sschleemilch</a>
 </h3>
 
-[![Linux](https://img.shields.io/badge/Linux-cad3f5?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/sschleemilch/dotfiles/blob/main)
-[![Neovim](https://img.shields.io/badge/Neovim-cad3f5?style=for-the-badge&logo=neovim&logoColor=black)](https://neovim.io/)
-[![Kitty](https://img.shields.io/badge/Kitty-cad3f5?style=for-the-badge&logo=gnometerminal&logoColor=black)](https://sw.kovidgoyal.net/kitty/)
-[![Fish](https://img.shields.io/badge/Fish-cad3f5?style=for-the-badge&logo=fishshell&logoColor=black)](https://fishshell.com/)
-[![FZF](https://img.shields.io/badge/FZF-cad3f5?style=for-the-badge&logo=searxng&logoColor=black)](https://github.com/junegunn/fzf)
-[![Starship](https://img.shields.io/badge/Starship-cad3f5?style=for-the-badge&logo=starship&logoColor=black)](https://starship.rs/)
-[![Direnv](https://img.shields.io/badge/Direnv-cad3f5?style=for-the-badge&logo=dotenv&logoColor=black)](https://github.com/direnv/direnv)
-[![Zoxide](https://img.shields.io/badge/Zoxide-cad3f5?style=for-the-badge&logo=files&logoColor=black)](https://github.com/ajeetdsouza/zoxide)
-
 My dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 `~/.config/chezmoi/chezmoi.toml` data values:
