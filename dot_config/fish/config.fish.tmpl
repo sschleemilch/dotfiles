@@ -1,31 +1,22 @@
-function add_to_fish_user_paths_if_exists
+function add_to_path_if_exsting
     for dir in $argv
         if test -d $dir
-            set -Ua fish_user_paths $dir
+            fish_add_path --path $dir
         end
     end
 end
  
-add_to_fish_user_paths_if_exists $HOME/.local/bin $HOME/go/bin /usr/local/bin/ $HOME/.local/share/bob/nvim-bin
+add_to_path_if_exsting $HOME/.local/bin $HOME/go/bin /usr/local/bin/ $HOME/.local/share/bob/nvim-bin
  
 {{ if eq .chezmoi.os "darwin" }}
-add_to_fish_user_paths_if_exists /opt/homebrew/bin
+add_to_path_if_exsting /opt/homebrew/bin
 set -x SHELL /opt/homebrew/bin/fish
 {{ end }}
 
-
-function prepend_to_sys_path_if_exists
-    for dir in $argv
-        if test -d $dir
-            set -gx PATH $dir $PATH
-        end
-    end
-end
-
 {{- if eq .chezmoi.hostname "LMACL4Y3RKQ9" }}
-prepend_to_sys_path_if_exists /opt/homebrew/opt/python@3.13/libexec/bin
-prepend_to_sys_path_if_exists /opt/homebrew/opt/openjdk@21/bin
-add_to_fish_user_paths_if_exists $HOME/Library/Android/sdk/platform-tools
+add_to_path_if_exsting /opt/homebrew/opt/python@3.13/libexec/bin
+add_to_path_if_exsting /opt/homebrew/opt/openjdk@21/bin
+add_to_path_if_exsting $HOME/Library/Android/sdk/platform-tools
 set -x http_proxy 127.0.0.1:3128
 set -x https_proxy 127.0.0.1:3128
 set -x no_proxy 127.0.0.1,localhost,.bmwgroup.net,.cloud.bmw
@@ -40,7 +31,7 @@ set -x MANPAGER 'nvim +Man!'
 set -x K9S_CONFIG_DIR ~/.config/k9s
 set -x RIPGREP_CONFIG_PATH ~/.config/ripgreprc
 
-set -U fish_greeting
+set -g fish_greeting
 
 if status is-interactive
   fish_vi_key_bindings
