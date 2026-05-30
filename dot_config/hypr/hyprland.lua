@@ -34,10 +34,12 @@ hl.config({
   },
 })
 
+hl.window_rule({ match = { title = 'launcher' }, float = true, size = { 1000, 800 } })
+
 hl.on('hyprland.start', function()
   hl.exec_cmd('hyprpaper')
   hl.exec_cmd('systemctl --user start hyprpolkitagent')
-  hl.exec_cmd('quickshell')
+  hl.exec_cmd('qs -c Bar')
 end)
 
 hl.gesture({
@@ -48,7 +50,7 @@ hl.gesture({
 
 local mainMod = 'SUPER'
 
-hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('fuzzel'))
+hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('kitty --title=launcher -e launcher.fish'))
 hl.bind(mainMod .. ' + escape', hl.dsp.exec_cmd('hyprlock'))
 hl.bind(mainMod .. ' + S', hl.dsp.exec_cmd('grimblast save area'))
 hl.bind(mainMod .. ' + Q', hl.dsp.window.close())
