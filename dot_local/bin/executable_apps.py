@@ -13,7 +13,7 @@ DIRS: list[Path] = [
     HOME / ".local/share/applications",
 ]
 
-CACHE = HOME / ".cache/launcher/cache.json"
+CACHE = HOME / ".cache/sschleemilch/apps.json"
 
 
 @dataclass

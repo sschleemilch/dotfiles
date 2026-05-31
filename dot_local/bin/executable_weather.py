@@ -4,7 +4,7 @@ import urllib.request
 from datetime import date, datetime
 from pathlib import Path
 
-CACHE = Path.home() / ".cache/basti/weather.json"
+CACHE = Path.home() / ".cache/sschleemilch/weather.json"
 
 # Mapping of WMO weather interpretation codes to Material Symbols icon names
 WEATHER_CODE_ICONS = {
