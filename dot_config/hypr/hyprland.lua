@@ -3,6 +3,8 @@ require('animations')
 
 local colors = require('colorscheme')
 
+hl.env('MOZ_ENABLE_WAYLAND', '1')
+
 hl.config({
   misc = {
     force_default_wallpaper = 0,
