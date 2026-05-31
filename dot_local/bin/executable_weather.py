@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import json
 import urllib.request
-from datetime import date, datetime
+from datetime import datetime
 from pathlib import Path
 
 CACHE = Path.home() / ".cache/sschleemilch/weather.json"
@@ -41,17 +41,23 @@ WEATHER_CODE_ICONS = {
 URL = (
     "https://api.open-meteo.com/v1/forecast"
     "?latitude=48.1374&longitude=11.5755"
-    "&hourly=temperature_2m,weather_code"
+    "&current=temperature_2m,weather_code"
     "&timezone=Europe%2FBerlin"
-    "&forecast_days=1"
+    "&forecast_days=0"
 )
+
+CACHE_TTL_SECONDS = 3600
 
 
 def load_cache() -> dict | None:
     if not CACHE.exists():
         return None
     cached = json.loads(CACHE.read_text())
-    if cached.get("date") != date.today().isoformat():
+    cached_at = cached.get("cached_at")
+    if cached_at is None:
+        return None
+    age = datetime.now().timestamp() - cached_at
+    if age > CACHE_TTL_SECONDS:
         return None
     return cached
 
@@ -66,25 +72,12 @@ def fetch_and_cache() -> dict:
         data = json.loads(resp.read())
 
     payload = {
-        "date": date.today().isoformat(),
-        "times": data["hourly"]["time"],
-        "temperatures": data["hourly"]["temperature_2m"],
-        "weather_codes": data["hourly"]["weather_code"],
+        "cached_at": datetime.now().timestamp(),
+        "temperature": data["current"]["temperature_2m"],
+        "weather_code": data["current"]["weather_code"],
     }
     save_cache(payload)
     return payload
-
-
-def current_hour_index(times: list[str]) -> int:
-    now = datetime.now()
-    current_prefix = now.strftime("%Y-%m-%dT%H:")
-    for i, t in enumerate(times):
-        if t.startswith(current_prefix):
-            return i
-    return min(
-        range(len(times)),
-        key=lambda i: abs(datetime.fromisoformat(times[i]).hour - now.hour),
-    )
 
 
 def get_weather() -> dict:
@@ -92,12 +85,8 @@ def get_weather() -> dict:
     if cached is None:
         cached = fetch_and_cache()
 
-    idx = current_hour_index(cached["times"])
-    temperature = cached["temperatures"][idx]
-    code = cached["weather_codes"][idx]
-    icon = WEATHER_CODE_ICONS.get(code, "question_mark")
-
-    return {"temperature": temperature, "icon": icon}
+    icon = WEATHER_CODE_ICONS.get(cached["weather_code"], "question_mark")
+    return {"temperature": cached["temperature"], "icon": icon}
 
 
 if __name__ == "__main__":
