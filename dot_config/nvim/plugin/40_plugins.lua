@@ -142,10 +142,7 @@ later(function()
 end)
 
 later(function()
-    add({ 'https://github.com/MunsMan/kitty-navigator.nvim' })
-    require('kitty-navigator').setup({
-        keybindings = {},
-    })
+    add({ 'https://github.com/christoomey/vim-tmux-navigator' })
 end)
 
 later(function()
