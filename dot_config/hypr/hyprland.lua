@@ -52,7 +52,7 @@ hl.gesture({
 
 local mainMod = 'SUPER'
 
-hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('kitty --title=launcher -e launcher.fish'))
+hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('foot --title=launcher -e launcher.fish'))
 hl.bind(mainMod .. ' + escape', hl.dsp.exec_cmd('hyprlock'))
 hl.bind(mainMod .. ' + S', hl.dsp.exec_cmd('grimblast save area'))
 hl.bind(mainMod .. ' + Q', hl.dsp.window.close())
