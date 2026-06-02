@@ -54,7 +54,7 @@ local mainMod = 'SUPER'
 
 hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('kitty --title=launcher -e launcher.fish'))
 hl.bind(mainMod .. ' + escape', hl.dsp.exec_cmd('hyprlock'))
-hl.bind(mainMod .. ' + return', hl.dsp.exec_cmd('ghostty'))
+hl.bind(mainMod .. ' + return', hl.dsp.exec_cmd('kitty'))
 hl.bind(mainMod .. ' + S', hl.dsp.exec_cmd('grimblast save area'))
 hl.bind(mainMod .. ' + V', hl.dsp.window.float({ action = 'toggle' }))
 hl.bind(mainMod .. ' + Q', hl.dsp.window.close())
