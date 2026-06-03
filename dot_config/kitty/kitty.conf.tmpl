@@ -12,7 +12,7 @@ window_padding_width 0 5
 window_border_width 1
 
 enable_audio_bell no
-enabled_layouts grid
+enabled_layouts grid,splits
 
 macos_quit_when_last_window_closed yes
 
@@ -37,8 +37,17 @@ map ctrl+b>9 goto_tab 9
 map ctrl+b>c new_tab
 map ctrl+b>, set_tab_title
 
-map ctrl+shift+enter launch --cwd=current
-map cmd+enter launch --cwd=current
+map ctrl+b>% launch --location=vsplit --cwd=current
+map ctrl+b>" launch --location=hsplit --cwd=current
+
+map ctrl+b>h move_window left
+map ctrl+b>j move_window down 
+map ctrl+b>k move_window up
+map ctrl+b>l move_window right
+
+map ctrl+b>f show_scrollback
+
+scrollback_pager nvim --cmd 'set eventignore=FileType' +'nnoremap q ZQ' +'call nvim_open_term(0, {})' +'set nomodified nolist' +'$' -
 
 allow_remote_control yes
 
