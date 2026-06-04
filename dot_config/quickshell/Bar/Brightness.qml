@@ -2,34 +2,28 @@ import QtQuick
 import qs.services
 
 Item {
-    implicitWidth: pill.implicitWidth
-    implicitHeight: pill.implicitHeight
-    anchors.verticalCenter: parent.verticalCenter
+    implicitWidth: content.implicitWidth
+    implicitHeight: content.implicitHeight
 
     visible: Brightness.available
 
-    Group {
-        id: pill
+    Row {
+        id: content
 
-        padding: 6
-        radius: 8
         spacing: 4
-        borderWidth: 0
-        color: Colors.subtle
-        colorOpacity: 1
 
         Text {
             text: "brightness_6"
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: Colors.base
+            color: Colors.text
         }
 
         Text {
             text: Brightness.level + "%"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.base
+            color: Colors.text
         }
     }
 

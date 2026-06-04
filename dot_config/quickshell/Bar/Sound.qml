@@ -2,32 +2,27 @@ import QtQuick
 import qs.services
 
 Item {
-    implicitWidth: pill.implicitWidth
-    implicitHeight: pill.implicitHeight
+    implicitWidth: content.implicitWidth
+    implicitHeight: content.implicitHeight
     anchors.verticalCenter: parent.verticalCenter
 
-    Group {
-        id: pill
+    Row {
+        id: content
 
-        padding: 6
-        radius: 8
         spacing: 4
-        borderWidth: 0
-        color: Colors.subtle
-        colorOpacity: 1
 
         Text {
             text: Sound.muted ? "volume_off" : (Sound.volumePercent > 50 ? "volume_up" : "volume_down")
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: Colors.base
+            color: Colors.text
         }
 
         Text {
             text: Sound.muted ? "0%" : Sound.volumePercent + "%"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.base
+            color: Colors.text
         }
 
     }

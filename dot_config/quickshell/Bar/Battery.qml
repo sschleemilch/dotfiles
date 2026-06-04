@@ -2,21 +2,19 @@ import QtQuick
 import qs.services
 
 Item {
-    implicitWidth: pill.implicitWidth
-    implicitHeight: pill.implicitHeight
+    id: root
+    implicitWidth: content.implicitWidth
+    implicitHeight: content.implicitHeight
     anchors.verticalCenter: parent.verticalCenter
 
     visible: Battery.available
 
-    Group {
-        id: pill
+    property color c: Battery.isLow ? Colors.love : Battery.charging ? Colors.foam : Colors.rose
 
-        padding: 6
-        radius: 6
+    Row {
+        id: content
+
         spacing: 4
-        borderWidth: 0
-        color: Battery.low ? Colors.love : Battery.charging ? Colors.foam : Colors.rose
-        colorOpacity: 1
 
         Text {
             text: {
@@ -39,30 +37,30 @@ Item {
             }
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: Colors.base
+            color: root.c
         }
 
         Text {
             text: Math.round(Battery.level) + "%" 
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.base
+            color: root.c
         }
 
         Text {
             visible: !Battery.charging
-            text: " " + Battery.timeToEmpty
+            text: "(" + Battery.timeToEmpty + ")"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.base
+            color: Colors.subtle
         }
 
         Text {
             visible: Battery.charging
-            text: " " + Battery.timeToFull
+            text: "(" + Battery.timeToFull + ")"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.base
+            color: Colors.subtle
         }
 
     }

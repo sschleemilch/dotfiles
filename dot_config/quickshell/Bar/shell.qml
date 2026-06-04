@@ -14,11 +14,10 @@ ShellRoot {
             id: root
 
             required property var modelData
-            property int spacing: 6
 
             screen: modelData
-            implicitHeight: 52
-            color: "transparent"
+            implicitHeight: 35
+            color: Colors.base
 
             anchors {
                 top: true
@@ -27,51 +26,42 @@ ShellRoot {
             }
 
             margins {
-                top: 5
+                top: 0
                 bottom: 0
-                left: 5
-                right: 5
+                left: 0
+                right: 0
             }
 
             Item {
                 anchors.fill: parent
+                anchors.leftMargin: 12
+                anchors.rightMargin: 12
 
                 // LEFT
                 RowLayout {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: root.spacing
+                    spacing: 12
 
-                    Group {
-                        Layout.fillHeight: true
 
-                        Workspaces {
-                        }
-
+                    Workspaces {
                     }
-                    Group {
-                        Layout.fillHeight: true
 
-                        ActiveWindow {
-                        }
-
+                    ActiveWindow {
                     }
+
 
                 }
 
                 // CENTER
                 RowLayout {
                     anchors.centerIn: parent
-                    spacing: root.spacing
+                    spacing: 12
 
-                    Group {
-                        Layout.fillHeight: true
+                    Clock {
+                    }
 
-                        Clock {
-                        }
-
-                        Weather {
-                        }
+                    Weather {
                     }
 
                 }
@@ -80,28 +70,24 @@ ShellRoot {
                 RowLayout {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: root.spacing
-
-                    Group {
-                        Layout.fillHeight: true
-
-                        Updates {
-                        }
+                    spacing: 16
 
 
-                        Brightness {
-                        }
-
-                        Sound {
-                        }
-
-                        Network {
-                        }
-
-                        Battery {
-                        }
-
+                    Updates {
                     }
+
+                    Brightness {
+                    }
+
+                    Sound {
+                    }
+
+                    Network {
+                    }
+
+                    Battery {
+                    }
+
 
                 }
 

@@ -7,6 +7,6 @@ Singleton {
     readonly property string textFont: "MonoLisa"
     readonly property int iconSize: 16
     readonly property int textSize: 14
-    readonly property int textSizeLarge: 24
-    readonly property int textSizeSmall: 10
+    readonly property int textSizeLarge: 20
+    readonly property int textSizeSmall: 12
 }

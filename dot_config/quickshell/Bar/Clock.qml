@@ -11,22 +11,24 @@ Item {
         precision: SystemClock.Minutes
     }
 
-    Column {
+    Row {
         id: data
 
-        spacing: -4
+        spacing: 4
 
         Text {
+            id: timeText
             text: Qt.formatDateTime(clock.date, "hh:mm")
             font.pixelSize: Config.textSize
             font.bold: true
-            color: Colors.foam
+            color: Colors.text
         }
 
         Text {
             text: Qt.formatDateTime(clock.date, "ddd, MMM d")
             font.pixelSize: Config.textSizeSmall
             color: Colors.subtle
+            anchors.baseline: timeText.baseline
         }
 
     }

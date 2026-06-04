@@ -2,19 +2,17 @@ import QtQuick
 import qs.services
 
 Item {
-    implicitWidth: pill.implicitWidth
-    implicitHeight: pill.implicitHeight
+    id: root
+    implicitWidth: content.implicitWidth
+    implicitHeight: content.implicitHeight
     anchors.verticalCenter: parent.verticalCenter
 
-    Group {
-        id: pill
+    property color col: Network.status === "connected" ? Colors.text : Colors.love
 
-        padding: 6
-        radius: 8
+    Row {
+        id: content
+
         spacing: 4
-        borderWidth: 0
-        color: Network.status === "connected" ? Colors.subtle : Colors.gold
-        colorOpacity: 1
 
         Text {
             text: {
@@ -28,13 +26,13 @@ Item {
             }
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: Colors.background
+            color: root.col
         }
 
         Text {
             text: {
                 if (Network.connectionType === "wifi")
-                    return Network.ssid || "WiFi";
+                    return Network.ssid.length > 4 ? Network.ssid.slice(0, 4) + "…" : Network.ssid;
 
                 if (Network.connectionType === "ethernet")
                     return "Ethernet";
@@ -43,7 +41,7 @@ Item {
             }
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.background
+            color: root.col
         }
 
     }

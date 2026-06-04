@@ -8,7 +8,7 @@ Row {
     Text {
         text: Weather.weatherIcon
         font.family: Config.iconFont
-        font.pixelSize: Config.textSizeLarge
+        font.pixelSize: Config.iconSize
         color: Colors.text
         anchors.verticalCenter: parent.verticalCenter
     }
@@ -18,7 +18,7 @@ Row {
         font.family: Config.textFont
         font.pixelSize: Config.textSize
         font.bold: true
-        color: Weather.temperature >= 30 ? Colors.love : Weather.temperature >= 20 ? Colors.gold : Colors.foam
+        color: Weather.temperature >= 30 ? Colors.love : Weather.temperature >= 20 ? Colors.gold : Colors.iris
         anchors.verticalCenter: parent.verticalCenter
     }
 
