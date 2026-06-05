@@ -64,7 +64,7 @@ later(function()
         window = {
             delay = 500,
             config = {
-                border = 'rounded',
+                border = 'single',
             },
         },
     })
@@ -115,7 +115,7 @@ later(function()
             width = width,
             row = math.floor(0.5 * (vim.o.lines - height)),
             col = math.floor(0.5 * (vim.o.columns - width)),
-            border = 'rounded',
+            border = 'single',
         }
     end
     require('mini.pick').setup({
