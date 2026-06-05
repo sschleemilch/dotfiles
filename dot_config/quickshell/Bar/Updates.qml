@@ -8,7 +8,7 @@ Item {
     property bool checked: false
     property color col: checked && count > 0 ? Colors.foam : Colors.subtle
 
-    function pollUpdates() {
+    function poll() {
         if (checkupdatesProcess.running)
             return ;
 
@@ -22,6 +22,8 @@ Item {
         root.count = updateCount;
         root.checked = true;
     }
+
+    Component.onCompleted: root.poll()
 
     implicitWidth: content.implicitWidth
     implicitHeight: content.implicitHeight
@@ -48,13 +50,13 @@ Item {
 
     MouseArea {
         anchors.fill: content
-        onClicked: root.pollUpdates()
+        onClicked: root.poll()
     }
 
     Timer {
-        interval: 10000
+        interval: 300000
         running: true
-        onTriggered: root.pollUpdates()
+        onTriggered: root.poll()
     }
 
     Process {

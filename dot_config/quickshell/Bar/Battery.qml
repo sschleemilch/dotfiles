@@ -48,16 +48,7 @@ Item {
         }
 
         Text {
-            visible: !Battery.charging
-            text: "(" + Battery.timeToEmpty + ")"
-            font.family: Config.textFont
-            font.pixelSize: Config.textSize
-            color: Colors.subtle
-        }
-
-        Text {
-            visible: Battery.charging
-            text: "(" + Battery.timeToFull + ")"
+            text: "(" + (Battery.charging ? Battery.timeToFull : Battery.timeToEmpty) + ")"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
             color: Colors.subtle
