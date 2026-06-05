@@ -47,7 +47,7 @@ Item {
     }
 
     MouseArea {
-        anchors.fill: pill
+        anchors.fill: content
         onClicked: root.pollUpdates()
     }
 

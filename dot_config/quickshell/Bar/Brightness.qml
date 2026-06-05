@@ -28,7 +28,7 @@ Item {
     }
 
     MouseArea {
-        anchors.fill: pill
+        anchors.fill: content
         acceptedButtons: Qt.NoButton
 
         onWheel: event => {

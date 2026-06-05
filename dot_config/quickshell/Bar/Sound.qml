@@ -28,7 +28,7 @@ Item {
     }
 
     MouseArea {
-        anchors.fill: pill
+        anchors.fill: content
         acceptedButtons: Qt.LeftButton
         onClicked: Sound.toggleMute()
         onWheel: (event) => {

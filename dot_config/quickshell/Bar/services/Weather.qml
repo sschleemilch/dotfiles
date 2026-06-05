@@ -8,6 +8,8 @@ Singleton {
 
     readonly property string home: Quickshell.env("HOME")
 
+    property bool available: false
+
     property real temperature: 0
     property string weatherIcon: ""
 
@@ -22,7 +24,7 @@ Singleton {
     Component.onCompleted: root.poll()
 
     Timer {
-        interval: 30000
+        interval: 60000
         repeat: true
         running: true
         onTriggered: root.poll()
@@ -37,6 +39,7 @@ Singleton {
             id: clientsCollector
             onStreamFinished: {
                 try {
+                    root.available = true
                     const w = JSON.parse(data)
                     temperature = w.temperature
                     weatherIcon = w.icon

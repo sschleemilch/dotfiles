@@ -5,6 +5,8 @@ Row {
     spacing: 4
     height: parent.height
 
+    visible: Weather.available
+
     Text {
         text: Weather.weatherIcon
         font.family: Config.iconFont
