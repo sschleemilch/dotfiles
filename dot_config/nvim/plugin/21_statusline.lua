@@ -160,7 +160,7 @@ _G.statusline = function(active)
         end)
         :join(separator)
 
-    return ' ' .. left .. '%=' .. right .. ' '
+    return left .. '%=' .. right
 end
 
 vim.go.statusline =
