@@ -17,7 +17,7 @@ ShellRoot {
 
             screen: modelData
             implicitHeight: 35
-            color: Colors.base
+            color: Colors.surface
 
             anchors {
                 top: true
@@ -80,6 +80,12 @@ ShellRoot {
                     }
 
                     Sound {
+                    }
+
+                    Ram {
+                    }
+
+                    Disk {
                     }
 
                     Network {

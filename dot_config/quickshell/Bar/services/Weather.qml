@@ -39,10 +39,10 @@ Singleton {
             id: clientsCollector
             onStreamFinished: {
                 try {
-                    root.available = true
                     const w = JSON.parse(data)
                     temperature = w.temperature
                     weatherIcon = w.icon
+                    root.available = true
                 } catch (e) {
                     console.warn("Weather: failed to parse output:", e, "data:", data)
                 }
