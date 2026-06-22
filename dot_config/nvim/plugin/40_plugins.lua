@@ -123,6 +123,7 @@ later(function()
             proto = { 'buf' },
             astro = { 'prettier' },
             nix = { 'nixfmt' },
+            rust = { 'rustfmt' },
         },
         format_on_save = {
             timeout_ms = 1000,
@@ -139,13 +140,6 @@ end)
 
 later(function()
     add({ 'https://github.com/tpope/vim-fugitive' })
-end)
-
-later(function()
-    add({ 'https://github.com/MunsMan/kitty-navigator.nvim' })
-    require('kitty-navigator').setup({
-        keybindings = {},
-    })
 end)
 
 later(function()
