@@ -1,0 +1,5 @@
+[mode]
+
+normal_main = { fg = "black", bg = "blue" }
+normal_alt = { fg = "black", bg = "white" }
+
