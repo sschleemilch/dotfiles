@@ -1,6 +1,6 @@
 -- Highlight on yank
-Config.new_autocmd('TextYankPost', nil, function()
-    vim.hl.on_yank()
+Config.new_autocmd({ 'TextYankPost', 'TextPutPost' }, nil, function()
+    vim.hl.hl_op({ timeout = 100 })
 end, 'Highlight on yank')
 
 -- go to last loc when opening a buffer
