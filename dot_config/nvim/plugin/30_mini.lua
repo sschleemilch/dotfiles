@@ -124,7 +124,9 @@ later(function()
     vim.ui.select = MiniPick.ui_select
 
     vim.keymap.set('n', '<leader>f', function()
-        MiniPick.builtin.files()
+        MiniPick.builtin.files({
+            tool = 'fd'
+        })
     end, { desc = 'Find file' })
     vim.keymap.set('n', '<leader>r', function()
         MiniExtra.pickers.oldfiles({ current_dir = true })
