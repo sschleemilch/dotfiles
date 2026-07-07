@@ -125,17 +125,15 @@ later(function()
             nix = { 'nixfmt' },
             rust = { 'rustfmt' },
         },
-        format_on_save = {
-            timeout_ms = 1000,
-            lsp_fallback = true,
-        },
         default_format_opts = {
-            timeout_ms = 1000,
-            async = false,
-            quiet = false,
+            timeout_ms = 3000,
             lsp_format = 'fallback',
         },
     })
+
+    vim.keymap.set('n', '<leader>F', function()
+        require('conform').format()
+    end, { desc = 'Format' })
 end)
 
 later(function()
