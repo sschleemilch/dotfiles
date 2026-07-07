@@ -130,7 +130,7 @@ later(function()
             lsp_fallback = true,
         },
         default_format_opts = {
-            timeout_ms = 3000,
+            timeout_ms = 1000,
             async = false,
             quiet = false,
             lsp_format = 'fallback',
@@ -140,20 +140,6 @@ end)
 
 later(function()
     add({ 'https://github.com/tpope/vim-fugitive' })
-end)
-
-later(function()
-    add({ 'https://github.com/folke/flash.nvim' })
-
-    ---@diagnostic disable-next-line: redundant-parameter
-    require('flash').setup({ prompt = { enabled = false } })
-
-    vim.keymap.set({ 'n', 'x', 'o' }, 's', function()
-        require('flash').jump()
-    end, { desc = 'Flash' })
-    vim.keymap.set({ 'n', 'x', 'o' }, 'S', function()
-        require('flash').treesitter()
-    end, { desc = 'Flash Treesitter' })
 end)
 
 later(function()
@@ -197,9 +183,4 @@ later(function()
             end
         end
     end)
-end)
-
-now_if_args(function()
-    add({ 'https://github.com/mistweaverco/kulala.nvim' })
-    require('kulala').setup({})
 end)
