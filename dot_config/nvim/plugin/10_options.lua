@@ -53,13 +53,3 @@ Config.later(function()
     vim.diagnostic.config(diagnostic_opts)
 end)
 
-require('vim._core.ui2').enable({
-    msg = {
-        targets = {
-            progress = 'msg',
-        },
-        msg = {
-            timeout = 2000,
-        },
-    },
-})
