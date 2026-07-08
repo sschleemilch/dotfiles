@@ -124,6 +124,7 @@ later(function()
             astro = { 'prettier' },
             nix = { 'nixfmt' },
             rust = { 'rustfmt' },
+            python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format'}
         },
         default_format_opts = {
             timeout_ms = 3000,
