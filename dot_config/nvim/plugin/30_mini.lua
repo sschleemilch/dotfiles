@@ -1,30 +1,7 @@
 local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
 now(function()
-    require('mini.icons').setup({
-        lsp = {
-            boolean = { glyph = '󰨙', hl = 'MiniIconsOrange' },
-            enum = { glyph = '', hl = 'MiniIconsPurple' },
-            enummember = { glyph = '', hl = 'MiniIconsYellow' },
-            field = { glyph = '', hl = 'MiniIconsYellow' },
-            ['function'] = { glyph = '󰊕', hl = 'MiniIconsAzure' },
-            interface = { glyph = '', hl = 'MiniIconsPurple' },
-            key = { glyph = '', hl = 'MiniIconsYellow' },
-            method = { glyph = '󰊕', hl = 'MiniIconsAzure' },
-            module = { glyph = '', hl = 'MiniIconsPurple' },
-            namespace = { glyph = '󰦮', hl = 'MiniIconsRed' },
-            null = { glyph = '', hl = 'MiniIconsGrey' },
-            number = { glyph = '󰎠', hl = 'MiniIconsOrange' },
-            object = { glyph = '', hl = 'MiniIconsGrey' },
-            package = { glyph = '', hl = 'MiniIconsPurple' },
-            property = { glyph = '', hl = 'MiniIconsYellow' },
-            reference = { glyph = '', hl = 'MiniIconsCyan' },
-            snippet = { glyph = '󱄽', hl = 'MiniIconsGreen' },
-            string = { glyph = '', hl = 'MiniIconsGreen' },
-            value = { glyph = '', hl = 'MiniIconsBlue' },
-            variable = { glyph = '󰀫', hl = 'MiniIconsCyan' },
-        },
-    })
+    require('mini.icons').setup()
     MiniIcons.tweak_lsp_kind()
 end)
 
@@ -67,7 +44,6 @@ later(function()
     local miniclue = require('mini.clue')
     miniclue.setup({
         triggers = {
-            -- Builtins.
             { mode = 'n', keys = 'g' },
             { mode = 'x', keys = 'g' },
             { mode = 'n', keys = '`' },
@@ -78,13 +54,9 @@ later(function()
             { mode = 'c', keys = '<C-r>' },
             { mode = 'n', keys = '<C-w>' },
             { mode = 'n', keys = 'z' },
-            -- Moving between stuff.
-            { mode = 'n', keys = '[' },
-            { mode = 'n', keys = ']' },
             { mode = 'n', keys = '<Leader>' },
         },
         clues = {
-            -- Builtins.
             miniclue.gen_clues.builtin_completion(),
             miniclue.gen_clues.g(),
             miniclue.gen_clues.marks(),
