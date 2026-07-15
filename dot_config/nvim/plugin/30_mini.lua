@@ -126,10 +126,13 @@ later(function()
     })
     vim.ui.select = MiniPick.ui_select
 
+    MiniPick.registry.files = function(_, _)
+        local show = function(buf_id, items, query) MiniPick.default_show(buf_id, items, query, { show_icons = true }) end
+        return MiniPick.builtin.cli({ command = { 'fd', '--type=f', '--color=never', '--hidden' } }, { source = { name = 'Files (fd)', show = show } })
+    end
+
     vim.keymap.set('n', '<leader>f', function()
-        MiniPick.builtin.files({
-            tool = 'fd'
-        })
+        MiniPick.registry.files()
     end, { desc = 'Find file' })
     vim.keymap.set('n', '<leader>r', function()
         MiniExtra.pickers.oldfiles({ current_dir = true })
