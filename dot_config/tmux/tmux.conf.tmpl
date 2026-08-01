@@ -95,12 +95,11 @@ set -g status-right-style NONE
 setw -g window-status-activity-style "underscore,fg=$input"
 setw -g window-status-style "NONE,fg=$active"
 
-setw -g window-status-separator ""
-set -g status-left ""
-set -g status-right "#{prefix_highlight}#[fg=$input]#[bg=$input,fg=$bg] #[bg=$accent_dim,fg=$bg] #S#[bg=$bg,fg=$accent_dim]"
-# set -g status-right "#{prefix_highlight}#[fg=$input]#[bg=$input,fg=$bg]󰃭 #[bg=$accent_dim,fg=$bg] %d.%m.%Y %H:%M#[bg=$bg,fg=$accent_dim] #[fg=$input]#[bg=$input,fg=$bg]󰒋 #[bg=$accent_dim,fg=$bg] #h#[bg=$bg,fg=$accent_dim]"
-setw -g window-status-format " #[fg=$accent_dim]#[bg=$accent_dim,fg=$bg]#I #[bg=$inactive,fg=$bg] #W#[bg=$bg,fg=$inactive]"
-setw -g window-status-current-format " #[fg=$accent]#[bg=$accent,fg=$bg]#I #[bg=$accent_dim,fg=$bg] #W#[bg=$bg,fg=$accent_dim]"
+setw -g window-status-separator " "
+set -g status-left " "
+set -g status-right "#{prefix_highlight}#[fg=$input,bg=$bg]#[bg=$input,fg=$bg,bold]#S#[fg=$input,bg=$bg] "
+setw -g window-status-format "#[fg=$accent_dim]#[bg=$accent_dim,fg=$bg]#I #[bg=$inactive,fg=$bg] #W#[bg=$bg,fg=$inactive]"
+setw -g window-status-current-format "#[fg=$accent]#[bg=$accent,fg=$bg]#I #[bg=$accent_dim,fg=$bg] #W#[bg=$bg,fg=$accent_dim]"
 
 # tmux-plugins/tmux-prefix-highlight
 set -g @prefix_highlight_output_prefix "#[fg=$input]#[bg=$bg]"
