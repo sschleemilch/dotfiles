@@ -1,5 +1,61 @@
 local add = vim.pack.add
-local now_if_args, later = Config.now_if_args, Config.later
+local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
+
+now(function()
+    add({ 'https://github.com/sschleemilch/slimline.nvim' })
+    require('slimline').setup({
+        components = {
+            left = {
+                'mode',
+                'path',
+            },
+            right = {
+                'diagnostics',
+                'filetype_lsp',
+            },
+        },
+        hl = {
+            primary = 'StatusLine',
+            secondary = 'StatusLineNC',
+        },
+        spaces = {
+            components = '',
+            left = '',
+            right = '',
+        },
+        sep = {
+            hide = {
+                first = true,
+                last = true,
+            },
+            left = '',
+            right = '',
+        },
+        configs = {
+            mode = {
+                format = {
+                    ['n'] = { short = 'NOR' },
+                    ['v'] = { short = 'VIS' },
+                    ['V'] = { short = 'V-L' },
+                    ['\22'] = { short = 'V-B' },
+                    ['s'] = { short = 'SEL' },
+                    ['S'] = { short = 'S-L' },
+                    ['\19'] = { short = 'S-B' },
+                    ['i'] = { short = 'INS' },
+                    ['R'] = { short = 'REP' },
+                    ['c'] = { short = 'CMD' },
+                    ['r'] = { short = 'PRO' },
+                    ['!'] = { short = 'SHE' },
+                    ['t'] = { short = 'TER' },
+                    ['U'] = { short = 'UNK' },
+                },
+            },
+            path = {
+                directory = false,
+            },
+        },
+    })
+end)
 
 now_if_args(function()
     local ts_update = function()
@@ -124,7 +180,8 @@ later(function()
             astro = { 'prettier' },
             nix = { 'nixfmt' },
             rust = { 'rustfmt' },
-            python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format'}
+            tex = { 'tex-fmt' },
+            python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         },
         default_format_opts = {
             timeout_ms = 3000,
