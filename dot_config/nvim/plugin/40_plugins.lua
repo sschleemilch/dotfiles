@@ -21,6 +21,7 @@ now(function()
         spaces = {
             left = '',
             right = '',
+            padding = '',
         },
         configs = {
             mode = {

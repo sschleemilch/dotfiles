@@ -20,7 +20,6 @@ def draw_tab(
     screen.draw("")
     screen.cursor.fg = orig_fg
     screen.cursor.bg = orig_bg
-    screen.draw(" ")
     draw_title(draw_data, screen, tab, index, max(0, max_tab_length - 8))
     extra = screen.cursor.x - before - max_tab_length
     if extra > 0:
@@ -30,7 +29,6 @@ def draw_tab(
         if extra > 0:
             screen.cursor.x -= extra + 1
             screen.draw("…")
-    screen.draw(" ")
     screen.cursor.fg = orig_bg
     screen.cursor.bg = as_rgb(color_as_int(draw_data.default_bg))
     screen.draw("")
