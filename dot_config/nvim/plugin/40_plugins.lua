@@ -19,17 +19,8 @@ now(function()
             secondary = 'StatusLineNC',
         },
         spaces = {
-            components = '',
             left = '',
             right = '',
-        },
-        sep = {
-            hide = {
-                first = true,
-                last = true,
-            },
-            left = '',
-            right = '',
         },
         configs = {
             mode = {
