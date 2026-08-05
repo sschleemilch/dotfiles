@@ -1,22 +1,12 @@
-set -g default-terminal "${TERM}"
-set -s escape-time 500
-set -g mouse on
-set -g base-index 1
-set -g pane-base-index 1
-set -g renumber-windows on
-set-window-option -g mode-keys vi
+bind -T copy-mode-vi 'v' send -X begin-selection
+bind -T copy-mode-vi 'V' send -X select-line
+bind -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 
-bind-key -T copy-mode-vi 'v' send -X begin-selection
-bind-key -T copy-mode-vi 'V' send -X select-line
-bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
-
-# Start splits in same dir as current pane
 bind  %  split-window -h -c "#{pane_current_path}"
 bind '"' split-window -v -c "#{pane_current_path}"
 
-bind-key -n C-S-h previous-window
-bind-key -n C-S-l next-window
-
+bind -n C-S-h previous-window
+bind -n C-S-l next-window
 bind -n C-h select-pane -L
 bind -n C-j select-pane -D
 bind -n C-k select-pane -U
@@ -76,10 +66,15 @@ active="#cdcdcd"
 inactive="#606079"
 {{- end }}
 
+set -g default-terminal "${TERM}"
+set -s escape-time 500
+set -g mouse on
+set -g base-index 1
+set -g pane-base-index 1
+set -g renumber-windows on
+
 set -g status "on"
-
 set -g status-justify "left"
-
 set -g mode-style "fg=$input"
 set -g message-style "fg=$input"
 set -g message-command-style "fg=$input"
@@ -89,19 +84,17 @@ set -g pane-active-border-style "fg=$active"
 
 set -g status-style "fg=$active bg=$bg"
 set -g status-position "bottom"
-
 set -g status-left-length "100"
 set -g status-right-length "100"
-
 set -g status-left-style NONE
 set -g status-right-style NONE
-
-setw -g window-status-activity-style "underscore,fg=$input"
-setw -g window-status-style "NONE,fg=$active"
-
-setw -g window-status-separator " "
 set -g status-left ""
 set -g status-right "#{prefix_highlight}#[fg=$input,bg=$bg]#[bg=$input,fg=$bg,bold]#S#[fg=$input,bg=$bg]"
+
+setw -g mode-keys vi
+setw -g window-status-activity-style "underscore,fg=$input"
+setw -g window-status-style "NONE,fg=$active"
+setw -g window-status-separator " "
 setw -g window-status-format "#[fg=$accent_dim]#[bg=$accent_dim,fg=$bg]#I#[fg=$accent_dim,bg=$inactive]#[bg=$inactive,fg=$bg] #W#[bg=$bg,fg=$inactive]"
 setw -g window-status-current-format "#[fg=$accent]#[bg=$accent,fg=$bg]#I#[fg=$accent,bg=$accent_dim]#[bg=$accent_dim,fg=$bg] #W#[bg=$bg,fg=$accent_dim]"
 
