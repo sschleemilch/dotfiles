@@ -18,10 +18,18 @@ now(function()
             primary = 'StatusLine',
             secondary = 'StatusLineNC',
         },
+        sep = {
+            hide = {
+                first = true,
+                last = true,
+            },
+            left = '',
+            right = '',
+        },
         spaces = {
+            components = '',
             left = '',
             right = '',
-            padding = '',
         },
         configs = {
             mode = {

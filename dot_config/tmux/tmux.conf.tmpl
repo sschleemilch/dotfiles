@@ -66,6 +66,10 @@ active="#cdcdcd"
 inactive="#606079"
 {{- end }}
 
+sep_left=""
+sep_right=""
+
+
 set -g default-terminal "${TERM}"
 set -s escape-time 500
 set -g mouse on
@@ -88,15 +92,16 @@ set -g status-left-length "100"
 set -g status-right-length "100"
 set -g status-left-style NONE
 set -g status-right-style NONE
-set -g status-left ""
-set -g status-right "#{prefix_highlight}#[fg=$input,bg=$bg]#[bg=$input,fg=$bg,bold]#S#[fg=$input,bg=$bg]"
+set -g status-right "#{prefix_highlight}"
+set -g status-left "#[bg=$input,fg=$bg,bold] #S #[fg=$input,bg=$bg]$sep_right"
 
 setw -g mode-keys vi
 setw -g window-status-activity-style "underscore,fg=$input"
 setw -g window-status-style "NONE,fg=$active"
-setw -g window-status-separator " "
-setw -g window-status-format "#[fg=$accent_dim]#[bg=$accent_dim,fg=$bg]#I#[fg=$accent_dim,bg=$inactive]#[bg=$inactive,fg=$bg] #W#[bg=$bg,fg=$inactive]"
-setw -g window-status-current-format "#[fg=$accent]#[bg=$accent,fg=$bg]#I#[fg=$accent,bg=$accent_dim]#[bg=$accent_dim,fg=$bg] #W#[bg=$bg,fg=$accent_dim]"
+setw -g window-status-separator ""
+
+setw -g window-status-format "#[fg=$accent_dim]$sep_left#[bg=$accent_dim,fg=$bg] #I #[fg=$accent_dim,bg=$inactive]$sep_right#[bg=$inactive,fg=$bg] #W #[bg=$bg,fg=$inactive]$sep_right"
+setw -g window-status-current-format "#[fg=$accent]$sep_left#[bg=$accent,fg=$bg] #I #[fg=$accent,bg=$accent_dim]$sep_right#[bg=$accent_dim,fg=$bg] #W #[bg=$bg,fg=$accent_dim]$sep_right"
 
 # tmux-plugins/tmux-prefix-highlight
 set -g @prefix_highlight_output_prefix "#[fg=$input]#[bg=$bg]"
