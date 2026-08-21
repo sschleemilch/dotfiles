@@ -1,11 +1,10 @@
--- Tuned koda.nvim
+-- Reset highlighting. 
 
--- Reset highlighting.
 vim.cmd.highlight('clear')
 if vim.fn.exists('syntax_on') then
     vim.cmd.syntax('reset')
 end
-vim.g.colors_name = 'kodax'
+vim.g.colors_name = 'schlinimal'
 
 --- Converts a hex color string to an RGB table
 ---@param hex string A hex color string like "#RRGGBB"
@@ -36,28 +35,52 @@ local function blend(foreground, background, alpha)
     return string.format('#%02X%02X%02X', blend_channel(1), blend_channel(2), blend_channel(3))
 end
 
--- stylua: ignore
+-- NVIM DARK COLORS
+-- color0 #07080d
+-- color1 #ffc0b9
+-- color2 #b3f6c0
+-- color3 #fce094
+-- color4 #a6dbff
+-- color5 #ffcaff
+-- color6 #8cf8f7
+-- color7 #eef1f8
+-- color8 #4f5258
+-- color9 #ffc0b9
+-- color10 #b3f6c0
+-- color11 #fce094
+-- color12 #a6dbff
+-- color13 #ffcaff
+-- color14 #8cf8f7
+-- color15 #eef1f8
+-- background #14161b
+-- selection_foreground #14161b
+-- cursor #9b9ea4
+-- cursor_text_color #e0e2ea
+-- foreground #e0e2ea
+-- selection_background #e0e2ea
+
 local c = {
-  bg         = "#101010",
-  fg         = "#b0b0b0",
-  dim        = "#474747",
-  line       = "#272727",
-  keyword    = "#777777",
-  type       = "#777777",
-  operator   = "#777777",
-  comment    = "#50585d",
-  border     = "#ffffff",
-  emphasis   = "#ffffff",
-  func       = "#ffffff",
-  string     = "#ffffff",
-  char       = "#ffffff",
-  special    = "#ffffff",
-  const      = "#d9ba73",
-  info       = "#8ebeec",
-  success    = "#86cd82",
-  warning    = "#d9ba73",
-  danger     = "#ff7676",
+    bg = '#101010',
+    fg = '#ffffff',
+    dim = '#474747',
+    line = '#404040',
+    keyword = '#bbbbbb',
+    type = '#bbbbbb',
+    operbtor = '#bbbbbb',
+    comment = '#777777',
+    border = '#bbbbbb',
+    emphasis = '#ffffff',
+    func = '#8cf8f7',
+    string = '#b3f6c0',
+    char = '#ffffff',
+    identifier = '#ffffff',
+    const = '#ffffff',
+    info = '#a6dbff',
+    success = '#b3f6c0',
+    danger = '#ffc0b9',
+    warning = '#fce094',
 }
+
 
 -- stylua: ignore
 local groups = {
@@ -65,14 +88,14 @@ local groups = {
     Normal            = { fg = c.fg, bg = c.bg },
     NormalFloat       = { link = "Normal" },
     FloatBorder       = { fg = c.border, bg = c.bg, },
-    Cursor            = { fg = c.fg, bg = c.fg },
+    Cursor            = { link = "Normal" },
     TermCursor        = { link = "Cursor" },
     lCursor           = { link = "Cursor" },
     CursorIM          = { link = "Cursor" },
     CursorColumn      = { bg = c.line },
     CursorLine        = { bg = c.line },
     ColorColumn       = { bg = c.line },
-    CursorLineNr      = { fg = c.special, bold = true },
+    CursorLineNr      = { fg = c.identifier, bold = true },
     LineNr            = { fg = c.comment },
     StatusLine        = { fg = c.fg, bg = c.line },
     StatusLineNC      = { fg = c.comment, bg = c.line },
@@ -90,7 +113,7 @@ local groups = {
     CurSearch         = { link = "DiffChange" },
     IncSearch         = { link = "CurSearch" },
     Substitute        = { link = "DiffAdd" },
-    MatchParen        = { fg = c.special, bold = true },
+    MatchParen        = { bg = c.line, bold = true },
     NonText           = { fg = c.dim },
     EndOfBuffer       = { fg = c.line },
     Question          = { fg = c.const },
@@ -112,14 +135,14 @@ local groups = {
 
     -- SYNTAX
     Comment         = { fg = c.comment, italic = true},
-    Constant        = { fg = c.const },
+    Constant        = { fg = c.fg },
     String          = { fg = c.string },
     Character       = { fg = c.char },
     Number          = { fg = c.const },
     Boolean         = { fg = c.const },
     Float           = { fg = c.const },
-    Identifier      = { fg = c.special },
-    Function        = { fg = c.func, bold = true },
+    Identifier      = { fg = c.identifier },
+    Function        = { fg = c.func },
     Keyword         = { fg = c.keyword },
     Statement       = { fg = c.keyword },
     Conditional     = { link = "Keyword" },
@@ -169,7 +192,7 @@ local groups = {
     ["@string.special.path"]           = { link = "Special" },
     ["@string.special.url"]            = { link = "Underlined" },
     ["@character"]                     = { link = "Character" },
-    ["@character.special"]             = { fg = c.special },
+    ["@character.special"]             = { fg = c.identifier },
     ["@boolean"]                       = { link = "Boolean" },
     ["@number"]                        = { link = "Number" },
     ["@number.float"]                  = { link = "Number" },
@@ -178,7 +201,7 @@ local groups = {
     ["@type.definition"]               = { fg = c.fg },
     ["@attribute"]                     = { link = "Keyword" },
     ["@attribute.builtin"]             = { link = "Keyword" },
-    ["@property"]                      = { fg = c.fg },
+    ["@property"]                      = { link = "Identifier"},
     ["@function"]                      = { link = "Function" },
     ["@function.builtin"]              = { link = "Function" },
     ["@function.call"]                 = { link = "Function" },
@@ -195,7 +218,7 @@ local groups = {
     ["@keyword.type"]                  = { link = "Keyword" },
     ["@keyword.modifier"]              = { link = "Keyword" },
     ["@keyword.repeat"]                = { link = "Repeat" },
-    ["@keyword.return"]                = { fg = c.emphasis },
+    ["@keyword.return"]                = { link = "Keyword"},
     ["@keyword.debug"]                 = { link = "Keyword" },
     ["@keyword.exception"]             = { link = "Exception" },
     ["@keyword.conditional"]           = { link = "Conditional" },
@@ -248,6 +271,11 @@ local groups = {
     DiagnosticInfo                           = { fg = c.fg },
     DiagnosticOK                             = { fg = c.success },
     DiagnosticWarn                           = { fg = c.warning },
+    DiagnosticUnderlineError                 = { sp = c.danger, underline = true },
+    DiagnosticUnderlineHint                  = { sp = c.info, underline = true },
+    DiagnosticUnderlineInfo                  = { sp = c.fg, underline = true },
+    DiagnosticUnderlineOK                    = { sp = c.success, underline = true },
+    DiagnosticUnderlineWarn                  = { sp = c.warning, underline = true },
     LspInlayHint                             = { fg = c.comment },
     ["@lsp.type.comment"]                    = {}, -- use treesitter styles
     ["@lsp.type.lifetime"]                   = { fg = c.const },
@@ -265,7 +293,6 @@ local groups = {
     ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
     -- ["@lsp.type.namespace"]                = { fg = c.keyword },
 }
-
 
 for group, opts in pairs(groups) do
     vim.api.nvim_set_hl(0, group, opts)
