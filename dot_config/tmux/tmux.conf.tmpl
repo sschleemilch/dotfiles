@@ -19,51 +19,45 @@ set -g @plugin "tmux-plugins/tmux-prefix-highlight"
 
 {{ if eq .colorscheme "rose-pine" -}}
 accent="#ebbcba"
-accent_dim="#908caa"
 bg="#191724"
 input="#c4a7e7"
-active="#e0def4"
+fg="#e0def4"
 inactive="#6e6a86"
 {{- end -}}
 {{ if eq .colorscheme "kanagawa" -}}
 accent="#7fb4ca"
-accent_dim="#727169"
 bg="#1f1f28"
 input="#ff9e3b"
-active="#dcd7ba"
+fg="#dcd7ba"
 inactive="#727169"
 {{- end -}}
 {{ if eq .colorscheme "carbonfox" -}}
 accent="#8cb6ff"
-accent_dim="#6e6f70"
 bg="#161616"
 input="#be95ff"
-active="#f2f4f8"
+fg="#f2f4f8"
 inactive="#6e6f70"
 {{- end -}}
 {{ if eq .colorscheme "tokyonight-night" -}}
 accent="#2ac3de"
-accent_dim="#565f89"
 bg="#1a1b26"
 input="#ff9e64"
-active="#c0caf5"
+fg="#c0caf5"
 inactive="#565f89"
 {{- end -}}
 {{ if eq .colorscheme "catppuccin-mocha" -}}
 accent="#89dceb"
-accent_dim="#9399b2"
 bg="#1e1e2e"
 input="#fab387"
-active="#cdd6f4"
+fg="#cdd6f4"
 inactive="#9399b2"
 {{- end }}
 {{ if eq .colorscheme "vague" -}}
 accent="#9bb4bc"
-accent_dim="#606079"
 bg="#141415"
 input="#f3be7c"
-active="#cdcdcd"
-inactive="#252530"
+fg="#cdcdcd"
+inactive="#606079"
 {{- end }}
 
 sep_left=""
@@ -86,9 +80,9 @@ set -g message-style "fg=$input"
 set -g message-command-style "fg=$input"
 
 set -g pane-border-style "fg=$inactive"
-set -g pane-active-border-style "fg=$active"
+set -g pane-active-border-style "fg=$fg"
 
-set -g status-style "fg=$active bg=$bg"
+set -g status-style "fg=$fg bg=$bg"
 set -g status-position "bottom"
 set -g status-left-length "100"
 set -g status-right-length "100"
@@ -99,11 +93,11 @@ set -g status-left "#[bg=$input,fg=$bg,bold] #S #[fg=$input,bg=$bg]$sep_right"
 
 setw -g mode-keys vi
 setw -g window-status-activity-style "underscore,fg=$input"
-setw -g window-status-style "NONE,fg=$active"
+setw -g window-status-style "NONE,fg=$fg"
 setw -g window-status-separator ""
 
-setw -g window-status-format "#[fg=$accent_dim]$sep_left#[bg=$accent_dim,fg=$bg] #I #[fg=$accent_dim,bg=$inactive]$sep_right#[bg=$inactive,fg=$bg] #W #[bg=$bg,fg=$inactive]$sep_right"
-setw -g window-status-current-format "#[fg=$accent]$sep_left#[bg=$accent,fg=$bg] #I #[fg=$accent,bg=$accent_dim]$sep_right#[bg=$accent_dim,fg=$bg] #W #[bg=$bg,fg=$accent_dim]$sep_right"
+setw -g window-status-format "#[fg=$inactive]$sep_left#[bg=$inactive,fg=$bg] #I  #W #[bg=$bg,fg=$inactive]$sep_right"
+setw -g window-status-current-format "#[fg=$accent]$sep_left#[bg=$accent,fg=$bg] #I  #W #[bg=$bg,fg=$accent]$sep_right"
 
 # tmux-plugins/tmux-prefix-highlight
 set -g @prefix_highlight_output_prefix "#[fg=$input]#[bg=$bg]"
