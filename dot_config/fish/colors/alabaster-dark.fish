@@ -1,1 +1,3 @@
-set -x FZF_COLORS "--color=bg:#f7f7f7,gutter:#f7f7f7,current-bg:#bfdbfe,current-fg:#000000,hl:#aa3731,hl+:#aa3731,border:#9da39a,pointer:#007acc,info:#9da39a,spinner:#aa3731"
+set -x FZF_COLORS "--color=bg:#0e1415,gutter:#0e1415,current-bg:#1c3d5c,current-fg:#cecece,hl:#d96468,hl+:#d96468,border:#6b7678,pointer:#73b8ff,info:#6b7678,spinner:#d96468"
+
+
