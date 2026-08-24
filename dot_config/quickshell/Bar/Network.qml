@@ -7,7 +7,7 @@ Item {
     implicitHeight: content.implicitHeight
     anchors.verticalCenter: parent.verticalCenter
 
-    property color col: Network.status === "connected" ? Colors.text : Colors.love
+    property color col: Network.status === "connected" ? Colors.textPrimary : Colors.networkDisconnected
 
     Row {
         id: content

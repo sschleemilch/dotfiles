@@ -16,14 +16,14 @@ Item {
             text: "brightness_6"
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: Colors.text
+            color: Colors.textPrimary
         }
 
         Text {
             text: Brightness.level + "%"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.text
+            color: Colors.textPrimary
         }
     }
 

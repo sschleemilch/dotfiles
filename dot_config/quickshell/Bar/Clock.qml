@@ -21,13 +21,13 @@ Item {
             text: Qt.formatDateTime(clock.date, "hh:mm")
             font.pixelSize: Config.textSize
             font.bold: true
-            color: Colors.text
+            color: Colors.textPrimary
         }
 
         Text {
             text: Qt.formatDateTime(clock.date, "ddd, MMM d")
             font.pixelSize: Config.textSizeSmall
-            color: Colors.subtle
+            color: Colors.textSecondary
             anchors.baseline: timeText.baseline
         }
 

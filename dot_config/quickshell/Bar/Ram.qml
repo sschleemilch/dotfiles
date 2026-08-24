@@ -15,18 +15,18 @@ Item {
             text: "memory"
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: SystemStats.ramPercent >= 90 ? Colors.love
-                 : SystemStats.ramPercent >= 70 ? Colors.gold
-                 : Colors.text
+            color: SystemStats.ramPercent >= 90 ? Colors.statusCritical
+                 : SystemStats.ramPercent >= 70 ? Colors.statusWarning
+                 : Colors.textPrimary
         }
 
         Text {
             text: SystemStats.ramPercent + "%"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: SystemStats.ramPercent >= 90 ? Colors.love
-                 : SystemStats.ramPercent >= 70 ? Colors.gold
-                 : Colors.text
+            color: SystemStats.ramPercent >= 90 ? Colors.statusCritical
+                 : SystemStats.ramPercent >= 70 ? Colors.statusWarning
+                 : Colors.textPrimary
         }
 
     }

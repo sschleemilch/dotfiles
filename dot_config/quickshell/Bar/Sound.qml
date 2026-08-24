@@ -15,14 +15,14 @@ Item {
             text: Sound.muted ? "volume_off" : (Sound.volumePercent > 50 ? "volume_up" : "volume_down")
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: Colors.text
+            color: Colors.textPrimary
         }
 
         Text {
             text: Sound.muted ? "0%" : Sound.volumePercent + "%"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.text
+            color: Colors.textPrimary
         }
 
     }

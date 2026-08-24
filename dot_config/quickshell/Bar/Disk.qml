@@ -15,18 +15,18 @@ Item {
             text: "hard_drive"
             font.family: Config.iconFont
             font.pixelSize: Config.iconSize
-            color: SystemStats.diskPercent >= 90 ? Colors.love
-                 : SystemStats.diskPercent >= 70 ? Colors.gold
-                 : Colors.text
+            color: SystemStats.diskPercent >= 90 ? Colors.statusCritical
+                 : SystemStats.diskPercent >= 70 ? Colors.statusWarning
+                 : Colors.textPrimary
         }
 
         Text {
             text: SystemStats.diskPercent + "%"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: SystemStats.diskPercent >= 90 ? Colors.love
-                 : SystemStats.diskPercent >= 70 ? Colors.gold
-                 : Colors.text
+            color: SystemStats.diskPercent >= 90 ? Colors.statusCritical
+                 : SystemStats.diskPercent >= 70 ? Colors.statusWarning
+                 : Colors.textPrimary
         }
 
     }

@@ -6,7 +6,7 @@ Item {
 
     property int count: 0
     property bool checked: false
-    property color col: checked && count > 0 ? Colors.foam : Colors.subtle
+    property color col: checked && count > 0 ? Colors.updatesAvailable : Colors.textSecondary
 
     function poll() {
         if (checkupdatesProcess.running)

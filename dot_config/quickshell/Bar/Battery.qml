@@ -9,7 +9,7 @@ Item {
 
     visible: Battery.available
 
-    property color c: Battery.isLow ? Colors.love : Battery.charging ? Colors.foam : Colors.rose
+    property color c: Battery.isLow ? Colors.batteryCritical : Battery.charging ? Colors.batteryCharging : Colors.batteryNormal
 
     Row {
         id: content
@@ -51,7 +51,7 @@ Item {
             text: "(" + (Battery.charging ? Battery.timeToFull : Battery.timeToEmpty) + ")"
             font.family: Config.textFont
             font.pixelSize: Config.textSize
-            color: Colors.subtle
+            color: Colors.textSecondary
         }
 
     }

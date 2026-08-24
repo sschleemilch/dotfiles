@@ -15,7 +15,7 @@ Item {
             text: ActiveWindow.appId || "Desktop"
             font.pixelSize: Config.textSize
             font.bold: true
-            color: Colors.text
+            color: Colors.textPrimary
         }
 
         Text {
@@ -23,7 +23,7 @@ Item {
 
             text: ActiveWindow.windowTitle.length > maxChars ? ActiveWindow.windowTitle.slice(0, maxChars) + "…" : ActiveWindow.windowTitle
             font.pixelSize: Config.textSizeSmall
-            color: Colors.subtle
+            color: Colors.textSecondary
             anchors.baseline: appId.baseline
         }
 

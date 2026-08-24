@@ -38,7 +38,7 @@ Item {
                     anchors.centerIn: parent
                     height: 8
                     width: focused ? 20 : 8
-                    color: focused ? Colors.text : occupied ? Colors.text : Colors.muted
+                    color: focused ? Colors.textPrimary : occupied ? Colors.textPrimary : Colors.textMuted
                     radius: height / 2
 
                     Behavior on width {

@@ -11,7 +11,7 @@ Row {
         text: Weather.weatherIcon
         font.family: Config.iconFont
         font.pixelSize: Config.iconSize
-        color: Colors.text
+        color: Colors.textPrimary
         anchors.verticalCenter: parent.verticalCenter
     }
 
@@ -20,7 +20,7 @@ Row {
         font.family: Config.textFont
         font.pixelSize: Config.textSize
         font.bold: true
-        color: Weather.temperature >= 30 ? Colors.love : Weather.temperature >= 20 ? Colors.gold : Colors.iris
+        color: Weather.temperature >= 30 ? Colors.temperatureHot : Weather.temperature >= 20 ? Colors.temperatureWarm : Colors.temperatureCool
         anchors.verticalCenter: parent.verticalCenter
     }
 
