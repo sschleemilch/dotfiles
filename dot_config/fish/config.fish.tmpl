@@ -1,7 +1,7 @@
 function add_to_path_if_exsting
     for dir in $argv
         if test -d $dir
-            fish_add_path --path $dir
+            fish_add_path --prepend $dir
         end
     end
 end
@@ -17,10 +17,9 @@ set -x SHELL /opt/homebrew/bin/fish
 add_to_path_if_exsting /opt/homebrew/opt/python@3.14/libexec/bin
 add_to_path_if_exsting /opt/homebrew/opt/openjdk@21/bin
 add_to_path_if_exsting $HOME/Library/Android/sdk/platform-tools
-set -x http_proxy 127.0.0.1:3128
-set -x https_proxy 127.0.0.1:3128
-set -x no_proxy 127.0.0.1,localhost,.bmwgroup.net,.cloud.bmw
+
 set -x GOPRIVATE 'atc-github.azure.cloud.bmw/*'
+proxy set
 {{- end }}
 
 
