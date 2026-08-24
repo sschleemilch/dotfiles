@@ -52,7 +52,7 @@ hl.gesture({
 
 local mainMod = 'SUPER'
 
-hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('kitty --title=launcher -e launcher.fish'))
+hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('launcher apps'))
 hl.bind(mainMod .. ' + escape', hl.dsp.exec_cmd('hyprlock'))
 hl.bind(mainMod .. ' + return', hl.dsp.exec_cmd('kitty'))
 hl.bind('Print', hl.dsp.exec_cmd('grim -g "$(slurp)"'))
