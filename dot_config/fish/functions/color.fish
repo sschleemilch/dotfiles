@@ -1,5 +1,5 @@
 function color -d 'change colorscheme'
-    set -l colors "rose-pine" "rose-pine-dawn" "rose-pine-moon" "tokyonight-night" "kanagawa" "catppuccin-mocha" "carbonfox" "vague"
+    set -l colors "rose-pine" "rose-pine-dawn" "rose-pine-moon" "tokyonight-night" "kanagawa" "catppuccin-mocha" "carbonfox" "vague" "alabaster" "alabaster-dark"
     set -l config_file ~/.config/chezmoi/chezmoi.toml
     set -l selected_color (printf "%s\n" $colors | fzf)
 
@@ -9,6 +9,7 @@ function color -d 'change colorscheme'
         chezmoi apply
         # kitten @ action load_config_file
         . ~/.config/fish/config.fish
+        tmux source ~/.config/tmux/tmux.conf
     else
         echo "No color scheme selected"
     end
