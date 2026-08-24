@@ -7,9 +7,13 @@ function color -d 'change colorscheme'
         echo "setting colorscheme '$selected_color'"
         sed "s/colorscheme = \".*\"/colorscheme = \"$selected_color\"/" "$config_file" > "$config_file.tmp" && mv "$config_file.tmp" "$config_file"
         chezmoi apply
-        # kitten @ action load_config_file
+        if set -q KITTY_PID
+            kitten @ action load_config_file
+        end
+        if set -q TMUX
+            tmux source ~/.config/tmux/tmux.conf
+        end
         . ~/.config/fish/config.fish
-        tmux source ~/.config/tmux/tmux.conf
     else
         echo "No color scheme selected"
     end
