@@ -1,27 +1,26 @@
---- @param hl string
-local function clear_bg(hl)
-    vim.api.nvim_set_hl(0, hl, { bg = 'NONE', update = true })
-end
+local patches = {
+    NormalFloat = { link = 'Normal' },
+    FloatBorder = { link = 'Comment' },
+    FloatTitle = { bg = 'NONE', update = true },
+    MiniFilesTitleFocused = { bg = 'NONE', update = true },
+    MiniPickBorderText = { bg = 'NONE', update = true },
+    MiniPickPrompt = { bg = 'NONE', update = true },
+    MiniPickPromptPrefix = { bg = 'NONE', update = true },
+    MiniPickPromptCaret = { bg = 'NONE', update = true },
+    MiniClueTitle = { bg = 'NONE', update = true },
+    Pmenu = { bg = 'NONE', update = true },
+    PmenuExtra = { bg = 'NONE', update = true },
+    PmenuKind = { bg = 'NONE', update = true },
+    StatusLine = { bg = 'NONE', update = true },
+    StatusLineNC = { bg = 'NONE', update = true },
+    StatusLineTerm = { bg = 'NONE', update = true },
+    StatusLineTermNC = { bg = 'NONE', update = true },
+}
 
 Config.new_autocmd('ColorScheme', nil, function()
-    -- Adjust highlights
-    vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
-    vim.api.nvim_set_hl(0, 'FloatBorder', { link = 'Comment' })
-
-    clear_bg('FloatTitle')
-    clear_bg('MiniFilesTitleFocused')
-    clear_bg('MiniPickBorderText')
-    clear_bg('MiniPickPrompt')
-    clear_bg('MiniPickPromptPrefix')
-    clear_bg('MiniPickPromptCaret')
-    clear_bg('MiniClueTitle')
-    clear_bg('Pmenu')
-    clear_bg('PmenuExtra')
-    clear_bg('PmenuKind')
-    clear_bg('StatusLine')
-    clear_bg('StatusLineNC')
-    clear_bg('StatusLineTerm')
-    clear_bg('StatusLineTermNC')
+    for group, settings in pairs(patches) do
+        vim.api.nvim_set_hl(0, group, settings)
+    end
 end, 'Highlights')
 
 local colorscheme = require('colorschemes.{{ .colorscheme }}')

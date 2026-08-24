@@ -24,6 +24,12 @@ theme = Catppuccin Mocha
 {{ if eq .colorscheme "vague" -}}
 theme = Vague
 {{- end }}
+{{ if eq .colorscheme "alabaster" -}}
+theme = Alabaster-Light
+{{- end }}
+{{ if eq .colorscheme "alabaster-dark" -}}
+theme = Alabaster-Dark
+{{- end }}
 
 {{ if eq .chezmoi.os "darwin" }}
 command = /opt/homebrew/bin/fish

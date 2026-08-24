@@ -59,6 +59,20 @@ input="#f3be7c"
 fg="#cdcdcd"
 inactive="#606079"
 {{- end }}
+{{ if eq .colorscheme "alabaster" -}}
+bg="#f7f7f7"
+fg="#000000"
+accent="#325cc0"
+input="#000000"
+inactive="#b7b7b7"
+{{- end }}
+{{ if eq .colorscheme "alabaster-dark" -}}
+bg="#0e1415"
+fg="#cecece"
+accent="#6199d9"
+input="#cecece"
+inactive="#bbbbbb"
+{{- end }}
 
 sep_left=""
 sep_right=""
