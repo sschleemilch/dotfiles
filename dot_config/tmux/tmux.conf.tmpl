@@ -23,6 +23,7 @@ bg="#191724"
 input="#c4a7e7"
 fg="#e0def4"
 inactive="#6e6a86"
+select="#403d52"
 {{- end -}}
 {{ if eq .colorscheme "kanagawa" -}}
 accent="#7fb4ca"
@@ -30,6 +31,7 @@ bg="#1f1f28"
 input="#ff9e3b"
 fg="#dcd7ba"
 inactive="#727169"
+select="#2d4f67"
 {{- end -}}
 {{ if eq .colorscheme "carbonfox" -}}
 accent="#8cb6ff"
@@ -37,6 +39,7 @@ bg="#161616"
 input="#be95ff"
 fg="#f2f4f8"
 inactive="#6e6f70"
+select="#2a2a2a"
 {{- end -}}
 {{ if eq .colorscheme "tokyonight-night" -}}
 accent="#2ac3de"
@@ -44,6 +47,7 @@ bg="#1a1b26"
 input="#ff9e64"
 fg="#c0caf5"
 inactive="#565f89"
+select="#283457"
 {{- end -}}
 {{ if eq .colorscheme "catppuccin-mocha" -}}
 accent="#89dceb"
@@ -51,6 +55,7 @@ bg="#1e1e2e"
 input="#fab387"
 fg="#cdd6f4"
 inactive="#9399b2"
+select="#f5e0dc"
 {{- end }}
 {{ if eq .colorscheme "vague" -}}
 accent="#9bb4bc"
@@ -58,6 +63,7 @@ bg="#141415"
 input="#f3be7c"
 fg="#cdcdcd"
 inactive="#606079"
+select="#252530"
 {{- end }}
 {{ if eq .colorscheme "alabaster" -}}
 bg="#f7f7f7"
@@ -65,6 +71,7 @@ fg="#000000"
 accent="#325cc0"
 input="#000000"
 inactive="#b7b7b7"
+select="#bfdbfe"
 {{- end }}
 {{ if eq .colorscheme "alabaster-dark" -}}
 bg="#0e1415"
@@ -72,6 +79,7 @@ fg="#cecece"
 accent="#6199d9"
 input="#cecece"
 inactive="#bbbbbb"
+select="#293334"
 {{- end }}
 
 sep_left=""
@@ -89,7 +97,7 @@ set -g automatic-rename-format '#{b:pane_current_path}'
 
 set -g status "on"
 set -g status-justify "left"
-set -g mode-style "fg=$input"
+set -g mode-style "fg=$input,bg=$select"
 set -g message-style "fg=$input"
 set -g message-command-style "fg=$input"
 
