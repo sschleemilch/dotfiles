@@ -26,5 +26,10 @@ end, 'Highlights')
 
 local colorscheme = require('colorschemes.{{ .colorscheme }}')
 
-vim.pack.add({ colorscheme.src })
-colorscheme.setup()
+if colorscheme.src ~= nil then
+    vim.pack.add({ colorscheme.src })
+end
+
+if colorscheme.setup ~= nil then
+    colorscheme.setup()
+end
