@@ -14,4 +14,5 @@ set -x FZF_COLORS "--color=bg+:#283457 \
   --color=scrollbar:#27a1b9 \
   --color=separator:#ff9e64 \
   --color=spinner:#ff007c"
+
 fish_config theme choose "tokyonight-night"
