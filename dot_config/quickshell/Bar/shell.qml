@@ -82,6 +82,9 @@ ShellRoot {
                     Sound {
                     }
 
+                    Microphone {
+                    }
+
                     Ram {
                     }
 
