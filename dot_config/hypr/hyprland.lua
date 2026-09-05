@@ -55,6 +55,7 @@ local mainMod = 'SUPER'
 hl.bind(mainMod .. ' + SPACE', hl.dsp.exec_cmd('launcher apps'))
 hl.bind(mainMod .. ' + escape', hl.dsp.exec_cmd('hyprlock'))
 hl.bind(mainMod .. ' + return', hl.dsp.exec_cmd('kitty'))
+hl.bind(mainMod .. ' + SHIFT + return', hl.dsp.exec_cmd('firefox'))
 hl.bind('Print', hl.dsp.exec_cmd('grim -g "$(slurp)"'))
 hl.bind(mainMod .. ' + V', hl.dsp.window.float({ action = 'toggle' }))
 hl.bind(mainMod .. ' + Q', hl.dsp.window.close())
