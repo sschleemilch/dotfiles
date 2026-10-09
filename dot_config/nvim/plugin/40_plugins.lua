@@ -158,6 +158,7 @@ now_if_args(function()
         'marksman',
         'graphql',
         'rust_analyzer',
+        'nil_ls'
     })
     vim.lsp.config('lua_ls', {
         settings = {
@@ -246,6 +247,7 @@ later(function()
         'graphql-language-service-cli',
         'rust-analyzer',
         'nixfmt',
+        'nil',
     }
     local mr = require('mason-registry')
     mr.refresh(function()
