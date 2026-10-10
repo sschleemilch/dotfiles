@@ -116,6 +116,7 @@ now_if_args(function()
         'vimdoc',
         'xml',
         'yaml',
+        'nix'
     }
     local isnt_installed = function(lang)
         return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0
