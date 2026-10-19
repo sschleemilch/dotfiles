@@ -23,10 +23,10 @@ map opt+v send_text all \x1be
 map ctrl+shift+h previous_tab
 map ctrl+shift+l next_tab
 
-map alt+j neighboring_window bottom
-map alt+k neighboring_window top
-map alt+h neighboring_window left
-map alt+l neighboring_window right
+map ctrl+b>j neighboring_window bottom
+map ctrl+b>k neighboring_window top
+map ctrl+b>h neighboring_window left
+map ctrl+b>l neighboring_window right
 
 map ctrl+b>1 goto_tab 1
 map ctrl+b>2 goto_tab 2
@@ -43,11 +43,6 @@ map ctrl+b>, set_tab_title
 
 map ctrl+b>% launch --location=vsplit --cwd=current
 map ctrl+b>" launch --location=hsplit --cwd=current
-
-map ctrl+b>h move_window left
-map ctrl+b>j move_window down 
-map ctrl+b>k move_window up
-map ctrl+b>l move_window right
 
 map ctrl+b>f show_scrollback
 
