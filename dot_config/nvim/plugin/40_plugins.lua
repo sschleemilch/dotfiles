@@ -1,51 +1,5 @@
 local add = vim.pack.add
-local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
-
-now(function()
-    add({ 'https://github.com/sschleemilch/slimline.nvim' })
-    require('slimline').setup({
-        bold = true,
-        style = "fg",
-        components = {
-            left = {
-                'mode',
-                'path',
-            },
-            right = {
-                'diagnostics',
-                'filetype_lsp',
-            },
-        },
-        spaces = {
-            components = '',
-            left = '',
-            right = '',
-        },
-        configs = {
-            mode = {
-                format = {
-                    ['n'] = { short = 'NOR' },
-                    ['v'] = { short = 'VIS' },
-                    ['V'] = { short = 'V-L' },
-                    ['\22'] = { short = 'V-B' },
-                    ['s'] = { short = 'SEL' },
-                    ['S'] = { short = 'S-L' },
-                    ['\19'] = { short = 'S-B' },
-                    ['i'] = { short = 'INS' },
-                    ['R'] = { short = 'REP' },
-                    ['c'] = { short = 'CMD' },
-                    ['r'] = { short = 'PRO' },
-                    ['!'] = { short = 'SHE' },
-                    ['t'] = { short = 'TER' },
-                    ['U'] = { short = 'UNK' },
-                },
-            },
-            path = {
-                directory = false,
-            },
-        },
-    })
-end)
+local now_if_args, later = Config.now, Config.now_if_args, Config.later
 
 now_if_args(function()
     local ts_update = function()
