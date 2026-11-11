@@ -4,6 +4,8 @@ local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 now(function()
     add({ 'https://github.com/sschleemilch/slimline.nvim' })
     require('slimline').setup({
+        bold = true,
+        style = "fg",
         components = {
             left = {
                 'mode',
@@ -13,18 +15,6 @@ now(function()
                 'diagnostics',
                 'filetype_lsp',
             },
-        },
-        hl = {
-            primary = 'StatusLine',
-            secondary = 'StatusLineNC',
-        },
-        sep = {
-            hide = {
-                first = true,
-                last = true,
-            },
-            left = '',
-            right = '',
         },
         spaces = {
             components = '',
